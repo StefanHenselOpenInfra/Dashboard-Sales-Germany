@@ -65,15 +65,15 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 
 <!-- NAV -->
 <nav id="main-nav">
-  <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-top')">Top</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-sales')">Sales Development</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-daily')">Daily Average</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-mgmt')">Management</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-coa')">CoA's missing</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-projects')">Running Projects</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollTo('sec-potential')">New Potential</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -240,12 +240,31 @@ var funnelRowsRaw = [
   ["DE-NI Salzhausen Vierhöfen HP0 - SNB","HP0","NI",0,261],
   ["DE-NI Salzhausen Vierhöfen P2-1","BASE UPSELL","NI",17,93],
   ["DE-NI Welle & Otter HP0 - SNB","HP0","NI",0,432],
-  ["DE-NI Welle P2","Build sales","NI",107,213],
+  ["DE-NI Welle P2","Build sales","NI",120,216],
   ["DE-NI Welle P3","Build sales","NI",28,32],
   ["DE-NI Heidenau B4","Build sales","NI",12,16],
   ["Seddiner See B2","BASE UPSELL","BB",36,695],
   ["Wistedt B1","Build sales","NI",306,571],
-  ["Amt Beetzsee REST","Base Sales","BB",0,0]
+  ["Amt Beetzsee REST","Base Sales","BB",0,0],
+  // ── Neu aus Excel ergänzt ──────────────────────────────────────────────
+  ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
+  ["DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0","HP0","BB",0,362],
+  ["DE-BB Schönwald P1 HP0 - SNB","HP0","BB",0,162],
+  ["DE-BY Alterhofen HP0 - SNB","HP0","BY",0,128],
+  ["DE-BY Falkenfels","HP0","BY",0,0],
+  ["DE-BY Münster","Base Sales","BY",0,0],
+  ["DE-BY Saulburg","HP0","BY",0,0],
+  ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
+  ["DE-NI Ottermoor P1","Base Sales","NI",0,72],
+  ["DE-NI Salzhausen - Vierhöfen Combined HP0 - SNB","HP0","NI",0,261],
+  ["DE-NI Salzhausen - Vierhöfen Combined P2-1","BASE UPSELL","NI",17,93],
+  ["DE-Schöneiche P1-3","Base Sales","BB",0,153],
+  ["DE-NI Heidenau B4","Build sales","NI",12,16],
+  ["Hoppegarten Snake REV","check competition","BB",0,0],
+  ["Magdeburg - Ottersleben Combined REV","check competition","SA",0,0],
+  ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
+  ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
+  ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
 ];
 
 var settings = {salesReportTotal2026:1152,q2WorkingDaysDone:43,q2WorkingDaysLeft:21,juneForecast:500,
@@ -253,7 +272,7 @@ var settings = {salesReportTotal2026:1152,q2WorkingDaysDone:43,q2WorkingDaysLeft
   jan:42,feb:135,mar:274,apr:311,may:390};
 
 var potentialRows = [
-  ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","Insolvenz des Baupartners Soli Infratechnik GmbH; kein Nachfolgeunternehmen gefunden; deutlich gestiegene Ausbaukosten nach erneuter Wirtschaftlichkeitsprüfung","Axel Wohlgemuth","Bürgermeister","05722 / 206-111","buergermeister@bueckeburg.de",""],
+  ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","Insolvenz des Baupartners Soli Infratechnik GmbH; kein Nachfolgeunternehmen gefunden; deutlich gestiegene Ausbaukosten nach erneuter Wirtschaftlichkeitsprüfung","Axel Wohlgemuth","Bürgermeister","0177 2469711","buergermeister@bueckeburg.de",""],
   ["37120","Bovenden","NI","Bovenden Kernort (und Eddigehausen-Rauschenwasser)","Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht","Thomas Brandes","Bürgermeister","0551 / 8201-138","brandes@bovenden.de",""],
   ["37120","Eddigehausen","NI","Eddigehausen, Rauschenwasser","Gemeinsam mit Bovenden: Nachfragequote nicht erreicht","Bernd Riethig","Ortsrat Eddigehausen","0551 / 8201-138","flecken@bovenden.de",""],
   ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","Insolvenz des Generalunternehmers Soli Infratechnik GmbH; Ausbau pausiert seit Monaten; kein neuer Baupartner benannt","Andrea Lange","Bürgermeister","05751 / 403-111","a.lange@rinteln.de",""],
@@ -267,7 +286,6 @@ var potentialRows = [
   ["31603","Diepenau","NI","Samtgemeinde Uchte","new area","Annegret Trampe","Bürgermeisterin","05763 183-11","s.ippisch@sg-uchte.de",""],
   ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
   ["31622","Heemsen","NI","","new area","","Samtgemeinde","05024 98050","info@heemsen.de",""],
-  ["31675","Bückeburg","NI","","new area","","Rathaus","05722 206-0","rathaus@bueckeburg.de",""],
   ["84092","Bayerbach bei Ergoldsbach","BY","","new area","Frau Wittman","Bauamtsleitung","08771 3043","wittmann@vgem-ergoldsbach.de",""],
   ["84095","Furth","BY","Furth","kein Interesse","","","08704911925","michael.bruckmoser@vg-furth.de",""],
   ["84101","Furth","BY","Obersüßbach","kein Interesse","","","08704911925","michael.bruckmoser@vg-furth.de",""],
@@ -338,7 +356,7 @@ function fmtPct(sold,hp){
 function sum(arr,key){return arr.reduce(function(s,p){return s+(p[key]||0);},0);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-function scrollToSection(id){
+function scrollTo(id){
   var el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -420,15 +438,11 @@ function svgLineChart(data,refY,refLabel,maxY,color){
     var isPositive=d.growth&&d.growth.charAt(0)!=='-';
     var growthColor=isPositive?'#1d6f3a':'#dc2626';
     var growthBg=isPositive?'#ecfdf5':'#fee2e2';
-    var dotColor=d.q3?'#7c3aed':color;
-    var valColor=d.q3?'#7c3aed':color;
-    var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+dotColor+'" stroke="#fff" stroke-width="2"/>';
-    out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+valColor+'">'+(d.value||0)+'</text>';
+    var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+color+'" stroke="#fff" stroke-width="2"/>';
+    out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+color+'">'+(d.value||0)+'</text>';
     if(d.growth){
-      var gbg=d.q3?'#ede9fe':growthBg;
-      var gc=d.q3?'#6d28d9':growthColor;
-      out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+gbg+'"/>';
-      out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+gc+'">'+d.growth+'</text>';
+      out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+growthBg+'"/>';
+      out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+growthColor+'">'+d.growth+'</text>';
     }
     return out;
   }).join('');
@@ -463,31 +477,18 @@ function render(){
     var pct=Math.round((cur-prev)/prev*100);
     return (pct>=0?'+':'')+pct+'%';
   }
-  // Q3-Projektion: Q2-Delta aufholen + Q3-Ziel erreichen
-  var q2Delta = totalTarget - totalForecast;
-  var q3Target = totalTarget;
-  var q3Needed = q3Target + Math.max(0, q2Delta);
-  var q3Monthly = Math.round(q3Needed / 3);
-  var jul = q3Monthly;
-  var aug = q3Monthly;
-  var sep = q3Needed - jul - aug;
-
   var salesData=[
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
     {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
     {month:'May Forecast',value:mayF,growth:growthLabel(mayF,apr),forecast:true},
-    {month:'Jun Forecast',value:S.juneForecast,growth:growthLabel(S.juneForecast,mayF),forecast:true},
-    {month:'Jul Q3',value:jul,growth:growthLabel(jul,S.juneForecast),forecast:true,q3:true},
-    {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
-    {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
+    {month:'Jun Forecast',value:S.juneForecast,growth:growthLabel(S.juneForecast,mayF),forecast:true}
   ];
   var dailyData=[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
-    {month:'May Forecast',value:+(mayF/21).toFixed(1)},{month:'Jun Forecast',value:+(S.juneForecast/21).toFixed(1)},
-    {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
+    {month:'May Forecast',value:+(mayF/21).toFixed(1)},{month:'Jun Forecast',value:+(S.juneForecast/21).toFixed(1)}
   ];
 
   // filter/sort projects
@@ -626,9 +627,9 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="border:2px solid #e7c9b0;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Januar bis September &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Q3-Ziel + Q2-Delta</span></p></div>';
+  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">January to June forecast</p></div>';
   html+='<span class="badge tag-amber">2026</span></div>';
-  var q3MonthlyNeeded=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3); html+=svgLineChart(salesData,q3MonthlyNeeded,'Q3 Zielpace '+q3MonthlyNeeded+'/Monat',800,'#3182ce');
+  html+=svgLineChart(salesData,466,'Target 466',700,'#3182ce');
   html+='</div></div></section>';
 
   // ── DAILY AVERAGE ──
