@@ -65,15 +65,15 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 
 <!-- NAV -->
 <nav id="main-nav">
-  <button class="btn btn-dark" onclick="scrollTo('sec-top')">Top</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-kpi')">KPI Cards</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-sales')">Sales Development</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-daily')">Daily Average</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-mgmt')">Management</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-coa')">CoA's missing</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-projects')">Running Projects</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-funnel')">Projects Funnel</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-potential')">New Potential</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -338,7 +338,7 @@ function fmtPct(sold,hp){
 function sum(arr,key){return arr.reduce(function(s,p){return s+(p[key]||0);},0);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-function scrollTo(id){
+function scrollToSection(id){
   var el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -420,7 +420,7 @@ function svgLineChart(data,refY,refLabel,maxY,color){
     var isPositive=d.growth&&d.growth.charAt(0)!=='-';
     var growthColor=isPositive?'#1d6f3a':'#dc2626';
     var growthBg=isPositive?'#ecfdf5':'#fee2e2';
-    var dotColor=d.q3?'#7c3aed':color;  // Q3 = violett
+    var dotColor=d.q3?'#7c3aed':color;
     var valColor=d.q3?'#7c3aed':color;
     var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+dotColor+'" stroke="#fff" stroke-width="2"/>';
     out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+valColor+'">'+(d.value||0)+'</text>';
@@ -464,13 +464,13 @@ function render(){
     return (pct>=0?'+':'')+pct+'%';
   }
   // Q3-Projektion: Q2-Delta aufholen + Q3-Ziel erreichen
-  var q2Delta = totalTarget - totalForecast;           // Q2 Fehlbetrag (z.B. 194)
-  var q3Target = totalTarget;                           // Q3 Ziel = gleich wie Q2
-  var q3Needed = q3Target + Math.max(0, q2Delta);      // Q3 gesamt inkl. Aufholung
-  var q3Monthly = Math.round(q3Needed / 3);            // gleichmäßig auf Jul/Aug/Sep
+  var q2Delta = totalTarget - totalForecast;
+  var q3Target = totalTarget;
+  var q3Needed = q3Target + Math.max(0, q2Delta);
+  var q3Monthly = Math.round(q3Needed / 3);
   var jul = q3Monthly;
   var aug = q3Monthly;
-  var sep = q3Needed - jul - aug;                       // Rest auf September
+  var sep = q3Needed - jul - aug;
 
   var salesData=[
     {month:'Jan',value:jan,growth:null},
@@ -626,10 +626,9 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="border:2px solid #e7c9b0;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Januar bis September · <span style="color:#7c3aed;font-weight:700;">Q3 inkl. Q2-Delta-Aufholung (&#x25CF; violett)</span></p></div>';
+  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Januar bis September &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Q3-Ziel + Q2-Delta</span></p></div>';
   html+='<span class="badge tag-amber">2026</span></div>';
-  var q3MonthlyNeeded=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
-  html+=svgLineChart(salesData,q3MonthlyNeeded,'Q3 Zielpace '+q3MonthlyNeeded+'/Monat',800,'#3182ce');
+  var q3MonthlyNeeded=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3); html+=svgLineChart(salesData,q3MonthlyNeeded,'Q3 Zielpace '+q3MonthlyNeeded+'/Monat',800,'#3182ce');
   html+='</div></div></section>';
 
   // ── DAILY AVERAGE ──
