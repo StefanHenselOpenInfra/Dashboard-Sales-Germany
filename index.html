@@ -66,15 +66,15 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 
 <!-- NAV -->
 <nav id="main-nav">
-  <button class="btn btn-dark" onclick="scrollTo('sec-top')">Top</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-kpi')">KPI Cards</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-sales')">Sales Development</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-daily')">Daily Average</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-mgmt')">Management</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-coa')">CoA's missing</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-projects')">Running Projects</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-funnel')">Projects Funnel</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-potential')">New Potential</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button><button class="btn-xlsx" style="border-radius:9999px;" onclick="exportAllXLSX()">⬇ Alles exportieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -339,7 +339,7 @@ function fmtPct(sold,hp){
 function sum(arr,key){return arr.reduce(function(s,p){return s+(p[key]||0);},0);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-function scrollTo(id){
+function scrollToSection(id){
   var el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -640,7 +640,7 @@ function render(){
   // Agency table
   html+='<div class="card">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
-  html+='<div style="display:flex;align-items:center;gap:12px;"><h2 style="font-size:2rem;">👥 Agency Overview</h2><button class="btn-xlsx" onclick="exportAgencyXLSX()">⬇ Excel</button></div>';
+  html+='<h2 style="font-size:2rem;">👥 Agency Overview</h2>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="agencySortKey=this.value;render();" style="width:auto;">';
   ['May','May Forecast','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
@@ -1090,15 +1090,11 @@ function downloadTemplate(){
 
 function exportXLSX(filename, sheets){
   var wb = XLSX.utils.book_new();
-  sheets.forEach(function(s){
-    var ws = XLSX.utils.aoa_to_sheet(s.data);
-    XLSX.utils.book_append_sheet(wb, ws, s.name);
-  });
+  sheets.forEach(function(s){var ws=XLSX.utils.aoa_to_sheet(s.data);XLSX.utils.book_append_sheet(wb,ws,s.name);});
   XLSX.writeFile(wb, filename);
 }
 function exportAgencyXLSX(){
-  var headers=['Partner','January','February','March','April','May','May Forecast','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D'];
-  var rows=[headers];
+  var rows=[['Partner','January','February','March','April','May','May Forecast','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D']];
   partners.forEach(function(p){var q2s=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);rows.push([p.name,p.january||0,p.february||0,p.march||0,p.april||0,p.may||0,p.mayForecast||0,p.ytd||0,p.forecast||0,q2s,q2s*3,p.d2d||0]);});
   exportXLSX('agency_overview.xlsx',[{name:'Agency Overview',data:rows}]);
 }
