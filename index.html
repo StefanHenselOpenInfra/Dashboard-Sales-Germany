@@ -420,11 +420,15 @@ function svgLineChart(data,refY,refLabel,maxY,color){
     var isPositive=d.growth&&d.growth.charAt(0)!=='-';
     var growthColor=isPositive?'#1d6f3a':'#dc2626';
     var growthBg=isPositive?'#ecfdf5':'#fee2e2';
-    var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+color+'" stroke="#fff" stroke-width="2"/>';
-    out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+color+'">'+(d.value||0)+'</text>';
+    var dotColor=d.q3?'#7c3aed':color;  // Q3 = violett
+    var valColor=d.q3?'#7c3aed':color;
+    var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+dotColor+'" stroke="#fff" stroke-width="2"/>';
+    out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+valColor+'">'+(d.value||0)+'</text>';
     if(d.growth){
-      out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+growthBg+'"/>';
-      out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+growthColor+'">'+d.growth+'</text>';
+      var gbg=d.q3?'#ede9fe':growthBg;
+      var gc=d.q3?'#6d28d9':growthColor;
+      out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+gbg+'"/>';
+      out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+gc+'">'+d.growth+'</text>';
     }
     return out;
   }).join('');
@@ -459,18 +463,31 @@ function render(){
     var pct=Math.round((cur-prev)/prev*100);
     return (pct>=0?'+':'')+pct+'%';
   }
+  // Q3-Projektion: Q2-Delta aufholen + Q3-Ziel erreichen
+  var q2Delta = totalTarget - totalForecast;           // Q2 Fehlbetrag (z.B. 194)
+  var q3Target = totalTarget;                           // Q3 Ziel = gleich wie Q2
+  var q3Needed = q3Target + Math.max(0, q2Delta);      // Q3 gesamt inkl. Aufholung
+  var q3Monthly = Math.round(q3Needed / 3);            // gleichmäßig auf Jul/Aug/Sep
+  var jul = q3Monthly;
+  var aug = q3Monthly;
+  var sep = q3Needed - jul - aug;                       // Rest auf September
+
   var salesData=[
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
     {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
     {month:'May Forecast',value:mayF,growth:growthLabel(mayF,apr),forecast:true},
-    {month:'Jun Forecast',value:S.juneForecast,growth:growthLabel(S.juneForecast,mayF),forecast:true}
+    {month:'Jun Forecast',value:S.juneForecast,growth:growthLabel(S.juneForecast,mayF),forecast:true},
+    {month:'Jul Q3',value:jul,growth:growthLabel(jul,S.juneForecast),forecast:true,q3:true},
+    {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
+    {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
   ];
   var dailyData=[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
-    {month:'May Forecast',value:+(mayF/21).toFixed(1)},{month:'Jun Forecast',value:+(S.juneForecast/21).toFixed(1)}
+    {month:'May Forecast',value:+(mayF/21).toFixed(1)},{month:'Jun Forecast',value:+(S.juneForecast/21).toFixed(1)},
+    {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
   ];
 
   // filter/sort projects
@@ -609,9 +626,10 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="border:2px solid #e7c9b0;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">January to June forecast</p></div>';
+  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Januar bis September · <span style="color:#7c3aed;font-weight:700;">Q3 inkl. Q2-Delta-Aufholung (&#x25CF; violett)</span></p></div>';
   html+='<span class="badge tag-amber">2026</span></div>';
-  html+=svgLineChart(salesData,466,'Target 466',700,'#3182ce');
+  var q3MonthlyNeeded=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
+  html+=svgLineChart(salesData,q3MonthlyNeeded,'Q3 Zielpace '+q3MonthlyNeeded+'/Monat',800,'#3182ce');
   html+='</div></div></section>';
 
   // ── DAILY AVERAGE ──
