@@ -246,6 +246,7 @@ var funnelRowsRaw = [
   ["DE-NI Heidenau B4","Build sales","NI",12,16],
   ["Seddiner See B2","BASE UPSELL","BB",36,695],
   ["Wistedt B1","Build sales","NI",306,571],
+  ["DE-BY Kirchroth P1-1","BASE UPSELL","BY",16,247],
   ["Amt Beetzsee REST","Base Sales","BB",0,0]
 ];
 
@@ -824,7 +825,7 @@ function render(){
   });
   html+='</tr></thead><tbody>';
   funnel.forEach(function(r,i){
-    html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.3)')+'">';
+    var rowBg=r[0]==='DE-BY Kirchroth P1-1'?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[0])+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
