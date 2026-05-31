@@ -471,16 +471,16 @@ function render(){
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
     {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
-    {month:'Target June',value:mayF,growth:growthLabel(mayF,apr),forecast:true},
-    {month:'Jun Forecast',value:S.juneForecast,growth:growthLabel(S.juneForecast,mayF),forecast:true},
-    {month:'Jul Q3',value:jul,growth:growthLabel(jul,S.juneForecast),forecast:true,q3:true},
+    {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
+    {month:'Target June',value:mayF,growth:growthLabel(mayF,S.may),forecast:true},
+    {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
     {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
     {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
   ];
   var dailyData=[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
-    {month:'Target June',value:+(mayF/21).toFixed(1)},{month:'Jun Forecast',value:+(S.juneForecast/21).toFixed(1)},
+    {month:'May',value:+(S.may/21).toFixed(1)},{month:'Target June',value:+(mayF/21).toFixed(1)},
     {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
   ];
 
