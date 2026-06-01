@@ -11,7 +11,7 @@ body{background:#f5e3d8;color:#101820;font-family:system-ui,sans-serif;font-size
 h1{font-size:2.5rem;font-weight:900;line-height:1.1;}
 h2{font-size:1.75rem;font-weight:900;}
 h3{font-size:1.1rem;font-weight:900;}
-.container{max-width:1280px;margin:0 auto;padding:0 24px;}
+.container{max-width:min(1800px,96vw);margin:0 auto;padding:0 24px;}
 .card{background:#fff;border-radius:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:24px;}
 .badge{display:inline-flex;align-items:center;padding:3px 12px;border-radius:9999px;font-size:11px;font-weight:700;white-space:nowrap;}
 .btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-weight:700;font-size:12px;padding:8px 16px;border-radius:9999px;transition:background .15s;}
@@ -21,7 +21,7 @@ h3{font-size:1.1rem;font-weight:900;}
 .btn-brown:hover{background:#4d3428;}
 .btn-gold{background:#d89c6c;color:#fff;}
 .btn-gold:hover{background:#9c5f38;}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e7c9b0;padding:10px 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e7c9b0;padding:10px min(24px,2vw);display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
 section{padding:40px 0;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -193,10 +193,10 @@ var projectRows = [
   ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,0,1],
   ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1],
   ["DE-CS","HP0","Open Infra CS",8,4,5],
-  ["Oda sälj","Base Sales","United Promotion GmbH",0,0,1],
-  ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","Open Infra CS",0,0,0],
+  ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0],
+  ["DE-BB Gosen-Neu Zittau P4","BASE UPSELL","Rating Peak GmbH",0,0,0],
   ["DE-BB Gosen Neu-Zittau P3","Build Sales","Rating Peak GmbH",0,0,0],
   ["Luckau Combined (Deploy 2026)","Build Sales","Rating Peak GmbH",0,0,0]
 ];
@@ -255,7 +255,7 @@ var settings = {salesReportTotal2026:1188,q2WorkingDaysDone:43,q2WorkingDaysLeft
   jan:42,feb:135,mar:274,apr:311,may:426};
 
 var potentialRows = [
-  ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth","Bürgermeister","0177 2469711","buergermeister@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
+  ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
   ["37120","Bovenden","NI","Bovenden Kernort (und Eddigehausen-Rauschenwasser)","Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht","Thomas Brandes","Bürgermeister","0551 / 8201-138","brandes@bovenden.de",""],
   ["37120","Eddigehausen","NI","Eddigehausen, Rauschenwasser","Gemeinsam mit Bovenden: Nachfragequote nicht erreicht","Bernd Riethig","Ortsrat Eddigehausen","0551 / 8201-138","flecken@bovenden.de",""],
   ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Andrea Lange","Bürgermeister","05751 / 403-111","a.lange@rinteln.de","Terminabstimmung läuft"],
@@ -323,6 +323,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentia
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
 var agencySortKey='May', agencySortDir='desc';
+var selectedAgencies=null; // null = alle
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 function normType(t){
@@ -520,7 +521,8 @@ function render(){
   var fTypes=['All'].concat([...new Set(funnelRows.map(function(r){return normType(r[1]);}))]);
 
   // agency sort
-  var sortedPartners=[...partners].sort(function(a,b){
+  var visiblePartners=selectedAgencies?partners.filter(function(p){return selectedAgencies.indexOf(p.name)>=0;}):partners;
+  var sortedPartners=[...visiblePartners].sort(function(a,b){
     var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may','Target June':'mayForecast',YTD:'ytd','Forecast 2026':'forecast'};
     var k=km[agencySortKey]||'may';
     var av=k==='name'?a.name:(a[k]||0);
@@ -659,6 +661,10 @@ function render(){
   html+='</select>';
   html+='<button class="btn btn-dark" onclick="agencySortDir=agencySortDir===\'asc\'?\'desc\':\'asc\';render();">'+(agencySortDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
+  // Agency filter buttons
+  html+='<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:16px;" id="agency-filter-bar"></div>';
+  // render filter buttons via DOM after html is set
+  window._agencyFilterNeeded=true;
   html+='<div style="overflow-x:auto;border-radius:1rem;border:1px solid #e2e8f0;">';
   html+='<table><thead style="background:#f1f5f9;"><tr>';
   ['#','Partner','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2–Q4 Forecast','D2D'].forEach(function(h){
@@ -686,9 +692,9 @@ function render(){
     html+='</tr>';
   });
   // totals row
-  var totQ2s=sortedPartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+q;},0);
+  var totQ2s=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+q;},0);
   var totQ2q4=totQ2s*3;
-  var totFc=sortedPartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
+  var totFc=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
   html+='<tr style="border-top:2px solid #d89c6c;background:#f8eadf;font-weight:900;">';
   html+='<td style="text-align:center;">Σ</td><td>Total</td>';
   html+='<td style="text-align:right;color:#2563eb;font-weight:900;">'+totals.mayForecast+'</td>';
@@ -710,7 +716,7 @@ function render(){
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
   html+='<h2 style="color:#92400e;">CoA\'s missing</h2>';
   html+='<div style="background:#fff;border:1px solid #fcd34d;border-radius:1rem;padding:12px 20px;">';
-  html+='<div style="font-size:11px;font-weight:900;color:#9c5f38;text-transform:uppercase;">Missing CoA Projects</div>';
+  html+='<div style="font-size:11px;font-weight:900;color:#9c5f38;text-transform:uppercase;">CoA\'s missing</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">20</div></div></div>';
   html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
   html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr><th>Project</th><th>Region</th><th>Agency</th><th>Status</th></tr></thead><tbody>';
@@ -724,20 +730,23 @@ function render(){
    ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH",""],
-   ["DE-BB Gosen-Neu Zittau P4","BB","Rating Peak GmbH",""],
    ["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],
-   ["DE-BB Grunheide P3","BB","Rating Peak GmbH","warten auf D2D"],
+   ["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
    ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
    ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
-   ["DE-BB Neuzelle P5","BB","Stonemedia GmbH","new calc needed"],
-   ["DE-BB Neuzelle P6","BB","Stonemedia GmbH",""]
+   ["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],
+   ["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]
   ].forEach(function(item){
     html+='<tr style="background:rgba(255,241,242,.6);">';
     html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+esc(item[0])+'</td>';
     html+='<td style="font-weight:600;">'+item[1]+'</td>';
     html+='<td style="font-weight:600;">'+item[2]+'</td>';
-    html+='<td><span class="badge tag-amber">'+(item[3]||'CoA missing')+'</span></td>';
+    var statusText=item[3]||'wait 4 Calc 4 CoA';
+    var statusStyle=statusText==='Calc is sent to Oda'
+      ?'background:#fff;color:#dc2626;border:2px solid #dc2626;font-weight:900;'
+      :'background:#fef3c7;color:#92400e;';
+    html+='<td><span class="badge" style="'+statusStyle+'">'+esc(statusText)+'</span></td>';
     html+='</tr>';
   });
   html+='</tbody></table></div></div></div></section>';
@@ -787,6 +796,18 @@ function render(){
     html+='<td style="padding:8px;text-align:center;font-weight:900;color:#9c5f38;">'+(r[5]||0)+'</td>';
     html+='</tr>';
   });
+  // Totals row
+  var sumMar=projs.reduce(function(s,r){return s+(r[3]||0);},0);
+  var sumApr=projs.reduce(function(s,r){return s+(r[4]||0);},0);
+  var sumMay=projs.reduce(function(s,r){return s+(r[5]||0);},0);
+  html+='<tr style="border-top:2px solid #d89c6c;background:#f3dfcf;font-weight:900;">';
+  html+='<td style="padding:8px;">Σ Auswahl ('+projs.length+' Projekte)</td>';
+  html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
+  html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumMar+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumApr+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#9c5f38;font-size:1.1em;">'+sumMay+'</td>';
+  html+='</tr>';
   html+='</tbody></table></div></div></div></section>';
 
   // ── FUNNEL ──
@@ -958,6 +979,7 @@ function render(){
   html+='</div></div>';
 
   document.getElementById('app').innerHTML=html;
+  if(window._agencyFilterNeeded){buildAgencyFilter();window._agencyFilterNeeded=false;}
 }
 
 // ── IMPORT LOGIC ─────────────────────────────────────────────────────────────
@@ -1103,6 +1125,34 @@ function exportXLSX(filename, sheets){
   var wb = XLSX.utils.book_new();
   sheets.forEach(function(s){var ws=XLSX.utils.aoa_to_sheet(s.data);XLSX.utils.book_append_sheet(wb,ws,s.name);});
   XLSX.writeFile(wb, filename);
+}
+
+function toggleAgency(idx){
+  var name=partners[idx].name;
+  if(selectedAgencies===null) selectedAgencies=[];
+  var i=selectedAgencies.indexOf(name);
+  if(i>=0) selectedAgencies.splice(i,1);
+  else selectedAgencies.push(name);
+  if(selectedAgencies.length===0) selectedAgencies=null;
+  render();
+}
+function buildAgencyFilter(){
+  var bar=document.getElementById('agency-filter-bar');
+  if(!bar) return;
+  bar.innerHTML='';
+  var allBtn=document.createElement('button');
+  allBtn.textContent='Alle';
+  allBtn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#4d3428':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');
+  allBtn.onclick=function(){selectedAgencies=null;render();};
+  bar.appendChild(allBtn);
+  partners.forEach(function(p,i){
+    var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;
+    var btn=document.createElement('button');
+    btn.textContent=p.name;
+    btn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#4d3428':'#e2e8f0')+';color:'+(active?'#fff':'#475569');
+    btn.onclick=function(){toggleAgency(i);};
+    bar.appendChild(btn);
+  });
 }
 function exportAgencyXLSX(){
   var rows=[['Partner','January','February','March','April','May','Target June','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D']];
