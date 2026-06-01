@@ -137,6 +137,7 @@ var projectRows = [
   ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,35],
   ["DE-BB Heidesee HP0","HP0","Stonemedia GmbH",11,1,0],
   ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",15,17,4],
+  ["DE-BB Löwenberger Land P1","Build Sales","Stonemedia GmbH",0,0,0],
   ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7],
   ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13],
   ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,24],
@@ -185,10 +186,9 @@ var projectRows = [
   ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0],
   ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0],
   // ── Open Infra CS ─────────────────────────────────────────────────────
-  ["DE-BB Falkensee HP0","HP0","Open Infra CS",0,0,1],
-  ["DE-BB Königs Wusterhausen HP0 1","HP0","Open Infra CS",1,1,0],
-  ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0],
   ["DE-BB Schöneiche HP0","HP0","Open Infra CS",2,2,0],
+  ["DE-BB Falkensee HP0","HP0","Open Infra CS",0,0,1],
+  ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0],
   ["DE-BB Woltersdorf HP0","HP0","Open Infra CS",0,2,0],
   ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,0,1],
   ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1],
@@ -222,11 +222,8 @@ var funnelRowsRaw = [
   ["DE-BB Neuzelle Combined P3","Build sales","BB",51,122],
   ["DE-BB Neuzelle Combined P4","Build sales","BB",166,427],
   ["DE-BB Rangsdorf HP0","HP0","BB",0,670],
-  ["DE-BB Schöneiche HP0","HP0","BB",0,2560],
   ["DE-BB Zeuthen-Wildau HP0","HP0","BB",0,2609],
-  ["DE-BY Alterhofen HP0 - SNB","HP0","BY",0,128],
   ["DE-BY Kirchroth HP0 - SNB","HP0","BY",0,535],
-  ["DE-BY Steinach","Base Sales","BY",0,951],
   ["DE-NI Appel P1","BASE UPSELL","NI",24,343],
   ["DE-NI Drestedt & Wenzendorf HP0 - SNB","HP0","NI",0,521],
   ["DE-NI Handeloh P1","BASE UPSELL","NI",68,199],
@@ -247,7 +244,22 @@ var funnelRowsRaw = [
   ["Seddiner See B2","BASE UPSELL","BB",36,695],
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BY Kirchroth P1-1","BASE UPSELL","BY",16,247],
-  ["Amt Beetzsee REST","Base Sales","BB",0,0]
+  ["Amt Beetzsee REST","Base Sales","BB",0,0],
+  // ── Ergänzt aus Excel ─────────────────────────────────────────────────────
+  ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
+  ["DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0","HP0","BB",0,362],
+  ["DE-BB Schönwald P1 HP0 - SNB","HP0","BB",0,162],
+  ["DE-BY Falkenfels","Base Sales","BY",0,0],  ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
+  ["DE-NI Ottermoor P1","Base Sales","NI",0,72],
+  ["DE-NI Salzhausen - Vierhöfen Combined HP0 - SNB","HP0","NI",0,261],
+  ["DE-NI Salzhausen - Vierhöfen Combined P2-1","BASE UPSELL","NI",17,93],
+  ["DE-Schöneiche P1-3","Base Sales","BB",0,153],
+  ["Heidenau B4","Build sales","NI",12,16],
+  ["Hoppergarten Snake REV","Base Sales","BB",0,0],
+  ["Magdeburg - Ottersleben Combined REV","Base Sales","SA",0,0],
+  ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
+  ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
+  ["DE-BY Wallersdorf P3","Base Sales","BY",0,0]
 ];
 
 var settings = {salesReportTotal2026:1188,q2WorkingDaysDone:43,q2WorkingDaysLeft:21,juneForecast:500,
@@ -292,12 +304,12 @@ var potentialRows = [
   ["93133","Burglengenfeld","BY","","new area","","","09471 7018-0","poststelle@burglengenfeld.de",""],
   ["93142","Maxhütte Haidhof","BY","","new area","","","09471 30220","info@maxhuette-haidhof.de",""],
   ["93309","Kelheim","BY","","new area","","","09441 701 - 0","info@kelheim.de",""],
-  ["93342","Saal","BY","Teugn","","","","09441 681-0","info@teugn.de",""],
+  ["93342","VG Saal a.d.Donau","BY","Teugn","positiv","Harald Reichl","","09441 - 681 25","harald.reichl@saal-donau.de","Termin am 15.6.2026 um 13 Uhr"],
   ["94127","Neuburg am Inn","BY","","new area","","","08502 9008-0","info@neuburg-am-inn.de",""],
-  ["94315","Straubing","BY","Kagers","Prüfung","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-  ["94315","Straubing","BY","Tiergarten","Prüfung","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-  ["94315","Straubing","BY","Unteröbling","Prüfung","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-  ["94315","Straubing","BY","","Prüfung","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
+  ["94315","Straubing","BY","Kagers","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
+  ["94315","Straubing","BY","Tiergarten","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
+  ["94315","Straubing","BY","Unteröbling","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
+  ["94315","Straubing","BY","","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
   ["94333","Geiselhöring","BY","","T COM","Herr Eisenhut","","09423/9400-300","",""],
   ["94350","Falkenfels","BY","","T COM","Ludwig","BM","0160 4942595","webmaster@saulburg.de",""],
   ["94377","Steinach","BY","","kein Interesse","Frau Hammerschick","BM","09428 942033","gemeinde@steinach.bayern.de",""],
@@ -307,9 +319,9 @@ var potentialRows = [
   ["92421","Schwandorf","BY","Neukirchen","positiv","Frau Hetzenecker","Vorzimmer BM","09431 45-1 21","hetzenecker.martina@schwandorf.de","Termin 3.6.2026"],
   ["94428","Markt Eichendorf","BY","","positiv","Frau Sabine Forstner","Bauamtsleitung","0160 4619956","Sabine.forstner@markt-eichendorf.de","Termin online 8.6.2026 um 9 Uhr"],
   ["94431","Pilsting Großköllnbach","BY","Pilsting / Großköllnbach","new area","","Rathaus","09953 9301-0","info@pilsting.de",""],
-  ["94522","Markt Wallersdorf","BY","Wallersdorf","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Termin 19.5.2026 um 9 Uhr"],
-  ["94523","Markt Wallersdorf","BY","Haidenkofen","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de",""],
-  ["94524","Markt Wallersdorf","BY","Haidlfing","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de",""],
+  ["94522","Markt Wallersdorf","BY","Wallersdorf","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
+  ["94523","Markt Wallersdorf","BY","Haidenkofen","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
+  ["94524","Markt Wallersdorf","BY","Haidlfing","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
   ["94526","Metten","BY","","","","Rathaus","0991 99805-0","rathaus@markt-metten.de",""],
   ["94532","Außernzell","BY","","new area","","","09903 93030","poststelle@schoellnach.de",""],
   ["94560","Offenberg","BY","","","","Rathaus","0991 99808-0","gemeinde@offenberg.bayern.de",""],
@@ -619,7 +631,7 @@ function render(){
   html+='</div></section>';
 
   // ── SALES DEVELOPMENT ──
-  html+='<section id="sec-sales" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #e7c9b0;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
   html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span></p></div>';
@@ -628,7 +640,7 @@ function render(){
   html+='</div></div></section>';
 
   // ── DAILY AVERAGE ──
-  html+='<section id="sec-daily" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #e7c9b0;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
   html+='<div><h2>Daily Sales Average</h2><p style="color:#64748b;">Average daily sales development</p></div>';
@@ -729,7 +741,8 @@ function render(){
    ["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],
    ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
-   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH",""],
+   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
+   ["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],
    ["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],
    ["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
@@ -756,7 +769,7 @@ function render(){
   html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#f8eadf;">';
   html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;"><h2>Running Projects</h2><button class="btn-xlsx" onclick="exportProjectsXLSX()">⬇ Excel</button></div>';
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(projectSearch)+'" placeholder="Search project..." oninput="projectSearch=this.value;render();">';
+  html+='<input value="'+esc(projectSearch)+'" placeholder="Search project..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="projectSearch=this.value;render();">';
   html+='<select onchange="typeFilter=this.value;render();">';
   pTypes.forEach(function(t){html+='<option'+(typeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
   html+='</select>';
@@ -787,8 +800,10 @@ function render(){
   });
   html+='</tr></thead><tbody>';
   projs.forEach(function(r,i){
+    var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
+    var allZero=((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+esc(r[0])+'</td>';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+esc(r[0])+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
@@ -818,7 +833,7 @@ function render(){
   html+='<div style="display:flex;gap:8px;"><button class="btn-xlsx" onclick="exportFunnelXLSX()">⬇ Excel</button><button class="btn btn-brown" onclick="exportFunnelCSV()">CSV</button></div></div>';
 
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(funnelSearch)+'" placeholder="Search funnel..." oninput="funnelSearch=this.value;render();">';
+  html+='<input value="'+esc(funnelSearch)+'" placeholder="Search funnel..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="funnelSearch=this.value;render();">';
   html+='<select onchange="funnelTypeFilter=this.value;render();">';
   fTypes.forEach(function(t){html+='<option'+(funnelTypeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
   html+='</select>';
@@ -907,7 +922,7 @@ function render(){
 
   // Filters
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(potentialSearch)+'" placeholder="Suchen..." oninput="potentialSearch=this.value;render();">';
+  html+='<input value="'+esc(potentialSearch)+'" placeholder="Suchen..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="potentialSearch=this.value;render();">';
   html+='<select onchange="potentialRegion=this.value;render();">';
   potRegions.forEach(function(r){html+='<option'+(potentialRegion===r?' selected':'')+'>'+esc(r)+'</option>';});
   html+='</select>';
@@ -978,8 +993,10 @@ function render(){
   html+='<div>✅ Manage teams and targets transparently</div>';
   html+='</div></div>';
 
+  var _sy=window.scrollY||window.pageYOffset;
   document.getElementById('app').innerHTML=html;
   if(window._agencyFilterNeeded){buildAgencyFilter();window._agencyFilterNeeded=false;}
+  requestAnimationFrame(function(){window.scrollTo(0,_sy);});
 }
 
 // ── IMPORT LOGIC ─────────────────────────────────────────────────────────────
