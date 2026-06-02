@@ -937,7 +937,7 @@ function render(){
    ["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]
   ].forEach(function(item){
     html+='<tr style="background:rgba(255,241,242,.6);">';
-    html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+esc(item[0])+'</td>';
+    var bobUrlCoa=bobLinks&&bobLinks[item[0]]; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#101820;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+'</td>';
     html+='<td style="font-weight:600;">'+item[1]+'</td>';
     html+='<td style="font-weight:600;">'+item[2]+'</td>';
     var statusText=item[3]||'wait 4 Calc 4 CoA';
