@@ -60,6 +60,8 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 .hidden{display:none;}
 .sticky-head{position:sticky;top:0;z-index:10;}
 .btn-xlsx{background:#217346;color:#fff;border-radius:1rem;padding:7px 14px;font-size:12px;font-weight:700;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s;}.btn-xlsx:hover{background:#185c37;}
+#hero-results div:hover{background:#f8fafc;}
+#hero-search::placeholder{color:rgba(255,255,255,0.6);}
 </style>
 </head>
 <body>
@@ -244,6 +246,7 @@ var funnelRowsRaw = [
   ["Seddiner See B2","BASE UPSELL","BB",36,695],
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BY Kirchroth P1-1","BASE UPSELL","BY",16,247],
+  ["DE-Diehlo S1","Base Sales","BB",0,149],
   ["Amt Beetzsee REST","Base Sales","BB",0,0],
   // ── Ergänzt aus Excel ─────────────────────────────────────────────────────
   ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
@@ -277,7 +280,6 @@ var potentialRows = [
   ["14778","Amt Beetzsee REST","BB","","new area","Amtsdirektor Guido Müller","","03381 7999-0","info@amt-beetzsee.de",""],
   ["15306","LK Märkisch Oderland","BB","","","","","","",""],
   ["15754","Heidesee","BB","Eichholz Streganz","positiv","Jenny Hauch","","033767 795 416","J.Hauch@gemeinde-heidesee.de","Termin 21.5.2026 mit Frau Jauch"],
-  ["15890","Diehlo","BB","","new area","","Gemeinde","03364 5667-0","amt-neuzelle@neuzelle.de",""],
   ["31603","Diepenau","NI","Samtgemeinde Uchte","new area","Annegret Trampe","Bürgermeisterin","05763 183-11","s.ippisch@sg-uchte.de",""],
   ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
   ["31622","Heemsen","NI","","new area","","Samtgemeinde","05024 98050","info@heemsen.de",""],
@@ -318,7 +320,7 @@ var potentialRows = [
   ["94377","Steinach","BY","Münster","kein Interesse","Frau Hammerschick","BM","09428 942033","gemeinde@steinach.bayern.de",""],
   ["92421","Schwandorf","BY","Neukirchen","positiv","Frau Hetzenecker","Vorzimmer BM","09431 45-1 21","hetzenecker.martina@schwandorf.de","Termin 3.6.2026"],
   ["94428","Markt Eichendorf","BY","","positiv","Frau Sabine Forstner","Bauamtsleitung","0160 4619956","Sabine.forstner@markt-eichendorf.de","Termin online 8.6.2026 um 9 Uhr"],
-  ["94431","Pilsting Großköllnbach","BY","Pilsting / Großköllnbach","new area","","Rathaus","09953 9301-0","info@pilsting.de",""],
+  ["94431","Markt Pilsting","BY","Pilsting / Großköllnbach","new area","Katrin Schinharl","Rathaus","09953 9301-0","katrin.schinharl@pilsting.de",""],
   ["94522","Markt Wallersdorf","BY","Wallersdorf","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
   ["94523","Markt Wallersdorf","BY","Haidenkofen","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
   ["94524","Markt Wallersdorf","BY","Haidlfing","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
@@ -518,8 +520,15 @@ function render(){
     return(funnelTypeFilter==='All'||normType(r[1])===funnelTypeFilter)&&
       r.join(' ').toLowerCase().includes(funnelSearch.toLowerCase());
   });
-  var fIdx={Project:0,Type:1,Region:2,Sold:3,HP:4,'%':5}[funnelSortKey]||4;
+  var funnelPrioMap={};
+  funnelRows.forEach(function(r){ funnelPrioMap[r[0]]=r[1].toLowerCase().includes('hp0')||r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1'?1:0; });
+  var fIdx={Project:0,Type:1,Region:2,Sold:3,HP:4,'%':5}[funnelSortKey];
   funnel.sort(function(a,b){
+    if(funnelSortKey==='Prio'){
+      var pa=funnelPrioMap[a[0]]||0, pb=funnelPrioMap[b[0]]||0;
+      return funnelSortDir==='asc'?pa-pb:pb-pa;
+    }
+    if(fIdx===undefined) return 0;
     var av=a[fIdx],bv=b[fIdx];
     var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
     return funnelSortDir==='asc'?r:-r;
@@ -598,6 +607,10 @@ function render(){
   html+='<span class="badge" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:16px;">Q2 Sales Performance · 2026</span>';
   html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
+  html+='<div style="margin-top:24px;position:relative;max-width:480px;">';
+  html+='<input id="hero-search" type="text" placeholder="🔍  Projekt suchen..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
+  html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:320px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
+  html+='</div>';
   html+='</div>';
   // summary card
   html+='<div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:24px;">';
@@ -769,7 +782,7 @@ function render(){
   html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#f8eadf;">';
   html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;"><h2>Running Projects</h2><button class="btn-xlsx" onclick="exportProjectsXLSX()">⬇ Excel</button></div>';
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(projectSearch)+'" placeholder="Search project..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="projectSearch=this.value;render();">';
+  html+='<input value="'+esc(projectSearch)+'" id="search-project" placeholder="Search project..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="projectSearch=this.value;render();">';
   html+='<select onchange="typeFilter=this.value;render();">';
   pTypes.forEach(function(t){html+='<option'+(typeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
   html+='</select>';
@@ -833,7 +846,7 @@ function render(){
   html+='<div style="display:flex;gap:8px;"><button class="btn-xlsx" onclick="exportFunnelXLSX()">⬇ Excel</button><button class="btn btn-brown" onclick="exportFunnelCSV()">CSV</button></div></div>';
 
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(funnelSearch)+'" placeholder="Search funnel..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="funnelSearch=this.value;render();">';
+  html+='<input value="'+esc(funnelSearch)+'" id="search-funnel" placeholder="Search funnel..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="funnelSearch=this.value;render();">';
   html+='<select onchange="funnelTypeFilter=this.value;render();">';
   fTypes.forEach(function(t){html+='<option'+(funnelTypeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
   html+='</select>';
@@ -854,12 +867,15 @@ function render(){
 
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
   html+='<table><thead style="background:#f3dfcf;position:sticky;top:0;"><tr>';
+  var prioIcon=funnelSortKey==='Prio'?(funnelSortDir==='asc'?' ↑':' ↓'):''; html+='<th style="text-align:center;padding:8px;font-weight:900;cursor:pointer;"  id="prio-th">Prio'+prioIcon+'</th>';
   [['Project','Project'],['Status','Type'],['Region','Region'],['HC','Sold'],['HP','HP'],['Uptake','%']].forEach(function(col){
     html+='<th style="cursor:pointer;" onclick="funnelSortKey=\''+col[1]+'\';funnelSortDir=(funnelSortKey===\''+col[1]+'\'&&funnelSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(funnelSortKey===col[1]?(funnelSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
   funnel.forEach(function(r,i){
-    var rowBg=r[0]==='DE-BY Kirchroth P1-1'?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
+    var isPrio=r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1'||r[1].toLowerCase().includes('hp0');
+    var rowBg=(r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[0])+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
@@ -906,7 +922,8 @@ function render(){
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">';
   [{title:'Bayern Contact',name:'Markus Brunhofer',role:'Leiter Bayerisches Breitbandzentrum',org:'Landesamt für Digitalisierung, Breitband und Vermessung',addr:'Kirchensteig 1, 92224 Amberg',tel:'+49 (9621) 96543 80',telLink:'+499621965380',email:'markus.brunhofer@ldbv.bayern.de'},
    {title:'Breitbandberatung Bayern',name:'Walter Huber',role:'Breitbandberatung Bayern',tel:'+49 (0) 9181 / 406 1333',telLink:'+499181406133',email:'info@breitbandberatung.de'},
-   {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technischer Leiter',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'}
+   {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technischer Leiter',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'},
+   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Leitung Geschäftsbereich Breitband',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',email:'klaus.eckel@ik-t.de'}
   ].forEach(function(c){
     html+='<div style="background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:13px;">';
     html+='<div style="font-weight:900;color:#4d3428;margin-bottom:8px;">'+esc(c.title)+'</div>';
@@ -922,7 +939,7 @@ function render(){
 
   // Filters
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
-  html+='<input value="'+esc(potentialSearch)+'" placeholder="Suchen..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="potentialSearch=this.value;render();">';
+  html+='<input value="'+esc(potentialSearch)+'" id="search-potential" placeholder="Suchen..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="potentialSearch=this.value;render();">';
   html+='<select onchange="potentialRegion=this.value;render();">';
   potRegions.forEach(function(r){html+='<option'+(potentialRegion===r?' selected':'')+'>'+esc(r)+'</option>';});
   html+='</select>';
@@ -994,9 +1011,19 @@ function render(){
   html+='</div></div>';
 
   var _sy=window.scrollY||window.pageYOffset;
+  var _focusId=document.activeElement?document.activeElement.id:null;
+  var _focusVal=document.activeElement?document.activeElement.value:null;
   document.getElementById('app').innerHTML=html;
   if(window._agencyFilterNeeded){buildAgencyFilter();window._agencyFilterNeeded=false;}
-  requestAnimationFrame(function(){window.scrollTo(0,_sy);});
+  requestAnimationFrame(function(){window.scrollTo(0,_sy);
+    // Restore focus and cursor position
+    if(_focusId){var el=document.getElementById(_focusId);if(el){el.focus();if(_focusVal!==null)el.setSelectionRange(_focusVal.length,_focusVal.length);}}
+    else{var inputs=document.querySelectorAll('input[oninput]');if(inputs.length){
+      // find the one matching current search values
+      inputs.forEach(function(inp){if(inp.value&&inp.value.length>0)inp.focus();});
+    }}});
+  var prioTh=document.getElementById('prio-th');
+  if(prioTh) prioTh.onclick=function(){funnelSortKey='Prio';funnelSortDir=funnelSortDir==='asc'?'desc':'asc';render();};
 }
 
 // ── IMPORT LOGIC ─────────────────────────────────────────────────────────────
@@ -1211,6 +1238,66 @@ function exportAllXLSX(){
   potentialRows.forEach(function(r){pot.push(r);});
   exportXLSX('dashboard_komplett.xlsx',[{name:'KPI Cards',data:k},{name:'Agency Overview',data:a},{name:'Running Projects',data:pr},{name:'Projects Funnel',data:fn},{name:'New Potential',data:pot}]);
 }
+
+
+function heroSearch(val){
+  var box=document.getElementById('hero-results');
+  if(!box) return;
+  if(!val||val.length<2){box.style.display='none';return;}
+  var q=val.toLowerCase();
+  var results=[];
+
+  // Search running projects
+  projectRows.forEach(function(r){
+    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),agency:r[2],section:'Running Projects',sectionId:'sec-projects'});
+  });
+  // Search funnel
+  funnelRowsRaw.forEach(function(r){
+    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
+  });
+  // Search CoA's missing
+  var coaItems=[["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH",""],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
+  coaItems.forEach(function(r){
+    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
+  });
+  // Search new potential
+  potentialRows.forEach(function(r){
+    if((r[1]||'').toLowerCase().includes(q)||(r[0]||'').toString().includes(q))
+      results.push({name:r[1]+' ('+r[2]+')',type:'New Potential',section:'New Potential',sectionId:'sec-potential'});
+  });
+
+  if(results.length===0){
+    box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis gefunden</div>';
+  } else {
+    box.innerHTML=results.slice(0,12).map(function(r){
+      return '<div onclick="goToResult(\'' + r.sectionId + '\',\'' + esc(r.name).replace(/'/g,"\'") + '\')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;hover:background:#f8f8f8;">' +
+        '<div style="font-weight:700;font-size:13px;color:#101820;">' + esc(r.name) + '</div>' +
+        '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + esc(r.type||'') + (r.agency?' · '+esc(r.agency):'') + ' · <b style="color:#9c5f38;">' + r.section + '</b></div>' +
+      '</div>';
+    }).join('');
+  }
+  box.style.display='block';
+}
+
+function goToResult(sectionId, name){
+  // Navigate to section
+  var el=document.getElementById(sectionId);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  // Set search filter in that section
+  if(sectionId==='sec-projects'){projectSearch=name;render();}
+  else if(sectionId==='sec-funnel'){funnelSearch=name;render();}
+  else if(sectionId==='sec-potential'){potentialSearch=name;render();}
+  // Close dropdown
+  var box=document.getElementById('hero-results');
+  if(box) box.style.display='none';
+  document.getElementById('hero-search').value='';
+}
+
+// Close on click outside
+document.addEventListener('click',function(e){
+  var box=document.getElementById('hero-results');
+  if(box&&!box.contains(e.target)&&e.target.id!=='hero-search') box.style.display='none';
+});
 
 function exportFunnelCSV(){
   var rows=funnelRowsRaw.map(function(r){return r.join(';');});
