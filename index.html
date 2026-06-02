@@ -77,6 +77,7 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
   <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-cemetery')" style="background:#374151;">&#127944; Cemetery</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button><button class="btn-xlsx" style="border-radius:9999px;" onclick="exportAllXLSX()">⬇ Alles exportieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -116,63 +117,64 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:162,mayForecast:190,ytd:454,forecast:1050,d2d:5},
-  {name:"EnCom GmbH",january:16,february:35,march:115,april:117,may:116,mayForecast:136,ytd:399,forecast:900,d2d:3},
-  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:56,mayForecast:66,ytd:170,forecast:440,d2d:3},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:98,ytd:90,forecast:280,d2d:5},
-  {name:"Open Infra CS",january:12,february:16,march:19,april:13,may:8,mayForecast:9,ytd:68,forecast:175,d2d:0},
-  {name:"Filiago",january:5,february:2,march:0,april:0,may:0,mayForecast:0,ytd:7,forecast:15,d2d:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,ytd:0,forecast:0,d2d:2,comingSoon:true}
+  {name:"Stonemedia GmbH",january:7,february:58,march:111,april:62,may:229,mayForecast:190,juneActual:9,ytd:476,forecast:1100,d2d:5},
+  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:116,mayForecast:136,juneActual:16,ytd:399,forecast:900,d2d:3},
+  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:56,mayForecast:66,juneActual:1,ytd:170,forecast:440,d2d:3},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:98,juneActual:5,ytd:90,forecast:280,d2d:5},
+  {name:"Open Infra CS",january:15,february:16,march:21,april:14,may:8,mayForecast:9,juneActual:1,ytd:68,forecast:175,d2d:0},
+  {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0},
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:0,forecast:0,d2d:2,comingSoon:true}
 ];
 
 // Brutto Q2-Actuals — Sales Report 8
 var kpiActuals = {
-  "Base Sales / Up Sales":{april:151,may:281},
-  "After Market / HP0 Sales":{april:18,may:36},
-  "Build Sales":{april:141,may:109}
+  "Base Sales / Up Sales":{april:104,may:347},
+  "After Market / HP0 Sales":{april:19,may:36},
+  "Build Sales":{april:121,may:120}
 };
 
 var projectRows = [
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
-  ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,25,21],
-  ["DE-BB Birkenwerder P3-2","BASE UPSELL","Stonemedia GmbH",0,9,12],
-  ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,35],
+  ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,20,26],
+  ["DE-BB Birkenwerder P3-2","BASE UPSELL","Stonemedia GmbH",0,9,21],
+  ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,59],
   ["DE-BB Heidesee HP0","HP0","Stonemedia GmbH",11,1,0],
-  ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",15,17,4],
+  ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",14,18,4],
   ["DE-BB Löwenberger Land P1","Build Sales","Stonemedia GmbH",0,0,0],
-  ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7],
+  ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,11],
   ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13],
   ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,24],
   ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0],
-  ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21],
+  ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,0,44],
   ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3],
-  ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,8],
+  ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,0,10],
   ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0],
-  ["DE-BB Teupitz P3","Base Sales","Stonemedia GmbH",1,0,6],
-  ["DE-BB Teupitz P4","Base Sales","Stonemedia GmbH",17,0,1],
-  ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",15,16,5],
-  ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",41,7,2],
+  ["DE-BB Teupitz P3","Base Sales","Stonemedia GmbH",3,0,6],
+  ["DE-BB Teupitz P4","Base Sales","Stonemedia GmbH",21,0,1],
+  ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",16,16,5],
+  ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",45,7,2],
   // ── EnCom GmbH ────────────────────────────────────────────────────────
   ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",0,0,81],
-  ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,46,0],
+  ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,52,0],
   ["DE-BB Frankfurt (Oder) Combined P3","Build Sales","EnCom GmbH",31,11,0],
-  ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,23,7],
+  ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,21,9],
   ["DE-BB Königs Wusterhausen HP0 3","HP0","EnCom GmbH",0,0,2],
-  ["DE-BY Kirchroth P3","BASE UPSELL","EnCom GmbH",3,7,6],
-  ["DE-BY Kirchroth P4","BASE UPSELL","EnCom GmbH",13,3,7],
+  ["Königs Wusterhausen S7.2","BASE UPSELL","Stonemedia GmbH",1,0,0],
+  ["DE-BY Kirchroth P3","BASE UPSELL","EnCom GmbH",5,7,6],
+  ["DE-BY Kirchroth P4","BASE UPSELL","EnCom GmbH",13,3,6],
   ["DE-BY Kirchroth P5","Build Sales","EnCom GmbH",34,14,1],
-  ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,5],
+  ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,6],
   ["DE-BY Parkstetten P1","BASE UPSELL","EnCom GmbH",2,0,0],
   ["DE-BY Straubing P1","BASE UPSELL","EnCom GmbH",3,12,7],
   ["DE-BB Zossen P4","Build Sales","EnCom GmbH",0,1,0],
   // ── Team Tatjana ──────────────────────────────────────────────────────
-  ["DE-BB Birkenwerder P1","Build Sales","Team Tatjana",22,21,5],
-  ["DE-BB Birkenwerder P1-2","BASE UPSELL","Team Tatjana",0,4,8],
+  ["DE-BB Birkenwerder P1","Build Sales","Team Tatjana",22,20,6],
+  ["DE-BB Birkenwerder P1-2","BASE UPSELL","Team Tatjana",0,4,12],
   ["DE-BB Birkenwerder P2-2","BASE UPSELL","Team Tatjana",0,0,2],
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1],
   ["DE-BB Schöneiche P8","Base Sales","Team Tatjana",0,0,8],
   ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5],
-  ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,12,27],
+  ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,11,28],
   // ── United Promotion GmbH ─────────────────────────────────────────────
   ["DE-BB Beetzsee P1 HP0","HP0","United Promotion GmbH",0,0,9],
   ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,28],
@@ -188,8 +190,7 @@ var projectRows = [
   ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0],
   ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0],
   // ── Open Infra CS ─────────────────────────────────────────────────────
-  ["DE-BB Schöneiche HP0","HP0","Open Infra CS",2,2,0],
-  ["DE-BB Falkensee HP0","HP0","Open Infra CS",0,0,1],
+  ["DE-BB Falkensee HP0","HP0","Open Infra CS",1,0,1],
   ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0],
   ["DE-BB Woltersdorf HP0","HP0","Open Infra CS",0,2,0],
   ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,0,1],
@@ -246,7 +247,7 @@ var funnelRowsRaw = [
   ["Seddiner See B2","BASE UPSELL","BB",36,695],
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BY Kirchroth P1-1","BASE UPSELL","BY",16,247],
-  ["DE-Diehlo S1","Base Sales","BB",0,149],
+  ["DE-BB Diehlo P1","Base Sales","BB",1,307],
   ["Amt Beetzsee REST","Base Sales","BB",0,0],
   // ── Ergänzt aus Excel ─────────────────────────────────────────────────────
   ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
@@ -265,15 +266,15 @@ var funnelRowsRaw = [
   ["DE-BY Wallersdorf P3","Base Sales","BY",0,0]
 ];
 
-var settings = {salesReportTotal2026:1188,q2WorkingDaysDone:43,q2WorkingDaysLeft:21,juneForecast:500,
+var settings = {salesReportTotal2026:1287,q2WorkingDaysDone:47,q2WorkingDaysLeft:17,juneForecast:500,
   // Brutto monatliche Totals aus Sales Report 8
-  jan:42,feb:135,mar:274,apr:311,may:426};
+  jan:59,feb:155,mar:292,apr:244,may:503};
 
 var potentialRows = [
   ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
   ["37120","Bovenden","NI","Bovenden Kernort (und Eddigehausen-Rauschenwasser)","Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht","Thomas Brandes","Bürgermeister","0551 / 8201-138","brandes@bovenden.de",""],
   ["37120","Eddigehausen","NI","Eddigehausen, Rauschenwasser","Gemeinsam mit Bovenden: Nachfragequote nicht erreicht","Bernd Riethig","Ortsrat Eddigehausen","0551 / 8201-138","flecken@bovenden.de",""],
-  ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Andrea Lange","Bürgermeister","05751 / 403-111","a.lange@rinteln.de","Terminabstimmung läuft"],
+  ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Anja Friedrich","Bürgermeisterin","05751/403-102","a.friedrich@rinteln.de","Terminabstimmung läuft"],
   ["37127","Gemeinde Stuhr","NI","Seckenhausen","DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern","Stephan Korte","Bürgermeister","0421 5695-200","s.korte@stuhr.de",""],
   ["27305","Samtgemeinde Sögel","NI","Gesamte Samtgemeinde (mehrere Ortschaften)","Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet","bitte recherchieren","Samtgemeinde","05952 / 206-0","info@samtgemeinde-soegel.de",""],
   ["14547","Fichtenwalde","BB","","","","","","",""],
@@ -330,6 +331,163 @@ var potentialRows = [
   ["94575","Windorf","BY","","new area","","Rathaus","08541-96262","info@markt-windorf.de",""],
   ["21255","Wistedt","NI","","positiv","Sven Bauer","Bürgermeister","04182 3199","buergermeister@wistedt.de","Termin am 8.6.2026 um 15 Uhr"]
 ];
+
+
+var cemeteryRows = [
+  ["DD - Furth S1","BY","Abandon",6,223],
+  ["DD - Furth S2","BY","Abandon",2,383],
+  ["DD - Furth S3","BY","Abandon",9,413],
+  ["DD - Furth S4","BY","Abandon",0,213],
+  ["DD - Obersußbach S1","BY","Abandon",0,255],
+  ["DD - Obersußbach S2","BY","Abandon",0,227],
+  ["DD - Obersußbach S3","BY","Abandon",0,112],
+  ["DD - Weihmichl S1","BY","Abandon",0,411],
+  ["DD - Weihmichl S2","BY","Abandon",0,255],
+  ["DD - Weihmichl S3","BY","Abandon",0,177],
+  ["DD - Weihmichl S4","BY","Abandon",0,0],
+  ["DE-BB Baruth/Mark P1","BB","Abandon",68,281],
+  ["DE-BB Baruth/Mark P2","BB","Abandon",20,164],
+  ["DE-BB Baruth/Mark P3","BB","Abandon",44,244],
+  ["DE-BB Löwenberger Land P1-2","BB","STOPP",25,210],
+  ["DE-BB Rietzneuendorf - Staakow P1","BB","Abandon",0,194],
+  ["DE-BB Schönefeld P1","BB","Abandon",0,0],
+  ["DE-BB Stadt Fürstenwalde P6","BB","Abandon",0,90],
+  ["DE-BB Stadt Velten P2","BB","Abandon",58,224],
+  ["DE-BY Aiterhofen HP0 - SNB","BY","Abandon",0,128],
+  ["DE-BY Münster","BY","Abandon",0,0],
+  ["DE-BY Saulburg","BY","Abandon",0,0],
+  ["DE-BY Steinach","BY","Abandon",0,951]
+];
+var cemeterySearch='', cemeteryRegion='All', cemeterySort='Project', cemeteryDir='asc';
+
+var bobLinks = {
+  "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
+  "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
+  "DD - Furth S3": "https://bob.openinfra.com/sales-projects/3450",
+  "DD - Furth S4": "https://bob.openinfra.com/sales-projects/3451",
+  "DD - Obersußbach S1": "https://bob.openinfra.com/sales-projects/3456",
+  "DD - Obersußbach S2": "https://bob.openinfra.com/sales-projects/3457",
+  "DD - Obersußbach S3": "https://bob.openinfra.com/sales-projects/3458",
+  "DD - Weihmichl S1": "https://bob.openinfra.com/sales-projects/3459",
+  "DD - Weihmichl S2": "https://bob.openinfra.com/sales-projects/3460",
+  "DD - Weihmichl S3": "https://bob.openinfra.com/sales-projects/3461",
+  "DD - Weihmichl S4": "https://bob.openinfra.com/sales-projects/3462",
+  "DE-BB Amt Scharmützelsee P0": "https://bob.openinfra.com/sales-projects/4006",
+  "DE-BB Amt Scharmützelsee P2": "https://bob.openinfra.com/delivery-projects/2429",
+  "DE-BB Amt Scharmützelsee P3": "https://bob.openinfra.com/delivery-projects/4147",
+  "DE-BB Amt Scharmützelsee P4": "https://bob.openinfra.com/sales-projects/4012",
+  "DE-BB Amt Scharmützelsee P5": "https://bob.openinfra.com/sales-projects/4013",
+  "DE-BB Baruth/Mark P1": "https://bob.openinfra.com/delivery-projects/3751",
+  "DE-BB Baruth/Mark P2": "https://bob.openinfra.com/delivery-projects/3838",
+  "DE-BB Baruth/Mark P3": "https://bob.openinfra.com/delivery-projects/3839",
+  "DE-BB Beetzsee P2": "https://bob.openinfra.com/delivery-projects/3193",
+  "DE-BB Bersteland P3": "https://bob.openinfra.com/delivery-projects/3748",
+  "DE-BB Bersteland P4": "https://bob.openinfra.com/delivery-projects/3747",
+  "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/4038",
+  "DE-BB Birkenwerder P1": "https://bob.openinfra.com/delivery-projects/2232",
+  "DE-BB Birkenwerder P1-2": "https://bob.openinfra.com/delivery-projects/4116",
+  "DE-BB Birkenwerder P2": "https://bob.openinfra.com/delivery-projects/2231",
+  "DE-BB Birkenwerder P2-2": "https://bob.openinfra.com/delivery-projects/4098",
+  "DE-BB Birkenwerder P3": "https://bob.openinfra.com/delivery-projects/2257",
+  "DE-BB Birkenwerder P3-2": "https://bob.openinfra.com/delivery-projects/4093",
+  "DE-BB Birkenwerder P4": "https://bob.openinfra.com/delivery-projects/2313",
+  "DE-BB Blankenfelde-Mahlow P1": "https://bob.openinfra.com/delivery-projects/1947",
+  "DE-BB Diensdorf-Radlow": "https://bob.openinfra.com/sales-projects/4009",
+  "DE-BB Frankfurt (Oder) Combined P1": "https://bob.openinfra.com/search-results?query=DE-BB%20Frankfurt%20%28Oder%29%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Frankfurt (Oder) Combined P2": "https://bob.openinfra.com/search-results?query=DE-BB%20Frankfurt%20%28Oder%29%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Frankfurt (Oder) Combined P3": "https://bob.openinfra.com/search-results?query=DE-BB%20Frankfurt%20%28Oder%29%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Frankfurt (Oder) Combined P4": "https://bob.openinfra.com/search-results?query=DE-BB%20Frankfurt%20%28Oder%29%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Fürstenwalde P7": "https://bob.openinfra.com/delivery-projects/3210",
+  "DE-BB Gosen Neu-Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
+  "DE-BB Gosen-Neu Zittau P2": "https://bob.openinfra.com/delivery-projects/2907",
+  "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
+  "DE-BB Gosen-Neu Zittau P4": "https://bob.openinfra.com/delivery-projects/2909",
+  "DE-BB Groß Köris P3": "https://bob.openinfra.com/delivery-projects/2825",
+  "DE-BB Grunheide P1": "https://bob.openinfra.com/delivery-projects/2597",
+  "DE-BB Grunheide P3": "https://bob.openinfra.com/delivery-projects/2904",
+  "DE-BB Grunheide P4": "https://bob.openinfra.com/delivery-projects/2905",
+  "DE-BB Grünheide P5": "https://bob.openinfra.com/delivery-projects/3025",
+  "DE-BB Grünheide P6": "https://bob.openinfra.com/delivery-projects/3026",
+  "DE-BB Grünheide P7": "https://bob.openinfra.com/delivery-projects/3027",
+  "DE-BB Heidesee B5-2": "https://bob.openinfra.com/delivery-projects/3049",
+  "DE-BB Heidesee P5-1": "https://bob.openinfra.com/delivery-projects/2777",
+  "DE-BB Heidesee P7": "https://bob.openinfra.com/delivery-projects/4147",
+  "DE-BB Hennigsdorf P3": "https://bob.openinfra.com/delivery-projects/4147",
+  "DE-BB Königs Wusterhausen HP0 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
+  "DE-BB Königs Wusterhausen HPO 3": "https://bob.openinfra.com/sales-projects/4051",
+  "DE-BB Löwenberger Land - Grieben P5": "https://bob.openinfra.com/delivery-projects/3112",
+  "DE-BB Löwenberger Land P1": "https://bob.openinfra.com/delivery-projects/2920",
+  "DE-BB Löwenberger Land P1-2": "https://bob.openinfra.com/delivery-projects/4087",
+  "DE-BB Löwenberger Land P3": "https://bob.openinfra.com/delivery-projects/2914",
+  "DE-BB Neuzelle Combined P1": "https://bob.openinfra.com/search-results?query=DE-BB%20Neuzelle%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Neuzelle Combined P2": "https://bob.openinfra.com/search-results?query=DE-BB%20Neuzelle%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Neuzelle Combined P3": "https://bob.openinfra.com/search-results?query=DE-BB%20Neuzelle%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Neuzelle Combined P4": "https://bob.openinfra.com/search-results?query=DE-BB%20Neuzelle%20Combined%20P&searchLegacyInfo=0",
+  "DE-BB Neuzelle P5": "https://bob.openinfra.com/delivery-projects/4145",
+  "DE-BB Neuzelle P6": "https://bob.openinfra.com/delivery-projects/3698",
+  "DE-BB Rietzneuendorf - Staakow P1": "https://bob.openinfra.com/delivery-projects/3749",
+  "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
+  "DE-BB Schönwald P5": "https://bob.openinfra.com/sales-projects/3502",
+  "DE-BB Schulzendorf HP0": "https://bob.openinfra.com/sales-projects/3842",
+  "DE-BB Schulzendorf P3": "https://bob.openinfra.com/sales-projects/4101",
+  "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
+  "DE-BB Spreenhagen P3 & Furstenwalde P6 combined": "https://bob.openinfra.com/sales-projects/4064",
+  "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
+  "DE-BB Stadt Fürstenwalde P1-P3 HP0": "https://bob.openinfra.com/sales-projects/4036",
+  "DE-BB Stadt Fürstenwalde P4": "https://bob.openinfra.com/sales-projects/3081",
+  "DE-BB Stadt Fürstenwalde P6": "https://bob.openinfra.com/delivery-projects/2431",
+  "DE-BB Stadt Velten P2": "https://bob.openinfra.com/delivery-projects/2365",
+  "DE-BB Stadt Velten P3": "https://bob.openinfra.com/delivery-projects/4154",
+  "DE-BB Storkow P1-4": "https://bob.openinfra.com/delivery-projects/3551",
+  "DE-BB Storkow P2": "https://bob.openinfra.com/delivery-projects/2233",
+  "DE-BB Storkow P3": "https://bob.openinfra.com/delivery-projects/2234",
+  "DE-BB Storkow P4": "https://bob.openinfra.com/delivery-projects/2235",
+  "DE-BB Storkow P5": "https://bob.openinfra.com/delivery-projects/2236",
+  "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
+  "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
+  "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
+  "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/2720",
+  "DE-BB Teupitz P4": "https://bob.openinfra.com/delivery-projects/4146",
+  "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
+  "DE-BB Woltersdorf P5-1": "https://bob.openinfra.com/delivery-projects/2763",
+  "DE-BB Zossen HP0": "https://bob.openinfra.com/sales-projects/4047",
+  "DE-BB Zossen P3": "https://bob.openinfra.com/delivery-projects/2420",
+  "DE-BB Zossen P4": "https://bob.openinfra.com/delivery-projects/2423",
+  "DE-BB Zossen P4-2": "https://bob.openinfra.com/delivery-projects/4090",
+  "DE-BB Zossen P6": "https://bob.openinfra.com/delivery-projects/3701",
+  "DE-BB Zossen P7": "https://bob.openinfra.com/delivery-projects/4165",
+  "DE-BY Kirchroth P3": "https://bob.openinfra.com/delivery-projects/3108",
+  "DE-BY Kirchroth P4": "https://bob.openinfra.com/delivery-projects/3441",
+  "DE-BY Leiblfing P1": "https://bob.openinfra.com/delivery-projects/3799",
+  "DE-BY Parkstetten P1": "https://bob.openinfra.com/delivery-projects/3009",
+  "DE-BY Steinach": "https://bob.openinfra.com/delivery-projects/3769",
+  "DE-BY Straubing P1": "https://bob.openinfra.com/delivery-projects/3542",
+  "DE-NI Handeloh P1": "https://bob.openinfra.com/delivery-projects/2048",
+  "DE-NI Kakenstorf P3": "https://bob.openinfra.com/delivery-projects/2747",
+  "DE-NI Königsmoor P1": "https://bob.openinfra.com/delivery-projects/2624",
+  "DE-NI Neu Wulmstorf P1": "https://bob.openinfra.com/delivery-projects/3633",
+  "DE-NI Ottermoor P1": "https://bob.openinfra.com/delivery-projects/3574",
+  "DE-NI Salzhausen - Eyendorf P7": "https://bob.openinfra.com/delivery-projects/3693",
+  "DE-NI Salzhausen - Lübberstedt P8": "https://bob.openinfra.com/sales-projects/4111",
+  "DE-NI Welle P2": "https://bob.openinfra.com/delivery-projects/2629",
+  "DE-NI Welle P3": "https://bob.openinfra.com/delivery-projects/3607",
+  "DE-Rietz-Neuendorf S2": "https://bob.openinfra.com/sales-projects/3387",
+  "DE-Schöneiche P1-3": "https://bob.openinfra.com/delivery-projects/3759",
+  "Heidenau B4": "https://bob.openinfra.com/delivery-projects/2628",
+  "Hohen Neuendorf B1": "https://bob.openinfra.com/delivery-projects/2254",
+  "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
+  "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/delivery-projects/3771",
+  "Nienburg Projekte KSB": "https://www.google.com/maps/d/edit?mid=1O_2TNymgRyUs9JkqnBv0dheWnM3GE54&ll=52.68645321738002%2C9.134187513199254&z=12",
+  "Seddiner See B2": "https://bob.openinfra.com/delivery-projects/1750",
+  "Wistedt B1": "https://bob.openinfra.com/delivery-projects/1964",
+  "DE-BB Beetzsee P1 HP0": "https://bob.openinfra.com/sales-projects/4038",
+  "DE-BY Wallersdorf P1": "https://bob.openinfra.com/delivery-projects/4293",
+  "DE-BY Wallersdorf P2": "https://bob.openinfra.com/delivery-projects/4294",
+  "DE-BY Wallersdorf P3": "https://bob.openinfra.com/delivery-projects/4295",
+  "DE-BB Schöneiche P8": "https://bob.openinfra.com/sales-projects/4065",
+  "DE-BY Kirchroth P1-1": "https://bob.openinfra.com/delivery-projects/4188",
+  "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779"
+};
 
 var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentialDir='asc';
 
@@ -442,6 +600,11 @@ function svgLineChart(data,refY,refLabel,maxY,color){
       out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+growthBg+'"/>';
       out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+growthColor+'">'+d.growth+'</text>';
     }
+    if(d.note){
+      var nw=Math.max(120,d.note.length*5.8);
+      out+='<rect x="'+(x-nw/2)+'" y="'+(y+10)+'" width="'+nw+'" height="16" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>';
+      out+='<text x="'+x+'" y="'+(y+22)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#92400e">'+d.note+'</text>';
+    }
     return out;
   }).join('');
 
@@ -485,7 +648,7 @@ function render(){
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
-    {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
+    {month:'Apr',value:apr,growth:growthLabel(apr,mar),note:'⚠ 75 Umbuchungen auf Mai (Signierdatum korrigiert)'},
     {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
     {month:'Target June',value:mayF,growth:growthLabel(mayF,S.may),forecast:true},
     {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
@@ -521,7 +684,7 @@ function render(){
       r.join(' ').toLowerCase().includes(funnelSearch.toLowerCase());
   });
   var funnelPrioMap={};
-  funnelRows.forEach(function(r){ funnelPrioMap[r[0]]=r[1].toLowerCase().includes('hp0')||r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1'?1:0; });
+  funnelRows.forEach(function(r){ funnelPrioMap[r[0]]=r[1].toLowerCase().includes('hp0')||r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-BB Diehlo P1'?1:0; });
   var fIdx={Project:0,Type:1,Region:2,Sold:3,HP:4,'%':5}[funnelSortKey];
   funnel.sort(function(a,b){
     if(funnelSortKey==='Prio'){
@@ -618,8 +781,8 @@ function render(){
   html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
   var grossSales=S.salesReportTotal2026;
-  var netSales=1115;
-  var cancelled=73;
+  var netSales=1209;
+  var cancelled=78;
   var cancelRate=(cancelled/grossSales*100).toFixed(1);
   html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
   html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto / Ziel</p>';
@@ -692,7 +855,7 @@ function render(){
   window._agencyFilterNeeded=true;
   html+='<div style="overflow-x:auto;border-radius:1rem;border:1px solid #e2e8f0;">';
   html+='<table><thead style="background:#f1f5f9;"><tr>';
-  ['#','Partner','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2–Q4 Forecast','D2D'].forEach(function(h){
+  ['#','Partner','June Ist','June Forecast','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2–Q4 Forecast','D2D'].forEach(function(h){
     html+='<th>'+h+'</th>';
   });
   html+='</tr></thead><tbody>';
@@ -703,6 +866,10 @@ function render(){
     html+='<tr>';
     html+='<td style="font-weight:900;color:#9c5f38;">#'+(i+1)+'</td>';
     html+='<td style="font-weight:600;white-space:nowrap;">'+esc(p.name)+(p.comingSoon?'<span class="badge tag-amber" style="margin-left:8px;">soon</span>':'')+'</td>';
+    var juneDone=Math.max(1,S.q2WorkingDaysDone-43);
+    var juneFcst=p.juneActual>0?Math.round((p.juneActual/juneDone)*21):0;
+    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#059669':'#94a3b8')+';text-align:right;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
+    html+='<td style="font-weight:700;color:#0369a1;text-align:right;">'+(juneFcst||0)+'</td>';
     html+='<td style="font-weight:700;color:#2563eb;text-align:right;">'+(p.mayForecast||0)+'</td>';
     html+='<td style="font-weight:900;color:#101820;text-align:right;">'+(p.may||0)+'</td>';
     html+='<td style="text-align:right;">'+(p.april||0)+'</td>';
@@ -722,6 +889,11 @@ function render(){
   var totFc=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
   html+='<tr style="border-top:2px solid #d89c6c;background:#f8eadf;font-weight:900;">';
   html+='<td style="text-align:center;">Σ</td><td>Total</td>';
+  var totJuneAct=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
+  var juneDoneTot=Math.max(1,S.q2WorkingDaysDone-43);
+  var totJuneFcst=visiblePartners.reduce(function(s,p){return s+(p.juneActual>0?Math.round((p.juneActual/juneDoneTot)*21):0);},0);
+  html+='<td style="text-align:right;color:#059669;font-weight:900;">'+totJuneAct+'</td>';
+  html+='<td style="text-align:right;color:#0369a1;font-weight:900;">'+totJuneFcst+'</td>';
   html+='<td style="text-align:right;color:#2563eb;font-weight:900;">'+totals.mayForecast+'</td>';
   html+='<td style="text-align:right;color:#101820;font-weight:900;">'+totals.may+'</td>';
   html+='<td style="text-align:right;">'+totals.april+'</td>';
@@ -816,7 +988,7 @@ function render(){
     var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
     var allZero=((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+esc(r[0])+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var bobUrl=bobLinks[r[0]]; html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
@@ -873,10 +1045,10 @@ function render(){
   });
   html+='</tr></thead><tbody>';
   funnel.forEach(function(r,i){
-    var isPrio=r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1'||r[1].toLowerCase().includes('hp0');
-    var rowBg=(r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-Diehlo S1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
+    var isPrio=r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-BB Diehlo P1'||r[1].toLowerCase().includes('hp0');
+    var rowBg=(r[0]==='DE-BY Kirchroth P1-1'||r[0]==='DE-BB Diehlo P1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
     html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
-    html+='<td style="padding:10px;font-weight:600;">'+esc(r[0])+'</td>';
+    var bobUrlF=bobLinks[r[0]]; html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
@@ -1002,6 +1174,29 @@ function render(){
   });
   html+='</tbody></table></div></div></div></section>';
 
+  // ── CEMETERY ──
+  if(typeof cemeteryRows!=='undefined'){
+    var cemSrc=cemeteryRows;
+    var cemF=cemSrc.filter(function(r){return r.join(' ').toLowerCase().includes((window._cemSearch||'').toLowerCase());});
+    html+='<section id="sec-cemetery" style="scroll-margin-top:70px;"><div class="container">';
+    html+='<div class="card" style="border:2px solid #374151;">';
+    html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+    html+='<div><h2 style="color:#111827;">&#127944; Cemetery</h2><p style="color:#6b7280;">Abgebrochene Projekte ('+cemSrc.length+')</p></div></div>';
+    html+='<input id="cem-search" value="'+(window._cemSearch||'')+'" placeholder="Projekt suchen..." style="margin-bottom:16px;" oninput="window._cemSearch=this.value;render();">';
+    html+='<div style="overflow-y:auto;max-height:500px;border-radius:1rem;border:1px solid #e5e7eb;">';
+    html+='<table><thead style="background:#374151;color:#fff;position:sticky;top:0;"><tr>';
+    html+='<th>Projekt</th><th>Region</th><th>Kategorie</th><th style="text-align:center;">Sold</th><th style="text-align:center;">HP</th></tr></thead><tbody>';
+    cemF.forEach(function(r,i){
+      html+='<tr style="background:'+(i%2===0?'#fff':'#f9fafb')+';">';
+      var bobUrlC=bobLinks[r[0]]; html+='<td style="padding:10px;color:#6b7280;text-decoration:line-through;">'+(bobUrlC?'<a href="'+bobUrlC+'" target="_blank" style="color:#6b7280;text-decoration:line-through;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+'</td>';
+      html+='<td style="padding:10px;font-weight:600;">'+esc(r[1])+'</td>';
+      html+='<td style="padding:10px;"><span style="background:#fee2e2;color:#dc2626;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">'+esc(r[2])+'</span></td>';
+      html+='<td style="padding:10px;text-align:center;">'+r[3]+'</td>';
+      html+='<td style="padding:10px;text-align:center;">'+r[4]+'</td>';
+      html+='</tr>';
+    });
+    html+='</tbody></table></div></div></div></section>';
+  }
   // ── FOOTER ──
   html+='<div style="background:#4d3428;color:#fff;padding:32px 0;margin-top:20px;">';
   html+='<div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
@@ -1016,6 +1211,14 @@ function render(){
   document.getElementById('app').innerHTML=html;
   if(window._agencyFilterNeeded){buildAgencyFilter();window._agencyFilterNeeded=false;}
   requestAnimationFrame(function(){window.scrollTo(0,_sy);
+    var cemKeys=['Project','Region','Category','Sold','HP'];
+    document.querySelectorAll('[data-cemcol]').forEach(function(th){
+      th.onclick=function(){
+        var k=cemKeys[parseInt(th.getAttribute('data-cemcol'))];
+        cemeteryDir=(cemeterySort===k&&cemeteryDir==='desc')?'asc':'desc';
+        cemeterySort=k; render();
+      };
+    });
     // Restore focus and cursor position
     if(_focusId){var el=document.getElementById(_focusId);if(el){el.focus();if(_focusVal!==null)el.setSelectionRange(_focusVal.length,_focusVal.length);}}
     else{var inputs=document.querySelectorAll('input[oninput]');if(inputs.length){
@@ -1259,6 +1462,10 @@ function heroSearch(val){
   var coaItems=[["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH",""],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
   coaItems.forEach(function(r){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
+  });
+  // Search Cemetery
+  if(typeof cemeteryRows!=='undefined') cemeteryRows.forEach(function(r){
+    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Cemetery · '+r[1],section:'Cemetery',sectionId:'sec-cemetery'});
   });
   // Search new potential
   potentialRows.forEach(function(r){
