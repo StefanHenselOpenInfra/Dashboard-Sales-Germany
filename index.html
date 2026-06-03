@@ -117,42 +117,43 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:7,february:58,march:111,april:62,may:229,mayForecast:190,juneActual:9,ytd:476,forecast:1100,d2d:5},
-  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:116,mayForecast:136,juneActual:16,ytd:399,forecast:900,d2d:3},
-  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:56,mayForecast:66,juneActual:1,ytd:170,forecast:440,d2d:3},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:98,juneActual:5,ytd:90,forecast:280,d2d:5},
-  {name:"Open Infra CS",january:15,february:16,march:21,april:14,may:8,mayForecast:9,juneActual:1,ytd:68,forecast:175,d2d:0},
+  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:164,mayForecast:190,juneActual:18,ytd:474,forecast:1100,d2d:5},
+  {name:"EnCom GmbH",january:16,february:35,march:115,april:117,may:124,mayForecast:136,juneActual:39,ytd:446,forecast:920,d2d:3},
+  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:66,juneActual:8,ytd:179,forecast:445,d2d:3},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:92,mayForecast:98,juneActual:18,ytd:116,forecast:295,d2d:5},
+  {name:"Open Infra CS",january:15,february:16,march:21,april:13,may:8,mayForecast:9,juneActual:2,ytd:70,forecast:175,d2d:0},
   {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0},
   {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:0,forecast:0,d2d:2,comingSoon:true}
 ];
 
 // Brutto Q2-Actuals — Sales Report 8
+// Brutto Q2-Actuals inkl. Juni — Sales Report 11
 var kpiActuals = {
-  "Base Sales / Up Sales":{april:104,may:347},
-  "After Market / HP0 Sales":{april:19,may:36},
-  "Build Sales":{april:121,may:120}
+  "Base Sales / Up Sales":{april:153,may:296,june:57},
+  "After Market / HP0 Sales":{april:19,may:36,june:15},
+  "Build Sales":{april:140,may:113,june:14}
 };
 
 var projectRows = [
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
   ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,20,26],
   ["DE-BB Birkenwerder P3-2","BASE UPSELL","Stonemedia GmbH",0,9,21],
-  ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,59],
+  ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,35],
   ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",14,18,4],
-  ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,11],
+  ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7],
   ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13],
-  ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,24],
+  ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,25],
   ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0],
-  ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,0,44],
+  ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21],
   ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3],
-  ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,0,10],
+  ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,9],
   ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0],
   ["DE-BB Teupitz P3","Base Sales","Stonemedia GmbH",3,0,6],
   ["DE-BB Teupitz P4","Base Sales","Stonemedia GmbH",21,0,1],
   ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",16,16,5],
   ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",45,7,2],
   // ── EnCom GmbH ────────────────────────────────────────────────────────
-  ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",0,0,81],
+  ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",0,0,90],
   ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,52,0],
   ["DE-BB Frankfurt (Oder) Combined P3","Build Sales","EnCom GmbH",31,11,0],
   ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,21,9],
@@ -161,7 +162,7 @@ var projectRows = [
   ["DE-BY Kirchroth P3","BASE UPSELL","EnCom GmbH",5,7,6],
   ["DE-BY Kirchroth P4","BASE UPSELL","EnCom GmbH",13,3,6],
   ["DE-BY Kirchroth P5","Build Sales","EnCom GmbH",34,14,1],
-  ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,6],
+  ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,5],
   ["DE-BY Parkstetten P1","BASE UPSELL","EnCom GmbH",2,0,0],
   ["DE-BY Straubing P1","BASE UPSELL","EnCom GmbH",3,12,7],
   ["DE-BB Zossen P4","Build Sales","EnCom GmbH",0,1,0],
@@ -172,13 +173,13 @@ var projectRows = [
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1],
   ["DE-BB Schöneiche P8","Base Sales","Team Tatjana",0,0,8],
   ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5],
-  ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,11,28],
+  ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,12,28],
   // ── United Promotion GmbH ─────────────────────────────────────────────
   ["DE-BB Beetzsee P1 HP0","HP0","United Promotion GmbH",0,0,9],
-  ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,28],
+  ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,31],
   ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0],
   ["DE-BB Schulzendorf HP0","HP0","United Promotion GmbH",0,5,14],
-  ["DE-BB Schulzendorf P3","Base Sales","United Promotion GmbH",0,0,18],
+  ["DE-BB Schulzendorf P3","Base Sales","United Promotion GmbH",0,0,23],
   ["DE-BB Woltersdorf P5-1","Build Sales","United Promotion GmbH",0,1,6],
   ["DE-BB Zossen HP0","HP0","United Promotion GmbH",0,0,2],
   ["DE-BB Zossen P3","Build Sales","United Promotion GmbH",0,0,0],
@@ -265,9 +266,9 @@ var funnelRowsRaw = [
   ["DE-BY Wallersdorf P3","Base Sales","BY",0,0]
 ];
 
-var settings = {salesReportTotal2026:1287,q2WorkingDaysDone:47,q2WorkingDaysLeft:17,juneForecast:500,
+var settings = {salesReportTotal2026:1293,q2WorkingDaysDone:46,q2WorkingDaysLeft:18,juneForecast:500,
   // Brutto monatliche Totals aus Sales Report 8
-  jan:59,feb:155,mar:292,apr:244,may:503};
+  jan:42,feb:135,mar:274,apr:311,may:445};
 
 var potentialRows = [
   ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
@@ -491,7 +492,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentia
 // state
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
-var agencySortKey='May', agencySortDir='desc';
+var agencySortKey='June Ist', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -516,7 +517,7 @@ function scrollToSection(id){
 
 // ── COMPUTE KPIs ─────────────────────────────────────────────────────────────
 function computeKpis(){
-  var totals={january:0,february:0,march:0,april:0,may:0,mayForecast:0,ytd:0,forecast:0,d2d:0};
+  var totals={january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:0,forecast:0,d2d:0};
   partners.forEach(function(p){
     Object.keys(totals).forEach(function(k){totals[k]+=(p[k]||0);});
   });
@@ -527,9 +528,12 @@ function computeKpis(){
 
   function getKpi(label,target){
     var src=kpiActuals[label]||{april:0,may:0};
-    var juneF=Math.round(src.may*mayFF); // Target June = May x 1.17
-    var actual=src.april+src.may;
-    var forecast=actual+juneF; // April + ActualMay + TargetJune
+    var juneDone=Math.max(1,settings.q2WorkingDaysDone-43);
+    var juneRem=Math.max(0,21-juneDone);
+    var juneAct=src.june||0;
+    var juneProj=Math.round(juneAct/juneDone*juneRem); // remaining june days
+    var actual=src.april+src.may+juneAct;
+    var forecast=actual+juneProj; // April+May+JuneActual+JuneRemaining
     return{
       title:label,actual:actual,target:target,forecast:forecast,
       delta:target-forecast,
@@ -621,7 +625,7 @@ function svgLineChart(data,refY,refLabel,maxY,color){
 function render(){
   var c=computeKpis();
   var kpis=c.kpis,totals=c.totals,timePct=c.timePct;
-  var totalQ2=totals.april+totals.may;
+  var totalQ2=totals.april+totals.may+totals.juneActual;
   var totalTarget=kpis.reduce(function(s,k){return s+k.target;},0);
   var totalForecast=kpis.reduce(function(s,k){return s+k.forecast;},0);
   var targetReached=Math.round(totalQ2/totalTarget*100);
@@ -645,7 +649,7 @@ function render(){
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
-    {month:'Apr',value:apr,growth:growthLabel(apr,mar),note:'⚠ 75 Umbuchungen auf Mai (Signierdatum korrigiert)'},
+    {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
     {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
     {month:'Target June',value:mayF,growth:growthLabel(mayF,S.may),forecast:true},
     {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
@@ -704,7 +708,7 @@ function render(){
   // agency sort
   var visiblePartners=selectedAgencies?partners.filter(function(p){return selectedAgencies.indexOf(p.name)>=0;}):partners;
   var sortedPartners=[...visiblePartners].sort(function(a,b){
-    var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may','Target June':'mayForecast',YTD:'ytd','Forecast 2026':'forecast'};
+    var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may','June Ist':'juneActual','Target June':'mayForecast',YTD:'ytd','Forecast 2026':'forecast'};
     var k=km[agencySortKey]||'may';
     var av=k==='name'?a.name:(a[k]||0);
     var bv=k==='name'?b.name:(b[k]||0);
@@ -778,11 +782,11 @@ function render(){
   html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
   var grossSales=S.salesReportTotal2026;
-  var netSales=1209;
+  var netSales=1215;
   var cancelled=78;
   var cancelRate=(cancelled/grossSales*100).toFixed(1);
   html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
-  html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto / Ziel</p>';
+  html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
   html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
   html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
   html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span></div>';
@@ -840,7 +844,7 @@ function render(){
   html+='<h2 style="font-size:2rem;">👥 Agency Overview</h2>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="agencySortKey=this.value;render();" style="width:auto;">';
-  ['May','Target June','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
+  ['June Ist','May','Target June','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
     html+='<option'+(agencySortKey===k?' selected':'')+'>'+k+'</option>';
   });
   html+='</select>';
@@ -966,7 +970,7 @@ function render(){
   html+='</div></div>';
 
   html+='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;">';
-  [['Sales Total 2026',S.salesReportTotal2026],['March',totals.march],['April',totals.april],['May',totals.may],['Projects',projs.length]].forEach(function(item){
+  [['Sales Total 2026',S.salesReportTotal2026],['April',totals.april],['May',totals.may],['June Ist',totals.juneActual],['Projects',projs.length]].forEach(function(item){
     html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #e7c9b0;">';
     html+='<div style="font-size:11px;font-weight:700;color:#9c5f38;text-transform:uppercase;">'+item[0]+'</div>';
     html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
