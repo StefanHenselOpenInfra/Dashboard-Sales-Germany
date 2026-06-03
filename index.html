@@ -170,7 +170,6 @@ var projectRows = [
   ["DE-BB Birkenwerder P1","Build Sales","Team Tatjana",22,20,6,0],
   ["DE-BB Birkenwerder P1-2","BASE UPSELL","Team Tatjana",0,4,12,1],
   ["DE-BB Birkenwerder P2-2","BASE UPSELL","Team Tatjana",0,0,2,0],
-  ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0],
   ["DE-BB Schöneiche P8","Base Sales","Team Tatjana",0,0,8,1],
   ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5,0],
   ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,12,28,6],
@@ -263,7 +262,12 @@ var funnelRowsRaw = [
   ["Magdeburg - Ottersleben Combined REV","Base Sales","SA",0,0],
   ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
-  ["DE-BY Wallersdorf P3","Base Sales","BY",0,0]
+  ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
+  ["DE-BB Grünheide P4","BASE UPSELL","BB",0,0],
+  ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
+  ["DE-BB Grünheide P6","BASE UPSELL","BB",0,0],
+  ["DE-BB Amt Scharmützelsee P2","Base Sales / Up Sales","BB",0,0],
+  ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,0]
 ];
 
 var settings = {salesReportTotal2026:1293,q2WorkingDaysDone:46,q2WorkingDaysLeft:18,juneForecast:500,
@@ -358,6 +362,10 @@ var bobLinks = {
   "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
   "DE-BB Neuzelle P5": "https://bob.openinfra.com/delivery-projects/4145",
   "DE-BB Neuzelle P6": "https://bob.openinfra.com/delivery-projects/3698",
+  "DE-BB Gosen Neu-Zittau P2": "https://bob.openinfra.com/delivery-projects/2907",
+  "DE-BB Sch\u00f6neiche HP0": "https://bob.openinfra.com/sales-projects/3856",
+  "DE-NI Salzhausen Eyendorf P7": "https://bob.openinfra.com/delivery-projects/3693",
+  "DE-NI Salzhausen L\u00fcbberstedt P8": "https://bob.openinfra.com/sales-projects/4111",
   "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
   "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
   "DD - Furth S3": "https://bob.openinfra.com/sales-projects/3450",
@@ -400,9 +408,9 @@ var bobLinks = {
   "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
   "DE-BB Gosen-Neu Zittau P4": "https://bob.openinfra.com/delivery-projects/2909",
   "DE-BB Groß Köris P3": "https://bob.openinfra.com/delivery-projects/2825",
-  "DE-BB Grunheide P1": "https://bob.openinfra.com/delivery-projects/2597",
-  "DE-BB Grunheide P3": "https://bob.openinfra.com/delivery-projects/2904",
-  "DE-BB Grunheide P4": "https://bob.openinfra.com/delivery-projects/2905",
+  "DE-BB Grünheide P1": "https://bob.openinfra.com/delivery-projects/2597",
+  "DE-BB Grünheide P3": "https://bob.openinfra.com/delivery-projects/2904",
+  "DE-BB Grünheide P4": "https://bob.openinfra.com/delivery-projects/2905",
   "DE-BB Grünheide P5": "https://bob.openinfra.com/delivery-projects/3025",
   "DE-BB Grünheide P6": "https://bob.openinfra.com/delivery-projects/3026",
   "DE-BB Grünheide P7": "https://bob.openinfra.com/delivery-projects/3027",
@@ -486,6 +494,11 @@ var bobLinks = {
   "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
   "DE-BB Diehlo P1_dup": "https://bob.openinfra.com/sales-projects/2779"
 };
+
+var reservedRows = [
+  ["DE-BB Amt Scharmützelsee P2","Base Sales / Up Sales","EnCom GmbH","BB","https://bob.openinfra.com/delivery-projects/2429"]
+];
+var reservedSearch='';
 
 var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentialDir='asc';
 
@@ -929,8 +942,8 @@ function render(){
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
    ["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],
-   ["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],
-   ["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
+   ["DE-BB Grünheide P1","BB","Rating Peak GmbH",""],
+   ["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
    ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
    ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
@@ -987,7 +1000,7 @@ function render(){
   html+='</tr></thead><tbody>';
   projs.forEach(function(r,i){
     var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
-    var offTrackExclude=['DE-BB Stadt Fürstenwalde P1-P3 HP0'];
+    var offTrackExclude=['DE-BB Stadt Fürstenwalde P1-P3 HP0','DE-BB Storkow P8'];
     var allZero=(((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0)&&offTrackExclude.indexOf(r[0])<0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]]; html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
@@ -1053,7 +1066,10 @@ function render(){
     var isPrio=r[0]==='DE-BB Diehlo P1'||r[1].toLowerCase().includes('hp0');
     var rowBg=(r[0]==='DE-BB Diehlo P1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
     html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
-    var bobUrlF=bobLinks[r[0]]; html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+'</td>';
+    var bobUrlF=bobLinks[r[0]];
+    var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
+    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':'');
+    html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
@@ -1464,7 +1480,7 @@ function heroSearch(val){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
   });
   // Search CoA's missing
-  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grunheide P1","BB","Rating Peak GmbH",""],["DE-BB Grunheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
+  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH",""],["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
   coaItems.forEach(function(r){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
   });
