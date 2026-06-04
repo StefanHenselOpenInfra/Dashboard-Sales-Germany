@@ -213,7 +213,7 @@ var funnelRowsRaw = [
   ["DE-BB Groß Köris HP0 - SNB","HP0","BB",0,490],
   ["DE-BB Grünheide P2 HP0 - SNB","HP0","BB",0,510],
   ["DE-BB Halbe & Löpten P1 HP0 - SNB","HP0","BB",0,396],
-  ["DE-BB Heidesee HP0","HP0","BB",12,0],
+  ["DE-BB Heidesee HP0","HP0","BB",604,2712],
   ["DE-BB Heidesee B5-2","Build sales","BB",38,101],
   ["DE-BB Heidesee P5-1","BASE UPSELL","BB",20,70],
   ["DE-BB Hoppegarten P1","BASE UPSELL","BB",56,264],
@@ -373,6 +373,7 @@ var bobLinks = {
   "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
   "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
   "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
+  "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
   "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
   "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
   "DD - Furth S3": "https://bob.openinfra.com/sales-projects/3450",
@@ -949,7 +950,7 @@ function render(){
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
    ["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],
-   ["DE-BB Grünheide P1","BB","Rating Peak GmbH",""],
+   ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
    ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
@@ -1007,10 +1008,13 @@ function render(){
   html+='</tr></thead><tbody>';
   projs.forEach(function(r,i){
     var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
+    var gestopptList=['DE-BB Storkow P8'];
     var offTrackExclude=['DE-BB Stadt Fürstenwalde P1-P3 HP0','DE-BB Storkow P8'];
     var allZero=(((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0)&&offTrackExclude.indexOf(r[0])<0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
-    var bobUrl=bobLinks[r[0]]; html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var bobUrl=bobLinks[r[0]];
+    var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
@@ -1487,7 +1491,7 @@ function heroSearch(val){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
   });
   // Search CoA's missing
-  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH",""],["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
+  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
   coaItems.forEach(function(r){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
   });
