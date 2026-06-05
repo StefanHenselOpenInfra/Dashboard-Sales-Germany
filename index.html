@@ -274,7 +274,7 @@ var funnelRowsRaw = [
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259]
 ];
 
-var settings = {salesReportTotal2026:1343,q2WorkingDaysDone:49,q2WorkingDaysLeft:15,juneForecast:500,
+var settings = {salesReportTotal2026:1343,q2WorkingDaysDone:47,q2WorkingDaysLeft:17,juneForecast:500,
   // Brutto monatliche Totals aus Sales Report 8
   jan:42,feb:135,mar:274,apr:312,may:447};
 
@@ -671,7 +671,7 @@ function render(){
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
     {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
     {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
-    {month:'Target June',value:mayF,growth:growthLabel(mayF,S.may),forecast:true},
+    {month:'June Forecast',value:Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*21),growth:growthLabel(Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*21),S.may),forecast:true},
     {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
     {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
     {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
@@ -679,7 +679,7 @@ function render(){
   var dailyData=[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
-    {month:'May',value:+(S.may/21).toFixed(1)},{month:'Target June',value:+(mayF/21).toFixed(1)},
+    {month:'May',value:+(S.may/21).toFixed(1)},{month:'Jun Forecast',value:+(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)).toFixed(1),forecast:true},{month:'Target June',value:+(mayF/21).toFixed(1),forecast:true},
     {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
   ];
 
