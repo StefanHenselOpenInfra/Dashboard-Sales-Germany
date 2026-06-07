@@ -156,6 +156,9 @@ var projectRows = [
   // ── EnCom GmbH ────────────────────────────────────────────────────────
   ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",1,0,91,71],
   ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,52,0,0],
+  ["DE-BB Schwerin HP0","HP0","EnCom GmbH",0,0,0,0],
+  ["DE-BB Frankfurt (Oder) Combined P1","Build Sales","EnCom GmbH",0,0,0,0],
+  ["DE-BB Frankfurt (Oder) Combined P2","Build Sales","EnCom GmbH",0,0,0,0],
   ["DE-BB Frankfurt (Oder) Combined P3","Build Sales","EnCom GmbH",31,11,0,0],
   ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,21,9,0],
   ["DE-BB Königs Wusterhausen HP0 3","HP0","EnCom GmbH",0,0,2,4],
@@ -263,6 +266,8 @@ var funnelRowsRaw = [
   ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
+  ["DE-BB Bestensee HP0","HP0","BB",0,0],
+  ["DE-BB Stadt Velten P1 HP0","HP0","BB",0,0],
   ["DE-BB Grünheide P4","BASE UPSELL","BB",0,0],
   ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
   ["DE-BB Grünheide P6","BASE UPSELL","BB",0,0],
@@ -347,9 +352,12 @@ var cemeteryRows = [
   ["DE-BB Baruth/Mark P2","BB","Abandon",20,164],
   ["DE-BB Baruth/Mark P3","BB","Abandon",44,244],
   ["DE-BB Löwenberger Land P1-2","BB","STOPP",25,210],
+  ["DE-BY Münster","BY","Abandon",0,0],
   ["DE-BB Rietzneuendorf - Staakow P1","BB","Abandon",0,194],
   ["DE-BB Schönefeld P1","BB","Abandon",0,0],
   ["DE-BB Stadt Fürstenwalde P6","BB","Abandon",0,90],
+  ["DE-BB Löwenberger Land P1-2","BB","STOPP",25,210],
+  ["DE-BY Münster","BY","Abandon",0,0],
   ["DE-BB Stadt Velten P2","BB","Abandon",58,224],
   ["DE-BB Stadt Velten P3","BB","Abandon",0,0],
   ["DE-BY Aiterhofen HP0 - SNB","BY","Abandon",0,128],
@@ -379,6 +387,9 @@ var bobLinks = {
   "DE-BB Grunheide P6": "https://bob.openinfra.com/delivery-projects/3026",
   "DE-BB Grunheide P7": "https://bob.openinfra.com/delivery-projects/3027",
   "DE-BB Königs Wusterhausen HPO 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
+  "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/4038",
+  "DE-BB Schwerin HP0": "https://bob.openinfra.com/sales-projects/3732",
+  "DE-BB Stadt Velten P1 HP0": "https://bob.openinfra.com/sales-projects/2181",
   "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
   "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
   "DD - Furth S3": "https://bob.openinfra.com/sales-projects/3450",
@@ -1079,7 +1090,8 @@ function render(){
     html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
     var bobUrlF=bobLinks[r[0]];
     var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
-    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':'');
+    var pruefenProjs=['DE-BB Stadt Velten P1 HP0'];
+    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':(pruefenProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>':''));
     html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
