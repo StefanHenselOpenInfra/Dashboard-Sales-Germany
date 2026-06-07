@@ -142,6 +142,7 @@ var projectRows = [
   ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,35,0],
   ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",14,18,4,0],
   ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7,1],
+  ["DE-BB Neuzelle P6","BASE UPSELL","Stonemedia GmbH",0,0,0,0],
   ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13,0],
   ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,25,4],
   ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,0],
@@ -199,6 +200,7 @@ var projectRows = [
   ["DE-CS","HP0","Open Infra CS",8,4,5,0],
   ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0,13],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
+  ["DE-BB Grünheide P3","BASE UPSELL","Rating Peak GmbH",0,0,0,0],
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0],
   ["DE-BB Gosen-Neu Zittau P4","BASE UPSELL","Rating Peak GmbH",0,0,0,1],
   ["DE-BB Gosen Neu-Zittau P3","Build Sales","Rating Peak GmbH",0,0,0,0],
@@ -867,8 +869,7 @@ function render(){
   html+='<section id="sec-mgmt" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="margin-bottom:20px;">';
   html+='<h2 style="margin-bottom:20px;">🎯 Management Summary</h2>';
-  html+='<div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:16px;border-radius:0 1rem 1rem 0;margin-bottom:12px;">';
-  html+='<b style="color:#92400e;">⚠ Action required:</b><span style="color:#78350f;margin-left:8px;">DE-BB Heidesee P7 sales round is closed and project not in BoB</span></div>';
+  
   html+='</div>';
 
   // Agency table
@@ -963,12 +964,12 @@ function render(){
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
    ["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],
    ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
-   ["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],
+   ,
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
    ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
    ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
    ["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],
-   ["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]
+   
   ].forEach(function(item){
     html+='<tr style="background:rgba(255,241,242,.6);">';
     var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#101820;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
@@ -1504,7 +1505,7 @@ function heroSearch(val){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
   });
   // Search CoA's missing
-  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P3","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Neuzelle P6","BB","Stonemedia GmbH","Calc is sent to Oda"]];
+  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],];
   coaItems.forEach(function(r){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
   });
