@@ -289,12 +289,12 @@ var potentialRows = [
   ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
   ["37120","Bovenden","NI","Bovenden Kernort (und Eddigehausen-Rauschenwasser)","Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht","Thomas Brandes","Bürgermeister","0551 / 8201-138","brandes@bovenden.de",""],
   ["37120","Eddigehausen","NI","Eddigehausen, Rauschenwasser","Gemeinsam mit Bovenden: Nachfragequote nicht erreicht","Bernd Riethig","Ortsrat Eddigehausen","0551 / 8201-138","flecken@bovenden.de",""],
-  ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Anja Friedrich","Bürgermeisterin","05751/403-102","a.friedrich@rinteln.de","Termin 6.7.2026 um 11 Uhr"],
+  ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Anja Friedrich","Bürgermeisterin","05751/403-102","a.friedrich@rinteln.de",""],
   ["37127","Gemeinde Stuhr","NI","Seckenhausen","DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern","Stephan Korte","Bürgermeister","0421 5695-200","s.korte@stuhr.de",""],
   ["27305","Samtgemeinde Sögel","NI","Gesamte Samtgemeinde (mehrere Ortschaften)","Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet","bitte recherchieren","Samtgemeinde","05952 / 206-0","info@samtgemeinde-soegel.de",""],
   ["14547","Fichtenwalde","BB","","","","","","",""],
   ["14778","Amt Beetzsee REST","BB","","new area","Amtsdirektor Guido Müller","","03381 7999-0","info@amt-beetzsee.de",""],
-  ["15306","LK Märkisch Oderland","BB","","","","","","",""],  ["31603","Diepenau","NI","Samtgemeinde Uchte","new area","Rüdiger Kaltofen","Samtgemeindebürgermeister","05763 183-11","s.ippisch@sg-uchte.de",""],
+  ["15306","LK Märkisch Oderland","BB","","","","","","",""],  ["31600","Uchte","NI","Samtgemeinde Uchte","positiv","Rüdiger Kaltofen","Samtgemeindebürgermeister","05763 183-11","s.ippisch@sg-uchte.de","Termin am 6.7.2026 um 11 Uhr"],
   ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
   ["31622","Heemsen","NI","","new area","","Samtgemeinde","05024 98050","info@heemsen.de",""],
   ["84092","Bayerbach bei Ergoldsbach","BY","","new area","Frau Wittman","Bauamtsleitung","08771 3043","wittmann@vgem-ergoldsbach.de",""],
@@ -1189,7 +1189,7 @@ function render(){
   html+='</tr></thead><tbody>';
   potFiltered.forEach(function(r,i){
     var cc=commentColor(r);
-    if(r[1]==='Bückeburg'||r[1]==='Rinteln') cc='background:rgba(209,250,229,.7);color:#065f46;';
+    if(r[1]==='Bückeburg'||r[1]==='Rinteln'||r[1]==='Uchte') cc='background:rgba(209,250,229,.7);color:#065f46;';
     html+='<tr style="'+(cc||'background:'+(i%2===0?'#fff':'rgba(248,234,223,.3)'))+'">';
     // PLZ
     html+='<td style="padding:8px;white-space:nowrap;">'+esc(r[0])+'</td>';
