@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#f5e3d8;color:#101820;font-family:system-ui,sans-serif;font-size:14px;}
+body{background:#FBF5ED;color:#252121;font-family:system-ui,sans-serif;font-size:14px;}
 h1{font-size:2.5rem;font-weight:900;line-height:1.1;}
 h2{font-size:1.75rem;font-weight:900;}
 h3{font-size:1.1rem;font-weight:900;}
@@ -15,13 +15,13 @@ h3{font-size:1.1rem;font-weight:900;}
 .card{background:#fff;border-radius:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:24px;}
 .badge{display:inline-flex;align-items:center;padding:3px 12px;border-radius:9999px;font-size:11px;font-weight:700;white-space:nowrap;}
 .btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-weight:700;font-size:12px;padding:8px 16px;border-radius:9999px;transition:background .15s;}
-.btn-dark{background:#4d3428;color:#fff;}
-.btn-dark:hover{background:#9c5f38;}
-.btn-brown{background:#9c5f38;color:#fff;border-radius:1rem;}
-.btn-brown:hover{background:#4d3428;}
-.btn-gold{background:#d89c6c;color:#fff;}
-.btn-gold:hover{background:#9c5f38;}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e7c9b0;padding:10px min(24px,2vw);display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.btn-dark{background:#363E36;color:#fff;}
+.btn-dark:hover{background:#C86750;}
+.btn-brown{background:#C86750;color:#fff;border-radius:1rem;}
+.btn-brown:hover{background:#363E36;}
+.btn-gold{background:#C86750;color:#fff;}
+.btn-gold:hover{background:#C86750;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #E4A489;padding:10px min(24px,2vw);display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
 section{padding:40px 0;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -38,28 +38,28 @@ th{font-weight:900;font-size:12px;}
 tr:not(:first-child){border-top:1px solid #f1f1f1;}
 .scroll-area{overflow-y:auto;max-height:800px;}
 input,select{border:1px solid #ddd;border-radius:1rem;padding:10px 14px;font-size:13px;outline:none;background:#fff;width:100%;}
-input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
+input:focus,select:focus{box-shadow:0 0 0 2px #C86750;}
 .pb{height:10px;border-radius:9999px;overflow:hidden;}
 .pb-bg{width:100%;}
 /* Progress bar colors */
-.pb-success{background:#059669;}
+.pb-success{background:#E0EFE0;}
 .pb-danger{background:#dc2626;}
-.pb-bg-success{background:#d1fae5;}
+.pb-bg-success{background:#E0EFE0;}
 .pb-bg-danger{background:#fee2e2;}
-.pb-time{background:#d89c6c;}
-.pb-time-bg{background:#f3dfcf;}
+.pb-time{background:#C86750;}
+.pb-time-bg{background:#FBF5ED;}
 /* Modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;}
 .modal{background:#fff;border-radius:1.5rem;padding:32px;max-width:560px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25);}
-.dropzone{border:2px dashed #d89c6c;border-radius:1rem;padding:32px;text-align:center;cursor:pointer;}
-.dropzone:hover,.dropzone.over{background:#fdf0e7;border-color:#9c5f38;}
-.tag-success{background:#d1fae5;color:#065f46;}
+.dropzone{border:2px dashed #C86750;border-radius:1rem;padding:32px;text-align:center;cursor:pointer;}
+.dropzone:hover,.dropzone.over{background:#fdf0e7;border-color:#C86750;}
+.tag-success{background:#F1FAF1;color:#363E36;}
 .tag-danger{background:#fee2e2;color:#991b1b;}
 .tag-amber{background:#fef3c7;color:#92400e;}
 .tag-slate{background:#1e293b;color:#fff;}
 .hidden{display:none;}
 .sticky-head{position:sticky;top:0;z-index:10;}
-.btn-xlsx{background:#217346;color:#fff;border-radius:1rem;padding:7px 14px;font-size:12px;font-weight:700;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s;}.btn-xlsx:hover{background:#185c37;}
+.btn-xlsx{background:#363E36;color:#fff;border-radius:1rem;padding:7px 14px;font-size:12px;font-weight:700;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s;}.btn-xlsx:hover{background:#363E36;}
 #hero-results div:hover{background:#f8fafc;}
 #hero-search::placeholder{color:rgba(255,255,255,0.6);}
 </style>
@@ -91,13 +91,13 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
     </div>
     <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
       <div style="font-size:3rem;margin-bottom:8px;">📊</div>
-      <div style="font-weight:700;color:#4d3428;">Excel-Datei hier ablegen</div>
+      <div style="font-weight:700;color:#363E36;">Excel-Datei hier ablegen</div>
       <div style="font-size:12px;color:#888;margin-top:4px;">oder klicken zum Auswählen (.xlsx)</div>
       <input type="file" id="file-input" accept=".xlsx,.xls" class="hidden" onchange="handleFileSelect(event)"/>
     </div>
     <div id="import-status" style="margin-top:16px;display:none;padding:12px;border-radius:12px;background:#f8f8f8;font-weight:600;font-size:13px;"></div>
-    <div style="margin-top:20px;background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:12px;">
-      <div style="font-weight:900;color:#4d3428;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
+    <div style="margin-top:20px;background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:12px;">
+      <div style="font-weight:900;color:#363E36;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
       <div style="line-height:1.8;color:#555;">
         <b>Partners</b> — Partner, January, February, March, April, May, MayForecast, YTD, Forecast2026, D2D<br>
         <b>KPIs</b> — Category, April, May<br>
@@ -634,8 +634,8 @@ function svgLineChart(data,refY,refLabel,maxY,color){
     var x=px(i),y=py(d.value||0);
     var isPositive=d.growth&&d.growth.charAt(0)!=='-';
     var dotColor=d.q3?'#7c3aed':color;
-    var growthColor=d.q3?'#6d28d9':(isPositive?'#1d6f3a':'#dc2626');
-    var growthBg=d.q3?'#ede9fe':(isPositive?'#ecfdf5':'#fee2e2');
+    var growthColor=d.q3?'#6d28d9':(isPositive?'#363E36':'#dc2626');
+    var growthBg=d.q3?'#ede9fe':(isPositive?'#F1FAF1':'#fee2e2');
     var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+dotColor+'" stroke="#fff" stroke-width="2"/>';
     out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+dotColor+'">'+(d.value||0)+'</text>';
     if(d.growth){
@@ -763,7 +763,7 @@ function render(){
   }
 
   function kpiCard(k){
-    var col=k.ok?'#059669':'#dc2626';
+    var col=k.ok?'#363E36':'#dc2626';
     var bgBadge=k.ok?'tag-success':'tag-danger';
     return'<div class="card" style="border:2px solid '+(k.ok?'#a7f3d0':'#fecaca')+';">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
@@ -782,7 +782,7 @@ function render(){
         '<div style="font-size:2rem;font-weight:900;color:'+col+';">'+k.pct+'%</div>'+
       '</div>'+
       '<div style="margin-top:16px;">'+pb(k.pct,100,k.ok?'pb-success':'pb-danger',k.ok?'pb-bg-success':'pb-bg-danger')+'</div>'+
-      '<div style="margin-top:16px;background:#f8eadf;border:1px solid rgba(216,156,108,.4);border-radius:1rem;padding:12px;">'+
+      '<div style="margin-top:16px;background:#FBF5ED;border:1px solid rgba(216,156,108,.4);border-radius:1rem;padding:12px;">'+
         '<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;"><span>Q2 Time Progress</span><span>'+timePct+'%</span></div>'+
         '<div class="pb pb-time-bg"><div class="pb pb-time" style="width:'+timePct+'%;height:100%;border-radius:9999px;"></div></div>'+
         '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px;"><span>01 Apr</span><span>30 Jun</span></div>'+
@@ -803,12 +803,13 @@ function render(){
   var html='';
 
   // ── HERO ──
-  html+='<div id="sec-top" style="background:#4d3428;color:#fff;padding:48px 0 40px;scroll-margin-top:70px;">';
+  html+='<div id="sec-top" style="background:#363E36;color:#fff;padding:48px 0 40px;scroll-margin-top:70px;">';
   html+='<div class="container"><div class="hero-grid">';
   html+='<div>';
   html+='<div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:1rem;padding:12px 20px;margin-bottom:20px;">';
+  html+='<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUwIiBmaWxsPSIjRjVERUQ0Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NiIgcj0iMjgiIGZpbGw9IiMxMDE4MjAiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjQ2IiByPSIxNiIgZmlsbD0iI0Y1REVENCIvPgogIDxyZWN0IHg9IjQ0IiB5PSI3MiIgd2lkdGg9IjEyIiBoZWlnaHQ9IjE0IiByeD0iNiIgZmlsbD0iIzEwMTgyMCIvPgo8L3N2Zz4=" alt="Open Infra" style="height:40px;width:40px;">';
   html+='<img src="https://openinfra.com/se/wp-content/themes/openinfra/assets/img/logo.svg" alt="Open Infra" style="height:32px;" onerror="this.style.display=\'none\'">';
-  html+='<span style="font-size:1.2rem;font-weight:900;color:#101820;">Open Infra</span></div><br>';
+  html+='<span style="font-size:1.2rem;font-weight:900;color:#252121;">Open Infra</span></div><br>';
   html+='<span class="badge" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:16px;">Q2 Sales Performance · 2026</span>';
   html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
@@ -834,9 +835,9 @@ function render(){
   html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
   html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
   html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Achievement</div>';
-  html+='<div style="background:linear-gradient(135deg,#d89c6c,#9c5f38);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
+  html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
   html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
-  html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#d89c6c;"></div></div></div></div>';
+  html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
   html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
   html+='</div></div></div></div></div>';
 
@@ -850,7 +851,7 @@ function render(){
 
   // ── SALES DEVELOPMENT ──
   html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
-  html+='<div class="card" style="border:2px solid #e7c9b0;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
   html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span></p></div>';
   html+='<span class="badge tag-amber">2026</span></div>';
@@ -859,11 +860,11 @@ function render(){
 
   // ── DAILY AVERAGE ──
   html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
-  html+='<div class="card" style="border:2px solid #e7c9b0;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
   html+='<div><h2>Daily Sales Average</h2><p style="color:#64748b;">Average daily sales development</p></div>';
   html+='<span class="badge tag-success">2026</span></div>';
-  html+=svgLineChart(dailyData,20,'Target 20/day',35,'#059669');
+  html+=svgLineChart(dailyData,20,'Target 20/day',35,'#363E36');
   html+='</div></div></section>';
 
   // ── MANAGEMENT ──
@@ -900,47 +901,48 @@ function render(){
     var q2q4=q2s*3;
     var fc=(p.january||0)+(p.february||0)+(p.march||0)+q2q4;
     html+='<tr>';
-    html+='<td style="font-weight:900;color:#9c5f38;">#'+(i+1)+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;">#'+(i+1)+'</td>';
     html+='<td style="font-weight:600;white-space:nowrap;">'+esc(p.name)+(p.comingSoon?'<span class="badge tag-amber" style="margin-left:8px;">soon</span>':'')+'</td>';
     var juneDone=Math.max(1,S.q2WorkingDaysDone-43);
     var juneFcst=p.juneActual>0?Math.round((p.juneActual/juneDone)*22):0;
-    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#059669':'#94a3b8')+';text-align:center;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
-    html+='<td style="text-align:center;">'+(juneFcst>0?'<span style="display:inline-block;min-width:36px;padding:2px 6px;font-weight:900;color:#059669;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+juneFcst+'</span>':'<span style="color:#94a3b8;font-weight:700;">0</span>')+'</td>';
+    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#363E36':'#94a3b8')+';text-align:center;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
+    var arrow=''; if(juneFcst>0&&p.may>0){if(juneFcst>p.may)arrow='<span style="color:#363E36;font-size:14px;margin-left:4px;">&#8679;</span>';else if(juneFcst<p.may)arrow='<span style="color:#dc2626;font-size:14px;margin-left:4px;">&#8681;</span>';}
+    html+='<td style="text-align:center;">'+(juneFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+juneFcst+arrow+'</span>':'<span style="color:#94a3b8;font-weight:700;">0</span>')+'</td>';
     html+='<td style="font-weight:700;color:#2563eb;text-align:center;">'+(p.mayForecast||0)+'</td>';
-    html+='<td style="font-weight:900;color:#101820;text-align:center;">'+(p.may||0)+'</td>';
+    html+='<td style="font-weight:900;color:#252121;text-align:center;">'+(p.may||0)+'</td>';
     html+='<td style="text-align:center;">'+(p.april||0)+'</td>';
     html+='<td style="text-align:center;">'+(p.march||0)+'</td>';
     html+='<td style="text-align:center;">'+(p.february||0)+'</td>';
     html+='<td style="text-align:center;">'+(p.january||0)+'</td>';
     html+='<td style="font-weight:700;text-align:center;">'+(p.ytd||0)+'</td>';
     html+='<td style="text-align:center;">'+fc+'</td>';
-    html+='<td style="font-weight:900;color:#9c5f38;text-align:center;">'+q2s+'</td>';
-    html+='<td style="font-weight:900;color:#7c5a3c;text-align:center;">'+q2q4+'</td>';
-    html+='<td style="font-weight:900;color:#9c5f38;text-align:center;">'+(p.d2d||0)+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2s+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2q4+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+(p.d2d||0)+'</td>';
     html+='</tr>';
   });
   // totals row
   var totQ2s=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+q;},0);
   var totQ2q4=totQ2s*3;
   var totFc=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
-  html+='<tr style="border-top:2px solid #d89c6c;background:#f8eadf;font-weight:900;">';
+  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
   html+='<td style="text-align:center;">Σ</td><td>Total</td>';
   var totJuneAct=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
   var juneDoneTot=Math.max(1,S.q2WorkingDaysDone-43);
   var totJuneFcst=visiblePartners.reduce(function(s,p){return s+(p.juneActual>0?Math.round((p.juneActual/juneDoneTot)*22):0);},0);
-  html+='<td style="text-align:center;color:#059669;font-weight:900;">'+totJuneAct+'</td>';
-  html+='<td style="text-align:center;"><span style="display:inline-block;min-width:40px;padding:2px 8px;font-weight:900;color:#059669;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+totJuneFcst+'</span></td>';
+  html+='<td style="text-align:center;color:#363E36;font-weight:900;">'+totJuneAct+'</td>';
+  html+='<td style="text-align:center;"><span style="display:inline-block;min-width:40px;padding:2px 8px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+totJuneFcst+'</span></td>';
   html+='<td style="text-align:center;color:#2563eb;font-weight:900;">'+totals.mayForecast+'</td>';
-  html+='<td style="text-align:center;color:#101820;font-weight:900;">'+totals.may+'</td>';
+  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+totals.may+'</td>';
   html+='<td style="text-align:center;">'+totals.april+'</td>';
   html+='<td style="text-align:center;">'+totals.march+'</td>';
   html+='<td style="text-align:center;">'+totals.february+'</td>';
   html+='<td style="text-align:center;">'+totals.january+'</td>';
   html+='<td style="text-align:center;">'+S.salesReportTotal2026+'</td>';
   html+='<td style="text-align:center;">'+totFc+'</td>';
-  html+='<td style="text-align:center;color:#9c5f38;">'+totQ2s+'</td>';
-  html+='<td style="text-align:center;color:#7c5a3c;">'+totQ2q4+'</td>';
-  html+='<td style="text-align:center;color:#9c5f38;">'+totals.d2d+'</td></tr>';
+  html+='<td style="text-align:center;color:#C86750;">'+totQ2s+'</td>';
+  html+='<td style="text-align:center;color:#C86750;">'+totQ2q4+'</td>';
+  html+='<td style="text-align:center;color:#C86750;">'+totals.d2d+'</td></tr>';
   html+='</tbody></table></div></div></div></section>';
 
   // ── COA MISSING ──
@@ -949,7 +951,7 @@ function render(){
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
   html+='<h2 style="color:#92400e;">CoA\'s missing</h2>';
   html+='<div style="background:#fff;border:1px solid #fcd34d;border-radius:1rem;padding:12px 20px;">';
-  html+='<div style="font-size:11px;font-weight:900;color:#9c5f38;text-transform:uppercase;">CoA\'s missing</div>';
+  html+='<div style="font-size:11px;font-weight:900;color:#C86750;text-transform:uppercase;">CoA\'s missing</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">20</div></div></div>';
   html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
   html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr><th>Project</th><th>Region</th><th>Agency</th><th>Status</th></tr></thead><tbody>';
@@ -973,7 +975,7 @@ function render(){
    
   ].forEach(function(item){
     html+='<tr style="background:rgba(255,241,242,.6);">';
-    var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#101820;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
+    var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#252121;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
     html+='<td style="font-weight:600;">'+item[1]+'</td>';
     html+='<td style="font-weight:600;">'+item[2]+'</td>';
     var statusText=item[3]||'wait 4 Calc 4 CoA';
@@ -987,7 +989,7 @@ function render(){
 
   // ── RUNNING PROJECTS ──
   html+='<section id="sec-projects" style="scroll-margin-top:70px;"><div class="container">';
-  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#f8eadf;">';
+  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#FBF5ED;">';
   html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;"><h2>Running Projects</h2><button class="btn-xlsx" onclick="exportProjectsXLSX()">⬇ Excel</button></div>';
   html+='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
   html+='<input value="'+esc(projectSearch)+'" id="search-project" placeholder="Search project..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="projectSearch=this.value;render();">';
@@ -1006,8 +1008,8 @@ function render(){
 
   html+='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;">';
   [['Sales Total 2026',S.salesReportTotal2026],['April',totals.april],['May',totals.may],['June Ist',totals.juneActual],['Projects',projs.length]].forEach(function(item){
-    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #e7c9b0;">';
-    html+='<div style="font-size:11px;font-weight:700;color:#9c5f38;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
     html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
   });
   html+='</div>';
@@ -1015,7 +1017,7 @@ function render(){
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
   html+='<table style="table-layout:fixed;">';
   html+='<colgroup><col style="width:30%"><col style="width:18%"><col style="width:16%"><col style="width:8%"><col style="width:8%"><col style="width:9%"><col style="width:11%"></colgroup>';
-  html+='<thead style="background:#f3dfcf;position:sticky;top:0;"><tr>';
+  html+='<thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
   [['Project','left'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
@@ -1028,13 +1030,13 @@ function render(){
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]];
     var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[4]||0)+'</td>';
-    html+='<td style="padding:8px;text-align:center;font-weight:700;color:#101820;">'+(r[5]||0)+'</td>';
-    var junVal=r[6]||0; html+='<td style="padding:8px;text-align:center;font-weight:700;color:'+(junVal>0?'#059669':'#9ca3af')+';">'+junVal+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;color:#252121;">'+(r[5]||0)+'</td>';
+    var junVal=r[6]||0; html+='<td style="padding:8px;text-align:center;font-weight:700;color:'+(junVal>0?'#363E36':'#9ca3af')+';">'+junVal+'</td>';
     html+='</tr>';
   });
   // Totals row
@@ -1042,20 +1044,20 @@ function render(){
   var sumApr=projs.reduce(function(s,r){return s+(r[4]||0);},0);
   var sumMay=projs.reduce(function(s,r){return s+(r[5]||0);},0);
   var sumJun=projs.reduce(function(s,r){return s+(r[6]||0);},0);
-  html+='<tr style="border-top:2px solid #d89c6c;background:#f3dfcf;font-weight:900;">';
+  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
   html+='<td style="padding:8px;">Σ Auswahl ('+projs.length+' Projekte)</td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumMar+'</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumApr+'</td>';
-  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#101820;font-size:1.1em;">'+sumMay+'</td>';
-  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#059669;font-size:1.1em;">'+sumJun+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#252121;font-size:1.1em;">'+sumMay+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#363E36;font-size:1.1em;">'+sumJun+'</td>';
   html+='</tr>';
   html+='</tbody></table></div></div></div></section>';
 
   // ── FUNNEL ──
   html+='<section id="sec-funnel" style="scroll-margin-top:70px;"><div class="container">';
-  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#f8eadf;">';
+  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#FBF5ED;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
   html+='<h2>Projects in Funnel</h2>';
   html+='<div style="display:flex;gap:8px;"><button class="btn-xlsx" onclick="exportFunnelXLSX()">⬇ Excel</button><button class="btn btn-brown" onclick="exportFunnelCSV()">CSV</button></div></div>';
@@ -1074,14 +1076,14 @@ function render(){
 
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">';
   [['Projects',funnel.length],['Total HP',totalHP.toLocaleString('de-DE')],['Total Sold',totalSold.toLocaleString('de-DE')]].forEach(function(item){
-    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #e7c9b0;">';
-    html+='<div style="font-size:11px;font-weight:700;color:#9c5f38;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
     html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
   });
   html+='</div>';
 
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
-  html+='<table><thead style="background:#f3dfcf;position:sticky;top:0;"><tr>';
+  html+='<table><thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
   var prioIcon=funnelSortKey==='Prio'?(funnelSortDir==='asc'?' ↑':' ↓'):''; html+='<th style="text-align:center;padding:8px;font-weight:900;cursor:pointer;"  id="prio-th">Prio'+prioIcon+'</th>';
   [['Project','Project'],['Status','Type'],['Region','Region'],['HC','Sold'],['HP','HP'],['Uptake','%']].forEach(function(col){
     html+='<th style="cursor:pointer;" onclick="funnelSortKey=\''+col[1]+'\';funnelSortDir=(funnelSortKey===\''+col[1]+'\'&&funnelSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(funnelSortKey===col[1]?(funnelSortDir==='asc'?'↑':'↓'):'')+'</th>';
@@ -1094,13 +1096,13 @@ function render(){
     var bobUrlF=bobLinks[r[0]];
     var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
     var pruefenProjs=['DE-BB Stadt Velten P1 HP0'];
-    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#d1fae5;color:#065f46;border:1px solid #059669;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':(pruefenProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>':''));
-    html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#4d3428;text-decoration:none;border-bottom:1px dotted #9c5f38;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
+    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':(pruefenProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>':''));
+    html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[4]+'</td>';
-    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#9c5f38;">'+esc(r[5])+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#C86750;">'+esc(r[5])+'</td>';
     html+='</tr>';
   });
   html+='</tbody></table></div></div></div></section>';
@@ -1127,12 +1129,12 @@ function render(){
     if(['geiselhöring','falkenfels','steinach','wiesenfelden'].indexOf(name)>=0||c.includes('kein interesse'))return'background:rgba(254,226,226,.7);color:#991b1b;';
     if(c.includes('t com'))return'background:rgba(254,226,226,.7);color:#991b1b;';
     if(name==='markt wallersdorf'||name==='straubing'||c.includes('prüfung'))return'background:rgba(255,237,213,.7);color:#9a3412;';
-    if(c.includes('positiv'))return'background:rgba(209,250,229,.7);color:#065f46;';
+    if(c.includes('positiv'))return'background:rgba(209,250,229,.7);color:#363E36;';
     return'';
   }
 
   html+='<section id="sec-potential" style="scroll-margin-top:70px;"><div class="container">';
-  html+='<div class="card" style="border:2px solid #e7c9b0;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
   html+='<div><h2>New Potential</h2><p style="color:#64748b;">Upcoming expansion opportunities and strategic focus areas.</p></div>';
   html+='<div style="display:flex;gap:8px;align-items:center;"><span class="badge tag-amber">Pipeline 2026</span><button class="btn-xlsx" onclick="exportPotentialXLSX()">⬇ Excel</button></div></div>';
@@ -1144,13 +1146,13 @@ function render(){
    {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technischer Leiter',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'},
    {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Leitung Geschäftsbereich Breitband',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',email:'klaus.eckel@ik-t.de'}
   ].forEach(function(c){
-    html+='<div style="background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:13px;">';
-    html+='<div style="font-weight:900;color:#4d3428;margin-bottom:8px;">'+esc(c.title)+'</div>';
+    html+='<div style="background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:13px;">';
+    html+='<div style="font-weight:900;color:#363E36;margin-bottom:8px;">'+esc(c.title)+'</div>';
     html+='<div style="font-weight:700;">'+esc(c.name)+'</div>';
     html+='<div style="color:#64748b;">'+esc(c.role||'')+'</div>';
     if(c.org)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.org)+'</div>';
     if(c.addr)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.addr)+'</div>';
-    html+='<div style="margin-top:8px;">Tel: <a href="tel:'+c.telLink+'" style="color:#9c5f38;font-weight:700;text-decoration:underline;">'+esc(c.tel)+'</a></div>';
+    html+='<div style="margin-top:8px;">Tel: <a href="tel:'+c.telLink+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(c.tel)+'</a></div>';
     html+='<div><a href="mailto:'+esc(c.email)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;">'+esc(c.email)+'</a></div>';
     html+='</div>';
   });
@@ -1174,15 +1176,15 @@ function render(){
   var positiv=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('positiv');}).length;
   var keins=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('kein interesse');}).length;
   [['Einträge',potFiltered.length],['Positiv ✅',positiv],['Kein Interesse ❌',keins]].forEach(function(item){
-    html+='<div style="background:#f8eadf;border-radius:1rem;padding:12px;border:1px solid #e7c9b0;">';
-    html+='<div style="font-size:11px;font-weight:700;color:#9c5f38;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="background:#FBF5ED;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
     html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
   });
   html+='</div>';
 
   // Table
   html+='<div style="overflow:auto;max-height:750px;border-radius:1rem;border:1px solid #e5e7eb;">';
-  html+='<table style="min-width:1200px;"><thead style="background:#f3dfcf;position:sticky;top:0;"><tr>';
+  html+='<table style="min-width:1200px;"><thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
   potCols.forEach(function(col){
     var sortable=['PLZ','Kommune','Region','Comment'].indexOf(col)>=0;
     html+='<th style="'+(sortable?'cursor:pointer;':'')+'" '+(sortable?'onclick="potentialSort=\''+col+'\';potentialDir=(potentialSort===\''+col+'\'&&potentialDir===\'asc\')?\'desc\':\'asc\';render();"':'')+'>'+col+' '+(potentialSort===col?(potentialDir==='asc'?'↑':'↓'):'')+'</th>';
@@ -1190,7 +1192,7 @@ function render(){
   html+='</tr></thead><tbody>';
   potFiltered.forEach(function(r,i){
     var cc=commentColor(r);
-    if(r[1]==='Bückeburg'||r[1]==='Rinteln'||r[1]==='Uchte') cc='background:rgba(209,250,229,.7);color:#065f46;';
+    if(r[1]==='Bückeburg'||r[1]==='Rinteln'||r[1]==='Uchte') cc='background:rgba(209,250,229,.7);color:#363E36;';
     html+='<tr style="'+(cc||'background:'+(i%2===0?'#fff':'rgba(248,234,223,.3)'))+'">';
     // PLZ
     html+='<td style="padding:8px;white-space:nowrap;">'+esc(r[0])+'</td>';
@@ -1211,7 +1213,7 @@ function render(){
     var tel=r[7]||'';
     var telClean=tel.replace(/[^0-9+]/g,'');
     var telHref=telClean.startsWith('0')?'+49'+telClean.slice(1):telClean;
-    html+='<td style="padding:8px;white-space:nowrap;">'+(tel?'<a href="tel:'+esc(telHref)+'" style="color:#9c5f38;font-weight:700;text-decoration:underline;">'+esc(tel)+'</a>':'')+'</td>';
+    html+='<td style="padding:8px;white-space:nowrap;">'+(tel?'<a href="tel:'+esc(telHref)+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(tel)+'</a>':'')+'</td>';
     // E-Mail
     var mail=r[8]||'';
     html+='<td style="padding:8px;">'+(mail?'<a href="mailto:'+esc(mail)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;font-size:12px;">'+esc(mail)+'</a>':'')+'</td>';
@@ -1245,7 +1247,7 @@ function render(){
     html+='</tbody></table></div></div></div></section>';
   }
   // ── FOOTER ──
-  html+='<div style="background:#4d3428;color:#fff;padding:32px 0;margin-top:20px;">';
+  html+='<div style="background:#363E36;color:#fff;padding:32px 0;margin-top:20px;">';
   html+='<div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
   html+='<div>📈 Make daily sales pace visible</div>';
   html+='<div>📅 Calculate Q2 progress automatically</div>';
@@ -1436,14 +1438,14 @@ function buildAgencyFilter(){
   bar.innerHTML='';
   var allBtn=document.createElement('button');
   allBtn.textContent='Alle';
-  allBtn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#4d3428':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');
+  allBtn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');
   allBtn.onclick=function(){selectedAgencies=null;render();};
   bar.appendChild(allBtn);
   partners.forEach(function(p,i){
     var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;
     var btn=document.createElement('button');
     btn.textContent=p.name;
-    btn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#4d3428':'#e2e8f0')+';color:'+(active?'#fff':'#475569');
+    btn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');
     btn.onclick=function(){toggleAgency(i);};
     bar.appendChild(btn);
   });
@@ -1525,8 +1527,8 @@ function heroSearch(val){
   } else {
     box.innerHTML=results.slice(0,12).map(function(r){
       return '<div onclick="goToResult(\'' + r.sectionId + '\',\'' + esc(r.name).replace(/'/g,"\'") + '\')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;hover:background:#f8f8f8;">' +
-        '<div style="font-weight:700;font-size:13px;color:#101820;">' + esc(r.name) + '</div>' +
-        '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + esc(r.type||'') + (r.agency?' · '+esc(r.agency):'') + ' · <b style="color:#9c5f38;">' + r.section + '</b></div>' +
+        '<div style="font-weight:700;font-size:13px;color:#252121;">' + esc(r.name) + '</div>' +
+        '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + esc(r.type||'') + (r.agency?' · '+esc(r.agency):'') + ' · <b style="color:#C86750;">' + r.section + '</b></div>' +
       '</div>';
     }).join('');
   }
