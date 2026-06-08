@@ -192,6 +192,7 @@ var projectRows = [
   ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0,0],
   ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,0],
   // ── Open Infra CS ─────────────────────────────────────────────────────
+  ["DE-BB Schöneiche HP0","HP0","Open Infra CS",2,2,0,0],
   ["DE-BB Falkensee HP0","HP0","Open Infra CS",1,0,1,0],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","Open Infra CS",1,1,0,0],
   ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0,0],
@@ -813,7 +814,7 @@ function render(){
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
   html+='<div style="margin-top:24px;position:relative;max-width:480px;">';
   html+='<input id="hero-search" type="text" placeholder="🔍  Projekt suchen..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
-  html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:320px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
+  html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:560px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
   html+='</div>';
   html+='</div>';
   // summary card
@@ -962,7 +963,7 @@ function render(){
    ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
-   ["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],
+   ,
    ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
    ,
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
@@ -1505,7 +1506,7 @@ function heroSearch(val){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
   });
   // Search CoA's missing
-  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Schöneiche HP0","BB","Team Tatjana","wait 4 Calc 4 CoA"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],];
+  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],["DE-BB Neuzelle P5","BB","Stonemedia GmbH","Calc is sent to Oda"],];
   coaItems.forEach(function(r){
     if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
   });
