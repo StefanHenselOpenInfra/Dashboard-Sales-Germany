@@ -7,21 +7,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#FBF5ED;color:#252121;font-family:system-ui,sans-serif;font-size:14px;}
+body{background:#f5e3d8;color:#101820;font-family:system-ui,sans-serif;font-size:14px;}
 h1{font-size:2.5rem;font-weight:900;line-height:1.1;}
 h2{font-size:1.75rem;font-weight:900;}
 h3{font-size:1.1rem;font-weight:900;}
-.container{max-width:min(1800px,96vw);margin:0 auto;padding:0 24px;}
+.container{max-width:1280px;margin:0 auto;padding:0 24px;}
 .card{background:#fff;border-radius:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:24px;}
 .badge{display:inline-flex;align-items:center;padding:3px 12px;border-radius:9999px;font-size:11px;font-weight:700;white-space:nowrap;}
 .btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-weight:700;font-size:12px;padding:8px 16px;border-radius:9999px;transition:background .15s;}
-.btn-dark{background:#363E36;color:#fff;}
-.btn-dark:hover{background:#C86750;}
-.btn-brown{background:#C86750;color:#fff;border-radius:1rem;}
-.btn-brown:hover{background:#363E36;}
-.btn-gold{background:#C86750;color:#fff;}
-.btn-gold:hover{background:#C86750;}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #E4A489;padding:10px min(24px,2vw);display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.btn-dark{background:#4d3428;color:#fff;}
+.btn-dark:hover{background:#9c5f38;}
+.btn-brown{background:#9c5f38;color:#fff;border-radius:1rem;}
+.btn-brown:hover{background:#4d3428;}
+.btn-gold{background:#d89c6c;color:#fff;}
+.btn-gold:hover{background:#9c5f38;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e7c9b0;padding:10px 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
 section{padding:40px 0;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -38,30 +38,27 @@ th{font-weight:900;font-size:12px;}
 tr:not(:first-child){border-top:1px solid #f1f1f1;}
 .scroll-area{overflow-y:auto;max-height:800px;}
 input,select{border:1px solid #ddd;border-radius:1rem;padding:10px 14px;font-size:13px;outline:none;background:#fff;width:100%;}
-input:focus,select:focus{box-shadow:0 0 0 2px #C86750;}
+input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 .pb{height:10px;border-radius:9999px;overflow:hidden;}
 .pb-bg{width:100%;}
 /* Progress bar colors */
-.pb-success{background:#E0EFE0;}
+.pb-success{background:#059669;}
 .pb-danger{background:#dc2626;}
-.pb-bg-success{background:#E0EFE0;}
+.pb-bg-success{background:#d1fae5;}
 .pb-bg-danger{background:#fee2e2;}
-.pb-time{background:#C86750;}
-.pb-time-bg{background:#FBF5ED;}
+.pb-time{background:#d89c6c;}
+.pb-time-bg{background:#f3dfcf;}
 /* Modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;}
 .modal{background:#fff;border-radius:1.5rem;padding:32px;max-width:560px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25);}
-.dropzone{border:2px dashed #C86750;border-radius:1rem;padding:32px;text-align:center;cursor:pointer;}
-.dropzone:hover,.dropzone.over{background:#fdf0e7;border-color:#C86750;}
-.tag-success{background:#F1FAF1;color:#363E36;}
+.dropzone{border:2px dashed #d89c6c;border-radius:1rem;padding:32px;text-align:center;cursor:pointer;}
+.dropzone:hover,.dropzone.over{background:#fdf0e7;border-color:#9c5f38;}
+.tag-success{background:#d1fae5;color:#065f46;}
 .tag-danger{background:#fee2e2;color:#991b1b;}
 .tag-amber{background:#fef3c7;color:#92400e;}
 .tag-slate{background:#1e293b;color:#fff;}
 .hidden{display:none;}
 .sticky-head{position:sticky;top:0;z-index:10;}
-.btn-xlsx{background:#363E36;color:#fff;border-radius:1rem;padding:7px 14px;font-size:12px;font-weight:700;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s;}.btn-xlsx:hover{background:#363E36;}
-#hero-results div:hover{background:#f8fafc;}
-#hero-search::placeholder{color:rgba(255,255,255,0.6);}
 </style>
 </head>
 <body>
@@ -77,8 +74,7 @@ input:focus,select:focus{box-shadow:0 0 0 2px #C86750;}
   <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-cemetery')" style="background:#374151;">&#127944; Cemetery</button>
-  <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button><button class="btn-xlsx" style="border-radius:9999px;" onclick="exportAllXLSX()">⬇ Alles exportieren</button>
+  <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
 
@@ -91,13 +87,13 @@ input:focus,select:focus{box-shadow:0 0 0 2px #C86750;}
     </div>
     <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
       <div style="font-size:3rem;margin-bottom:8px;">📊</div>
-      <div style="font-weight:700;color:#363E36;">Excel-Datei hier ablegen</div>
+      <div style="font-weight:700;color:#4d3428;">Excel-Datei hier ablegen</div>
       <div style="font-size:12px;color:#888;margin-top:4px;">oder klicken zum Auswählen (.xlsx)</div>
       <input type="file" id="file-input" accept=".xlsx,.xls" class="hidden" onchange="handleFileSelect(event)"/>
     </div>
     <div id="import-status" style="margin-top:16px;display:none;padding:12px;border-radius:12px;background:#f8f8f8;font-weight:600;font-size:13px;"></div>
-    <div style="margin-top:20px;background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:12px;">
-      <div style="font-weight:900;color:#363E36;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
+    <div style="margin-top:20px;background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:12px;">
+      <div style="font-weight:900;color:#4d3428;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
       <div style="line-height:1.8;color:#555;">
         <b>Partners</b> — Partner, January, February, March, April, May, MayForecast, YTD, Forecast2026, D2D<br>
         <b>KPIs</b> — Category, April, May<br>
@@ -114,23 +110,1089 @@ input:focus,select:focus{box-shadow:0 0 0 2px #C86750;}
 <div id="app"></div>
 
 <script>
+// ── STATE ────────────────────────────────────────────────────────────────────
+var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
+var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
+var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentialDir='asc';
+var agencySortKey='June Ist', agencySortDir='desc';
+var selectedAgencies=null;
+var cemeterySearch='';
+var reservedSearch='';
+
+// Data placeholders (loaded from data.json)
+var partners=[], kpiActuals={}, settings={}, projectRows=[], funnelRowsRaw=[];
+var cemeteryRows=[], potentialRows=[], bobLinks={};
+var netSales=0, cancelled=0;
+
+// ── LOAD DATA ─────────────────────────────────────────────────────────────────
+function loadData(callback){
+  fetch('data.json?v=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      partners = d.partners || [];
+      kpiActuals = d.kpiActuals || {};
+      settings = d.settings || {};
+      projectRows = d.projectRows || [];
+      funnelRowsRaw = d.funnelRowsRaw || [];
+      cemeteryRows = d.cemeteryRows || [];
+      potentialRows = d.potentialRows || [];
+      bobLinks = d.bobLinks || {};
+      netSales = d.netSales || 0;
+      cancelled = d.cancelled || 0;
+      if(callback) callback();
+    })
+    .catch(function(err){
+      console.warn('data.json nicht gefunden, verwende eingebettete Daten:', err);
+      if(callback) callback();
+    });
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function normType(t){
+  var v=(t||'').toLowerCase().trim();
+  if(v==='base sales'||v.includes('upsell')||v.includes('up sell')||v==='base sales / up sales')return'Base Sales / Up Sales';
+  if(v.includes('build'))return'Build Sales';
+  if(v.includes('hp0')||v.includes('after market'))return'After Market / HP0 Sales';
+  return t;
+}
+function fmtPct(sold,hp){
+  if(!hp||Number(hp)===0)return'0%';
+  return(Number(sold)/Number(hp)*100).toFixed(1).replace('.',',')+'%';
+}
+function sum(arr,key){return arr.reduce(function(s,p){return s+(p[key]||0);},0);}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function scrollToSection(id){
+  var el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── COMPUTE KPIs ─────────────────────────────────────────────────────────────
+function computeKpis(){
+  var totals={january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:0,forecast:0,d2d:0};
+  partners.forEach(function(p){
+    Object.keys(totals).forEach(function(k){totals[k]+=(p[k]||0);});
+  });
+
+  var mayFF=totals.may&&totals.mayForecast?totals.mayForecast/totals.may:1;
+  var doneWD=settings.q2WorkingDaysDone, leftWD=settings.q2WorkingDaysLeft;
+  var timePct=Math.round(doneWD/(doneWD+leftWD)*100);
+
+  function getKpi(label,target){
+    var src=kpiActuals[label]||{april:0,may:0};
+    var juneDone=Math.max(1,settings.q2WorkingDaysDone-43);
+    var juneRem=Math.max(0,22-juneDone);
+    var juneAct=src.june||0;
+    var juneProj=Math.round(juneAct/juneDone*juneRem); // remaining june days
+    var actual=src.april+src.may+juneAct;
+    var forecast=actual+juneProj; // April+May+JuneActual+JuneRemaining
+    return{
+      title:label,actual:actual,target:target,forecast:forecast,
+      delta:target-forecast,
+      pct:Math.round(actual/target*100),
+      forecastPct:Math.round(forecast/target*100),
+      timePct:timePct,
+      pace:(actual/doneWD).toFixed(1).replace('.',','),
+      needed:Math.max(0,(target-actual)/leftWD).toFixed(1).replace('.',','),
+      ok:forecast>=target
+    };
+  }
+
+  return{
+    kpis:[getKpi("Base Sales / Up Sales",1000),getKpi("After Market / HP0 Sales",250),getKpi("Build Sales",150)],
+    totals:totals,
+    timePct:timePct
+  };
+}
+
+// ── SVG LINE CHART ───────────────────────────────────────────────────────────
+function svgLineChart(data,refY,refLabel,maxY,color){
+  var W=700,H=280,PL=50,PR=20,PT=40,PB=40;
+  var IW=W-PL-PR,IH=H-PT-PB;
+  var n=data.length;
+  var maxVal=maxY||Math.max.apply(null,data.map(function(d){return d.value||0;}))*1.2||100;
+  function px(i){return PL+i/(n-1)*IW;}
+  function py(v){return PT+IH-(v/maxVal)*IH;}
+
+  var points=data.map(function(d,i){return px(i)+','+py(d.value||0);}).join(' ');
+  var areaPoints='M'+data.map(function(d,i){return px(i)+','+py(d.value||0);}).join('L')+
+    'L'+px(n-1)+','+(PT+IH)+'L'+px(0)+','+(PT+IH)+'Z';
+
+  // gridlines
+  var gridLines='';
+  [0,0.25,0.5,0.75,1].forEach(function(f){
+    var y=PT+IH*(1-f);
+    var val=Math.round(maxVal*f);
+    gridLines+='<line x1="'+PL+'" y1="'+y+'" x2="'+(W-PR)+'" y2="'+y+'" stroke="#e5e7eb" stroke-width="1"/>';
+    gridLines+='<text x="'+(PL-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="10" fill="#9ca3af">'+val+'</text>';
+  });
+
+  // reference line
+  var refLine='';
+  if(refY!==undefined){
+    var ry=py(refY);
+    refLine='<line x1="'+PL+'" y1="'+ry+'" x2="'+(W-PR)+'" y2="'+ry+'" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,6"/>';
+    refLine+='<text x="'+(W-PR-4)+'" y="'+(ry-6)+'" text-anchor="end" font-size="11" fill="#ef4444" font-weight="700">'+refLabel+'</text>';
+  }
+
+  // x labels
+  var xLabels=data.map(function(d,i){
+    return'<text x="'+px(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="#6b7280">'+esc(d.month)+'</text>';
+  }).join('');
+
+  // dots + values + growth
+  var dots=data.map(function(d,i){
+    var x=px(i),y=py(d.value||0);
+    var isPositive=d.growth&&d.growth.charAt(0)!=='-';
+    var dotColor=d.q3?'#7c3aed':color;
+    var growthColor=d.q3?'#6d28d9':(isPositive?'#363E36':'#dc2626');
+    var growthBg=d.q3?'#ede9fe':(isPositive?'#F1FAF1':'#fee2e2');
+    var out='<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+dotColor+'" stroke="#fff" stroke-width="2"/>';
+    out+='<text x="'+x+'" y="'+(y-14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="'+dotColor+'">'+(d.value||0)+'</text>';
+    if(d.growth){
+      out+='<rect x="'+(x-18)+'" y="'+(y-38)+'" width="36" height="16" rx="4" fill="'+growthBg+'"/>';
+      out+='<text x="'+x+'" y="'+(y-26)+'" text-anchor="middle" font-size="10" font-weight="800" fill="'+growthColor+'">'+d.growth+'</text>';
+    }
+    if(d.note){
+      var nw=Math.max(120,d.note.length*5.8);
+      out+='<rect x="'+(x-nw/2)+'" y="'+(y+10)+'" width="'+nw+'" height="16" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>';
+      out+='<text x="'+x+'" y="'+(y+22)+'" text-anchor="middle" font-size="9" font-weight="700" fill="#92400e">'+d.note+'</text>';
+    }
+    return out;
+  }).join('');
+
+  return '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;">'+
+    '<defs><linearGradient id="grad'+color.replace('#','')+'" x1="0" y1="0" x2="0" y2="1">'+
+    '<stop offset="0%" stop-color="'+color+'" stop-opacity="0.15"/>'+
+    '<stop offset="100%" stop-color="'+color+'" stop-opacity="0.01"/>'+
+    '</linearGradient></defs>'+
+    gridLines+refLine+
+    '<path d="'+areaPoints+'" fill="url(#grad'+color.replace('#','')+')"/>'+
+    '<polyline points="'+points+'" fill="none" stroke="'+color+'" stroke-width="3" stroke-linejoin="round"/>'+
+    dots+xLabels+
+    '</svg>';
+}
+
+// ── RENDER ───────────────────────────────────────────────────────────────────
+function render(){
+  var c=computeKpis();
+  var kpis=c.kpis,totals=c.totals,timePct=c.timePct;
+  var totalQ2=totals.april+totals.may+totals.juneActual;
+  var totalTarget=kpis.reduce(function(s,k){return s+k.target;},0);
+  var totalForecast=kpis.reduce(function(s,k){return s+k.forecast;},0);
+  var targetReached=Math.round(totalQ2/totalTarget*100);
+  var forecastReached=Math.round(totalForecast/totalTarget*100);
+  var S=settings;
+
+  // sales trend data — Ist-Werte brutto aus settings, May Forecast = Summe der Partner-Forecasts
+  var jan=S.jan||totals.january,feb=S.feb||totals.february,mar=S.mar||totals.march,apr=S.apr||totals.april,mayF=totals.mayForecast||S.may;
+  function growthLabel(cur,prev){
+    if(!prev||prev===0) return null;
+    var pct=Math.round((cur-prev)/prev*100);
+    return (pct>=0?'+':'')+pct+'%';
+  }
+  // Q3-Projektion: Q2-Delta aufholen + Q3-Ziel
+  var q2Delta=Math.max(0,totalTarget-totalForecast);
+  var q3Needed=totalTarget+q2Delta;
+  var q3Monthly=Math.round(q3Needed/3);
+  var jul=q3Monthly, aug=q3Monthly, sep=q3Needed-jul-aug;
+
+  var salesData=[
+    {month:'Jan',value:jan,growth:null},
+    {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
+    {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
+    {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
+    {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
+    {month:'June Forecast',value:Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*22),growth:growthLabel(Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*22),S.may),forecast:true},
+    {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
+    {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
+    {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
+  ];
+  var dailyData=[
+    {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
+    {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
+    {month:'May',value:+(S.may/21).toFixed(1)},{month:'Jun Forecast',value:+(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)).toFixed(1),forecast:true},{month:'Target June',value:+(mayF/21).toFixed(1),forecast:true},
+    {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
+  ];
+
+  // filter/sort projects
+  var projs=projectRows.filter(function(r){
+    return(typeFilter==='All'||normType(r[1])===typeFilter)&&
+      (salesFilter==='All'||r[2]===salesFilter)&&
+      r.join(' ').toLowerCase().includes(projectSearch.toLowerCase());
+  });
+  var pIdx={Project:0,Type:1,'Sales Agency':2,March:3,April:4,May:5,June:6}[projSortKey]||5;
+  projs.sort(function(a,b){
+    var av=a[pIdx],bv=b[pIdx];
+    var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
+    return projSortDir==='asc'?r:-r;
+  });
+
+  // filter/sort funnel
+  var funnelRows=funnelRowsRaw.map(function(r){
+    return[r[0],r[1],r[2],r[3],r[4],fmtPct(r[3],r[4])];
+  });
+  var funnel=funnelRows.filter(function(r){
+    return(funnelTypeFilter==='All'||normType(r[1])===funnelTypeFilter)&&
+      r.join(' ').toLowerCase().includes(funnelSearch.toLowerCase());
+  });
+  var funnelPrioMap={};
+  funnelRows.forEach(function(r){ funnelPrioMap[r[0]]=r[1].toLowerCase().includes('hp0')||r[0]==='DE-BB Diehlo P1'?1:0; });
+  var fIdx={Project:0,Type:1,Region:2,Sold:3,HP:4,'%':5}[funnelSortKey];
+  funnel.sort(function(a,b){
+    if(funnelSortKey==='Prio'){
+      var pa=funnelPrioMap[a[0]]||0, pb=funnelPrioMap[b[0]]||0;
+      return funnelSortDir==='asc'?pa-pb:pb-pa;
+    }
+    if(fIdx===undefined) return 0;
+    var av=a[fIdx],bv=b[fIdx];
+    var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
+    return funnelSortDir==='asc'?r:-r;
+  });
+  var totalHP=funnel.reduce(function(s,r){return s+(Number(r[4])||0);},0);
+  var totalSold=funnel.reduce(function(s,r){return s+(Number(r[3])||0);},0);
+
+  // project type/agency options
+  var pTypes=['All'].concat([...new Set(projectRows.map(function(r){return normType(r[1]);}))]);
+  var pAgencies=['All'].concat([...new Set(projectRows.map(function(r){return r[2];}))]);
+  var fTypes=['All'].concat([...new Set(funnelRows.map(function(r){return normType(r[1]);}))]);
+
+  // agency sort
+  var visiblePartners=selectedAgencies?partners.filter(function(p){return selectedAgencies.indexOf(p.name)>=0;}):partners;
+  var sortedPartners=[...visiblePartners].sort(function(a,b){
+    var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may','June Ist':'juneActual','Target June':'mayForecast',YTD:'ytd','Forecast 2026':'forecast'};
+    var k=km[agencySortKey]||'may';
+    var av=k==='name'?a.name:(a[k]||0);
+    var bv=k==='name'?b.name:(b[k]||0);
+    var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
+    return agencySortDir==='asc'?r:-r;
+  });
+
+  function pb(val,max,colorClass,bgClass){
+    var w=Math.min(val/max*100,100);
+    return'<div class="pb '+bgClass+'"><div class="pb '+colorClass+'" style="width:'+w+'%;height:100%;border-radius:9999px;"></div></div>';
+  }
+
+  function kpiCard(k){
+    var col=k.ok?'#363E36':'#dc2626';
+    var bgBadge=k.ok?'tag-success':'tag-danger';
+    return'<div class="card" style="border:2px solid '+(k.ok?'#a7f3d0':'#fecaca')+';">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
+        '<div>'+
+          '<h3>'+esc(k.title)+'</h3>'+
+          '<span class="badge '+bgBadge+'" style="margin-top:10px;">'+(k.ok?'✓ On track':'⚠ Off track')+'</span>'+
+        '</div>'+
+        '<span style="font-size:1.5rem;">⚡</span>'+
+      '</div>'+
+      '<div style="margin-top:24px;display:flex;align-items:flex-end;justify-content:space-between;">'+
+        '<div>'+
+          '<span style="font-size:3rem;font-weight:900;">'+k.actual+'</span>'+
+          '<span style="color:#64748b;margin-left:8px;">/ '+k.target+'</span>'+
+          '<p style="margin-top:4px;font-size:12px;color:#64748b;">Q2 Brutto / Ziel</p>'+
+        '</div>'+
+        '<div style="font-size:2rem;font-weight:900;color:'+col+';">'+k.pct+'%</div>'+
+      '</div>'+
+      '<div style="margin-top:16px;">'+pb(k.pct,100,k.ok?'pb-success':'pb-danger',k.ok?'pb-bg-success':'pb-bg-danger')+'</div>'+
+      '<div style="margin-top:16px;background:#FBF5ED;border:1px solid rgba(216,156,108,.4);border-radius:1rem;padding:12px;">'+
+        '<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;"><span>Q2 Time Progress</span><span>'+timePct+'%</span></div>'+
+        '<div class="pb pb-time-bg"><div class="pb pb-time" style="width:'+timePct+'%;height:100%;border-radius:9999px;"></div></div>'+
+        '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px;"><span>01 Apr</span><span>30 Jun</span></div>'+
+      '</div>'+
+      '<div style="margin-top:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:12px;font-size:13px;display:flex;justify-content:space-between;align-items:center;">'+
+        '<span style="font-weight:700;color:#475569;">Delta</span>'+
+        '<span style="font-weight:900;color:'+col+';">'+(k.delta>0?k.delta+' missing':Math.abs(k.delta)+' ahead')+'</span>'+
+      '</div>'+
+      '<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;">'+
+        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.forecast+'</b><br><span style="color:#64748b;">Forecast</span></div>'+
+        '<div style="background:#0f172a;border-radius:1rem;padding:10px;color:#fff;"><b style="font-size:1.5rem;font-weight:900;">'+k.forecastPct+'%</b><br><b>Q2 Forecast</b></div>'+
+        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.pace+'</b><br><span style="color:#64748b;">Pace/Day</span></div>'+
+        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.needed+'</b><br><span style="color:#64748b;">Required/Day</span></div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  var html='';
+
+  // ── HERO ──
+  html+='<div id="sec-top" style="background:#363E36;color:#fff;padding:48px 0 40px;scroll-margin-top:70px;">';
+  html+='<div class="container"><div class="hero-grid">';
+  html+='<div>';
+  html+='<div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:1rem;padding:12px 20px;margin-bottom:20px;">';
+  html+='<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUwIiBmaWxsPSIjRjVERUQ0Ii8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NiIgcj0iMjgiIGZpbGw9IiMxMDE4MjAiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjQ2IiByPSIxNiIgZmlsbD0iI0Y1REVENCIvPgogIDxyZWN0IHg9IjQ0IiB5PSI3MiIgd2lkdGg9IjEyIiBoZWlnaHQ9IjE0IiByeD0iNiIgZmlsbD0iIzEwMTgyMCIvPgo8L3N2Zz4=" alt="Open Infra" style="height:40px;width:40px;">';
+  html+='<img src="https://openinfra.com/se/wp-content/themes/openinfra/assets/img/logo.svg" alt="Open Infra" style="height:32px;" onerror="this.style.display=\'none\'">';
+  html+='<span style="font-size:1.2rem;font-weight:900;color:#252121;">Open Infra</span></div><br>';
+  html+='<span class="badge" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:16px;">Q2 Sales Performance · 2026</span>';
+  html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
+  html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
+  html+='<div style="margin-top:24px;position:relative;max-width:480px;">';
+  html+='<input id="hero-search" type="text" placeholder="🔍  Projekt suchen..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
+  html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:560px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
+  html+='</div>';
+  html+='</div>';
+  // summary card
+  html+='<div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:24px;">';
+  html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
+  html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
+  html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
+  var grossSales=S.salesReportTotal2026;
+  var netSales=1337;
+  var cancelled=84;
+  var cancelRate=(cancelled/grossSales*100).toFixed(1);
+  html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
+  html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
+  html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
+  html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
+  html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span></div>';
+  html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Achievement</div>';
+  html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
+  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
+  html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
+  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+  html+='</div></div></div></div></div>';
+
+  // ── KPI CARDS ──
+  html+='<section id="sec-kpi" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
+  html+='<div><h2>Q2 KPI Cards</h2><p style="color:#64748b;">Status, pace, and forecast per category.</p></div>';
+  html+='<span class="badge tag-slate">Status: today</span><button class="btn-xlsx" onclick="exportKpiXLSX()">⬇ Excel</button></div>';
+  html+='<div class="kpi-grid">'+kpis.map(kpiCard).join('')+'</div>';
+  html+='</div></section>';
+
+  // ── SALES DEVELOPMENT ──
+  html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
+  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span></p></div>';
+  html+='<span class="badge tag-amber">2026</span></div>';
+  var q3Pace=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3); html+=svgLineChart(salesData,q3Pace,'Q3 Target Pace '+q3Pace+'/Monat',900,'#3182ce');
+  html+='</div></div></section>';
+
+  // ── DAILY AVERAGE ──
+  html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
+  html+='<div><h2>Daily Sales Average</h2><p style="color:#64748b;">Average daily sales development</p></div>';
+  html+='<span class="badge tag-success">2026</span></div>';
+  html+=svgLineChart(dailyData,20,'Target 20/day',35,'#363E36');
+  html+='</div></div></section>';
+
+  // ── MANAGEMENT ──
+  html+='<section id="sec-mgmt" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="margin-bottom:20px;">';
+  html+='<h2 style="margin-bottom:20px;">🎯 Management Summary</h2>';
+  
+  html+='</div>';
+
+  // Agency table
+  html+='<div class="card">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
+  html+='<h2 style="font-size:2rem;">👥 Agency Overview</h2>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="agencySortKey=this.value;render();" style="width:auto;">';
+  ['June Ist','May','Target June','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
+    html+='<option'+(agencySortKey===k?' selected':'')+'>'+k+'</option>';
+  });
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="agencySortDir=agencySortDir===\'asc\'?\'desc\':\'asc\';render();">'+(agencySortDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+  // Agency filter buttons
+  html+='<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:16px;" id="agency-filter-bar"></div>';
+  // render filter buttons via DOM after html is set
+  window._agencyFilterNeeded=true;
+  html+='<div style="overflow-x:auto;border-radius:1rem;border:1px solid #e2e8f0;">';
+  html+='<table><thead style="background:#f1f5f9;"><tr>';
+  ['#','Partner','June Ist','June Forecast','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D'].forEach(function(h){
+    html+='<th style="text-align:center;">'+h+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  sortedPartners.forEach(function(p,i){
+    var q2s=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);
+    var q2q4=q2s*3;
+    var fc=(p.january||0)+(p.february||0)+(p.march||0)+q2q4;
+    html+='<tr>';
+    html+='<td style="font-weight:900;color:#C86750;">#'+(i+1)+'</td>';
+    html+='<td style="font-weight:600;white-space:nowrap;">'+esc(p.name)+(p.comingSoon?'<span class="badge tag-amber" style="margin-left:8px;">soon</span>':'')+'</td>';
+    var juneDone=Math.max(1,S.q2WorkingDaysDone-43);
+    var juneFcst=p.juneActual>0?Math.round((p.juneActual/juneDone)*22):0;
+    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#363E36':'#94a3b8')+';text-align:center;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
+    var arrow=''; if(juneFcst>0&&p.may>0){if(juneFcst>p.may)arrow='<span style="color:#363E36;font-size:14px;margin-left:4px;">&#8679;</span>';else if(juneFcst<p.may)arrow='<span style="color:#dc2626;font-size:14px;margin-left:4px;">&#8681;</span>';}
+    html+='<td style="text-align:center;">'+(juneFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+juneFcst+arrow+'</span>':'<span style="color:#94a3b8;font-weight:700;">0</span>')+'</td>';
+    html+='<td style="font-weight:700;color:#2563eb;text-align:center;">'+(p.mayForecast||0)+'</td>';
+    html+='<td style="font-weight:900;color:#252121;text-align:center;">'+(p.may||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.april||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.march||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.february||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.january||0)+'</td>';
+    html+='<td style="font-weight:700;text-align:center;">'+(p.ytd||0)+'</td>';
+    html+='<td style="text-align:center;">'+fc+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2s+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2q4+'</td>';
+    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+(p.d2d||0)+'</td>';
+    html+='</tr>';
+  });
+  // totals row
+  var totQ2s=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+q;},0);
+  var totQ2q4=totQ2s*3;
+  var totFc=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
+  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
+  html+='<td style="text-align:center;">Σ</td><td>Total</td>';
+  var totJuneAct=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
+  var juneDoneTot=Math.max(1,S.q2WorkingDaysDone-43);
+  var totJuneFcst=visiblePartners.reduce(function(s,p){return s+(p.juneActual>0?Math.round((p.juneActual/juneDoneTot)*22):0);},0);
+  html+='<td style="text-align:center;color:#363E36;font-weight:900;">'+totJuneAct+'</td>';
+  html+='<td style="text-align:center;"><span style="display:inline-block;min-width:40px;padding:2px 8px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+totJuneFcst+'</span></td>';
+  html+='<td style="text-align:center;color:#2563eb;font-weight:900;">'+totals.mayForecast+'</td>';
+  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+totals.may+'</td>';
+  html+='<td style="text-align:center;">'+totals.april+'</td>';
+  html+='<td style="text-align:center;">'+totals.march+'</td>';
+  html+='<td style="text-align:center;">'+totals.february+'</td>';
+  html+='<td style="text-align:center;">'+totals.january+'</td>';
+  html+='<td style="text-align:center;">'+S.salesReportTotal2026+'</td>';
+  html+='<td style="text-align:center;">'+totFc+'</td>';
+  html+='<td style="text-align:center;color:#C86750;">'+totQ2s+'</td>';
+  html+='<td style="text-align:center;color:#C86750;">'+totQ2q4+'</td>';
+  html+='<td style="text-align:center;color:#C86750;">'+totals.d2d+'</td></tr>';
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── COA MISSING ──
+  html+='<section id="sec-coa" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid #fde68a;background:#fffbeb;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+  html+='<h2 style="color:#92400e;">CoA\'s missing</h2>';
+  html+='<div style="background:#fff;border:1px solid #fcd34d;border-radius:1rem;padding:12px 20px;">';
+  html+='<div style="font-size:11px;font-weight:900;color:#C86750;text-transform:uppercase;">CoA\'s missing</div>';
+  html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">20</div></div></div>';
+  html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
+  html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr><th>Project</th><th>Region</th><th>Agency</th><th>Status</th></tr></thead><tbody>';
+  [["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],
+   ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],
+   ["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],
+   ["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],
+   ["DE-BB Fürstenwalde P7","BB","United Promotion",""],
+   ["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],
+   ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
+   ["DE-BB Beetzsee P2","BB","United Promotion",""],
+   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
+   ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
+   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
+   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
+   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"]
+  ].forEach(function(item){
+    html+='<tr style="background:rgba(255,241,242,.6);">';
+    var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#252121;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
+    html+='<td style="font-weight:600;">'+item[1]+'</td>';
+    html+='<td style="font-weight:600;">'+item[2]+'</td>';
+    var statusText=item[3]||'wait 4 Calc 4 CoA';
+    var statusStyle=statusText==='Calc is sent to Oda'
+      ?'background:#fff;color:#dc2626;border:2px solid #dc2626;font-weight:900;'
+      :'background:#fef3c7;color:#92400e;';
+    html+='<td><span class="badge" style="'+statusStyle+'">'+esc(statusText)+'</span></td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── RUNNING PROJECTS ──
+  html+='<section id="sec-projects" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#FBF5ED;">';
+  html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;"><h2>Running Projects</h2><button class="btn-xlsx" onclick="exportProjectsXLSX()">⬇ Excel</button></div>';
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<input value="'+esc(projectSearch)+'" id="search-project" placeholder="Search project..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="projectSearch=this.value;render();">';
+  html+='<select onchange="typeFilter=this.value;render();">';
+  pTypes.forEach(function(t){html+='<option'+(typeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
+  html+='</select>';
+  html+='<select onchange="salesFilter=this.value;render();">';
+  pAgencies.forEach(function(a){html+='<option'+(salesFilter===a?' selected':'')+'>'+esc(a)+'</option>';});
+  html+='</select>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="projSortKey=this.value;render();" style="flex:1;">';
+  ['Project','Type','Sales Agency','March','April','May'].forEach(function(k){html+='<option'+(projSortKey===k?' selected':'')+'>'+k+'</option>';});
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="projSortDir=projSortDir===\'asc\'?\'desc\':\'asc\';render();">'+(projSortDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+
+  html+='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;">';
+  [['Sales Total 2026',S.salesReportTotal2026],['April',totals.april],['May',totals.may],['June Ist',totals.juneActual],['Projects',projs.length]].forEach(function(item){
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+  });
+  html+='</div>';
+
+  html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
+  html+='<table style="table-layout:fixed;">';
+  html+='<colgroup><col style="width:30%"><col style="width:18%"><col style="width:16%"><col style="width:8%"><col style="width:8%"><col style="width:9%"><col style="width:11%"></colgroup>';
+  html+='<thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
+  [['Project','left'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
+    html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  projs.forEach(function(r,i){
+    var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
+    var gestopptList=[];
+    var offTrackExclude=['DE-BB Stadt Fürstenwalde P1-P3 HP0','DE-BB Storkow P8'];
+    var allZero=(((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0)&&offTrackExclude.indexOf(r[0])<0;
+    html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
+    var bobUrl=bobLinks[r[0]];
+    var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
+    html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[4]||0)+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;color:#252121;">'+(r[5]||0)+'</td>';
+    var junVal=r[6]||0; html+='<td style="padding:8px;text-align:center;font-weight:700;color:'+(junVal>0?'#363E36':'#9ca3af')+';">'+junVal+'</td>';
+    html+='</tr>';
+  });
+  // Totals row
+  var sumMar=projs.reduce(function(s,r){return s+(r[3]||0);},0);
+  var sumApr=projs.reduce(function(s,r){return s+(r[4]||0);},0);
+  var sumMay=projs.reduce(function(s,r){return s+(r[5]||0);},0);
+  var sumJun=projs.reduce(function(s,r){return s+(r[6]||0);},0);
+  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
+  html+='<td style="padding:8px;">Σ Auswahl ('+projs.length+' Projekte)</td>';
+  html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
+  html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumMar+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumApr+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#252121;font-size:1.1em;">'+sumMay+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#363E36;font-size:1.1em;">'+sumJun+'</td>';
+  html+='</tr>';
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── FUNNEL ──
+  html+='<section id="sec-funnel" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid rgba(216,156,108,.4);background:#FBF5ED;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
+  html+='<h2>Projects in Funnel</h2>';
+  html+='<div style="display:flex;gap:8px;"><button class="btn-xlsx" onclick="exportFunnelXLSX()">⬇ Excel</button><button class="btn btn-brown" onclick="exportFunnelCSV()">CSV</button></div></div>';
+
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<input value="'+esc(funnelSearch)+'" id="search-funnel" placeholder="Search funnel..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="funnelSearch=this.value;render();">';
+  html+='<select onchange="funnelTypeFilter=this.value;render();">';
+  fTypes.forEach(function(t){html+='<option'+(funnelTypeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
+  html+='</select>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="funnelSortKey=this.value;render();" style="flex:1;">';
+  ['Project','Type','Region','Sold','HP','%'].forEach(function(k){html+='<option'+(funnelSortKey===k?' selected':'')+'>'+k+'</option>';});
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="funnelSortDir=funnelSortDir===\'asc\'?\'desc\':\'asc\';render();">'+(funnelSortDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">';
+  [['Projects',funnel.length],['Total HP',totalHP.toLocaleString('de-DE')],['Total Sold',totalSold.toLocaleString('de-DE')]].forEach(function(item){
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+  });
+  html+='</div>';
+
+  html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
+  html+='<table><thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
+  var prioIcon=funnelSortKey==='Prio'?(funnelSortDir==='asc'?' ↑':' ↓'):''; html+='<th style="text-align:center;padding:8px;font-weight:900;cursor:pointer;"  id="prio-th">Prio'+prioIcon+'</th>';
+  [['Project','Project'],['Status','Type'],['Region','Region'],['HC','Sold'],['HP','HP'],['Uptake','%']].forEach(function(col){
+    html+='<th style="cursor:pointer;" onclick="funnelSortKey=\''+col[1]+'\';funnelSortDir=(funnelSortKey===\''+col[1]+'\'&&funnelSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(funnelSortKey===col[1]?(funnelSortDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  funnel.forEach(function(r,i){
+    var isPrio=r[0]==='DE-BB Diehlo P1'||r[1].toLowerCase().includes('hp0');
+    var rowBg=(r[0]==='DE-BB Diehlo P1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
+    var bobUrlF=bobLinks[r[0]];
+    var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
+    var pruefenProjs=['DE-BB Stadt Velten P1 HP0'];
+    var stoppFeeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6'];
+    var stoneStamps=['Seddiner See B2'];
+    var calcReadyProjs=['DE-BB Diehlo P1'];
+    var wartenProjs=['DE-BB Schönwald P5'];
+    // Determine badge
+    var encBadge='';
+    if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
+    else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
+    else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
+    else if(stoppFeeProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>';
+    else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
+    else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';
+    else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
+    html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
+    html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
+    html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[4]+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#C86750;">'+esc(r[5])+'</td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── NEW POTENTIAL ──
+  var potCols=['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info'];
+  var potRegions=['All'].concat([...new Set(potentialRows.map(function(r){return r[2];}).filter(Boolean))]);
+
+  var potFiltered=potentialRows.filter(function(r){
+    return(potentialRegion==='All'||r[2]===potentialRegion)&&
+      r.join(' ').toLowerCase().includes(potentialSearch.toLowerCase());
+  });
+  var potColIdx={'PLZ':0,'Kommune':1,'Region':2,'Ortsteil':3,'Comment':4,'AP':5,'Art':6,'Telefon':7,'E-Mail':8,'Info':9};
+  var psi=(potColIdx[potentialSort]!==undefined)?potColIdx[potentialSort]:1;
+  potFiltered.sort(function(a,b){
+    var av=a[psi]||'',bv=b[psi]||'';
+    var r=String(av).localeCompare(String(bv),'de',{numeric:true});
+    return potentialDir==='asc'?r:-r;
+  });
+
+  function commentColor(r){
+    var c=(r[4]||'').toLowerCase();
+    var name=r[1]||'';
+    if(['geiselhöring','falkenfels','steinach','wiesenfelden'].indexOf(name)>=0||c.includes('kein interesse'))return'background:rgba(254,226,226,.7);color:#991b1b;';
+    if(c.includes('t com'))return'background:rgba(254,226,226,.7);color:#991b1b;';
+    if(name==='markt wallersdorf'||name==='straubing'||c.includes('prüfung'))return'background:rgba(255,237,213,.7);color:#9a3412;';
+    if(c.includes('positiv'))return'background:rgba(209,250,229,.7);color:#363E36;';
+    return'';
+  }
+
+  html+='<section id="sec-potential" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+  html+='<div><h2>New Potential</h2><p style="color:#64748b;">Upcoming expansion opportunities and strategic focus areas.</p></div>';
+  html+='<div style="display:flex;gap:8px;align-items:center;"><span class="badge tag-amber">Pipeline 2026</span><button class="btn-xlsx" onclick="exportPotentialXLSX()">⬇ Excel</button></div></div>';
+
+  // Contact cards
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">';
+  [{title:'Bayern Contact',name:'Markus Brunhofer',role:'Leiter Bayerisches Breitbandzentrum',org:'Landesamt für Digitalisierung, Breitband und Vermessung',addr:'Kirchensteig 1, 92224 Amberg',tel:'+49 (9621) 96543 80',telLink:'+499621965380',email:'markus.brunhofer@ldbv.bayern.de'},
+   {title:'Breitbandberatung Bayern',name:'Walter Huber',role:'Breitbandberatung Bayern',tel:'+49 (0) 9181 / 406 1333',telLink:'+499181406133',email:'info@breitbandberatung.de'},
+   {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technischer Leiter',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'},
+   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Leitung Geschäftsbereich Breitband',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',email:'klaus.eckel@ik-t.de'}
+  ].forEach(function(c){
+    html+='<div style="background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:13px;">';
+    html+='<div style="font-weight:900;color:#363E36;margin-bottom:8px;">'+esc(c.title)+'</div>';
+    html+='<div style="font-weight:700;">'+esc(c.name)+'</div>';
+    html+='<div style="color:#64748b;">'+esc(c.role||'')+'</div>';
+    if(c.org)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.org)+'</div>';
+    if(c.addr)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.addr)+'</div>';
+    html+='<div style="margin-top:8px;">Tel: <a href="tel:'+c.telLink+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(c.tel)+'</a></div>';
+    html+='<div><a href="mailto:'+esc(c.email)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;">'+esc(c.email)+'</a></div>';
+    html+='</div>';
+  });
+  html+='</div>';
+
+  // Filters
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<input value="'+esc(potentialSearch)+'" id="search-potential" placeholder="Suchen..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="potentialSearch=this.value;render();">';
+  html+='<select onchange="potentialRegion=this.value;render();">';
+  potRegions.forEach(function(r){html+='<option'+(potentialRegion===r?' selected':'')+'>'+esc(r)+'</option>';});
+  html+='</select>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="potentialSort=this.value;render();" style="flex:1;">';
+  ['PLZ','Kommune','Region','Comment'].forEach(function(k){html+='<option'+(potentialSort===k?' selected':'')+'>'+k+'</option>';});
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="potentialDir=potentialDir===\'asc\'?\'desc\':\'asc\';render();">'+(potentialDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+
+  // Stats
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">';
+  var positiv=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('positiv');}).length;
+  var keins=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('kein interesse');}).length;
+  [['Einträge',potFiltered.length],['Positiv ✅',positiv],['Kein Interesse ❌',keins]].forEach(function(item){
+    html+='<div style="background:#FBF5ED;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+  });
+  html+='</div>';
+
+  // Table
+  html+='<div style="overflow:auto;max-height:750px;border-radius:1rem;border:1px solid #e5e7eb;">';
+  html+='<table style="min-width:1200px;"><thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
+  potCols.forEach(function(col){
+    var sortable=['PLZ','Kommune','Region','Comment'].indexOf(col)>=0;
+    html+='<th style="'+(sortable?'cursor:pointer;':'')+'" '+(sortable?'onclick="potentialSort=\''+col+'\';potentialDir=(potentialSort===\''+col+'\'&&potentialDir===\'asc\')?\'desc\':\'asc\';render();"':'')+'>'+col+' '+(potentialSort===col?(potentialDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  potFiltered.forEach(function(r,i){
+    var cc=commentColor(r);
+    if(r[1]==='Bückeburg'||r[1]==='Rinteln'||r[1]==='Uchte') cc='background:rgba(209,250,229,.7);color:#363E36;';
+    html+='<tr style="'+(cc||'background:'+(i%2===0?'#fff':'rgba(248,234,223,.3)'))+'">';
+    // PLZ
+    html+='<td style="padding:8px;white-space:nowrap;">'+esc(r[0])+'</td>';
+    // Kommune
+    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+esc(r[1])+'</td>';
+    // Region
+    html+='<td style="padding:8px;font-weight:600;">'+esc(r[2])+'</td>';
+    // Ortsteil
+    html+='<td style="padding:8px;font-size:12px;">'+esc(r[3])+'</td>';
+    // Comment
+    var cmt=r[4]||'new area';
+    html+='<td style="padding:8px;font-size:12px;min-width:180px;">'+esc(cmt)+'</td>';
+    // AP
+    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+esc(r[5])+'</td>';
+    // Art
+    html+='<td style="padding:8px;font-size:12px;">'+esc(r[6])+'</td>';
+    // Telefon
+    var tel=r[7]||'';
+    var telClean=tel.replace(/[^0-9+]/g,'');
+    var telHref=telClean.startsWith('0')?'+49'+telClean.slice(1):telClean;
+    html+='<td style="padding:8px;white-space:nowrap;">'+(tel?'<a href="tel:'+esc(telHref)+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(tel)+'</a>':'')+'</td>';
+    // E-Mail
+    var mail=r[8]||'';
+    html+='<td style="padding:8px;">'+(mail?'<a href="mailto:'+esc(mail)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;font-size:12px;">'+esc(mail)+'</a>':'')+'</td>';
+    // Info
+    html+='<td style="padding:8px;font-size:12px;min-width:160px;color:#475569;">'+esc(r[9]||'')+'</td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── CEMETERY ──
+  if(typeof cemeteryRows!=='undefined'){
+    var cemSrc=cemeteryRows;
+    var cemF=cemSrc.filter(function(r){return r.join(' ').toLowerCase().includes((window._cemSearch||'').toLowerCase());});
+    html+='<section id="sec-cemetery" style="scroll-margin-top:70px;"><div class="container">';
+    html+='<div class="card" style="border:2px solid #374151;">';
+    html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+    html+='<div><h2 style="color:#111827;">&#127944; Cemetery</h2><p style="color:#6b7280;">Abgebrochene Projekte ('+cemSrc.length+')</p></div></div>';
+    html+='<input id="cem-search" value="'+(window._cemSearch||'')+'" placeholder="Projekt suchen..." style="margin-bottom:16px;" oninput="window._cemSearch=this.value;render();">';
+    html+='<div style="overflow-y:auto;max-height:500px;border-radius:1rem;border:1px solid #e5e7eb;">';
+    html+='<table><thead style="background:#374151;color:#fff;position:sticky;top:0;"><tr>';
+    html+='<th>Projekt</th><th>Region</th><th>Kategorie</th><th style="text-align:center;">Sold</th><th style="text-align:center;">HP</th></tr></thead><tbody>';
+    cemF.forEach(function(r,i){
+      html+='<tr style="background:'+(i%2===0?'#fff':'#f9fafb')+';">';
+      var bobUrlC=bobLinks[r[0]]; html+='<td style="padding:10px;color:#6b7280;text-decoration:line-through;">'+(bobUrlC?'<a href="'+bobUrlC+'" target="_blank" style="color:#6b7280;text-decoration:line-through;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+'</td>';
+      html+='<td style="padding:10px;font-weight:600;">'+esc(r[1])+'</td>';
+      html+='<td style="padding:10px;"><span style="background:#fee2e2;color:#dc2626;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">'+esc(r[2])+'</span></td>';
+      html+='<td style="padding:10px;text-align:center;">'+r[3]+'</td>';
+      html+='<td style="padding:10px;text-align:center;">'+r[4]+'</td>';
+      html+='</tr>';
+    });
+    html+='</tbody></table></div></div></div></section>';
+  }
+  // ── FOOTER ──
+  html+='<div style="background:#363E36;color:#fff;padding:32px 0;margin-top:20px;">';
+  html+='<div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
+  html+='<div>📈 Make daily sales pace visible</div>';
+  html+='<div>📅 Calculate Q2 progress automatically</div>';
+  html+='<div>✅ Manage teams and targets transparently</div>';
+  html+='</div></div>';
+
+  var _sy=window.scrollY||window.pageYOffset;
+  var _focusId=document.activeElement?document.activeElement.id:null;
+  var _focusVal=document.activeElement?document.activeElement.value:null;
+  document.getElementById('app').innerHTML=html;
+  if(window._agencyFilterNeeded){buildAgencyFilter();window._agencyFilterNeeded=false;}
+  requestAnimationFrame(function(){window.scrollTo(0,_sy);
+    var cemKeys=['Project','Region','Category','Sold','HP'];
+    document.querySelectorAll('[data-cemcol]').forEach(function(th){
+      th.onclick=function(){
+        var k=cemKeys[parseInt(th.getAttribute('data-cemcol'))];
+        cemeteryDir=(cemeterySort===k&&cemeteryDir==='desc')?'asc':'desc';
+        cemeterySort=k; render();
+      };
+    });
+    // Restore focus and cursor position
+    if(_focusId){var el=document.getElementById(_focusId);if(el){el.focus();if(_focusVal!==null)el.setSelectionRange(_focusVal.length,_focusVal.length);}}
+    else{var inputs=document.querySelectorAll('input[oninput]');if(inputs.length){
+      // find the one matching current search values
+      inputs.forEach(function(inp){if(inp.value&&inp.value.length>0)inp.focus();});
+    }}});
+  var prioTh=document.getElementById('prio-th');
+  if(prioTh) prioTh.onclick=function(){funnelSortKey='Prio';funnelSortDir=funnelSortDir==='asc'?'desc':'asc';render();};
+}
+
+// ── IMPORT LOGIC ─────────────────────────────────────────────────────────────
+function openImport(){document.getElementById('import-modal').classList.remove('hidden');}
+function closeImport(){document.getElementById('import-modal').classList.add('hidden');}
+
+var dz=document.getElementById('dropzone');
+dz.addEventListener('dragover',function(e){e.preventDefault();dz.classList.add('over');});
+dz.addEventListener('dragleave',function(){dz.classList.remove('over');});
+dz.addEventListener('drop',function(e){e.preventDefault();dz.classList.remove('over');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);});
+
+function handleFileSelect(e){if(e.target.files[0])processFile(e.target.files[0]);}
+
+function showStatus(msg){
+  var el=document.getElementById('import-status');
+  el.style.display='block';
+  el.textContent=msg;
+}
+
+function processFile(file){
+  showStatus('Lese Datei...');
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var wb=XLSX.read(e.target.result,{type:'array'});
+      
+      // AUTO-DETECT: Sales Report format (has Signeringsdatum column)
+      var firstSheet=wb.Sheets[wb.SheetNames[0]];
+      var headers=XLSX.utils.sheet_to_json(firstSheet,{header:1})[0]||[];
+      var isSalesReport=headers.indexOf('Signeringsdatum')>=0;
+      
+      if(isSalesReport){
+        processSalesReport(wb.Sheets[wb.SheetNames[0]]);
+        return;
+      }
+      
+      // Standard import (Partners/KPIs/Projects/Funnel/Settings sheets)
+      var imported=[];
+      if(wb.SheetNames.includes('Partners')){
+        var rows=XLSX.utils.sheet_to_json(wb.Sheets['Partners']);
+        partners=rows.map(function(r){return{name:r['Partner']||r['Name']||'',january:Number(r['January']||r['Januar']||0),february:Number(r['February']||r['Februar']||0),march:Number(r['March']||r['März']||0),april:Number(r['April']||0),may:Number(r['May']||r['Mai']||0),mayForecast:Number(r['MayForecast']||r['Target June']||0),ytd:Number(r['YTD']||0),forecast:Number(r['Forecast2026']||r['Forecast 2026']||0),d2d:Number(r['D2D']||0),comingSoon:String(r['ComingSoon']||'').toLowerCase()==='true'};}).filter(function(r){return r.name;});
+        imported.push('Partners');
+      }
+      if(wb.SheetNames.includes('KPIs')){
+        var rows=XLSX.utils.sheet_to_json(wb.Sheets['KPIs']);
+        kpiActuals={};
+        rows.forEach(function(r){var cat=r['Category']||r['Kategorie']||'';kpiActuals[cat]={april:Number(r['April']||0),may:Number(r['May']||r['Mai']||0),june:Number(r['June']||r['Juni']||0)};});
+        imported.push('KPIs');
+      }
+      if(wb.SheetNames.includes('Settings')){
+        var rows=XLSX.utils.sheet_to_json(wb.Sheets['Settings']);
+        if(rows.length>0){var r=rows[0];settings={salesReportTotal2026:Number(r['SalesReportTotal2026']||settings.salesReportTotal2026),q2WorkingDaysDone:Number(r['Q2WorkingDaysDone']||settings.q2WorkingDaysDone),q2WorkingDaysLeft:Number(r['Q2WorkingDaysLeft']||settings.q2WorkingDaysLeft),juneForecast:Number(r['JuneForecast']||settings.juneForecast),jan:settings.jan,feb:settings.feb,mar:settings.mar,apr:settings.apr,may:Number(r['MayTotal']||settings.may)};imported.push('Settings');}
+      }
+      if(imported.length===0){showStatus('⚠ Kein bekanntes Format. Sales Report oder Partner/KPI/Settings Blätter erwartet.');return;}
+      showStatus('✅ Importiert: '+imported.join(', '));
+      var lbl=document.getElementById('last-import-label');lbl.style.display='inline';lbl.textContent='Letzter Import: '+new Date().toLocaleString('de-DE');
+      setTimeout(function(){closeImport();render();},1000);
+    }catch(err){showStatus('❌ Fehler: '+err.message);}
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+
+
+
+function processSalesReport(ws){
+  showStatus('Sales Report erkannt — analysiere...');
+  var rows=XLSX.utils.sheet_to_json(ws);
+  
+  // Agency name mapping (Spalte O → Dashboard name)
+  var agMap={'EnCom Gmbh':'EnCom GmbH','EnCom GmbH':'EnCom GmbH','Stonemedia GmbH':'Stonemedia GmbH','Team Tatjana':'Team Tatjana','United Promotion GmbH':'United Promotion GmbH','DE-Open Infra CS':'Open Infra CS','Filiago':'Filiago','Rating Peak GmbH':'Rating Peak GmbH'};
+  // HP0 and Build project lists for KPI classification
+  var hp0Keywords=['HP0','HPO'];
+  var buildKeywords=['Build sales','Build Sales','Birkenwerder P1 ','Birkenwerder P3 ','Birkenwerder P3-','Frankfurt (Oder)','Hennigsdorf P3','Blankenfelde','Fürstenwalde P4','Woltersdorf P5','Kasel-Golzig','Leiblfing','Kirchroth P5','Hohen Neuendorf'];
+  
+  var excludeProjects=['AAA DELETEVILLE','Oda sälj'];
+  var agencyMonth={};
+  var kpiJune={hp0:0,build:0,base:0};
+  var totalGross={}; var totalCancel=0;
+  
+  rows.forEach(function(r){
+    var sign=r['Signeringsdatum'];
+    if(!sign) return;
+    var year,month;
+    try{
+      if(typeof sign==='string'){year=parseInt(sign.substr(0,4));month=parseInt(sign.substr(5,2));}
+      else{year=sign.getFullYear?sign.getFullYear():new Date(sign).getFullYear();month=sign.getMonth?sign.getMonth()+1:new Date(sign).getMonth()+1;}
+    }catch(ex){return;}
+    if(year!==2026) return;
+    var proj=r['Säljprojekt']||'';
+    if(excludeProjects.indexOf(proj)>=0) return;
+    var ag=agMap[r['Säljteam (senaste order)']||'']||((r['Säljteam (senaste order)']==='DE-Open Infra CS'||!r['Säljteam (senaste order)'])?'Open Infra CS':null);
+    if(!ag) ag='Open Infra CS'; // leer → OI CS
+    var cancelled=!!(r['Annulleringsdatum']);
+    if(!agencyMonth[ag]) agencyMonth[ag]={};
+    agencyMonth[ag][month]=(agencyMonth[ag][month]||0)+1;
+    totalGross[month]=(totalGross[month]||0)+1;
+    if(cancelled) totalCancel++;
+    
+    // KPI June classification
+    if(month===6&&!cancelled){
+      var projUp=proj.toUpperCase();
+      var isHP0=hp0Keywords.some(function(k){return projUp.indexOf(k)>=0;});
+      var isBuild=!isHP0&&buildKeywords.some(function(k){return proj.indexOf(k)>=0;});
+      if(isHP0) kpiJune.hp0++;
+      else if(isBuild) kpiJune.build++;
+      else kpiJune.base++;
+    }
+  });
+  
+  var juneBrutto=totalGross[6]||0;
+  var totalBrutto=Object.values(totalGross).reduce(function(s,v){return s+v;},0);
+  var totalNetto=totalBrutto-totalCancel;
+  
+  // Update partners june actual
+  partners.forEach(function(p){
+    var agData=agencyMonth[p.name]||{};
+    p.juneActual=agData[6]||0;
+    var ytd=0;for(var m=1;m<=6;m++) ytd+=(agData[m]||0);
+    // Keep existing jan-may from previous reports, only update june
+    p.juneActual=agData[6]||0;
+  });
+  
+  // Update kpiActuals june
+  kpiActuals['Base Sales / Up Sales'].june=kpiJune.base;
+  kpiActuals['After Market / HP0 Sales'].june=kpiJune.hp0;
+  kpiActuals['Build Sales'].june=kpiJune.build;
+  
+  // Update settings
+  settings.salesReportTotal2026=totalBrutto;
+  
+  // Ask for working days
+  var juneDone=prompt('Wieviele Werktage in Juni sind bisher rum?','5');
+  var juneLeft=prompt('Wieviele Werktage in Juni bleiben noch?','17');
+  if(juneDone) settings.q2WorkingDaysDone=43+parseInt(juneDone);
+  if(juneLeft) settings.q2WorkingDaysLeft=parseInt(juneLeft);
+  
+  var summary='✅ Sales Report importiert!\n\n'+
+    'Brutto: '+totalBrutto+' | Storno: '+totalCancel+' | Netto: '+totalNetto+'\n'+
+    'Juni: '+juneBrutto+' Aufträge\n'+
+    'KPI Juni: Base='+kpiJune.base+' HP0='+kpiJune.hp0+' Build='+kpiJune.build+'\n\n'+
+    'Partner Juni-Werte:\n'+
+    partners.map(function(p){return p.name+': '+p.juneActual;}).join('\n');
+  
+  showStatus('✅ Sales Report importiert! '+totalBrutto+' Brutto, Juni='+juneBrutto);
+  var lbl=document.getElementById('last-import-label');
+  lbl.style.display='inline';
+  lbl.textContent='Sales Report: '+new Date().toLocaleString('de-DE');
+  setTimeout(function(){closeImport();render();},1500);
+}
+
+function buildAgencyFilter(){
+  var bar=document.getElementById('agency-filter-bar');
+  if(!bar) return;
+  bar.innerHTML='';
+  var allBtn=document.createElement('button');
+  allBtn.textContent='Alle';
+  allBtn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');
+  allBtn.onclick=function(){selectedAgencies=null;render();};
+  bar.appendChild(allBtn);
+  partners.forEach(function(p,i){
+    var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;
+    var btn=document.createElement('button');
+    btn.textContent=p.name;
+    btn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');
+    btn.onclick=function(){toggleAgency(i);};
+    bar.appendChild(btn);
+  });
+}
+function toggleAgency(idx){var name=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(name);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(name);if(selectedAgencies.length===0)selectedAgencies=null;render();}
+function downloadTemplate(){var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Partner','January','February','March','April','May','MayForecast','YTD','Forecast2026','D2D']]),'Partners');XLSX.writeFile(wb,'dashboard_template.xlsx');}
+function exportFunnelCSV(){var rows=funnelRowsRaw.map(function(r){return r.join(';');});var csv=['Project;Type;Region;Sold;HP'].concat(rows).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='projects_funnel.csv';a.click();}
+loadData(render);
+
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#f5e3d8;color:#101820;font-family:system-ui,sans-serif;font-size:14px;}
+h1{font-size:2.5rem;font-weight:900;line-height:1.1;}
+h2{font-size:1.75rem;font-weight:900;}
+h3{font-size:1.1rem;font-weight:900;}
+.container{max-width:1280px;margin:0 auto;padding:0 24px;}
+.card{background:#fff;border-radius:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:24px;}
+.badge{display:inline-flex;align-items:center;padding:3px 12px;border-radius:9999px;font-size:11px;font-weight:700;white-space:nowrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-weight:700;font-size:12px;padding:8px 16px;border-radius:9999px;transition:background .15s;}
+.btn-dark{background:#4d3428;color:#fff;}
+.btn-dark:hover{background:#9c5f38;}
+.btn-brown{background:#9c5f38;color:#fff;border-radius:1rem;}
+.btn-brown:hover{background:#4d3428;}
+.btn-gold{background:#d89c6c;color:#fff;}
+.btn-gold:hover{background:#9c5f38;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e7c9b0;padding:10px 24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+section{padding:40px 0;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+@media(max-width:900px){.grid3,.grid4,.grid5{grid-template-columns:1fr 1fr;}.grid2{grid-template-columns:1fr;}}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.kpi-grid{grid-template-columns:1fr;}}
+.hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start;}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:10px 12px;text-align:left;}
+th{font-weight:900;font-size:12px;}
+tr:not(:first-child){border-top:1px solid #f1f1f1;}
+.scroll-area{overflow-y:auto;max-height:800px;}
+input,select{border:1px solid #ddd;border-radius:1rem;padding:10px 14px;font-size:13px;outline:none;background:#fff;width:100%;}
+input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
+.pb{height:10px;border-radius:9999px;overflow:hidden;}
+.pb-bg{width:100%;}
+/* Progress bar colors */
+.pb-success{background:#059669;}
+.pb-danger{background:#dc2626;}
+.pb-bg-success{background:#d1fae5;}
+.pb-bg-danger{background:#fee2e2;}
+.pb-time{background:#d89c6c;}
+.pb-time-bg{background:#f3dfcf;}
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;}
+.modal{background:#fff;border-radius:1.5rem;padding:32px;max-width:560px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.dropzone{border:2px dashed #d89c6c;border-radius:1rem;padding:32px;text-align:center;cursor:pointer;}
+.dropzone:hover,.dropzone.over{background:#fdf0e7;border-color:#9c5f38;}
+.tag-success{background:#d1fae5;color:#065f46;}
+.tag-danger{background:#fee2e2;color:#991b1b;}
+.tag-amber{background:#fef3c7;color:#92400e;}
+.tag-slate{background:#1e293b;color:#fff;}
+.hidden{display:none;}
+.sticky-head{position:sticky;top:0;z-index:10;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
+  <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
+  <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
+</nav>
+
+<!-- IMPORT MODAL -->
+<div class="overlay hidden" id="import-modal">
+  <div class="modal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <h2>📥 Excel-Daten importieren</h2>
+      <button onclick="closeImport()" style="border:none;background:none;font-size:24px;cursor:pointer;color:#888;">×</button>
+    </div>
+    <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+      <div style="font-size:3rem;margin-bottom:8px;">📊</div>
+      <div style="font-weight:700;color:#4d3428;">Excel-Datei hier ablegen</div>
+      <div style="font-size:12px;color:#888;margin-top:4px;">oder klicken zum Auswählen (.xlsx)</div>
+      <input type="file" id="file-input" accept=".xlsx,.xls" class="hidden" onchange="handleFileSelect(event)"/>
+    </div>
+    <div id="import-status" style="margin-top:16px;display:none;padding:12px;border-radius:12px;background:#f8f8f8;font-weight:600;font-size:13px;"></div>
+    <div style="margin-top:20px;background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:12px;">
+      <div style="font-weight:900;color:#4d3428;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
+      <div style="line-height:1.8;color:#555;">
+        <b>Partners</b> — Partner, January, February, March, April, May, MayForecast, YTD, Forecast2026, D2D<br>
+        <b>KPIs</b> — Category, April, May<br>
+        <b>Projects</b> — Project, Type, Agency, March, April, May<br>
+        <b>Funnel</b> — Project, Type, Region, Sold, HP<br>
+        <b>Settings</b> — SalesReportTotal2026, Q2WorkingDaysDone, Q2WorkingDaysLeft, JuneForecast
+      </div>
+      <button class="btn btn-brown" style="margin-top:12px;" onclick="downloadTemplate()">⬇ Template herunterladen</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="app"></div>
+
+<script>
+
+
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:165,mayForecast:190,juneActual:23,ytd:480,forecast:1100,d2d:5},
-  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:129,mayForecast:136,juneActual:92,ytd:505,forecast:1050,d2d:3},
+  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:165,mayForecast:190,juneActual:25,ytd:482,forecast:1100,d2d:5},
+  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:129,mayForecast:136,juneActual:112,ytd:525,forecast:1100,d2d:3},
   {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:66,juneActual:14,ytd:185,forecast:450,d2d:3},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:93,mayForecast:98,juneActual:32,ytd:131,forecast:315,d2d:10},
-  {name:"Open Infra CS",january:12,february:16,march:19,april:13,may:8,mayForecast:9,juneActual:10,ytd:78,forecast:175,d2d:0},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:93,mayForecast:98,juneActual:41,ytd:140,forecast:330,d2d:10},
+  {name:"Open Infra CS",january:12,february:16,march:19,april:13,may:8,mayForecast:9,juneActual:11,ytd:79,forecast:175,d2d:0},
   {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:1,ytd:1,forecast:0,d2d:2,comingSoon:true}
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:3,ytd:3,forecast:0,d2d:2,comingSoon:true}
 ];
 
 // Brutto Q2-Actuals — Sales Report 8
 // Brutto Q2-Actuals inkl. Juni — Sales Report 11
 var kpiActuals = {
-  "Base Sales / Up Sales":{april:153,may:300,june:116},
-  "After Market / HP0 Sales":{april:19,may:36,june:31},
+  "Base Sales / Up Sales":{april:153,may:300,june:143},
+  "After Market / HP0 Sales":{april:19,may:36,june:39},
   "Build Sales":{april:140,may:113,june:24}
 };
 
@@ -144,7 +1206,7 @@ var projectRows = [
   ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7,1],
   ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13,0],
   ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,25,4],
-  ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,0],
+  ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,2],
   ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21,0],
   ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3,0],
   ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,9,3],
@@ -154,7 +1216,7 @@ var projectRows = [
   ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",16,16,6,0],
   ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",45,7,2,0],
   // ── EnCom GmbH ────────────────────────────────────────────────────────
-  ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",1,0,91,80],
+  ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",1,0,91,100],
   ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,52,0,0],
   ["DE-BB Schwerin HP0","HP0","EnCom GmbH",0,0,0,0],
   ["DE-BB Frankfurt (Oder) Combined P1","Build Sales","EnCom GmbH",0,0,0,0],
@@ -181,7 +1243,7 @@ var projectRows = [
   ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,31,1],
   ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0,0],
   ["DE-BB Schulzendorf HP0","HP0","United Promotion GmbH",0,5,14,2],
-  ["DE-BB Schulzendorf P3","Base Sales","United Promotion GmbH",0,0,23,11],
+  ["DE-BB Schulzendorf P3","Base Sales","United Promotion GmbH",0,0,23,13],
   ["DE-BB Woltersdorf P5-1","Build Sales","United Promotion GmbH",0,1,6,0],
   ["DE-BB Zossen HP0","HP0","United Promotion GmbH",0,0,2,0],
   ["DE-BB Zossen P3","Build Sales","United Promotion GmbH",0,0,0,0],
@@ -195,10 +1257,10 @@ var projectRows = [
   ["DE-BB Falkensee HP0","HP0","Open Infra CS",1,0,1,0],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","Open Infra CS",1,1,0,0],
   ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0,0],
-  ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,2,1,1],
+  ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,2,1,3],
   ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1,0],
   ["DE-CS","HP0","Open Infra CS",8,4,5,0],
-  ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0,13],
+  ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0,19],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
   ["DE-BB Grünheide P3","BASE UPSELL","Rating Peak GmbH",0,0,0,0],
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0],
@@ -269,6 +1331,7 @@ var funnelRowsRaw = [
   ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
+  ["DE-BB Schönwald P5","BASE UPSELL","BB",0,0],
   ["DE-BB Neuzelle P5","BASE UPSELL","BB",0,0],
   ["DE-BB Neuzelle P6","BASE UPSELL","BB",0,0],
   ["DE-BB Bestensee HP0","HP0","BB",0,0],
@@ -283,7 +1346,7 @@ var funnelRowsRaw = [
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259]
 ];
 
-var settings = {salesReportTotal2026:1387,q2WorkingDaysDone:48,q2WorkingDaysLeft:17,juneForecast:500,
+var settings = {salesReportTotal2026:1421,q2WorkingDaysDone:49,q2WorkingDaysLeft:16,juneForecast:500,
   // Brutto monatliche Totals aus Sales Report 8
   jan:42,feb:135,mar:274,apr:312,may:452};
 
@@ -337,7 +1400,8 @@ var potentialRows = [
   ["94532","Außernzell","BY","","new area","","","09903 93030","poststelle@schoellnach.de",""],
   ["94560","Offenberg","BY","","","","Rathaus","0991 99808-0","gemeinde@offenberg.bayern.de",""],
   ["94575","Windorf","BY","","new area","","Rathaus","08541-96262","info@markt-windorf.de",""],
-  ["21255","Wistedt","NI","","positiv","Sven Bauer","Bürgermeister","04182 3199","buergermeister@wistedt.de","Termin am 8.6.2026 um 15 Uhr"]
+  ["21255","Wistedt","NI","","positiv","Sven Bauer","Bürgermeister","04182 3199","buergermeister@wistedt.de","Termin am 8.6.2026 um 15 Uhr"],
+  ["22391","Hamburg","HH","Sasel","new area","","Geschäftsstelle WBZ","+49 40 428 81 - 3345","geschaeftsstelle-wbz@wandsbek.hamburg.de",""]
 ];
 
 
@@ -384,7 +1448,7 @@ var bobLinks = {
   "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
   "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
   "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
-  "DE-BB Heidesee P7": "https://bob.openinfra.com/delivery-projects/4147",
+  "DE-BB Heidesee P7": "https://bob.openinfra.com/sales-projects/2737",
   "DE-BB Grunheide P1": "https://bob.openinfra.com/delivery-projects/2597",
   "DE-BB Grunheide P3": "https://bob.openinfra.com/delivery-projects/2904",
   "DE-BB Grunheide P4": "https://bob.openinfra.com/delivery-projects/2905",
@@ -395,6 +1459,7 @@ var bobLinks = {
   "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/4038",
   "DE-BB Schwerin HP0": "https://bob.openinfra.com/sales-projects/3732",
   "DE-BB Stadt Velten P1 HP0": "https://bob.openinfra.com/sales-projects/2181",
+  "DE-BB Schönwald P5": "https://bob.openinfra.com/sales-projects/3502",
   "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
   "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
   "DD - Furth S3": "https://bob.openinfra.com/sales-projects/3450",
@@ -445,7 +1510,7 @@ var bobLinks = {
   "DE-BB Grünheide P7": "https://bob.openinfra.com/delivery-projects/3027",
   "DE-BB Heidesee B5-2": "https://bob.openinfra.com/delivery-projects/3049",
   "DE-BB Heidesee P5-1": "https://bob.openinfra.com/delivery-projects/2777",
-  "DE-BB Heidesee P7": "https://bob.openinfra.com/delivery-projects/4147",
+  "DE-BB Heidesee P7": "https://bob.openinfra.com/sales-projects/2737",
   "DE-BB Hennigsdorf P3": "https://bob.openinfra.com/delivery-projects/4147",
   "DE-BB Königs Wusterhausen HP0 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
   "DE-BB Königs Wusterhausen HPO 3": "https://bob.openinfra.com/sales-projects/4051",
@@ -461,7 +1526,6 @@ var bobLinks = {
   "DE-BB Neuzelle P6": "https://bob.openinfra.com/delivery-projects/3698",
   "DE-BB Rietzneuendorf - Staakow P1": "https://bob.openinfra.com/delivery-projects/3749",
   "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
-  "DE-BB Schönwald P5": "https://bob.openinfra.com/sales-projects/3502",
   "DE-BB Schulzendorf HP0": "https://bob.openinfra.com/sales-projects/3842",
   "DE-BB Schulzendorf P3": "https://bob.openinfra.com/sales-projects/4101",
   "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
@@ -825,8 +1889,8 @@ function render(){
   html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
   var grossSales=S.salesReportTotal2026;
-  var netSales=1308;
-  var cancelled=79;
+  var netSales=1337;
+  var cancelled=84;
   var cancelRate=(cancelled/grossSales*100).toFixed(1);
   html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
   html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
@@ -961,19 +2025,14 @@ function render(){
    ["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],
    ["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],
    ["DE-BB Fürstenwalde P7","BB","United Promotion",""],
-   ["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],
    ["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],
    ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
    ["DE-BB Beetzsee P2","BB","United Promotion",""],
    ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
-   ,
    ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
-   ,
    ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
    ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
-   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
-   ,
-   
+   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"]
   ].forEach(function(item){
     html+='<tr style="background:rgba(255,241,242,.6);">';
     var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#252121;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
@@ -1098,7 +2157,18 @@ function render(){
     var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
     var pruefenProjs=['DE-BB Stadt Velten P1 HP0'];
     var stoppFeeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6'];
-    var encBadge=(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3')?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>':(netzmacherProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>':(pruefenProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>':(stoppFeeProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>':'')));
+    var stoneStamps=['Seddiner See B2'];
+    var calcReadyProjs=['DE-BB Diehlo P1'];
+    var wartenProjs=['DE-BB Schönwald P5'];
+    // Determine badge
+    var encBadge='';
+    if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
+    else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
+    else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
+    else if(stoppFeeProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>';
+    else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
+    else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';
+    else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
     html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
@@ -1303,137 +2373,132 @@ function processFile(file){
   reader.onload=function(e){
     try{
       var wb=XLSX.read(e.target.result,{type:'array'});
+      
+      // AUTO-DETECT: Sales Report format (has Signeringsdatum column)
+      var firstSheet=wb.Sheets[wb.SheetNames[0]];
+      var headers=XLSX.utils.sheet_to_json(firstSheet,{header:1})[0]||[];
+      var isSalesReport=headers.indexOf('Signeringsdatum')>=0;
+      
+      if(isSalesReport){
+        processSalesReport(wb.Sheets[wb.SheetNames[0]]);
+        return;
+      }
+      
+      // Standard import (Partners/KPIs/Projects/Funnel/Settings sheets)
       var imported=[];
-
       if(wb.SheetNames.includes('Partners')){
         var rows=XLSX.utils.sheet_to_json(wb.Sheets['Partners']);
-        partners=rows.map(function(r){return{
-          name:r['Partner']||r['Name']||'',
-          january:Number(r['January']||r['Januar']||0),
-          february:Number(r['February']||r['Februar']||0),
-          march:Number(r['March']||r['März']||0),
-          april:Number(r['April']||0),
-          may:Number(r['May']||r['Mai']||0),
-          mayForecast:Number(r['MayForecast']||r['Target June']||0),
-          ytd:Number(r['YTD']||0),
-          forecast:Number(r['Forecast2026']||r['Forecast 2026']||0),
-          d2d:Number(r['D2D']||0),
-          comingSoon:String(r['ComingSoon']||'').toLowerCase()==='true'
-        };}).filter(function(r){return r.name;});
+        partners=rows.map(function(r){return{name:r['Partner']||r['Name']||'',january:Number(r['January']||r['Januar']||0),february:Number(r['February']||r['Februar']||0),march:Number(r['March']||r['März']||0),april:Number(r['April']||0),may:Number(r['May']||r['Mai']||0),mayForecast:Number(r['MayForecast']||r['Target June']||0),ytd:Number(r['YTD']||0),forecast:Number(r['Forecast2026']||r['Forecast 2026']||0),d2d:Number(r['D2D']||0),comingSoon:String(r['ComingSoon']||'').toLowerCase()==='true'};}).filter(function(r){return r.name;});
         imported.push('Partners');
       }
-
       if(wb.SheetNames.includes('KPIs')){
         var rows=XLSX.utils.sheet_to_json(wb.Sheets['KPIs']);
         kpiActuals={};
-        rows.forEach(function(r){
-          var cat=r['Category']||r['Kategorie']||'';
-          kpiActuals[cat]={april:Number(r['April']||0),may:Number(r['May']||r['Mai']||0)};
-        });
+        rows.forEach(function(r){var cat=r['Category']||r['Kategorie']||'';kpiActuals[cat]={april:Number(r['April']||0),may:Number(r['May']||r['Mai']||0),june:Number(r['June']||r['Juni']||0)};});
         imported.push('KPIs');
       }
-
-      if(wb.SheetNames.includes('Projects')){
-        var rows=XLSX.utils.sheet_to_json(wb.Sheets['Projects']);
-        projectRows=rows.map(function(r){return[
-          r['Project']||r['Projekt']||'',
-          r['Type']||r['Typ']||'',
-          r['Agency']||r['Sales Agency']||'',
-          Number(r['March']||r['März']||0),
-          Number(r['April']||0),
-          Number(r['May']||r['Mai']||0)
-        ];}).filter(function(r){return r[0];});
-        imported.push('Projects');
-      }
-
-      if(wb.SheetNames.includes('Funnel')){
-        var rows=XLSX.utils.sheet_to_json(wb.Sheets['Funnel']);
-        funnelRowsRaw=rows.map(function(r){return[
-          r['Project']||r['Projekt']||'',
-          r['Type']||r['Typ']||'',
-          r['Region']||'',
-          Number(r['Sold']||r['HC']||0),
-          Number(r['HP']||0)
-        ];}).filter(function(r){return r[0];});
-        imported.push('Funnel');
-      }
-
       if(wb.SheetNames.includes('Settings')){
         var rows=XLSX.utils.sheet_to_json(wb.Sheets['Settings']);
-        if(rows.length>0){
-          var r=rows[0];
-          settings={
-            salesReportTotal2026:Number(r['SalesReportTotal2026']||r['Sales Total']||settings.salesReportTotal2026),
-            q2WorkingDaysDone:Number(r['Q2WorkingDaysDone']||r['Working Days Done']||settings.q2WorkingDaysDone),
-            q2WorkingDaysLeft:Number(r['Q2WorkingDaysLeft']||r['Working Days Left']||settings.q2WorkingDaysLeft),
-            juneForecast:Number(r['JuneForecast']||r['June Forecast']||settings.juneForecast)
-          };
-          imported.push('Settings');
-        }
+        if(rows.length>0){var r=rows[0];settings={salesReportTotal2026:Number(r['SalesReportTotal2026']||settings.salesReportTotal2026),q2WorkingDaysDone:Number(r['Q2WorkingDaysDone']||settings.q2WorkingDaysDone),q2WorkingDaysLeft:Number(r['Q2WorkingDaysLeft']||settings.q2WorkingDaysLeft),juneForecast:Number(r['JuneForecast']||settings.juneForecast),jan:settings.jan,feb:settings.feb,mar:settings.mar,apr:settings.apr,may:Number(r['MayTotal']||settings.may)};imported.push('Settings');}
       }
-
-      if(imported.length===0){
-        showStatus('⚠ Keine bekannten Blätter gefunden. Erwartet: Partners, KPIs, Projects, Funnel, Settings');
-        return;
-      }
-
+      if(imported.length===0){showStatus('⚠ Kein bekanntes Format. Sales Report oder Partner/KPI/Settings Blätter erwartet.');return;}
       showStatus('✅ Importiert: '+imported.join(', '));
-      var now=new Date().toLocaleString('de-DE');
-      var lbl=document.getElementById('last-import-label');
-      lbl.style.display='inline';
-      lbl.textContent='Letzter Import: '+now;
+      var lbl=document.getElementById('last-import-label');lbl.style.display='inline';lbl.textContent='Letzter Import: '+new Date().toLocaleString('de-DE');
       setTimeout(function(){closeImport();render();},1000);
-    }catch(err){
-      showStatus('❌ Fehler: '+err.message);
-    }
+    }catch(err){showStatus('❌ Fehler: '+err.message);}
   };
   reader.readAsArrayBuffer(file);
 }
 
-function downloadTemplate(){
-  var wb=XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([
-    ['Partner','January','February','March','April','May','MayForecast','YTD','Forecast2026','D2D'],
-    ['Stonemedia GmbH',6,58,100,126,142,200,432,1037,5],
-    ['EnCom GmbH',16,35,115,117,65,91,348,814,3]
-  ]),'Partners');
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([
-    ['Category','April','May'],
-    ['Base Sales / Up Sales',149,207],
-    ['After Market / HP0 Sales',20,34],
-    ['Build Sales',140,88]
-  ]),'KPIs');
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([
-    ['Project','Type','Agency','March','April','May'],
-    ['DE-BB Birkenwerder P1','Build sales','Team Tatjana',22,21,5]
-  ]),'Projects');
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([
-    ['Project','Type','Region','Sold','HP'],
-    ['DE-BB Golssen P1','BASE UPSELL','BB',182,494]
-  ]),'Funnel');
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([
-    ['SalesReportTotal2026','Q2WorkingDaysDone','Q2WorkingDaysLeft','JuneForecast'],
-    [1089,36,28,480]
-  ]),'Settings');
-  XLSX.writeFile(wb,'dashboard_template.xlsx');
-}
 
 
-function exportXLSX(filename, sheets){
-  var wb = XLSX.utils.book_new();
-  sheets.forEach(function(s){var ws=XLSX.utils.aoa_to_sheet(s.data);XLSX.utils.book_append_sheet(wb,ws,s.name);});
-  XLSX.writeFile(wb, filename);
+
+function processSalesReport(ws){
+  showStatus('Sales Report erkannt — analysiere...');
+  var rows=XLSX.utils.sheet_to_json(ws);
+  
+  // Agency name mapping (Spalte O → Dashboard name)
+  var agMap={'EnCom Gmbh':'EnCom GmbH','EnCom GmbH':'EnCom GmbH','Stonemedia GmbH':'Stonemedia GmbH','Team Tatjana':'Team Tatjana','United Promotion GmbH':'United Promotion GmbH','DE-Open Infra CS':'Open Infra CS','Filiago':'Filiago','Rating Peak GmbH':'Rating Peak GmbH'};
+  // HP0 and Build project lists for KPI classification
+  var hp0Keywords=['HP0','HPO'];
+  var buildKeywords=['Build sales','Build Sales','Birkenwerder P1 ','Birkenwerder P3 ','Birkenwerder P3-','Frankfurt (Oder)','Hennigsdorf P3','Blankenfelde','Fürstenwalde P4','Woltersdorf P5','Kasel-Golzig','Leiblfing','Kirchroth P5','Hohen Neuendorf'];
+  
+  var excludeProjects=['AAA DELETEVILLE','Oda sälj'];
+  var agencyMonth={};
+  var kpiJune={hp0:0,build:0,base:0};
+  var totalGross={}; var totalCancel=0;
+  
+  rows.forEach(function(r){
+    var sign=r['Signeringsdatum'];
+    if(!sign) return;
+    var year,month;
+    try{
+      if(typeof sign==='string'){year=parseInt(sign.substr(0,4));month=parseInt(sign.substr(5,2));}
+      else{year=sign.getFullYear?sign.getFullYear():new Date(sign).getFullYear();month=sign.getMonth?sign.getMonth()+1:new Date(sign).getMonth()+1;}
+    }catch(ex){return;}
+    if(year!==2026) return;
+    var proj=r['Säljprojekt']||'';
+    if(excludeProjects.indexOf(proj)>=0) return;
+    var ag=agMap[r['Säljteam (senaste order)']||'']||((r['Säljteam (senaste order)']==='DE-Open Infra CS'||!r['Säljteam (senaste order)'])?'Open Infra CS':null);
+    if(!ag) ag='Open Infra CS'; // leer → OI CS
+    var cancelled=!!(r['Annulleringsdatum']);
+    if(!agencyMonth[ag]) agencyMonth[ag]={};
+    agencyMonth[ag][month]=(agencyMonth[ag][month]||0)+1;
+    totalGross[month]=(totalGross[month]||0)+1;
+    if(cancelled) totalCancel++;
+    
+    // KPI June classification
+    if(month===6&&!cancelled){
+      var projUp=proj.toUpperCase();
+      var isHP0=hp0Keywords.some(function(k){return projUp.indexOf(k)>=0;});
+      var isBuild=!isHP0&&buildKeywords.some(function(k){return proj.indexOf(k)>=0;});
+      if(isHP0) kpiJune.hp0++;
+      else if(isBuild) kpiJune.build++;
+      else kpiJune.base++;
+    }
+  });
+  
+  var juneBrutto=totalGross[6]||0;
+  var totalBrutto=Object.values(totalGross).reduce(function(s,v){return s+v;},0);
+  var totalNetto=totalBrutto-totalCancel;
+  
+  // Update partners june actual
+  partners.forEach(function(p){
+    var agData=agencyMonth[p.name]||{};
+    p.juneActual=agData[6]||0;
+    var ytd=0;for(var m=1;m<=6;m++) ytd+=(agData[m]||0);
+    // Keep existing jan-may from previous reports, only update june
+    p.juneActual=agData[6]||0;
+  });
+  
+  // Update kpiActuals june
+  kpiActuals['Base Sales / Up Sales'].june=kpiJune.base;
+  kpiActuals['After Market / HP0 Sales'].june=kpiJune.hp0;
+  kpiActuals['Build Sales'].june=kpiJune.build;
+  
+  // Update settings
+  settings.salesReportTotal2026=totalBrutto;
+  
+  // Ask for working days
+  var juneDone=prompt('Wieviele Werktage in Juni sind bisher rum?','5');
+  var juneLeft=prompt('Wieviele Werktage in Juni bleiben noch?','17');
+  if(juneDone) settings.q2WorkingDaysDone=43+parseInt(juneDone);
+  if(juneLeft) settings.q2WorkingDaysLeft=parseInt(juneLeft);
+  
+  var summary='✅ Sales Report importiert!\n\n'+
+    'Brutto: '+totalBrutto+' | Storno: '+totalCancel+' | Netto: '+totalNetto+'\n'+
+    'Juni: '+juneBrutto+' Aufträge\n'+
+    'KPI Juni: Base='+kpiJune.base+' HP0='+kpiJune.hp0+' Build='+kpiJune.build+'\n\n'+
+    'Partner Juni-Werte:\n'+
+    partners.map(function(p){return p.name+': '+p.juneActual;}).join('\n');
+  
+  showStatus('✅ Sales Report importiert! '+totalBrutto+' Brutto, Juni='+juneBrutto);
+  var lbl=document.getElementById('last-import-label');
+  lbl.style.display='inline';
+  lbl.textContent='Sales Report: '+new Date().toLocaleString('de-DE');
+  setTimeout(function(){closeImport();render();},1500);
 }
 
-function toggleAgency(idx){
-  var name=partners[idx].name;
-  if(selectedAgencies===null) selectedAgencies=[];
-  var i=selectedAgencies.indexOf(name);
-  if(i>=0) selectedAgencies.splice(i,1);
-  else selectedAgencies.push(name);
-  if(selectedAgencies.length===0) selectedAgencies=null;
-  render();
-}
 function buildAgencyFilter(){
   var bar=document.getElementById('agency-filter-bar');
   if(!bar) return;
@@ -1452,122 +2517,11 @@ function buildAgencyFilter(){
     bar.appendChild(btn);
   });
 }
-function exportAgencyXLSX(){
-  var rows=[['Partner','January','February','March','April','May','Target June','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D']];
-  partners.forEach(function(p){var q2s=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);rows.push([p.name,p.january||0,p.february||0,p.march||0,p.april||0,p.may||0,p.mayForecast||0,p.ytd||0,p.forecast||0,q2s,q2s*3,p.d2d||0]);});
-  exportXLSX('agency_overview.xlsx',[{name:'Agency Overview',data:rows}]);
-}
-function exportProjectsXLSX(){
-  var rows=[['Project','Type','Sales Agency','March','April','May']];
-  projectRows.forEach(function(r){rows.push(r);});
-  exportXLSX('running_projects.xlsx',[{name:'Running Projects',data:rows}]);
-}
-function exportFunnelXLSX(){
-  var rows=[['Project','Type','Region','Sold','HP','Uptake %']];
-  funnelRowsRaw.forEach(function(r){var pct=r[4]>0?(r[3]/r[4]*100).toFixed(1)+'%':'0%';rows.push([r[0],r[1],r[2],r[3],r[4],pct]);});
-  exportXLSX('projects_funnel.xlsx',[{name:'Projects Funnel',data:rows}]);
-}
-function exportPotentialXLSX(){
-  var rows=[['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info']];
-  potentialRows.forEach(function(r){rows.push(r);});
-  exportXLSX('new_potential.xlsx',[{name:'New Potential',data:rows}]);
-}
-function exportKpiXLSX(){
-  var c=computeKpis();
-  var rows=[['Category','Q2 Actual','Q2 Target','Forecast','Q2 Forecast %','Pace/Day','Required/Day','Status']];
-  c.kpis.forEach(function(k){rows.push([k.title,k.actual,k.target,k.forecast,k.forecastPct+'%',k.pace,k.needed,k.status]);});
-  exportXLSX('kpi_cards.xlsx',[{name:'KPI Cards',data:rows}]);
-}
-function exportAllXLSX(){
-  var c=computeKpis();
-  var k=[['Category','Q2 Actual','Q2 Target','Forecast','Q2 Forecast %','Status']];
-  c.kpis.forEach(function(x){k.push([x.title,x.actual,x.target,x.forecast,x.forecastPct+'%',x.status]);});
-  var a=[['Partner','January','February','March','April','May','Target June','YTD','D2D']];
-  partners.forEach(function(p){a.push([p.name,p.january||0,p.february||0,p.march||0,p.april||0,p.may||0,p.mayForecast||0,p.ytd||0,p.d2d||0]);});
-  var pr=[['Project','Type','Agency','March','April','May']];
-  projectRows.forEach(function(r){pr.push(r);});
-  var fn=[['Project','Type','Region','Sold','HP','%']];
-  funnelRowsRaw.forEach(function(r){var pct=r[4]>0?(r[3]/r[4]*100).toFixed(1)+'%':'0%';fn.push([r[0],r[1],r[2],r[3],r[4],pct]);});
-  var pot=[['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info']];
-  potentialRows.forEach(function(r){pot.push(r);});
-  exportXLSX('dashboard_komplett.xlsx',[{name:'KPI Cards',data:k},{name:'Agency Overview',data:a},{name:'Running Projects',data:pr},{name:'Projects Funnel',data:fn},{name:'New Potential',data:pot}]);
-}
-
-
-function heroSearch(val){
-  var box=document.getElementById('hero-results');
-  if(!box) return;
-  if(!val||val.length<2){box.style.display='none';return;}
-  var q=val.toLowerCase();
-  var results=[];
-
-  // Search running projects
-  projectRows.forEach(function(r){
-    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),agency:r[2],section:'Running Projects',sectionId:'sec-projects'});
-  });
-  // Search funnel
-  funnelRowsRaw.forEach(function(r){
-    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});
-  });
-  // Search CoA's missing
-  var coaItems=[["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],["DE-BB Fürstenwalde P7","BB","United Promotion",""],["DE-BB Schönwald P5","BB","Stonemedia GmbH",""],["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],["DE-BB Beetzsee P2","BB","United Promotion",""],["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],];
-  coaItems.forEach(function(r){
-    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Agency: '+r[2],section:"CoA's missing",sectionId:'sec-coa'});
-  });
-  // Search Cemetery
-  if(typeof cemeteryRows!=='undefined') cemeteryRows.forEach(function(r){
-    if(r[0].toLowerCase().includes(q)) results.push({name:r[0],type:'Cemetery · '+r[1],section:'Cemetery',sectionId:'sec-cemetery'});
-  });
-  // Search new potential
-  potentialRows.forEach(function(r){
-    if((r[1]||'').toLowerCase().includes(q)||(r[0]||'').toString().includes(q))
-      results.push({name:r[1]+' ('+r[2]+')',type:'New Potential',section:'New Potential',sectionId:'sec-potential'});
-  });
-
-  if(results.length===0){
-    box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis gefunden</div>';
-  } else {
-    box.innerHTML=results.slice(0,12).map(function(r){
-      return '<div onclick="goToResult(\'' + r.sectionId + '\',\'' + esc(r.name).replace(/'/g,"\'") + '\')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;hover:background:#f8f8f8;">' +
-        '<div style="font-weight:700;font-size:13px;color:#252121;">' + esc(r.name) + '</div>' +
-        '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + esc(r.type||'') + (r.agency?' · '+esc(r.agency):'') + ' · <b style="color:#C86750;">' + r.section + '</b></div>' +
-      '</div>';
-    }).join('');
-  }
-  box.style.display='block';
-}
-
-function goToResult(sectionId, name){
-  // Navigate to section
-  var el=document.getElementById(sectionId);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-  // Set search filter in that section
-  if(sectionId==='sec-projects'){projectSearch=name;render();}
-  else if(sectionId==='sec-funnel'){funnelSearch=name;render();}
-  else if(sectionId==='sec-potential'){potentialSearch=name;render();}
-  // Close dropdown
-  var box=document.getElementById('hero-results');
-  if(box) box.style.display='none';
-  document.getElementById('hero-search').value='';
-}
-
-// Close on click outside
-document.addEventListener('click',function(e){
-  var box=document.getElementById('hero-results');
-  if(box&&!box.contains(e.target)&&e.target.id!=='hero-search') box.style.display='none';
-});
-
-function exportFunnelCSV(){
-  var rows=funnelRowsRaw.map(function(r){return r.join(';');});
-  var csv=['Project;Type;Region;Sold;HP'].concat(rows).join('\n');
-  var a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
-  a.download='projects_funnel_2026.csv';
-  a.click();
-}
-
-// Initial render
+function toggleAgency(idx){var name=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(name);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(name);if(selectedAgencies.length===0)selectedAgencies=null;render();}
+function downloadTemplate(){var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['Partner','January','February','March','April','May','MayForecast','YTD','Forecast2026','D2D']]),'Partners');XLSX.writeFile(wb,'dashboard_template.xlsx');}
+function exportFunnelCSV(){var rows=funnelRowsRaw.map(function(r){return r.join(';');});var csv=['Project;Type;Region;Sold;HP'].concat(rows).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='projects_funnel.csv';a.click();}
 render();
+
 </script>
 </body>
 </html>
