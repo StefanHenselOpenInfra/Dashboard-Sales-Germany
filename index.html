@@ -65,15 +65,15 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 
 <!-- NAV -->
 <nav id="main-nav">
-  <button class="btn btn-dark" onclick="scrollTo('sec-top')">Top</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-kpi')">KPI Cards</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-sales')">Sales Development</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-daily')">Daily Average</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-mgmt')">Management</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-coa')">CoA's missing</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-projects')">Running Projects</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-funnel')">Projects Funnel</button>
-  <button class="btn btn-dark" onclick="scrollTo('sec-potential')">New Potential</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -1435,49 +1435,15 @@ function processSalesReport(ws){
   setTimeout(function(){closeImport();render();},1500);
 }
 
-// ── LOAD DATA (override from data.json if available) ─────────────────────────
-function loadData(callback){
-  fetch('data.json?v='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(d){
-      if(d.partners) partners=d.partners;
-      if(d.kpiActuals) kpiActuals=d.kpiActuals;
-      if(d.settings) settings=d.settings;
-      if(d.projectRows) projectRows=d.projectRows;
-      if(d.funnelRowsRaw) funnelRowsRaw=d.funnelRowsRaw;
-      if(d.cemeteryRows) cemeteryRows=d.cemeteryRows;
-      if(d.potentialRows) potentialRows=d.potentialRows;
-      if(d.bobLinks) bobLinks=d.bobLinks;
-      if(d.netSales) netSales=d.netSales;
-      if(d.cancelled) cancelled=d.cancelled;
-      if(callback) callback();
-    })
-    .catch(function(){if(callback) callback();});
-}
-
-
-function heroSearch(val){
-  var box=document.getElementById('hero-results');
-  if(!box) return;
-  if(!val||val.length<2){box.style.display='none';return;}
-  var q=val.toLowerCase();var results=[];
-  if(projectRows) projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))results.push({name:r[0],type:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});
-  if(funnelRowsRaw) funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))results.push({name:r[0],type:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});
-  if(potentialRows) potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))results.push({name:r[1]+' ('+r[2]+')',section:'New Potential',sectionId:'sec-potential'});});
-  if(cemeteryRows) cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))results.push({name:r[0],section:'Cemetery',sectionId:'sec-cemetery'});});
-  if(results.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}
-  else{box.innerHTML=results.slice(0,15).map(function(r){return'<div onclick="goToResult(\''+r.sectionId+'\',\''+r.name.replace(/\'/g,'\\\'')+'\')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;">'+esc(r.name)+'</div><div style="font-size:11px;color:#64748b;"><b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}
-  box.style.display='block';
-}
-function goToResult(sid,name){var el=document.getElementById(sid);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(sid==='sec-projects'){projectSearch=name;render();}else if(sid==='sec-funnel'){funnelSearch=name;render();}else if(sid==='sec-potential'){potentialSearch=name;render();}else if(sid==='sec-cemetery'){window._cemSearch=name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
+var _heroResults=[];
+function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(cb)cb();}).catch(function(){if(cb)cb();});}
+function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
+function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
-
-
-function buildAgencyFilter(){var bar=document.getElementById('agency-filter-bar');if(!bar)return;bar.innerHTML='';var allBtn=document.createElement('button');allBtn.textContent='Alle';allBtn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');allBtn.onclick=function(){selectedAgencies=null;render();};bar.appendChild(allBtn);partners.forEach(function(p,i){var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;var btn=document.createElement('button');btn.textContent=p.name;btn.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');btn.onclick=function(){toggleAgency(i);};bar.appendChild(btn);});}
-function toggleAgency(idx){var name=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(name);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(name);if(selectedAgencies.length===0)selectedAgencies=null;render();}
+function buildAgencyFilter(){var bar=document.getElementById('agency-filter-bar');if(!bar)return;bar.innerHTML='';var ab=document.createElement('button');ab.textContent='Alle';ab.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');ab.onclick=function(){selectedAgencies=null;render();};bar.appendChild(ab);partners.forEach(function(p,i){var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;var b=document.createElement('button');b.textContent=p.name;b.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');b.onclick=function(){toggleAgency(i);};bar.appendChild(b);});}
+function toggleAgency(idx){var n=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(n);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(n);if(selectedAgencies.length===0)selectedAgencies=null;render();}
 function downloadTemplate(){console.log('Template');}
-function exportFunnelCSV(){var rows=funnelRowsRaw.map(function(r){return r.join(';');});var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([['Project;Type;Region;Sold;HP'].concat(rows).join('\n')],{type:'text/csv;charset=utf-8;'}));a.download='funnel.csv';a.click();}
-
+function exportFunnelCSV(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([['Project;Type;Region;Sold;HP'].concat(funnelRowsRaw.map(function(r){return r.join(';');})).join('\n')],{type:'text/csv;charset=utf-8;'}));a.download='funnel.csv';a.click();}
 loadData(render);
 
 </script>
