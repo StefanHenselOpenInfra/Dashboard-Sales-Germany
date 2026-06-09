@@ -1238,7 +1238,7 @@
       213
     ],
     [
-      "DE-BY Obersüßbach S1",
+      "DD - Obersußbach S1",
       "BY",
       "Abandon",
       0,
@@ -1670,10 +1670,10 @@
       "BY",
       "Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen",
       "positiv",
-      "Frau Hetzenecker",
+      "Frau Hetzenecker / Markus Viehauser",
       "Vorzimmer BM",
-      "09431 45-1 21",
-      "hetzenecker.martina@schwandorf.de",
+      "09431 45-1 21 / 09431-45-289",
+      "hetzenecker.martina@schwandorf.de / viehauser.markus@schwandorf.de",
       "Termin 3.6.2026"
     ],
     [
@@ -2126,12 +2126,6 @@
     "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
     "DE-BB Gosen-Neu Zittau P4": "https://bob.openinfra.com/delivery-projects/2909",
     "DE-BB Groß Köris P3": "https://bob.openinfra.com/delivery-projects/2825",
-    "DE-BB Grünheide P1": "https://bob.openinfra.com/delivery-projects/2597",
-    "DE-BB Grünheide P3": "https://bob.openinfra.com/delivery-projects/2904",
-    "DE-BB Grünheide P4": "https://bob.openinfra.com/delivery-projects/2905",
-    "DE-BB Grünheide P5": "https://bob.openinfra.com/delivery-projects/3025",
-    "DE-BB Grünheide P6": "https://bob.openinfra.com/delivery-projects/3026",
-    "DE-BB Grünheide P7": "https://bob.openinfra.com/delivery-projects/3027",
     "DE-BB Heidesee B5-2": "https://bob.openinfra.com/delivery-projects/3049",
     "DE-BB Heidesee P5-1": "https://bob.openinfra.com/delivery-projects/2777",
     "DE-BB Hennigsdorf P3": "https://bob.openinfra.com/delivery-projects/4147",
