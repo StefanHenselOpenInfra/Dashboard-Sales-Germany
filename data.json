@@ -9,9 +9,9 @@
     {"name":"Rating Peak GmbH","january":0,"february":0,"march":0,"april":0,"may":0,"mayForecast":0,"juneActual":3,"ytd":3,"forecast":0,"d2d":2,"comingSoon":true}
   ],
   "kpiActuals": {
-    "Base Sales / Up Sales": {"april":174,"may":279,"june":189},
-    "After Market / HP0 Sales": {"april":0,"may":0,"june":0},
-    "Build Sales": {"april":123,"may":143,"june":27}
+    "Base Sales / Up Sales": {"april":158,"may":251,"june":167},
+    "After Market / HP0 Sales": {"april":17,"may":28,"june":22},
+    "Build Sales": {"april":122,"may":143,"june":27}
   },
   "settings": {
     "salesReportTotal2026": 1440,
@@ -282,7 +282,7 @@
     "DD - Obersußbach S3": "https://bob.openinfra.com/sales-projects/3458",
     "DD - Weihmichl S1": "https://bob.openinfra.com/sales-projects/3459",
     "DD - Weihmichl S2": "https://bob.openinfra.com/sales-projects/3460",
-    "DD - Weihmichl S3": "https://bob.openinfra.com/sales-projects/3461",
+    "DD - Weihmachl S3": "https://bob.openinfra.com/sales-projects/3461",
     "DD - Weihmichl S4": "https://bob.openinfra.com/sales-projects/3462",
     "DE-BB Amt Scharmützelsee P0": "https://bob.openinfra.com/sales-projects/4006",
     "DE-BB Amt Scharmützelsee P2": "https://bob.openinfra.com/delivery-projects/2429",
