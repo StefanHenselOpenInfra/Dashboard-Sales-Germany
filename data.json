@@ -80,9 +80,9 @@
     ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0,0],
     ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,0],
     ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0,19],
-    ["DE-BB Schöneiche HP0","HP0","Open Infra CS",2,2,0,0],
+    ["DE-BB Schöneiche HP0","HP0","Team Tatjana",2,2,0,0],
     ["DE-BB Falkensee HP0","HP0","Open Infra CS",1,0,1,0],
-    ["DE-BB Königs Wusterhausen HP0 1","HP0","Open Infra CS",1,1,0,0],
+    ["DE-BB Königs Wusterhausen HP0 1","HP0","Stonemedia GmbH",1,1,0,0],
     ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0,0],
     ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1,0],
     ["DE-CS","HP0","Open Infra CS",8,4,5,0],
@@ -90,7 +90,13 @@
     ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0],
     ["DE-BB Gosen-Neu Zittau P4","BASE UPSELL","Rating Peak GmbH",0,0,0,1],
     ["DE-BB Gosen Neu-Zittau P3","Build Sales","Rating Peak GmbH",0,0,0,0],
-    ["Luckau Combined (Deploy 2026)","Build Sales","Rating Peak GmbH",0,0,0,0]
+    ["Luckau Combined (Deploy 2026)","Build Sales","Rating Peak GmbH",0,0,0,0],
+    ["DE-BB Kasel-Golzig Combined","Build Sales","Rating Peak GmbH",0,0,0,0],
+    ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0],
+    ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0],
+    ["DE-BB Beetzsee P2","Base Sales","United Promotion GmbH",0,0,0,0],
+    ["DE-BB Schönwald P5","BASE UPSELL","Stonemedia GmbH",0,0,0,0],
+    ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,0,0]
   ],
   "funnelRowsRaw": [
     ["DE-BB Brandenburg HP0 FC","HP0","BB",0,1363],
@@ -154,19 +160,18 @@
     ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
     ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
     ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
-    ["DE-BB Schönwald P5","BASE UPSELL","BB",0,0],
     ["DE-BB Neuzelle P5","BASE UPSELL","BB",0,0],
     ["DE-BB Neuzelle P6","BASE UPSELL","BB",0,0],
     ["DE-BB Bestensee HP0","HP0","BB",0,0],
     ["DE-BB Stadt Velten P1 HP0","HP0","BB",0,0],
     ["DE-BB Grünheide P4","BASE UPSELL","BB",0,0],
-    ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
     ["DE-BB Grünheide P6","BASE UPSELL","BB",0,0],
     ["DE-BB Amt Scharmützelsee P2","Base Sales / Up Sales","BB",0,0],
     ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,0],
     ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
     ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
-    ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259]
+    ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
+    ["Hohen Neuendorf B1-1","Build Sales","BB",0,0]
   ],
   "cemeteryRows": [
     ["DD - Furth S1","BY","Abandon",6,223],
