@@ -67,9 +67,9 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 <nav id="main-nav">
   <button class="btn btn-dark" onclick="scrollToSection('sec-top')">Top</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-kpi')">KPI Cards</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Agency Overview</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-sales')">Sales Development</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-daily')">Daily Average</button>
-  <button class="btn btn-dark" onclick="scrollToSection('sec-mgmt')">Management</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-projects')">Running Projects</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
@@ -893,31 +893,11 @@ function render(){
   html+='<div class="kpi-grid">'+kpis.map(kpiCard).join('')+'</div>';
   html+='</div></section>';
 
-  // ── SALES DEVELOPMENT ──
-  html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
-  html+='<div class="card" style="border:2px solid #E4A489;">';
-  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span>')+'</p></div>';
-  html+='<span class="badge tag-amber">2026</span></div>';
-  var q3Pace=_fp?undefined:Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
-  var q3PaceLabel=_fp?undefined:'Q3 Target Pace '+q3Pace+'/Monat';
-  html+=svgLineChart(salesData,q3Pace,q3PaceLabel,900,'#3182ce');
-  html+='</div></div></section>';
-
-  // ── DAILY AVERAGE ──
-  html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
-  html+='<div class="card" style="border:2px solid #E4A489;">';
-  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Daily Sales Average'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">Average daily sales development'+(_fp?' (gefiltert)':'')+'</p></div>';
-  html+='<span class="badge tag-success">2026</span></div>';
-  html+=svgLineChart(dailyData,_fp?undefined:20,_fp?undefined:'Target 20/day',35,'#363E36');
-  html+='</div></div></section>';
-
   // ── MANAGEMENT ──
   html+='<section id="sec-mgmt" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="margin-bottom:20px;">';
   html+='<h2 style="margin-bottom:20px;">🎯 Management Summary</h2>';
-  
+
   html+='</div>';
 
   // Agency table
@@ -998,6 +978,26 @@ function render(){
   html+='<td style="text-align:center;color:#C86750;">'+totQ2q4+'</td>';
   html+='<td style="text-align:center;color:#C86750;">'+vTotD2d+'</td></tr>';
   html+='</tbody></table></div></div></div></section>';
+
+  // ── SALES DEVELOPMENT ──
+  html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
+  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span>')+'</p></div>';
+  html+='<span class="badge tag-amber">2026</span></div>';
+  var q3Pace=_fp?undefined:Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
+  var q3PaceLabel=_fp?undefined:'Q3 Target Pace '+q3Pace+'/Monat';
+  html+=svgLineChart(salesData,q3Pace,q3PaceLabel,900,'#3182ce');
+  html+='</div></div></section>';
+
+  // ── DAILY AVERAGE ──
+  html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
+  html+='<div class="card" style="border:2px solid #E4A489;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
+  html+='<div><h2>Daily Sales Average'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">Average daily sales development'+(_fp?' (gefiltert)':'')+'</p></div>';
+  html+='<span class="badge tag-success">2026</span></div>';
+  html+=svgLineChart(dailyData,_fp?undefined:20,_fp?undefined:'Target 20/day',35,'#363E36');
+  html+='</div></div></section>';
 
   // ── COA MISSING ──
   var coaAgencies=['All'].concat(coaRowsRaw.map(function(r){return r[2];}).filter(function(v,i,a){return a.indexOf(v)===i;}).sort());
