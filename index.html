@@ -959,17 +959,25 @@ function render(){
   var totJuneFcst=visiblePartners.reduce(function(s,p){return s+(p.juneActual>0?Math.round((p.juneActual/juneDoneTot)*22):0);},0);
   html+='<td style="text-align:center;color:#363E36;font-weight:900;">'+totJuneAct+'</td>';
   html+='<td style="text-align:center;"><span style="display:inline-block;min-width:40px;padding:2px 8px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+totJuneFcst+'</span></td>';
-  html+='<td style="text-align:center;color:#2563eb;font-weight:900;">'+totals.mayForecast+'</td>';
-  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+totals.may+'</td>';
-  html+='<td style="text-align:center;">'+totals.april+'</td>';
-  html+='<td style="text-align:center;">'+totals.march+'</td>';
-  html+='<td style="text-align:center;">'+totals.february+'</td>';
-  html+='<td style="text-align:center;">'+totals.january+'</td>';
-  html+='<td style="text-align:center;">'+S.salesReportTotal2026+'</td>';
+  var vTotMayFc=visiblePartners.reduce(function(s,p){return s+(p.mayForecast||0);},0);
+  var vTotMay=visiblePartners.reduce(function(s,p){return s+(p.may||0);},0);
+  var vTotApr=visiblePartners.reduce(function(s,p){return s+(p.april||0);},0);
+  var vTotMar=visiblePartners.reduce(function(s,p){return s+(p.march||0);},0);
+  var vTotFeb=visiblePartners.reduce(function(s,p){return s+(p.february||0);},0);
+  var vTotJan=visiblePartners.reduce(function(s,p){return s+(p.january||0);},0);
+  var vTotYtd=visiblePartners.reduce(function(s,p){return s+(p.ytd||0);},0);
+  var vTotD2d=visiblePartners.reduce(function(s,p){return s+(p.d2d||0);},0);
+  html+='<td style="text-align:center;color:#2563eb;font-weight:900;">'+vTotMayFc+'</td>';
+  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+vTotMay+'</td>';
+  html+='<td style="text-align:center;">'+vTotApr+'</td>';
+  html+='<td style="text-align:center;">'+vTotMar+'</td>';
+  html+='<td style="text-align:center;">'+vTotFeb+'</td>';
+  html+='<td style="text-align:center;">'+vTotJan+'</td>';
+  html+='<td style="text-align:center;">'+vTotYtd+'</td>';
   html+='<td style="text-align:center;">'+totFc+'</td>';
   html+='<td style="text-align:center;color:#C86750;">'+totQ2s+'</td>';
   html+='<td style="text-align:center;color:#C86750;">'+totQ2q4+'</td>';
-  html+='<td style="text-align:center;color:#C86750;">'+totals.d2d+'</td></tr>';
+  html+='<td style="text-align:center;color:#C86750;">'+vTotD2d+'</td></tr>';
   html+='</tbody></table></div></div></div></section>';
 
   // ── COA MISSING ──
