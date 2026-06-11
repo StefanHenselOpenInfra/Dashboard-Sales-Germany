@@ -1053,14 +1053,14 @@ function render(){
   });
   html+='</tr></thead><tbody>';
   projs.forEach(function(r,i){
-    var offTrackList=['DE-BB Zossen HP0','DE-BB Zossen P4-2','DE-BB Woltersdorf HP0'];
     var gestopptList=[];
-    var offTrackExclude=['DE-BB Stadt Fürstenwalde P1-P3 HP0','DE-BB Storkow P8'];
-    var allZero=(((r[3]||0)===0&&(r[4]||0)===0&&(r[5]||0)===0)||offTrackList.indexOf(r[0])>=0)&&offTrackExclude.indexOf(r[0])<0;
+    var stoppItProjs=['Märkisch Buchholz Combined'];
+    var allZero=(r[6]||0)===0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]];
     var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var stoppItBadge=stoppItProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff7ed;color:#ea580c;border:2px solid #ea580c;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">stopp it?</span>':'';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
