@@ -687,7 +687,26 @@ function render(){
   var q3Monthly=Math.round(q3Needed/3);
   var jul=q3Monthly, aug=q3Monthly, sep=q3Needed-jul-aug;
 
-  var salesData=[
+  // chart data — gefiltert nach selectedAgencies wenn aktiv
+  var _fp=selectedAgencies?partners.filter(function(p){return selectedAgencies.indexOf(p.name)>=0;}):null;
+  var _juneDoneChart=Math.max(1,S.q2WorkingDaysDone-43);
+  var cJan=_fp?_fp.reduce(function(s,p){return s+(p.january||0);},0):jan;
+  var cFeb=_fp?_fp.reduce(function(s,p){return s+(p.february||0);},0):feb;
+  var cMar=_fp?_fp.reduce(function(s,p){return s+(p.march||0);},0):mar;
+  var cApr=_fp?_fp.reduce(function(s,p){return s+(p.april||0);},0):apr;
+  var cMay=_fp?_fp.reduce(function(s,p){return s+(p.may||0);},0):S.may;
+  var cJuneAct=_fp?_fp.reduce(function(s,p){return s+(p.juneActual||0);},0):totals.juneActual;
+  var cJuneFcst=Math.round(cJuneAct/_juneDoneChart*22);
+  var chartAgencyLabel=_fp?(_fp.length===1?' – '+_fp[0].name:' – '+_fp.length+' Agenturen'):'';
+
+  var salesData=_fp?[
+    {month:'Jan',value:cJan,growth:null},
+    {month:'Feb',value:cFeb,growth:growthLabel(cFeb,cJan)},
+    {month:'Mar',value:cMar,growth:growthLabel(cMar,cFeb)},
+    {month:'Apr',value:cApr,growth:growthLabel(cApr,cMar)},
+    {month:'May',value:cMay,growth:growthLabel(cMay,cApr)},
+    {month:'June Forecast',value:cJuneFcst,growth:growthLabel(cJuneFcst,cMay),forecast:true}
+  ]:[
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
@@ -698,7 +717,12 @@ function render(){
     {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
     {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
   ];
-  var dailyData=[
+  var dailyData=_fp?[
+    {month:'Jan',value:+(cJan/22).toFixed(1)},{month:'Feb',value:+(cFeb/20).toFixed(1)},
+    {month:'Mar',value:+(cMar/22).toFixed(1)},{month:'Apr',value:+(cApr/22).toFixed(1)},
+    {month:'May',value:+(cMay/21).toFixed(1)},
+    {month:'Jun Forecast',value:+(cJuneAct/_juneDoneChart).toFixed(1),forecast:true}
+  ]:[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
     {month:'May',value:+(S.may/21).toFixed(1)},{month:'Jun Forecast',value:+(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)).toFixed(1),forecast:true},{month:'Target June',value:+(mayF/21).toFixed(1),forecast:true},
@@ -854,18 +878,20 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development</h2><p style="color:#64748b;">Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span></p></div>';
+  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span>')+'</p></div>';
   html+='<span class="badge tag-amber">2026</span></div>';
-  var q3Pace=Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3); html+=svgLineChart(salesData,q3Pace,'Q3 Target Pace '+q3Pace+'/Monat',900,'#3182ce');
+  var q3Pace=_fp?undefined:Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
+  var q3PaceLabel=_fp?undefined:'Q3 Target Pace '+q3Pace+'/Monat';
+  html+=svgLineChart(salesData,q3Pace,q3PaceLabel,900,'#3182ce');
   html+='</div></div></section>';
 
   // ── DAILY AVERAGE ──
   html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Daily Sales Average</h2><p style="color:#64748b;">Average daily sales development</p></div>';
+  html+='<div><h2>Daily Sales Average'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">Average daily sales development'+(_fp?' (gefiltert)':'')+'</p></div>';
   html+='<span class="badge tag-success">2026</span></div>';
-  html+=svgLineChart(dailyData,20,'Target 20/day',35,'#363E36');
+  html+=svgLineChart(dailyData,_fp?undefined:20,_fp?undefined:'Target 20/day',35,'#363E36');
   html+='</div></div></section>';
 
   // ── MANAGEMENT ──
@@ -1090,12 +1116,12 @@ function render(){
     var rowBg=(r[0]==='DE-BB Diehlo P1')?'#fef9c3':(i%2===0?'#fff':'rgba(248,234,223,.3)'); html+='<tr style="background:'+rowBg+'">';
     html+='<td style="padding:10px;text-align:center;font-weight:900;color:#dc2626;">'+(isPrio?'✕':'')+'</td>';
     var bobUrlF=bobLinks[r[0]];
-    var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P5','DE-BB Grünheide P6'];
-    var pruefenProjs=['DE-BB Stadt Velten P1 HP0'];
+    var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P6'];
+    var pruefenProjs=['DE-BB Stadt Velten P1 HP0','Hohen Neuendorf B1-1'];
     var stoppFeeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6'];
     var stoneStamps=['Seddiner See B2'];
     var calcReadyProjs=['DE-BB Diehlo P1'];
-    var wartenProjs=['DE-BB Schönwald P5'];
+    var wartenProjs=[];
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Diehlo P1') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
