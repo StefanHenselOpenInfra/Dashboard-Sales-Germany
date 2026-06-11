@@ -24,7 +24,7 @@
       "juneActual": 133,
       "ytd": 547,
       "forecast": 1100,
-      "d2d": 3
+      "d2d": 4
     },
     {
       "name": "Team Tatjana",
@@ -112,9 +112,9 @@
   },
   "settings": {
     "salesReportTotal2026": 1483,
-    "q2WorkingDaysDone": 52,
-    "q2WorkingDaysLeft": 13,
-    "juneForecast": 500,
+    "q2WorkingDaysDone": 51,
+    "q2WorkingDaysLeft": 14,
+    "juneForecast": 598,
     "jan": 42,
     "feb": 135,
     "mar": 274,
