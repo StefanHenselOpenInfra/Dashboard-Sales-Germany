@@ -147,8 +147,6 @@ var projectRows = [
   ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3,0],
   ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,9,3],
   ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,6],
-  ["DE-BB Teupitz P3","Base Sales","Stonemedia GmbH",3,0,6,0],
-  ["DE-BB Teupitz P4","Base Sales","Stonemedia GmbH",21,0,1,0],
   ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",16,16,6,0],
   ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",45,7,2,0],
   // ── EnCom GmbH ────────────────────────────────────────────────────────
@@ -222,7 +220,6 @@ var funnelRowsRaw = [
   ["DE-BB Hoppegarten P2","BASE UPSELL","BB",80,0],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","BB",0,0],
   ["DE-BB Königs Wusterhausen HP0 2","HP0","BB",0,2759],
-  ["DE-BB Löwenberger Land P3","BASE UPSELL","BB",79,427],
   ["DE-BB Mittenwalde HP0 - SNB","HP0","BB",0,172],
   ["DE-BB Neuzelle Combined P2","Build sales","BB",89,181],
   ["DE-BB Neuzelle Combined P3","Build sales","BB",51,122],
@@ -247,7 +244,7 @@ var funnelRowsRaw = [
   ["DE-NI Welle P2","Build sales","NI",107,213],
   ["DE-NI Welle P3","Build sales","NI",28,32],
   ["DE-NI Heidenau B4","Build sales","NI",12,16],
-  ["Seddiner See B2","BASE UPSELL","BB",36,695],
+
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BB Diehlo P1","Base Sales","BB",1,297],
   ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
@@ -279,7 +276,28 @@ var funnelRowsRaw = [
   ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,0],
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
-  ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259]
+  ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
+  ["DE-BB Teupitz P3","Base Sales","BB",0,0],
+  ["DE-BB Teupitz P4","Base Sales","BB",0,0]
+];
+
+var coaRowsRaw = [
+  ["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],
+  ["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],
+  ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],
+  ["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],
+  ["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],
+  ["DE-BB Fürstenwalde P7","BB","United Promotion",""],
+  ["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],
+  ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
+  ["DE-BB Beetzsee P2","BB","United Promotion",""],
+  ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
+  ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
+  ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
+  ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
+  ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
+  ["DE-BB Seddiner See P2","BB","Stonemedia GmbH","Calc is sent to Oda"],
+  ["DE-BB Löwenberger Land P3","BB","Stonemedia GmbH","wait 4 Calc 4 CoA"]
 ];
 
 var settings = {salesReportTotal2026:1421,q2WorkingDaysDone:49,q2WorkingDaysLeft:16,juneForecast:500,
@@ -480,7 +498,7 @@ var bobLinks = {
   "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
   "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
   "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
-  "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/2720",
+  "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/4146",
   "DE-BB Teupitz P4": "https://bob.openinfra.com/delivery-projects/4146",
   "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
   "DE-BB Woltersdorf P5-1": "https://bob.openinfra.com/delivery-projects/2763",
@@ -512,7 +530,7 @@ var bobLinks = {
   "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
   "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/delivery-projects/3771",
   "Nienburg Projekte KSB": "https://www.google.com/maps/d/edit?mid=1O_2TNymgRyUs9JkqnBv0dheWnM3GE54&ll=52.68645321738002%2C9.134187513199254&z=12",
-  "Seddiner See B2": "https://bob.openinfra.com/delivery-projects/1750",
+  "DE-BB Seddiner See P2": "https://bob.openinfra.com/delivery-projects/1750",
   "Wistedt B1": "https://bob.openinfra.com/delivery-projects/1964",
   "DE-BB Beetzsee P1 HP0": "https://bob.openinfra.com/sales-projects/4038",
   "DE-BY Wallersdorf P1": "https://bob.openinfra.com/delivery-projects/4293",
@@ -534,6 +552,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentia
 // state
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
+var coaSearch='', coaSortKey='Agency', coaSortDir='asc';
 var agencySortKey='June Ist', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
 
@@ -981,38 +1000,47 @@ function render(){
   html+='</tbody></table></div></div></div></section>';
 
   // ── COA MISSING ──
+  var coaFiltered=coaRowsRaw.filter(function(r){
+    return r.join(' ').toLowerCase().includes(coaSearch.toLowerCase());
+  });
+  var coaIdx={Project:0,Region:1,Agency:2,Status:3}[coaSortKey];
+  coaFiltered.sort(function(a,b){
+    var av=a[coaIdx]||'',bv=b[coaIdx]||'';
+    var r=String(av).localeCompare(String(bv));
+    return coaSortDir==='asc'?r:-r;
+  });
   html+='<section id="sec-coa" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div class="card" style="border:2px solid #fde68a;background:#fffbeb;">';
-  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">';
   html+='<h2 style="color:#92400e;">CoA\'s missing</h2>';
   html+='<div style="background:#fff;border:1px solid #fcd34d;border-radius:1rem;padding:12px 20px;">';
   html+='<div style="font-size:11px;font-weight:900;color:#C86750;text-transform:uppercase;">CoA\'s missing</div>';
-  html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">20</div></div></div>';
+  html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+coaFiltered.length+'</div></div></div>';
+  html+='<div style="margin-bottom:12px;">';
+  html+='<input value="'+esc(coaSearch)+'" placeholder="Search..." oninput="coaSearch=this.value;render();" style="width:100%;box-sizing:border-box;">';
+  html+='</div>';
   html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
-  html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr><th>Project</th><th>Region</th><th>Agency</th><th>Status</th></tr></thead><tbody>';
-  [["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],
-   ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],
-   ["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],
-   ["DE-BB Groß Köris P3","BB","Stonemedia GmbH",""],
-   ["DE-BB Fürstenwalde P7","BB","United Promotion",""],
-   ["DE-BB Storkow P1-4","BB","Stonemedia GmbH",""],
-   ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
-   ["DE-BB Beetzsee P2","BB","United Promotion",""],
-   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
-   ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
-   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
-   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
-   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"]
-  ].forEach(function(item){
-    html+='<tr style="background:rgba(255,241,242,.6);">';
-    var bobUrlCoa=bobLinks&&bobLinks[item[0]]; var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6']; var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':''; html+='<td style="font-weight:900;text-decoration:underline;text-decoration-color:#94a3b8;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#252121;text-decoration:underline;text-decoration-color:#94a3b8;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
-    html+='<td style="font-weight:600;">'+item[1]+'</td>';
-    html+='<td style="font-weight:600;">'+item[2]+'</td>';
+  html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr>';
+  [['Project',0],['Region',1],['Agency',2],['Status',3]].forEach(function(col){
+    var active=coaSortKey===col[0];
+    html+='<th style="cursor:pointer;user-select:none;" onclick="coaSortKey=\''+col[0]+'\';coaSortDir=(coaSortKey===\''+col[0]+'\'&&coaSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(active?(coaSortDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  coaFiltered.forEach(function(item,i){
+    html+='<tr style="background:'+(i%2===0?'rgba(255,241,242,.6)':'#fff')+'">';
+    var bobUrlCoa=bobLinks&&bobLinks[item[0]];
+    var feeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6'];
+    var feeBadge=feeProjs.indexOf(item[0])>=0?'<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;">499 € Fee</span>':'';
+    html+='<td style="padding:10px;font-weight:900;">'+(bobUrlCoa?'<a href="'+bobUrlCoa+'" target="_blank" style="color:#252121;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(item[0])+'</a>':esc(item[0]))+feeBadge+'</td>';
+    html+='<td style="padding:10px;font-weight:600;">'+esc(item[1])+'</td>';
+    html+='<td style="padding:10px;font-weight:600;">'+esc(item[2])+'</td>';
     var statusText=item[3]||'wait 4 Calc 4 CoA';
     var statusStyle=statusText==='Calc is sent to Oda'
       ?'background:#fff;color:#dc2626;border:2px solid #dc2626;font-weight:900;'
+      :statusText==='new calc needed'
+      ?'background:#fff7ed;color:#ea580c;border:2px solid #ea580c;font-weight:900;'
       :'background:#fef3c7;color:#92400e;';
-    html+='<td><span class="badge" style="'+statusStyle+'">'+esc(statusText)+'</span></td>';
+    html+='<td style="padding:10px;"><span class="badge" style="'+statusStyle+'">'+esc(statusText)+'</span></td>';
     html+='</tr>';
   });
   html+='</tbody></table></div></div></div></section>';
@@ -1134,9 +1162,10 @@ function render(){
     var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P6'];
     var pruefenProjs=['DE-BB Stadt Velten P1 HP0','Hohen Neuendorf B1-1'];
     var stoppFeeProjs=['DE-BB Neuzelle P5','DE-BB Neuzelle P6'];
-    var stoneStamps=['Seddiner See B2'];
+    var stoneStamps=[];
     var calcReadyProjs=['DE-BB Diehlo P1'];
     var wartenProjs=[];
+    var backInFunnelProjs=['DE-BB Teupitz P3','DE-BB Teupitz P4'];
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Diehlo P1') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
@@ -1146,6 +1175,7 @@ function render(){
     else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
     else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';
     else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
+    else if(backInFunnelProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff7ed;color:#c2410c;border:2px solid #c2410c;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">11.6.2026 back in funnel</span>';
     html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
