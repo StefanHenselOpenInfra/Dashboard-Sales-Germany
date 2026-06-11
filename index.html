@@ -552,7 +552,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentia
 // state
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
-var coaSearch='', coaSortKey='Agency', coaSortDir='asc';
+var coaSearch='', coaAgencyFilter='All', coaSortKey='Agency', coaSortDir='asc';
 var agencySortKey='June Ist', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
 
@@ -1000,8 +1000,10 @@ function render(){
   html+='</tbody></table></div></div></div></section>';
 
   // ── COA MISSING ──
+  var coaAgencies=['All'].concat(coaRowsRaw.map(function(r){return r[2];}).filter(function(v,i,a){return a.indexOf(v)===i;}).sort());
   var coaFiltered=coaRowsRaw.filter(function(r){
-    return r.join(' ').toLowerCase().includes(coaSearch.toLowerCase());
+    return(coaAgencyFilter==='All'||r[2]===coaAgencyFilter)&&
+      r.join(' ').toLowerCase().includes(coaSearch.toLowerCase());
   });
   var coaIdx={Project:0,Region:1,Agency:2,Status:3}[coaSortKey];
   coaFiltered.sort(function(a,b){
@@ -1016,8 +1018,11 @@ function render(){
   html+='<div style="background:#fff;border:1px solid #fcd34d;border-radius:1rem;padding:12px 20px;">';
   html+='<div style="font-size:11px;font-weight:900;color:#C86750;text-transform:uppercase;">CoA\'s missing</div>';
   html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+coaFiltered.length+'</div></div></div>';
-  html+='<div style="margin-bottom:12px;">';
-  html+='<input value="'+esc(coaSearch)+'" placeholder="Search..." oninput="coaSearch=this.value;render();" style="width:100%;box-sizing:border-box;">';
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">';
+  html+='<input value="'+esc(coaSearch)+'" placeholder="Search..." oninput="coaSearch=this.value;render();">';
+  html+='<select onchange="coaAgencyFilter=this.value;render();">';
+  coaAgencies.forEach(function(a){html+='<option'+(coaAgencyFilter===a?' selected':'')+'>'+esc(a)+'</option>';});
+  html+='</select>';
   html+='</div>';
   html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
   html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr>';
