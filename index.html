@@ -59,6 +59,25 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 .tag-slate{background:#1e293b;color:#fff;}
 .hidden{display:none;}
 .sticky-head{position:sticky;top:0;z-index:10;}
+@media print {
+  @page { size: A4 landscape; margin: 12mm; }
+  body { background: #fff !important; font-size: 11px; }
+  nav, #sec-top, #sec-kpi, #sec-funnel, #sec-potential, #sec-cemetery,
+  button, .btn, .btn-xlsx, .btn-dark, .btn-brown, .btn-gold,
+  input, select, #agency-filter-bar { display: none !important; }
+  #app > section { padding: 8px 0 !important; }
+  #sec-mgmt, #sec-sales, #sec-daily, #sec-coa, #sec-projects { display: block !important; }
+  #sec-mgmt { page-break-before: avoid; }
+  #sec-sales { page-break-before: always; }
+  #sec-daily { page-break-before: always; }
+  #sec-coa  { page-break-before: always; }
+  #sec-projects { page-break-before: always; }
+  .card { box-shadow: none !important; border: 1px solid #ddd !important; border-radius: 8px !important; }
+  .container { max-width: 100% !important; padding: 0 !important; }
+  div[style*="overflow-y:auto"], div[style*="overflow-x:auto"] { overflow: visible !important; max-height: none !important; }
+  table { font-size: 10px; }
+  th, td { padding: 4px 6px !important; }
+}
 </style>
 </head>
 <body>
@@ -75,6 +94,7 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
+  <button class="btn" onclick="window.print()" style="background:#1e293b;color:#fff;">🖨 PDF Export</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
 
