@@ -110,6 +110,23 @@
       "june": 51
     }
   },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 170,
+      "may": 260,
+      "june": 178
+    },
+    "After Market / HP0 Sales": {
+      "april": 16,
+      "may": 31,
+      "june": 44
+    },
+    "Build Sales": {
+      "april": 127,
+      "may": 166,
+      "june": 40
+    }
+  },
   "settings": {
     "salesReportTotal2026": 1512,
     "q2WorkingDaysDone": 52,
