@@ -50,7 +50,7 @@
       "juneActual": 61,
       "ytd": 164,
       "forecast": 330,
-      "d2d": 10
+      "d2d": 6
     },
     {
       "name": "Open Infra CS",
@@ -89,7 +89,7 @@
       "juneActual": 3,
       "ytd": 3,
       "forecast": 0,
-      "d2d": 2,
+      "d2d": 1,
       "comingSoon": true
     }
   ],

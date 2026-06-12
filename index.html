@@ -336,7 +336,7 @@ var potentialRows = [
   ["37127","Gemeinde Stuhr","NI","Seckenhausen","DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern","Stephan Korte","Bürgermeister","0421 5695-200","s.korte@stuhr.de",""],
   ["27305","Samtgemeinde Sögel","NI","Gesamte Samtgemeinde (mehrere Ortschaften)","Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet","bitte recherchieren","Samtgemeinde","05952 / 206-0","info@samtgemeinde-soegel.de",""],
   ["14547","Fichtenwalde","BB","","","","","","",""],
-  ["14778","Amt Beetzsee REST","BB","","new area","Amtsdirektor Guido Müller","","03381 7999-0","info@amt-beetzsee.de",""],
+  ["14778","Amt Beetzsee REST","BB","","new area","Herr Voß","Ansprechpartner","03381 799943","k.voss@amt-beetzsee.de",""],
   ["15306","LK Märkisch Oderland","BB","","","","","","",""],  ["31600","Uchte","NI","Samtgemeinde Uchte","positiv","Rüdiger Kaltofen","Samtgemeindebürgermeister","05763 183-11","s.ippisch@sg-uchte.de","Termin am 6.7.2026 um 11 Uhr"],
   ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
   ["31622","Heemsen","NI","","new area","","Samtgemeinde","05024 98050","info@heemsen.de",""],
@@ -860,8 +860,8 @@ function render(){
           '<span style="color:#64748b;margin-left:8px;">/ '+k.target+'</span>'+
           '<div style="margin-top:4px;display:flex;align-items:center;gap:8px;">'+
             '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Brutto / Ziel</p>'+
-            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' heute</span>':
-             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' heute</span>':'')+
+            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' today</span>':
+             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' today</span>':'')+
           '</div>'+
         '</div>'+
         '<div style="font-size:2rem;font-weight:900;color:'+col+';">'+k.pct+'%</div>'+
@@ -916,7 +916,7 @@ function render(){
   html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
   html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
   html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
-  html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' heute</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' heute</span>':'');
+  html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' today</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' today</span>':'');
   html+='</div>';
   html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
   html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
