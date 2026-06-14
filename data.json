@@ -8,8 +8,8 @@
       "april": 128,
       "may": 166,
       "mayForecast": 166,
-      "juneActual": 54,
-      "ytd": 512,
+      "juneActual": 61,
+      "ytd": 519,
       "forecast": 1100,
       "d2d": 5
     },
@@ -21,8 +21,8 @@
       "april": 118,
       "may": 131,
       "mayForecast": 131,
-      "juneActual": 142,
-      "ytd": 557,
+      "juneActual": 166,
+      "ytd": 581,
       "forecast": 1100,
       "d2d": 4
     },
@@ -34,8 +34,8 @@
       "april": 47,
       "may": 57,
       "mayForecast": 57,
-      "juneActual": 18,
-      "ytd": 189,
+      "juneActual": 20,
+      "ytd": 191,
       "forecast": 450,
       "d2d": 3
     },
@@ -47,8 +47,8 @@
       "april": 7,
       "may": 96,
       "mayForecast": 96,
-      "juneActual": 61,
-      "ytd": 164,
+      "juneActual": 70,
+      "ytd": 173,
       "forecast": 330,
       "d2d": 6
     },
@@ -60,8 +60,8 @@
       "april": 13,
       "may": 8,
       "mayForecast": 8,
-      "juneActual": 12,
-      "ytd": 80,
+      "juneActual": 13,
+      "ytd": 81,
       "forecast": 175,
       "d2d": 0
     },
@@ -97,6 +97,23 @@
     "Base Sales / Up Sales": {
       "april": 170,
       "may": 261,
+      "june": 225
+    },
+    "After Market / HP0 Sales": {
+      "april": 16,
+      "may": 31,
+      "june": 51
+    },
+    "Build Sales": {
+      "april": 127,
+      "may": 166,
+      "june": 57
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 170,
+      "may": 261,
       "june": 192
     },
     "After Market / HP0 Sales": {
@@ -110,64 +127,47 @@
       "june": 51
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 170,
-      "may": 260,
-      "june": 178
-    },
-    "After Market / HP0 Sales": {
-      "april": 16,
-      "may": 31,
-      "june": 44
-    },
-    "Build Sales": {
-      "april": 127,
-      "may": 166,
-      "june": 40
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1512,
-    "q2WorkingDaysDone": 52,
-    "q2WorkingDaysLeft": 13,
-    "juneForecast": 710,
+    "salesReportTotal2026": 1555,
+    "q2WorkingDaysDone": 53,
+    "q2WorkingDaysLeft": 12,
+    "juneForecast": 733,
     "jan": 42,
     "feb": 135,
     "mar": 274,
     "apr": 313,
     "may": 458
   },
-  "netSales": 1425,
-  "cancelled": 87,
+  "netSales": 1469,
+  "cancelled": 86,
   "projectRows": [
-    ["DE-BB Birkenwerder P2","Build Sales","Stonemedia GmbH",0,0,0,5],
-    ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,25,22,10],
+    ["DE-BB Birkenwerder P2","Build Sales","Stonemedia GmbH",0,0,0,7],
+    ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,25,22,11],
     ["DE-BB Birkenwerder P3-2","BASE UPSELL","Stonemedia GmbH",0,9,12,2],
     ["DE-BB Birkenwerder P4","BASE UPSELL","Stonemedia GmbH",0,24,35,0],
     ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",15,17,4,0],
     ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7,1],
     ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13,2],
-    ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,25,4],
-    ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,5],
+    ["DE-BB Storkow P3","BASE UPSELL","Stonemedia GmbH",0,0,25,5],
+    ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,6],
     ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21,1],
     ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3,0],
     ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,9,4],
-    ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,16],
-    ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",15,16,6,3],
+    ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,17],
+    ["Kasel-Golzig Combined","Build Sales","Stonemedia GmbH",15,16,6,4],
     ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",41,7,2,1],
-    ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",0,1,92,121],
+    ["DE-BB Amt Scharmützelsee P0","Base Sales","EnCom GmbH",0,1,92,144],
     ["DE-BB Amt Scharmützelsee P1","Base Sales","EnCom GmbH",29,46,0,0],
     ["DE-BB Schwerin HP0","HP0","EnCom GmbH",0,0,0,0],
     ["DE-BB Frankfurt (Oder) Combined P1","Build Sales","EnCom GmbH",0,0,0,0],
     ["DE-BB Frankfurt (Oder) Combined P2","Build Sales","EnCom GmbH",0,0,0,0],
     ["DE-BB Frankfurt (Oder) Combined P3","Build Sales","EnCom GmbH",31,11,0,0],
-    ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,23,7,0],
+    ["DE-BB Frankfurt (Oder) Combined P4","Build Sales","EnCom GmbH",0,23,7,1],
     ["DE-BB Königs Wusterhausen HP0 3","HP0","EnCom GmbH",0,0,2,4],
     ["DE-BY Kirchroth P3","BASE UPSELL","EnCom GmbH",3,7,10,0],
     ["DE-BY Kirchroth P4","BASE UPSELL","EnCom GmbH",13,3,7,0],
     ["DE-BY Kirchroth P5","Build Sales","EnCom GmbH",34,14,1,0],
-    ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,5,9],
+    ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,5,10],
     ["DE-BY Parkstetten P1","BASE UPSELL","EnCom GmbH",2,0,0,0],
     ["DE-BY Straubing P1","BASE UPSELL","EnCom GmbH",3,12,7,2],
     ["DE-BB Zossen P4","Build Sales","EnCom GmbH",0,1,0,6],
@@ -176,27 +176,27 @@
     ["DE-BB Birkenwerder P2-2","BASE UPSELL","Team Tatjana",0,0,2,1],
     ["DE-BB Schöneiche P8","Base Sales","Team Tatjana",0,0,8,5],
     ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5,0],
-    ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,12,28,9],
+    ["DE-BB Stadt Fürstenwalde P4","Build Sales","Team Tatjana",5,12,28,10],
     ["DE-BB Beetzsee P1 HP0","HP0","United Promotion GmbH",0,0,10,1],
-    ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,31,1],
+    ["DE-BB Blankenfelde-Mahlow P1","Build Sales","United Promotion GmbH",0,0,31,2],
     ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0,0],
-    ["DE-BB Schulzendorf HP0","HP0","United Promotion GmbH",0,6,14,3],
+    ["DE-BB Schulzendorf HP0","HP0","United Promotion GmbH",0,6,14,4],
     ["DE-BB Schulzendorf P3","Base Sales","United Promotion GmbH",0,0,23,17],
     ["DE-BB Woltersdorf P5-1","Build Sales","United Promotion GmbH",0,1,6,0],
-    ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,2,1,10],
+    ["DE-BB Woltersdorf HP0","HP0","United Promotion GmbH",0,2,1,11],
     ["DE-BB Zossen HP0","HP0","United Promotion GmbH",0,0,2,0],
     ["DE-BB Zossen P3","Build Sales","United Promotion GmbH",0,0,0,0],
     ["DE-BB Zossen P4-2","Base Sales","United Promotion GmbH",0,0,2,0],
-    ["DE-BB Zossen P6","Base Sales","United Promotion GmbH",0,0,7,2],
-    ["DE-BB Zossen P7","Base Sales / Up Sales","United Promotion GmbH",0,0,0,0],
-    ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0,2],
+    ["DE-BB Zossen P6","Base Sales","United Promotion GmbH",0,0,7,5],
+    ["DE-BB Zossen P7","Base Sales / Up Sales","United Promotion GmbH",0,0,0,1],
+    ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0,4],
     ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,0],
     ["DE-BB Stadt Fürstenwalde P1-P3 HP0","HP0","United Promotion GmbH",0,0,0,25],
     ["DE-BB Schöneiche HP0","HP0","Team Tatjana",2,2,0,3],
     ["DE-BB Falkensee HP0","HP0","Open Infra CS",0,0,1,0],
     ["DE-BB Königs Wusterhausen HP0 1","HP0","Stonemedia GmbH",1,1,0,0],
     ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0,1],
-    ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1,0],
+    ["DE-BB Zeuthen-Wildau HP0","HP0","Open Infra CS",6,3,1,1],
     ["DE-CS","HP0","Open Infra CS",8,4,5,8],
     ["DE-BB Grünheide P3","BASE UPSELL","Rating Peak GmbH",0,0,0,0],
     ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0],
@@ -317,7 +317,7 @@
     ["37127","Gemeinde Stuhr","NI","Seckenhausen","DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern","Stephan Korte","Bürgermeister","0421 5695-200","s.korte@stuhr.de",""],
     ["27305","Samtgemeinde Sögel","NI","Gesamte Samtgemeinde (mehrere Ortschaften)","Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet","bitte recherchieren","Samtgemeinde","05952 / 206-0","info@samtgemeinde-soegel.de",""],
     ["14547","Fichtenwalde","BB","","","","","","",""],
-    ["14778","Amt Beetzsee REST","BB","","new area","Amtsdirektor Guido Müller","","03381 7999-0","info@amt-beetzsee.de",""],
+    ["14778","Amt Beetzsee REST","BB","","new area","Herr Voß","Ansprechpartner","03381 799943","k.voss@amt-beetzsee.de",""],
     ["15306","LK Märkisch Oderland","BB","","","","","","",""],
     ["31600","Uchte","NI","Samtgemeinde Uchte","positiv","Rüdiger Kaltofen","Samtgemeindebürgermeister","05763 183-11","s.ippisch@sg-uchte.de","Termin am 6.7.2026 um 11 Uhr"],
     ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
@@ -362,7 +362,8 @@
     ["94560","Offenberg","BY","","","","Rathaus","0991 99808-0","gemeinde@offenberg.bayern.de",""],
     ["94575","Windorf","BY","","new area","","Rathaus","08541-96262","info@markt-windorf.de",""],
     ["21255","Wistedt","NI","","positiv","Sven Bauer","Bürgermeister","04182 3199","buergermeister@wistedt.de","Termin am 8.6.2026 um 15 Uhr"],
-    ["22391","Hamburg","HH","Sasel","new area","","Geschäftsstelle WBZ","+49 40 428 81 - 3345","geschaeftsstelle-wbz@wandsbek.hamburg.de",""]
+    ["22391","Hamburg","HH","Sasel","new area","","Geschäftsstelle WBZ","+49 40 428 81 - 3345","geschaeftsstelle-wbz@wandsbek.hamburg.de",""],
+    ["27243","Samtgemeinde Harpstedt","NI","","","Yves Nagel","Samtgemeindebürgermeister","04244 8228","nagel@harpstedt.de",""]
   ],
   "bobLinks": {
     "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
