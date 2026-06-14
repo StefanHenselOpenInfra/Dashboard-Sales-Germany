@@ -212,7 +212,7 @@ var projectRows = [
   ["Hohen Neuendorf B1","Build Sales","United Promotion GmbH",0,0,0,0],
   ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,0],
   // ── Open Infra CS ─────────────────────────────────────────────────────
-  ["DE-BB Schöneiche HP0","HP0","Open Infra CS",2,2,0,0],
+  ["DE-BB Schöneiche HP0","HP0","Team Tatjana",2,2,0,3],
   ["DE-BB Falkensee HP0","HP0","Open Infra CS",1,0,1,0],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","Open Infra CS",1,1,0,0],
   ["DE-BB Königs Wusterhausen HP0 2","HP0","Open Infra CS",2,1,0,0],
@@ -792,9 +792,12 @@ function render(){
       (salesFilter==='All'||r[2]===salesFilter)&&
       r.join(' ').toLowerCase().includes(projectSearch.toLowerCase());
   });
-  var pIdx={Project:0,Type:1,'Sales Agency':2,March:3,April:4,May:5,June:6}[projSortKey]||5;
   projs.sort(function(a,b){
-    var av=a[pIdx],bv=b[pIdx];
+    var av,bv;
+    if(projSortKey==='HC'){av=(a[3]||0)+(a[4]||0)+(a[5]||0)+(a[6]||0);bv=(b[3]||0)+(b[4]||0)+(b[5]||0)+(b[6]||0);}
+    else if(projSortKey==='HP'){av=a[7]||0;bv=b[7]||0;}
+    else if(projSortKey==='Uptake'){var ah=(a[3]||0)+(a[4]||0)+(a[5]||0)+(a[6]||0),ap=a[7]||0;var bh=(b[3]||0)+(b[4]||0)+(b[5]||0)+(b[6]||0),bp=b[7]||0;av=ap>0?ah/ap:0;bv=bp>0?bh/bp:0;}
+    else{var pIdx2={Project:0,Type:1,'Sales Agency':2,March:3,April:4,May:5,June:6}[projSortKey];av=pIdx2!==undefined?a[pIdx2]:(a[5]||0);bv=pIdx2!==undefined?b[pIdx2]:(b[5]||0);}
     var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
     return projSortDir==='asc'?r:-r;
   });
@@ -1107,7 +1110,7 @@ function render(){
   html+='</select>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="projSortKey=this.value;render();" style="flex:1;">';
-  ['Project','Type','Sales Agency','March','April','May'].forEach(function(k){html+='<option'+(projSortKey===k?' selected':'')+'>'+k+'</option>';});
+  ['Project','HP','HC','Uptake','Type','Sales Agency','March','April','May','June'].forEach(function(k){html+='<option'+(projSortKey===k?' selected':'')+'>'+k+'</option>';});
   html+='</select>';
   html+='<button class="btn btn-dark" onclick="projSortDir=projSortDir===\'asc\'?\'desc\':\'asc\';render();">'+(projSortDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
@@ -1127,9 +1130,9 @@ function render(){
 
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
   html+='<table style="table-layout:fixed;">';
-  html+='<colgroup><col style="width:30%"><col style="width:18%"><col style="width:16%"><col style="width:8%"><col style="width:8%"><col style="width:9%"><col style="width:11%"></colgroup>';
+  html+='<colgroup><col style="width:22%"><col style="width:7%"><col style="width:7%"><col style="width:8%"><col style="width:12%"><col style="width:14%"><col style="width:7%"><col style="width:7%"><col style="width:8%"><col style="width:8%"></colgroup>';
   html+='<thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
-  [['Project','left'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
+  [['Project','left'],['HP','center'],['HC','center'],['Uptake','center'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
@@ -1143,7 +1146,14 @@ function render(){
     var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
     var stoppItBadge=stoppItProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff7ed;color:#ea580c;border:2px solid #ea580c;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">stopp it?</span>':'';
     var commissionBadge=commissionChangeProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#f0f9ff;color:#0369a1;border:2px solid #0369a1;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">commission change?</span>':'';
+    var hc=(r[3]||0)+(r[4]||0)+(r[5]||0)+(r[6]||0);
+    var hp=r[7]||0;
+    var uptakePct=hp>0?(hc/hp*100).toFixed(1)+'%':'—';
+    var uptakeColor=hp>0?(hc/hp>=0.4?'#16a34a':hc/hp>=0.25?'#d97706':'#dc2626'):'#9ca3af';
     html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:700;">'+hc+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:900;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
@@ -1157,8 +1167,14 @@ function render(){
   var sumApr=projs.reduce(function(s,r){return s+(r[4]||0);},0);
   var sumMay=projs.reduce(function(s,r){return s+(r[5]||0);},0);
   var sumJun=projs.reduce(function(s,r){return s+(r[6]||0);},0);
+  var sumHC=sumMar+sumApr+sumMay+sumJun;
+  var sumHP=projs.reduce(function(s,r){return s+(r[7]||0);},0);
+  var sumUptake=sumHP>0?(sumHC/sumHP*100).toFixed(1)+'%':'—';
   html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
   html+='<td style="padding:8px;">Σ Auswahl ('+projs.length+' Projekte)</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;color:#475569;font-size:12px;">'+(sumHP>0?sumHP:'—')+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumHC+'</td>';
+  html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumUptake+'</td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumMar+'</td>';
