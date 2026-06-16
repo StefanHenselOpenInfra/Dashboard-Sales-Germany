@@ -206,7 +206,6 @@
     ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0,1030,234],
     ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0,615,149],
     ["DE-BB Beetzsee P2","Base Sales","United Promotion GmbH",0,0,0,0,280,89],
-    ["DE-BB Schönwald P5","BASE UPSELL","Stonemedia GmbH",0,0,0,0,137,78],
     ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41]
   ],
   "funnelRowsRaw": [
@@ -306,7 +305,8 @@
     ["DE-BB Stadt Velten P3","BB","Abandon",0,0],
     ["DE-BY Aiterhofen HP0 - SNB","BY","Abandon",0,128],
     ["DE-BY Saulburg","BY","Abandon",0,0],
-    ["DE-BY Steinach","BY","Abandon",0,951]
+    ["DE-BY Steinach","BY","Abandon",0,951],
+    ["DE-BB Schönwald P5","BB","Abandon",78,137]
   ],
   "potentialRows": [
     ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
