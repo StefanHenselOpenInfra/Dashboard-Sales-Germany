@@ -8,10 +8,10 @@
       "april": 128,
       "may": 166,
       "mayForecast": 166,
-      "juneActual": 66,
-      "ytd": 524,
+      "juneActual": 73,
+      "ytd": 531,
       "forecast": 1100,
-      "d2d": 5
+      "d2d": 7
     },
     {
       "name": "EnCom GmbH",
@@ -21,10 +21,10 @@
       "april": 118,
       "may": 131,
       "mayForecast": 131,
-      "juneActual": 171,
-      "ytd": 586,
+      "juneActual": 183,
+      "ytd": 598,
       "forecast": 1100,
-      "d2d": 4
+      "d2d": 12
     },
     {
       "name": "Team Tatjana",
@@ -34,10 +34,10 @@
       "april": 47,
       "may": 57,
       "mayForecast": 57,
-      "juneActual": 21,
-      "ytd": 192,
+      "juneActual": 23,
+      "ytd": 194,
       "forecast": 450,
-      "d2d": 3
+      "d2d": 2
     },
     {
       "name": "United Promotion GmbH",
@@ -47,10 +47,10 @@
       "april": 7,
       "may": 96,
       "mayForecast": 96,
-      "juneActual": 82,
-      "ytd": 185,
+      "juneActual": 101,
+      "ytd": 204,
       "forecast": 330,
-      "d2d": 6
+      "d2d": 19
     },
     {
       "name": "Open Infra CS",
@@ -58,10 +58,10 @@
       "february": 16,
       "march": 19,
       "april": 13,
-      "may": 8,
-      "mayForecast": 8,
-      "juneActual": 13,
-      "ytd": 81,
+      "may": 7,
+      "mayForecast": 7,
+      "juneActual": 12,
+      "ytd": 79,
       "forecast": 175,
       "d2d": 0
     },
@@ -89,11 +89,28 @@
       "juneActual": 3,
       "ytd": 3,
       "forecast": 0,
-      "d2d": 1,
+      "d2d": 0,
       "comingSoon": true
     }
   ],
   "kpiActuals": {
+    "Base Sales / Up Sales": {
+      "april": 170,
+      "may": 261,
+      "june": 293
+    },
+    "After Market / HP0 Sales": {
+      "april": 16,
+      "may": 31,
+      "june": 54
+    },
+    "Build Sales": {
+      "april": 127,
+      "may": 166,
+      "june": 40
+    }
+  },
+  "kpiPreviousDay": {
     "Base Sales / Up Sales": {
       "april": 170,
       "may": 261,
@@ -110,36 +127,19 @@
       "june": 62
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 170,
-      "may": 261,
-      "june": 225
-    },
-    "After Market / HP0 Sales": {
-      "april": 16,
-      "may": 31,
-      "june": 51
-    },
-    "Build Sales": {
-      "april": 127,
-      "may": 166,
-      "june": 57
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1578,
-    "q2WorkingDaysDone": 54,
-    "q2WorkingDaysLeft": 11,
-    "juneForecast": 712,
+    "salesReportTotal2026": 1616,
+    "q2WorkingDaysDone": 55,
+    "q2WorkingDaysLeft": 10,
+    "juneForecast": 723,
     "jan": 42,
     "feb": 135,
     "mar": 274,
     "apr": 313,
-    "may": 458
+    "may": 457
   },
-  "netSales": 1489,
-  "cancelled": 89,
+  "netSales": 1530,
+  "cancelled": 86,
   "projectRows": [
     ["DE-BB Birkenwerder P2","Build Sales","Stonemedia GmbH",0,0,0,7,231,66],
     ["DE-BB Birkenwerder P3","Build Sales","Stonemedia GmbH",0,25,22,11,583,191],
@@ -375,7 +375,7 @@
     "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
     "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
     "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
-    "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
+    "DE-BB Storkow P8": "https://bob.openinfra.com/sales-projects/4007",
     "DE-BB Heidesee P7": "https://bob.openinfra.com/sales-projects/2737",
     "DE-BB Grunheide P1": "https://bob.openinfra.com/delivery-projects/2597",
     "DE-BB Grunheide P3": "https://bob.openinfra.com/delivery-projects/2904",

@@ -135,26 +135,26 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:166,mayForecast:166,juneActual:66,ytd:524,forecast:1100,d2d:5},
-  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:131,mayForecast:131,juneActual:171,ytd:586,forecast:1100,d2d:4},
-  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:57,juneActual:21,ytd:192,forecast:450,d2d:3},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:7,may:96,mayForecast:96,juneActual:82,ytd:185,forecast:330,d2d:6},
-  {name:"Open Infra CS",january:12,february:16,march:19,april:13,may:8,mayForecast:8,juneActual:13,ytd:81,forecast:175,d2d:0},
+  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:166,mayForecast:166,juneActual:73,ytd:531,forecast:1100,d2d:7},
+  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:131,mayForecast:131,juneActual:183,ytd:598,forecast:1100,d2d:12},
+  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:57,juneActual:23,ytd:194,forecast:450,d2d:2},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:7,may:96,mayForecast:96,juneActual:101,ytd:204,forecast:330,d2d:19},
+  {name:"Open Infra CS",january:12,february:16,march:19,april:13,may:7,mayForecast:7,juneActual:12,ytd:79,forecast:175,d2d:0},
   {name:"Filiago",january:5,february:2,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:7,forecast:20,d2d:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:3,ytd:3,forecast:0,d2d:1,comingSoon:true}
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:3,ytd:3,forecast:0,d2d:0,comingSoon:true}
 ];
 
 // Brutto Q2-Actuals — Sales Report 8
 // Brutto Q2-Actuals inkl. Juni — Sales Report 11
 var kpiActuals = {
+  "Base Sales / Up Sales":{april:170,may:261,june:293},
+  "After Market / HP0 Sales":{april:16,may:31,june:54},
+  "Build Sales":{april:127,may:166,june:40}
+};
+var kpiPreviousDay = {
   "Base Sales / Up Sales":{april:170,may:261,june:242},
   "After Market / HP0 Sales":{april:16,may:31,june:52},
   "Build Sales":{april:127,may:166,june:62}
-};
-var kpiPreviousDay = {
-  "Base Sales / Up Sales":{april:170,may:261,june:225},
-  "After Market / HP0 Sales":{april:16,may:31,june:51},
-  "Build Sales":{april:127,may:166,june:57}
 };
 
 var projectRows = [
@@ -229,7 +229,6 @@ var projectRows = [
   ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0,1030,234],
   ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0,615,149],
   ["DE-BB Beetzsee P2","Base Sales","United Promotion GmbH",0,0,0,0,280,89],
-  ["DE-BB Schönwald P5","BASE UPSELL","Stonemedia GmbH",0,0,0,0,137,78],
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41]
 ];
 
@@ -320,7 +319,7 @@ var coaRowsRaw = [
   ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
   ["DE-BB Beetzsee P2","BB","United Promotion",""],
   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
-  ["DE-BB Grünheide P1","BB","Rating Peak GmbH","Calc is sent to Oda"],
+  ["DE-BB Grünheide P1","BB","Rating Peak GmbH","CoA waiting"],
   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
@@ -328,11 +327,11 @@ var coaRowsRaw = [
   ["DE-BB Diehlo P1","BB","EnCom GmbH","Calc is sent to Oda"]
 ];
 
-var settings = {salesReportTotal2026:1578,q2WorkingDaysDone:54,q2WorkingDaysLeft:11,juneForecast:712,
-  // Brutto monatliche Totals aus Sales Report 21
-  jan:42,feb:135,mar:274,apr:313,may:458};
-var netSales=1489;
-var cancelled=89;
+var settings = {salesReportTotal2026:1616,q2WorkingDaysDone:55,q2WorkingDaysLeft:10,juneForecast:723,
+  // Brutto monatliche Totals aus Sales Report 22
+  jan:42,feb:135,mar:274,apr:313,may:457};
+var netSales=1530;
+var cancelled=86;
 
 var potentialRows = [
   ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Plan wird erstellt KW 25"],
@@ -423,6 +422,7 @@ var cemeteryRows = [
   ["DE-BY Münster","BY","Abandon",0,0],
   ["DE-BY Saulburg","BY","Abandon",0,0],
   ["DE-BY Steinach","BY","Abandon",0,951],
+  ["DE-BB Schönwald P5","BB","Abandon",78,137],
   ["DE-BB Löwenberger Land P3","BB","STOPP",79,427],
   ["DE-BB Groß Köris P3","BB","STOPP",0,0],
   ["DE-BB Neuzelle P5","BB","STOPP 499€ FEE",0,0],
@@ -431,6 +431,7 @@ var cemeteryRows = [
 var cemeterySearch='', cemeteryRegion='All', cemeterySort='Project', cemeteryDir='asc';
 
 var bobLinks = {
+  "Baar-Ebenhausen": "https://bob.openinfra.com/sales-projects/4327",
   "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
   "DE-BB Neuzelle P5": "https://bob.openinfra.com/delivery-projects/4145",
   "DE-BB Neuzelle P6": "https://bob.openinfra.com/delivery-projects/3698",
@@ -441,7 +442,7 @@ var bobLinks = {
   "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
   "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
   "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
-  "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
+  "DE-BB Storkow P8": "https://bob.openinfra.com/sales-projects/4007",
   "DE-BB Heidesee P7": "https://bob.openinfra.com/sales-projects/2737",
   "DE-BB Grunheide P1": "https://bob.openinfra.com/delivery-projects/2597",
   "DE-BB Grunheide P3": "https://bob.openinfra.com/delivery-projects/2904",
@@ -539,7 +540,7 @@ var bobLinks = {
   "DE-BB Storkow P5": "https://bob.openinfra.com/delivery-projects/2236",
   "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
   "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
-  "DE-BB Storkow P8": "https://bob.openinfra.com/delivery-projects/3416",
+  "DE-BB Storkow P8": "https://bob.openinfra.com/sales-projects/4007",
   "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/4146",
   "DE-BB Teupitz P4": "https://bob.openinfra.com/delivery-projects/4146",
   "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
@@ -876,8 +877,8 @@ function render(){
           '<span style="color:#64748b;margin-left:8px;">/ '+k.target+'</span>'+
           '<div style="margin-top:4px;display:flex;align-items:center;gap:8px;">'+
             '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Brutto / Ziel</p>'+
-            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' today</span>':
-             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' today</span>':'')+
+            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' last update</span>':
+             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' last update</span>':'')+
           '</div>'+
         '</div>'+
         '<div style="font-size:2rem;font-weight:900;color:'+col+';">'+k.pct+'%</div>'+
@@ -932,7 +933,7 @@ function render(){
   html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
   html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
   html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
-  html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' today</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' today</span>':'');
+  html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' last update</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' last update</span>':'');
   html+='</div>';
   html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
   html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
@@ -1100,7 +1101,9 @@ function render(){
     html+='<td style="padding:10px;font-weight:600;">'+esc(item[1])+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(item[2])+'</td>';
     var statusText=item[3]||'wait 4 Calc 4 CoA';
-    var statusStyle=statusText==='Calc is sent to Oda'
+    var statusStyle=statusText==='CoA waiting'
+      ?'background:#dc2626;color:#fff;border:2px solid #dc2626;font-weight:900;'
+      :statusText==='Calc is sent to Oda'
       ?'background:#fff;color:#dc2626;border:2px solid #dc2626;font-weight:900;'
       :statusText==='new calc needed'
       ?'background:#fff7ed;color:#ea580c;border:2px solid #ea580c;font-weight:900;'
@@ -1355,7 +1358,8 @@ function render(){
     // PLZ
     html+='<td style="padding:8px;white-space:nowrap;">'+esc(r[0])+'</td>';
     // Kommune
-    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+esc(r[1])+'</td>';
+    var bobUrlP=bobLinks&&bobLinks[r[1]];
+    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+(bobUrlP?'<a href="'+bobUrlP+'" target="_blank" style="color:#252121;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[1])+'</a>':esc(r[1]))+'</td>';
     // Region
     html+='<td style="padding:8px;font-weight:600;">'+esc(r[2])+'</td>';
     // Ortsteil
@@ -1587,8 +1591,8 @@ function processSalesReport(ws){
 
 var _heroResults=[];
 function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(cb)cb();}).catch(function(){if(cb)cb();});}
-function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
-function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
+function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
+function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}else if(r.sectionId==='sec-coa'){coaSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
 var agencyLogos={'EnCom GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 84"><rect width="260" height="84" rx="6" fill="#073d4e"/><rect x="14" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><text x="68" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#f5c200">En</text><text x="116" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#29abe2">Com</text></svg>','United Promotion GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84"><rect width="420" height="84" rx="6" fill="#000"/><defs><linearGradient id="upg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9c8"/><stop offset="100%" stop-color="#7b2fff"/></linearGradient><linearGradient id="upg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7b2fff"/><stop offset="100%" stop-color="#00c9c8"/></linearGradient></defs><ellipse cx="38" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg1)" stroke-width="3" transform="rotate(-30 38 42)"/><ellipse cx="52" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg2)" stroke-width="3" transform="rotate(30 52 42)"/><rect x="30" y="26" width="30" height="30" rx="8" fill="url(#upg1)"/><text x="45" y="48" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">up</text><text x="96" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">united</text><text x="222" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="300" fill="#fff">promotion</text></svg>','Rating Peak GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 84"><rect width="320" height="84" rx="6" fill="#0f1f35"/><polygon points="42,62 62,28 82,62" fill="#2a7a9a"/><polygon points="22,62 48,32 74,62" fill="#4a9db8"/><polygon points="58,62 82,20 106,62" fill="#1a5a7a"/><polygon points="72,22 82,8 92,22" fill="#f5c200"/><text x="118" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="400" fill="#4ab8d8" letter-spacing="1">RATING</text><text x="214" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#f5c200" letter-spacing="1">PEAK</text></svg>','Stonemedia GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84"><rect width="340" height="84" rx="6" fill="#1a2a3a"/><path d="M107 22 Q107 14 114 10 Q121 14 121 22" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><path d="M103 26 Q103 12 114 6 Q125 12 125 26" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><circle cx="114" cy="30" r="3" fill="#e8a020"/><text x="18" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">STONE</text><text x="135" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">ME</text><text x="185" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">D</text><circle cx="218" cy="46" r="3.5" fill="#cc2200"/><text x="212" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">iA</text><text x="88" y="70" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#8a9bb0" letter-spacing="5">GROUP</text></svg>'};
 function buildAgencyFilter(){var bar=document.getElementById('agency-filter-bar');if(!bar)return;bar.innerHTML='';var ab=document.createElement('button');ab.textContent='Alle';ab.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');ab.onclick=function(){selectedAgencies=null;render();};bar.appendChild(ab);partners.forEach(function(p,i){var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;var b=document.createElement('button');b.textContent=p.name;b.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');b.onclick=function(){toggleAgency(i);};bar.appendChild(b);});if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){var ld=document.createElement('div');ld.style.cssText='margin-left:12px;display:flex;align-items:center;';ld.innerHTML=agencyLogos[selectedAgencies[0]];var sv=ld.querySelector('svg');if(sv){sv.style.height='38px';sv.style.width='auto';sv.style.borderRadius='6px';}bar.appendChild(ld);}}
