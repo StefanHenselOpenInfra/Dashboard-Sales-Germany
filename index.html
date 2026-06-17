@@ -233,7 +233,6 @@ var projectRows = [
   ["DE-BB Kasel-Golzig Combined","Build Sales","Rating Peak GmbH",0,0,0,0,1093,466],
   ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0,1030,234],
   ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0,615,149],
-  ["DE-BB Beetzsee P2","Base Sales","United Promotion GmbH",0,0,0,0,280,89],
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41]
 ];
 
@@ -279,6 +278,7 @@ var funnelRowsRaw = [
 
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
+  ["DE-BB Beetzsee P2","Base Sales","BB",89,280],
   ["DE-BB Beetzsee P3","Base Sales","BB",0,505],
   ["DE-BB Beetzsee P4","Base Sales","BB",0,714],
   ["DE-BB Beetzsee P5","Base Sales","BB",0,624],
@@ -1366,6 +1366,7 @@ function render(){
     var bobUrlF=bobLinks[r[0]];
     var netzmacherProjs=['DE-BB Grünheide P4','DE-BB Grünheide P6'];
     var pruefenProjs=['DE-BB Stadt Velten P1 HP0','Hohen Neuendorf B1-1','DE-BB Schwerin HP0'];
+    var pruefenRotProjs=['DE-BB Beetzsee P2'];
     var stoppFeeProjs=[];
     var stoneStamps=[];
     var calcReadyProjs=[];
@@ -1376,6 +1377,7 @@ function render(){
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
     else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
+    else if(pruefenRotProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">PRÜFEN</span>';
     else if(stoppFeeProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>';
     else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
     else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';

@@ -205,7 +205,6 @@
     ["DE-BB Kasel-Golzig Combined","Build Sales","Rating Peak GmbH",0,0,0,0,1093,466],
     ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0,1030,234],
     ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0,615,149],
-    ["DE-BB Beetzsee P2","Base Sales","United Promotion GmbH",0,0,0,0,280,89],
     ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41]
   ],
   "funnelRowsRaw": [
@@ -249,6 +248,7 @@
     ["DE-NI Welle P2","Build sales","NI",107,213],
     ["Wistedt B1","Build sales","NI",306,571],
     ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
+    ["DE-BB Beetzsee P2","Base Sales","BB",89,280],
     ["DE-BB Beetzsee P3","Base Sales","BB",0,505],
     ["DE-BB Beetzsee P4","Base Sales","BB",0,714],
     ["DE-BB Beetzsee P5","Base Sales","BB",0,624],
