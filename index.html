@@ -60,23 +60,27 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 .hidden{display:none;}
 .sticky-head{position:sticky;top:0;z-index:10;}
 @media print {
-  @page { size: A4 landscape; margin: 12mm; }
+  @page { size: A4 landscape; margin: 10mm; }
   body { background: #fff !important; font-size: 11px; }
-  nav, #sec-top, #sec-kpi, #sec-funnel, #sec-potential, #sec-cemetery,
-  button, .btn, .btn-xlsx, .btn-dark, .btn-brown, .btn-gold,
+  nav, #sec-funnel, #sec-potential, #sec-cemetery, #sec-sales, #sec-daily,
+  .btn, .btn-xlsx, .btn-dark, .btn-brown, .btn-gold,
+  .no-print, #hero-search, #hero-results, .hero-search-wrap,
   input, select, #agency-filter-bar { display: none !important; }
-  #app > section { padding: 8px 0 !important; }
-  #sec-mgmt, #sec-sales, #sec-daily, #sec-coa, #sec-projects { display: block !important; }
-  #sec-mgmt { page-break-before: avoid; }
-  #sec-sales { page-break-before: always; }
-  #sec-daily { page-break-before: always; }
-  #sec-coa  { page-break-before: always; }
-  #sec-projects { page-break-before: always; }
+  #app > section { padding: 6px 0 !important; }
+  #sec-top  { display: block !important; padding: 16px 0 !important; }
+  #sec-kpi  { display: block !important; page-break-before: avoid; }
+  #sec-mgmt { display: block !important; page-break-before: always; }
+  #sec-coa  { display: block !important; page-break-before: always; }
+  #sec-projects { display: block !important; page-break-before: always; }
+  .hero-agency-bar { display: none !important; }
   .card { box-shadow: none !important; border: 1px solid #ddd !important; border-radius: 8px !important; }
   .container { max-width: 100% !important; padding: 0 !important; }
   div[style*="overflow-y:auto"], div[style*="overflow-x:auto"] { overflow: visible !important; max-height: none !important; }
-  table { font-size: 10px; }
-  th, td { padding: 4px 6px !important; }
+  .scroll-area { max-height: none !important; overflow: visible !important; }
+  table { font-size: 9px; }
+  th, td { padding: 3px 5px !important; }
+  .kpi-grid { grid-template-columns: repeat(3,1fr) !important; gap: 10px !important; }
+  .hero-grid { grid-template-columns: 1.2fr 0.8fr !important; }
 }
 </style>
 </head>
@@ -630,38 +634,69 @@ function computeKpis(){
     Object.keys(totals).forEach(function(k){totals[k]+=(p[k]||0);});
   });
 
-  var mayFF=totals.may&&totals.mayForecast?totals.mayForecast/totals.may:1;
   var doneWD=settings.q2WorkingDaysDone, leftWD=settings.q2WorkingDaysLeft;
   var timePct=Math.round(doneWD/(doneWD+leftWD)*100);
+  var juneDone=Math.max(1,doneWD-43);
+  var juneRem=Math.max(0,22-juneDone);
 
+  // ── Agency mode: compute KPIs from projectRows ──────────────────────────
+  var activeAgency=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
+  if(activeAgency){
+    var agRows=projectRows.filter(function(r){return r[2]===activeAgency;});
+    var ap=partners.find(function(p){return p.name===activeAgency;})||{};
+    totals.january=ap.january||0;totals.february=ap.february||0;totals.march=ap.march||0;
+    totals.april=ap.april||0;totals.may=ap.may||0;totals.mayForecast=ap.mayForecast||0;
+    totals.juneActual=ap.juneActual||0;totals.ytd=ap.ytd||0;
+    totals.forecast=ap.forecast||0;totals.d2d=ap.d2d||0;
+
+    function makeAgKpi(label,typeTest){
+      var fRows=agRows.filter(function(r){return typeTest(r[1]);});
+      var aprS=fRows.reduce(function(s,r){return s+(r[4]||0);},0);
+      var mayS=fRows.reduce(function(s,r){return s+(r[5]||0);},0);
+      var junS=fRows.reduce(function(s,r){return s+(r[6]||0);},0);
+      var hpS=fRows.reduce(function(s,r){return s+(r[7]||0);},0);
+      var actual=aprS+mayS+junS;
+      var fcst=actual+Math.round(junS/juneDone*juneRem);
+      var target=hpS||1;
+      var pct=Math.round(actual/target*100);
+      return{title:label,actual:actual,target:target,forecast:fcst,
+        delta:target-fcst,pct:pct,forecastPct:Math.round(fcst/target*100),
+        timePct:timePct,pace:(actual/doneWD).toFixed(1).replace('.',','),
+        needed:Math.max(0,(target-actual)/leftWD).toFixed(1).replace('.',','),
+        ok:pct>=5,vsYesterday:0,agencyMode:true,hp:hpS,projects:fRows.length};
+    }
+    var buildT=function(t){return(t||'').toLowerCase().includes('build');};
+    var hp0T=function(t){var v=(t||'').toLowerCase();return v.includes('hp0')||v.includes('after market');};
+    var baseT=function(t){return!buildT(t)&&!hp0T(t);};
+    return{
+      kpis:[makeAgKpi("Base Sales / Up Sales",baseT),makeAgKpi("After Market / HP0 Sales",hp0T),makeAgKpi("Build Sales",buildT)],
+      totals:totals,timePct:timePct
+    };
+  }
+
+  // ── Global mode ──────────────────────────────────────────────────────────
   function getKpi(label,target){
     var src=kpiActuals[label]||{april:0,may:0};
-    var juneDone=Math.max(1,settings.q2WorkingDaysDone-43);
-    var juneRem=Math.max(0,22-juneDone);
     var juneAct=src.june||0;
-    var juneProj=Math.round(juneAct/juneDone*juneRem); // remaining june days
+    var juneProj=Math.round(juneAct/juneDone*juneRem);
     var actual=src.april+src.may+juneAct;
-    var forecast=actual+juneProj; // April+May+JuneActual+JuneRemaining
+    var forecast=actual+juneProj;
     var prevSrc=kpiPreviousDay[label]||{april:0,may:0,june:0};
     var prevActual=prevSrc.april+prevSrc.may+(prevSrc.june||0);
     var vsYesterday=actual-prevActual;
     return{
       title:label,actual:actual,target:target,forecast:forecast,
-      delta:target-forecast,
-      pct:Math.round(actual/target*100),
-      forecastPct:Math.round(forecast/target*100),
-      timePct:timePct,
+      delta:target-forecast,pct:Math.round(actual/target*100),
+      forecastPct:Math.round(forecast/target*100),timePct:timePct,
       pace:(actual/doneWD).toFixed(1).replace('.',','),
       needed:Math.max(0,(target-actual)/leftWD).toFixed(1).replace('.',','),
-      ok:forecast>=target,
-      vsYesterday:vsYesterday
+      ok:forecast>=target,vsYesterday:vsYesterday
     };
   }
 
   return{
     kpis:[getKpi("Base Sales / Up Sales",1000),getKpi("After Market / HP0 Sales",250),getKpi("Build Sales",150)],
-    totals:totals,
-    timePct:timePct
+    totals:totals,timePct:timePct
   };
 }
 
@@ -863,6 +898,42 @@ function render(){
   function kpiCard(k){
     var col=k.ok?'#363E36':'#dc2626';
     var bgBadge=k.ok?'tag-success':'tag-danger';
+    if(k.agencyMode){
+      // Agency mode: HC signed vs HP available
+      var uptakePct=Math.min(k.pct,100);
+      var uptakeCol=k.pct>=10?'#059669':k.pct>=5?'#d97706':'#dc2626';
+      return'<div class="card" style="border:2px solid #e2e8f0;">'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
+          '<div>'+
+            '<h3>'+esc(k.title)+'</h3>'+
+            '<span class="badge tag-slate" style="margin-top:10px;">'+k.projects+' Projekt'+(k.projects!==1?'e':'')+'</span>'+
+          '</div>'+
+          '<span style="font-size:1.5rem;">📋</span>'+
+        '</div>'+
+        '<div style="margin-top:24px;display:flex;align-items:flex-end;justify-content:space-between;">'+
+          '<div>'+
+            '<span style="font-size:3rem;font-weight:900;">'+k.actual+'</span>'+
+            '<span style="color:#64748b;margin-left:8px;">HC Q2</span>'+
+            '<div style="margin-top:4px;">'+
+              '<p style="margin:0;font-size:12px;color:#64748b;">von '+k.hp+' HP gesamt</p>'+
+            '</div>'+
+          '</div>'+
+          '<div style="font-size:2rem;font-weight:900;color:'+uptakeCol+';">'+k.pct+'%</div>'+
+        '</div>'+
+        '<div style="margin-top:16px;">'+pb(uptakePct,100,'pb-success','pb-bg-success')+'</div>'+
+        '<div style="margin-top:16px;background:#FBF5ED;border:1px solid rgba(216,156,108,.4);border-radius:1rem;padding:12px;">'+
+          '<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;"><span>Q2 Time Progress</span><span>'+timePct+'%</span></div>'+
+          '<div class="pb pb-time-bg"><div class="pb pb-time" style="width:'+timePct+'%;height:100%;border-radius:9999px;"></div></div>'+
+          '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px;"><span>01 Apr</span><span>30 Jun</span></div>'+
+        '</div>'+
+        '<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;">'+
+          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.forecast+'</b><br><span style="color:#64748b;">HC Forecast Jun</span></div>'+
+          '<div style="background:#0f172a;border-radius:1rem;padding:10px;color:#fff;"><b style="font-size:1.5rem;font-weight:900;">'+k.forecastPct+'%</b><br><b>Uptake Fcst</b></div>'+
+          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.pace+'</b><br><span style="color:#64748b;">Pace/Tag</span></div>'+
+          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+(k.hp-k.actual)+'</b><br><span style="color:#64748b;">HP offen</span></div>'+
+        '</div>'+
+      '</div>';
+    }
     return'<div class="card" style="border:2px solid '+(k.ok?'#a7f3d0':'#fecaca')+';">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
         '<div>'+
@@ -915,40 +986,92 @@ function render(){
   html+='<span class="badge" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:16px;">Q2 Sales Performance · 2026</span>';
   html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
-  html+='<div style="margin-top:24px;position:relative;max-width:480px;">';
+  html+='<div style="margin-top:24px;position:relative;max-width:480px;" class="hero-search-wrap">';
   html+='<input id="hero-search" type="text" placeholder="🔍  Projekt suchen..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
   html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:560px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
   html+='</div>';
+  // ── Agency filter pills ──
+  var _heroActive=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
+  html+='<div class="hero-agency-bar" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;">';
+  html+='<span style="font-size:11px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:.05em;">Agentur:</span>';
+  html+='<button onclick="setHeroAgency(null)" style="font-size:11px;padding:4px 13px;border-radius:9999px;border:2px solid '+(!_heroActive?'#f2d1b3':'rgba(255,255,255,.2)')+';cursor:pointer;font-weight:700;background:'+(!_heroActive?'rgba(255,255,255,.22)':'rgba(255,255,255,.07)')+';color:'+(!_heroActive?'#f2d1b3':'rgba(255,255,255,.7)')+';">Alle</button>';
+  partners.forEach(function(p){
+    var act=_heroActive===p.name;
+    var short=p.name.replace(' GmbH','').replace('Team ','');
+    html+='<button onclick="setHeroAgency(\''+p.name.replace(/'/g,"\\'")+'\')" style="font-size:11px;padding:4px 13px;border-radius:9999px;border:2px solid '+(act?'#f2d1b3':'rgba(255,255,255,.2)')+';cursor:pointer;font-weight:700;background:'+(act?'rgba(255,255,255,.22)':'rgba(255,255,255,.07)')+';color:'+(act?'#f2d1b3':'rgba(255,255,255,.7)')+';">'+esc(short)+'</button>';
+  });
   html+='</div>';
-  // summary card
+  html+='</div>';
+  // summary card — agency-aware
+  var _heroActiveAgency=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
   html+='<div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:24px;">';
-  html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
-  html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
-  html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
-  var grossSales=S.salesReportTotal2026;
-  var cancelRate=(cancelled/grossSales*100).toFixed(1);
-  html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
-  var totalVsYesterday=kpis.reduce(function(s,k){return s+k.vsYesterday;},0);
-  html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
-  html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
-  html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
-  html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
-  html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' last update</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' last update</span>':'');
-  html+='</div>';
-  html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
-  html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
-  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Achievement</div>';
-  html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
-  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
-  html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
-  html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+  if(_heroActiveAgency){
+    var _ap=partners.find(function(p){return p.name===_heroActiveAgency;})||{};
+    var _apQ2=(_ap.april||0)+(_ap.may||0)+(_ap.juneActual||0);
+    var _apFcst=Math.round((_ap.juneActual||0)/Math.max(1,S.q2WorkingDaysDone-43)*22)+(_ap.april||0)+(_ap.may||0);
+    var _apTarget=_ap.forecast||1;
+    var _apPct=Math.round(_apQ2/_apTarget*100);
+    var _apFPct=Math.round(_apFcst/_apTarget*100);
+    var _apJunFcst=Math.round((_ap.juneActual||0)/Math.max(1,S.q2WorkingDaysDone-43)*22);
+    // logo if available
+    if(agencyLogos&&agencyLogos[_heroActiveAgency]){
+      html+='<div style="margin-bottom:16px;">'+agencyLogos[_heroActiveAgency].replace('<svg ','<svg style="height:44px;width:auto;border-radius:6px;" ')+'</div>';
+    } else {
+      html+='<div style="font-size:15px;font-weight:900;color:#f2d1b3;margin-bottom:16px;">'+esc(_heroActiveAgency)+'</div>';
+    }
+    html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">YTD Brutto Gesamt</div>';
+    html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+(_ap.ytd||0)+'</div>';
+    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">Ziel 2026: '+(_ap.forecast||'—')+' &nbsp;·&nbsp; D2D heute: <b style="color:#86efac;">'+(_ap.d2d||0)+'</b></div></div>';
+    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Signed (Apr+Mai+Jun) / Jahres-Ziel</p>';
+    html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
+    html+='<span style="font-size:3.5rem;font-weight:900;">'+_apQ2+'</span>';
+    html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+_apTarget+'</span>';
+    html+='</div>';
+    html+='<div style="margin-top:12px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+Math.min(_apPct,100)+'%;height:100%;border-radius:9999px;"></div></div></div>';
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+(_ap.april||0)+'</b><br>Apr</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+(_ap.may||0)+'</b><br>Mai</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:10px;"><b>'+(_ap.juneActual||0)+'</b><br>Jun Ist</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>~'+_apJunFcst+'</b><br>Jun Fcst</div>';
+    html+='</div>';
+    html+='<div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+_apPct+'%</b><br>Q2 / Ziel</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+    html+='</div>';
+  } else {
+    html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
+    html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
+    var grossSales=S.salesReportTotal2026;
+    var cancelRate=(cancelled/grossSales*100).toFixed(1);
+    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">'+netSales+' netto &nbsp;·&nbsp; <span style="color:#fca5a5;">'+cancelled+' storniert ('+cancelRate+'%)</span></div></div>';
+    var totalVsYesterday=kpis.reduce(function(s,k){return s+k.vsYesterday;},0);
+    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
+    html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
+    html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
+    html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
+    html+=(totalVsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">+'+totalVsYesterday+' last update</span>':totalVsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:2px 10px;font-size:12px;font-weight:900;margin-bottom:10px;">'+totalVsYesterday+' last update</span>':'');
+    html+='</div>';
+    html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Achievement</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
+    html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+    html+='</div>';
+  }
   html+='</div></div></div></div></div>';
 
   // ── KPI CARDS ──
+  var _kpiAgency=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
   html+='<section id="sec-kpi" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Q2 KPI Cards</h2><p style="color:#64748b;">Status, pace, and forecast per category.</p></div>';
-  html+='<span class="badge tag-slate">Status: today</span><button class="btn-xlsx" onclick="exportKpiXLSX()">⬇ Excel</button></div>';
+  html+='<div><h2>Q2 KPI Cards'+(_kpiAgency?' <span style="font-size:1rem;font-weight:700;color:#C86750;background:#FBF5ED;border-radius:.5rem;padding:3px 10px;">'+esc(_kpiAgency)+'</span>':'')+'</h2>';
+  html+=(_kpiAgency?'<p style="color:#64748b;">HC signed je Kategorie aus Running Projects · HP = verfügbare Haushalte</p>':'<p style="color:#64748b;">Status, pace, and forecast per category.</p>');
+  html+='</div>';
+  html+='<span class="badge tag-slate no-print">Status: today</span><button class="btn-xlsx no-print" onclick="exportKpiXLSX()">⬇ Excel</button></div>';
   html+='<div class="kpi-grid">'+kpis.map(kpiCard).join('')+'</div>';
   html+='</div></section>';
 
@@ -971,10 +1094,7 @@ function render(){
   html+='</select>';
   html+='<button class="btn btn-dark" onclick="agencySortDir=agencySortDir===\'asc\'?\'desc\':\'asc\';render();">'+(agencySortDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
-  // Agency filter buttons
-  html+='<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:16px;" id="agency-filter-bar"></div>';
-  // render filter buttons via DOM after html is set
-  window._agencyFilterNeeded=true;
+  window._agencyFilterNeeded=false;
   html+='<div style="overflow-x:auto;border-radius:1rem;border:1px solid #e2e8f0;">';
   html+='<table><thead style="background:#f1f5f9;"><tr>';
   ['#','Partner','June Ist','June Forecast','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D'].forEach(function(h){
@@ -1596,7 +1716,8 @@ function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementB
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
 var agencyLogos={'EnCom GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 84"><rect width="260" height="84" rx="6" fill="#073d4e"/><rect x="14" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><text x="68" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#f5c200">En</text><text x="116" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#29abe2">Com</text></svg>','United Promotion GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84"><rect width="420" height="84" rx="6" fill="#000"/><defs><linearGradient id="upg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9c8"/><stop offset="100%" stop-color="#7b2fff"/></linearGradient><linearGradient id="upg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7b2fff"/><stop offset="100%" stop-color="#00c9c8"/></linearGradient></defs><ellipse cx="38" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg1)" stroke-width="3" transform="rotate(-30 38 42)"/><ellipse cx="52" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg2)" stroke-width="3" transform="rotate(30 52 42)"/><rect x="30" y="26" width="30" height="30" rx="8" fill="url(#upg1)"/><text x="45" y="48" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">up</text><text x="96" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">united</text><text x="222" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="300" fill="#fff">promotion</text></svg>','Rating Peak GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 84"><rect width="320" height="84" rx="6" fill="#0f1f35"/><polygon points="42,62 62,28 82,62" fill="#2a7a9a"/><polygon points="22,62 48,32 74,62" fill="#4a9db8"/><polygon points="58,62 82,20 106,62" fill="#1a5a7a"/><polygon points="72,22 82,8 92,22" fill="#f5c200"/><text x="118" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="400" fill="#4ab8d8" letter-spacing="1">RATING</text><text x="214" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#f5c200" letter-spacing="1">PEAK</text></svg>','Stonemedia GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84"><rect width="340" height="84" rx="6" fill="#1a2a3a"/><path d="M107 22 Q107 14 114 10 Q121 14 121 22" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><path d="M103 26 Q103 12 114 6 Q125 12 125 26" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><circle cx="114" cy="30" r="3" fill="#e8a020"/><text x="18" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">STONE</text><text x="135" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">ME</text><text x="185" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">D</text><circle cx="218" cy="46" r="3.5" fill="#cc2200"/><text x="212" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">iA</text><text x="88" y="70" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#8a9bb0" letter-spacing="5">GROUP</text></svg>'};
 function buildAgencyFilter(){var bar=document.getElementById('agency-filter-bar');if(!bar)return;bar.innerHTML='';var ab=document.createElement('button');ab.textContent='Alle';ab.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(selectedAgencies===null?'#363E36':'#e2e8f0')+';color:'+(selectedAgencies===null?'#fff':'#475569');ab.onclick=function(){selectedAgencies=null;render();};bar.appendChild(ab);partners.forEach(function(p,i){var active=selectedAgencies&&selectedAgencies.indexOf(p.name)>=0;var b=document.createElement('button');b.textContent=p.name;b.style.cssText='font-size:11px;padding:4px 12px;border-radius:9999px;border:none;cursor:pointer;font-weight:700;background:'+(active?'#363E36':'#e2e8f0')+';color:'+(active?'#fff':'#475569');b.onclick=function(){toggleAgency(i);};bar.appendChild(b);});if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){var ld=document.createElement('div');ld.style.cssText='margin-left:12px;display:flex;align-items:center;';ld.innerHTML=agencyLogos[selectedAgencies[0]];var sv=ld.querySelector('svg');if(sv){sv.style.height='38px';sv.style.width='auto';sv.style.borderRadius='6px';}bar.appendChild(ld);}}
-function toggleAgency(idx){var n=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(n);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(n);if(selectedAgencies.length===0)selectedAgencies=null;render();}
+function toggleAgency(idx){var n=partners[idx].name;if(selectedAgencies===null)selectedAgencies=[];var i=selectedAgencies.indexOf(n);if(i>=0)selectedAgencies.splice(i,1);else selectedAgencies.push(n);if(selectedAgencies.length===0)selectedAgencies=null;salesFilter=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:'All';render();}
+function setHeroAgency(name){if(!name){selectedAgencies=null;salesFilter='All';}else{selectedAgencies=[name];salesFilter=name;}render();}
 function downloadTemplate(){console.log('Template');}
 function exportFunnelCSV(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([['Project;Type;Region;Sold;HP'].concat(funnelRowsRaw.map(function(r){return r.join(';');})).join('\n')],{type:'text/csv;charset=utf-8;'}));a.download='funnel.csv';a.click();}
 loadData(render);
