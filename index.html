@@ -225,7 +225,7 @@ var projectRows = [
   ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 15, 1715, 31],
   ["DE-BB Zeuthen-Wildau HP0", "HP0", "Open Infra CS", 6, 3, 1, 1, 2628, 35],
   ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 9],
-  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 38, 1227, 216],
+  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 38, 1227],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
   ["DE-BB Grünheide P3","BASE UPSELL","Rating Peak GmbH",0,0,0,0,680,89],
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0,109,12],
@@ -1277,18 +1277,20 @@ function render(){
   projs.forEach(function(r,i){
     var gestopptList=[];
     var stoppItProjs=['Märkisch Buchholz Combined'];
-    var commissionChangeProjs=['DE-BB Birkenwerder P3-2'];
-    var allZero=(r[6]||0)===0;
+    var commissionChangeProjs=[];
+    var checkAddressProjs=['DE-BB Diehlo P1'];
+    var allZero=(r[6]||0)===0&&checkAddressProjs.indexOf(r[0])<0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]];
     var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
     var stoppItBadge=stoppItProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff7ed;color:#ea580c;border:2px solid #ea580c;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">stopp it?</span>':'';
     var commissionBadge=commissionChangeProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#f0f9ff;color:#0369a1;border:2px solid #0369a1;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">commission change?</span>':'';
+    var checkAddressBadge=checkAddressProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:2px solid #d97706;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">check adresses &amp; CoA</span>':'';
     var hc=(r[8]||0)+(r[3]||0)+(r[4]||0)+(r[5]||0)+(r[6]||0);
     var hp=r[7]||0;
     var uptakePct=hp>0?(hc/hp*100).toFixed(1)+'%':'—';
     var uptakeColor=hp>0?(hc/hp>=0.4?'#16a34a':hc/hp>=0.25?'#d97706':'#dc2626'):'#9ca3af';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+checkAddressBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+hc+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:900;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
