@@ -8,10 +8,11 @@
       "april": 128,
       "may": 166,
       "mayForecast": 166,
-      "juneActual": 94,
-      "ytd": 552,
+      "juneActual": 95,
+      "ytd": 553,
       "forecast": 1100,
-      "d2d": 7
+      "d2d": 6,
+      "cancelledYtd": 55
     },
     {
       "name": "EnCom GmbH",
@@ -19,12 +20,13 @@
       "february": 35,
       "march": 115,
       "april": 118,
-      "may": 131,
-      "mayForecast": 131,
-      "juneActual": 203,
-      "ytd": 618,
+      "may": 134,
+      "mayForecast": 134,
+      "juneActual": 217,
+      "ytd": 635,
       "forecast": 1100,
-      "d2d": 15
+      "d2d": 14,
+      "cancelledYtd": 19
     },
     {
       "name": "Team Tatjana",
@@ -34,10 +36,11 @@
       "april": 47,
       "may": 57,
       "mayForecast": 57,
-      "juneActual": 24,
-      "ytd": 195,
+      "juneActual": 25,
+      "ytd": 196,
       "forecast": 450,
-      "d2d": 2
+      "d2d": 2,
+      "cancelledYtd": 6
     },
     {
       "name": "United Promotion GmbH",
@@ -47,23 +50,25 @@
       "april": 7,
       "may": 96,
       "mayForecast": 96,
-      "juneActual": 126,
-      "ytd": 229,
+      "juneActual": 138,
+      "ytd": 241,
       "forecast": 330,
-      "d2d": 9
+      "d2d": 9,
+      "cancelledYtd": 9
     },
     {
       "name": "Open Infra CS",
-      "january": 12,
-      "february": 16,
-      "march": 19,
-      "april": 13,
-      "may": 7,
-      "mayForecast": 7,
+      "january": 5,
+      "february": 6,
+      "march": 11,
+      "april": 9,
+      "may": 2,
+      "mayForecast": 2,
       "juneActual": 4,
-      "ytd": 71,
+      "ytd": 37,
       "forecast": 175,
-      "d2d": 0
+      "d2d": 0,
+      "cancelledYtd": 0
     },
     {
       "name": "Filiago",
@@ -76,7 +81,8 @@
       "juneActual": 0,
       "ytd": 7,
       "forecast": 20,
-      "d2d": 0
+      "d2d": 0,
+      "cancelledYtd": 0
     },
     {
       "name": "Rating Peak GmbH",
@@ -90,10 +96,28 @@
       "ytd": 6,
       "forecast": 0,
       "d2d": 0,
-      "comingSoon": true
+      "comingSoon": true,
+      "cancelledYtd": 0
     }
   ],
   "kpiActuals": {
+    "Base Sales / Up Sales": {
+      "april": 152,
+      "may": 309,
+      "june": 318
+    },
+    "After Market / HP0 Sales": {
+      "april": 20,
+      "may": 37,
+      "june": 85
+    },
+    "Build Sales": {
+      "april": 141,
+      "may": 115,
+      "june": 92
+    }
+  },
+  "kpiPreviousDay": {
     "Base Sales / Up Sales": {
       "april": 149,
       "may": 310,
@@ -110,261 +134,2066 @@
       "june": 90
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 170,
-      "may": 261,
-      "june": 293
-    },
-    "After Market / HP0 Sales": {
-      "april": 16,
-      "may": 31,
-      "june": 54
-    },
-    "Build Sales": {
-      "april": 127,
-      "may": 166,
-      "june": 40
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1691,
-    "q2WorkingDaysDone": 57,
-    "q2WorkingDaysLeft": 8,
-    "juneForecast": 734,
+    "salesReportTotal2026": 1720,
+    "q2WorkingDaysDone": 58,
+    "q2WorkingDaysLeft": 7,
+    "juneForecast": 726,
     "jan": 42,
     "feb": 135,
     "mar": 274,
     "apr": 313,
-    "may": 460
+    "may": 461,
+    "lastUpdateDate": "19.6.2026"
   },
-  "netSales": 1599,
-  "cancelled": 92,
+  "netSales": 1630,
+  "cancelled": 90,
   "projectRows": [
-    ["DE-BB Birkenwerder P2", "Build Sales", "Stonemedia GmbH", 0, 0, 0, 22, 231, 66],
-    ["DE-BB Birkenwerder P3", "Build Sales", "Stonemedia GmbH", 0, 25, 22, 12, 583, 191],
-    ["DE-BB Birkenwerder P3-2", "BASE UPSELL", "Stonemedia GmbH", 0, 9, 12, 4, 235, 15],
-    ["DE-BB Birkenwerder P4", "BASE UPSELL", "Stonemedia GmbH", 0, 24, 35, 7, 243, 6],
-    ["DE-BB Hennigsdorf P3", "Build Sales", "Stonemedia GmbH", 15, 17, 4, 0, 633, 204],
-    ["DE-BB Löwenberger Land - Grieben P5", "Base Sales", "Stonemedia GmbH", 0, 4, 7, 1, 181],
-    ["DE-BB Storkow P2", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 13, 2, 107, 46],
-    ["DE-BB Storkow P3", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 25, 8, 335, 79],
-    ["DE-BB Storkow P4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 6, 332, 83],
-    ["DE-BB Storkow P5", "BASE UPSELL", "Stonemedia GmbH", 0, 23, 21, 2, 479, 56],
-    ["DE-BB Storkow P6", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 3, 0, 87, 15],
-    ["DE-BB Storkow P7", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 2, 9, 4, 199, 30],
-    ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 0],
-    ["DE-BB Storkow P8", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 18, 186],
-    ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 15, 16, 6, 7, 1093, 425],
-    ["Märkisch Buchholz Combined", "Base Sales", "Stonemedia GmbH", 41, 7, 2, 1, 1475, 381],
-    ["DE-BB Diehlo P1", "Base Sales / Up Sales", "EnCom GmbH", 0, 0, 0, 0, 157, 1],
-    ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 1, 94, 176, 829],
-    ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 46, 0, 0, 904, 304],
-    ["DE-BB Frankfurt (Oder) Combined P1", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 519, 134],
-    ["DE-BB Frankfurt (Oder) Combined P2", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 459, 142],
-    ["DE-BB Frankfurt (Oder) Combined P3", "Build Sales", "EnCom GmbH", 31, 11, 0, 0, 213, 86],
-    ["DE-BB Frankfurt (Oder) Combined P4", "Build Sales", "EnCom GmbH", 0, 23, 7, 1, 344, 66],
-    ["DE-BB Königs Wusterhausen HP0 3", "HP0", "EnCom GmbH", 0, 0, 2, 5, 842],
-    ["DE-BY Kirchroth P3", "BASE UPSELL", "EnCom GmbH", 3, 7, 10, 0, 246, 105],
-    ["DE-BY Kirchroth P4", "BASE UPSELL", "EnCom GmbH", 13, 3, 7, 2, 324, 153],
-    ["DE-BY Kirchroth P5", "Build Sales", "EnCom GmbH", 34, 14, 1, 0, 154, 49],
-    ["DE-BY Leiblfing P1", "Build Sales", "EnCom GmbH", 0, 0, 5, 9, 473, 133],
-    ["DE-BY Parkstetten P1", "BASE UPSELL", "EnCom GmbH", 2, 0, 0, 0, 396, 99],
-    ["DE-BY Straubing P1", "BASE UPSELL", "EnCom GmbH", 3, 12, 7, 2, 292, 106],
-    ["DE-BB Zossen P4", "Build Sales", "EnCom GmbH", 0, 1, 0, 8, 590, 246],
-    ["DE-BB Birkenwerder P1", "Build Sales", "Team Tatjana", 22, 21, 5, 2, 1100, 399],
-    ["DE-BB Birkenwerder P1-2", "BASE UPSELL", "Team Tatjana", 0, 4, 8, 2, 76],
-    ["DE-BB Birkenwerder P2-2", "BASE UPSELL", "Team Tatjana", 0, 0, 2, 1, 373, 37],
-    ["DE-BB Schöneiche P8", "Base Sales", "Team Tatjana", 0, 0, 8, 6, 372, 40],
-    ["DE-BB Spreenhagen P3 & Furstenwalde P6", "Base Sales", "Team Tatjana", 13, 10, 5, 0, 349, 23],
-    ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 12, 28, 10, 609, 168],
-    ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 1, 260],
-    ["DE-BB Blankenfelde-Mahlow P1", "Build Sales", "United Promotion GmbH", 0, 0, 31, 3, 573, 161],
-    ["DE-BB Heidesee P7", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 121],
-    ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 6, 14, 4, 2038, 94],
-    ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 23, 24, 143],
-    ["DE-BB Woltersdorf P5-1", "Build Sales", "United Promotion GmbH", 0, 1, 6, 0, 274],
-    ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 15, 1715, 31],
-    ["DE-BB Zossen HP0", "HP0", "United Promotion GmbH", 0, 0, 2, 0, 109, 2],
-    ["DE-BB Zossen P3", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 199, 71],
-    ["DE-BB Zossen P4-2", "Base Sales", "United Promotion GmbH", 0, 0, 2, 0, 241, 3],
-    ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 7, 20, 730, 1],
-    ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 6, 914],
-    ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 15, 722, 184],
-    ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 936, 137],
-    ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 38, 1227],
-    ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 5, 2549],
-    ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 0, 1877, 18],
-    ["DE-BB Seddiner See P2", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 0, 751, 36],
-    ["DE-BB Königs Wusterhausen HP0 1", "HP0", "Stonemedia GmbH", 1, 1, 0, 0],
-    ["DE-BB Königs Wusterhausen HP0 2", "HP0", "Open Infra CS", 2, 1, 0, 1],
-    ["DE-BB Zeuthen-Wildau HP0", "HP0", "Open Infra CS", 6, 3, 1, 1, 2628, 35],
-    ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 9],
-    ["DE-BB Grünheide P3", "BASE UPSELL", "Rating Peak GmbH", 0, 0, 0, 0, 680, 89],
-    ["DE-BB Gosen Neu-Zittau P2", "Base Sales / Up Sales", "Rating Peak GmbH", 0, 0, 0, 0, 109, 12],
-    ["DE-BB Gosen-Neu Zittau P4", "BASE UPSELL", "Rating Peak GmbH", 0, 0, 0, 1, 262, 77],
-    ["DE-BB Gosen Neu-Zittau P3", "Build Sales", "Rating Peak GmbH", 0, 0, 0, 5, 186, 50],
-    ["Luckau Combined (Deploy 2026)", "Build Sales", "Rating Peak GmbH", 0, 0, 0, 0, 1174, 347],
-    ["DE-BB Kasel-Golzig Combined", "Build Sales", "Rating Peak GmbH", 0, 0, 0, 0, 1093, 466],
-    ["DE-BB Grünheide P1", "BASE UPSELL", "Rating Peak GmbH", 0, 0, 0, 0, 1030, 234],
-    ["DE-BB Neuzelle Combined P1", "Build Sales", "Rating Peak GmbH", 0, 0, 0, 0, 615, 149],
-    ["DE-BB Grünheide P5", "BASE UPSELL", "Team Tatjana", 0, 0, 1, 0, 101, 41]
+    [
+      "DE-BB Birkenwerder P2",
+      "Build Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      22,
+      231,
+      66
+    ],
+    [
+      "DE-BB Birkenwerder P3",
+      "Build Sales",
+      "Stonemedia GmbH",
+      0,
+      25,
+      22,
+      12,
+      583,
+      191
+    ],
+    [
+      "DE-BB Birkenwerder P3-2",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      9,
+      12,
+      4,
+      235,
+      15
+    ],
+    [
+      "DE-BB Birkenwerder P4",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      24,
+      35,
+      7,
+      243,
+      6
+    ],
+    [
+      "DE-BB Hennigsdorf P3",
+      "Build Sales",
+      "Stonemedia GmbH",
+      15,
+      17,
+      4,
+      0,
+      633,
+      204
+    ],
+    [
+      "DE-BB Löwenberger Land - Grieben P5",
+      "Base Sales",
+      "Stonemedia GmbH",
+      0,
+      4,
+      7,
+      1,
+      181
+    ],
+    [
+      "DE-BB Storkow P2",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      0,
+      13,
+      2,
+      107,
+      46
+    ],
+    [
+      "DE-BB Storkow P3",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      0,
+      25,
+      8,
+      335,
+      79
+    ],
+    [
+      "DE-BB Storkow P4",
+      "Base Sales / Up Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      6,
+      332,
+      83
+    ],
+    [
+      "DE-BB Storkow P5",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      23,
+      21,
+      2,
+      479,
+      56
+    ],
+    [
+      "DE-BB Storkow P6",
+      "BASE UPSELL",
+      "Stonemedia GmbH",
+      0,
+      0,
+      3,
+      0,
+      87,
+      15
+    ],
+    [
+      "DE-BB Storkow P7",
+      "Base Sales / Up Sales",
+      "Stonemedia GmbH",
+      0,
+      2,
+      9,
+      4,
+      199,
+      30
+    ],
+    [
+      "DE-BB Storkow P1-4",
+      "Base Sales / Up Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      "DE-BB Storkow P8",
+      "Base Sales / Up Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      18,
+      186
+    ],
+    [
+      "Kasel-Golzig Combined",
+      "Build Sales",
+      "Stonemedia GmbH",
+      15,
+      16,
+      6,
+      7,
+      1093,
+      425
+    ],
+    [
+      "Märkisch Buchholz Combined",
+      "Base Sales",
+      "Stonemedia GmbH",
+      41,
+      7,
+      2,
+      1,
+      1475,
+      381
+    ],
+    [
+      "DE-BB Diehlo P1",
+      "Base Sales / Up Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      157,
+      1
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P0",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      1,
+      95,
+      189,
+      829
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P1",
+      "Base Sales",
+      "EnCom GmbH",
+      29,
+      46,
+      0,
+      0,
+      904,
+      304
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P1",
+      "Build Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      519,
+      134
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P2",
+      "Build Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      459,
+      142
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P3",
+      "Build Sales",
+      "EnCom GmbH",
+      31,
+      11,
+      0,
+      0,
+      213,
+      86
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P4",
+      "Build Sales",
+      "EnCom GmbH",
+      0,
+      23,
+      7,
+      2,
+      344,
+      66
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 3",
+      "HP0",
+      "EnCom GmbH",
+      0,
+      0,
+      2,
+      5,
+      842
+    ],
+    [
+      "DE-BY Kirchroth P3",
+      "BASE UPSELL",
+      "EnCom GmbH",
+      3,
+      7,
+      10,
+      0,
+      246,
+      105
+    ],
+    [
+      "DE-BY Kirchroth P4",
+      "BASE UPSELL",
+      "EnCom GmbH",
+      13,
+      3,
+      7,
+      2,
+      324,
+      153
+    ],
+    [
+      "DE-BY Kirchroth P5",
+      "Build Sales",
+      "EnCom GmbH",
+      34,
+      14,
+      1,
+      0,
+      154,
+      49
+    ],
+    [
+      "DE-BY Leiblfing P1",
+      "Build Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      5,
+      9,
+      473,
+      133
+    ],
+    [
+      "DE-BY Parkstetten P1",
+      "BASE UPSELL",
+      "EnCom GmbH",
+      2,
+      0,
+      0,
+      0,
+      396,
+      99
+    ],
+    [
+      "DE-BY Straubing P1",
+      "BASE UPSELL",
+      "EnCom GmbH",
+      3,
+      12,
+      7,
+      2,
+      292,
+      106
+    ],
+    [
+      "DE-BB Zossen P4",
+      "Build Sales",
+      "EnCom GmbH",
+      0,
+      1,
+      0,
+      8,
+      590,
+      246
+    ],
+    [
+      "DE-BB Birkenwerder P1",
+      "Build Sales",
+      "Team Tatjana",
+      22,
+      21,
+      5,
+      2,
+      1100,
+      399
+    ],
+    [
+      "DE-BB Birkenwerder P1-2",
+      "BASE UPSELL",
+      "Team Tatjana",
+      0,
+      4,
+      8,
+      2,
+      76
+    ],
+    [
+      "DE-BB Birkenwerder P2-2",
+      "BASE UPSELL",
+      "Team Tatjana",
+      0,
+      0,
+      2,
+      1,
+      373,
+      37
+    ],
+    [
+      "DE-BB Schöneiche P8",
+      "Base Sales",
+      "Team Tatjana",
+      0,
+      0,
+      8,
+      6,
+      372,
+      40
+    ],
+    [
+      "DE-BB Spreenhagen P3 & Furstenwalde P6",
+      "Base Sales",
+      "Team Tatjana",
+      13,
+      10,
+      5,
+      0,
+      349,
+      23
+    ],
+    [
+      "DE-BB Stadt Fürstenwalde P4",
+      "Build Sales",
+      "Team Tatjana",
+      5,
+      12,
+      28,
+      11,
+      609,
+      168
+    ],
+    [
+      "DE-BB Beetzsee P1 HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      10,
+      1,
+      260
+    ],
+    [
+      "DE-BB Blankenfelde-Mahlow P1",
+      "Build Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      31,
+      3,
+      573,
+      161
+    ],
+    [
+      "DE-BB Heidesee P7",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      121
+    ],
+    [
+      "DE-BB Schulzendorf HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      6,
+      14,
+      4,
+      2038,
+      94
+    ],
+    [
+      "DE-BB Schulzendorf P3",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      23,
+      26,
+      143
+    ],
+    [
+      "DE-BB Woltersdorf P5-1",
+      "Build Sales",
+      "United Promotion GmbH",
+      0,
+      1,
+      6,
+      0,
+      274
+    ],
+    [
+      "DE-BB Woltersdorf HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      2,
+      1,
+      21,
+      1715,
+      31
+    ],
+    [
+      "DE-BB Zossen HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      2,
+      0,
+      109,
+      2
+    ],
+    [
+      "DE-BB Zossen P3",
+      "Build Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      199,
+      71
+    ],
+    [
+      "DE-BB Zossen P4-2",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      2,
+      0,
+      241,
+      3
+    ],
+    [
+      "DE-BB Zossen P6",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      7,
+      23,
+      730,
+      1
+    ],
+    [
+      "DE-BB Zossen P7",
+      "Base Sales / Up Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      6,
+      914
+    ],
+    [
+      "Hohen Neuendorf B1",
+      "Build Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      16,
+      722,
+      184
+    ],
+    [
+      "Hohen Neuendorf B2",
+      "Build Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      936,
+      137
+    ],
+    [
+      "DE-BB Stadt Fürstenwalde P1-P3 HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      38,
+      1227
+    ],
+    [
+      "DE-BB Schöneiche HP0",
+      "HP0",
+      "Team Tatjana",
+      2,
+      2,
+      0,
+      5,
+      2549
+    ],
+    [
+      "DE-BB Falkensee HP0",
+      "HP0",
+      "Open Infra CS",
+      0,
+      0,
+      1,
+      0,
+      1877,
+      18
+    ],
+    [
+      "DE-BB Seddiner See P2",
+      "Base Sales / Up Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      0,
+      751,
+      36
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 2",
+      "HP0",
+      "Open Infra CS",
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      "DE-BB Zeuthen-Wildau HP0",
+      "HP0",
+      "Open Infra CS",
+      6,
+      3,
+      1,
+      1,
+      2628,
+      35
+    ],
+    [
+      "DE-CS",
+      "HP0",
+      "Open Infra CS",
+      8,
+      4,
+      5,
+      9
+    ],
+    [
+      "DE-BB Grünheide P3",
+      "BASE UPSELL",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      680,
+      89
+    ],
+    [
+      "DE-BB Gosen Neu-Zittau P2",
+      "Base Sales / Up Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      109,
+      12
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P4",
+      "BASE UPSELL",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      1,
+      262,
+      77
+    ],
+    [
+      "DE-BB Gosen Neu-Zittau P3",
+      "Build Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      5,
+      186,
+      50
+    ],
+    [
+      "Luckau Combined (Deploy 2026)",
+      "Build Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      1174,
+      347
+    ],
+    [
+      "DE-BB Kasel-Golzig Combined",
+      "Build Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      1093,
+      466
+    ],
+    [
+      "DE-BB Grünheide P1",
+      "BASE UPSELL",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      1030,
+      234
+    ],
+    [
+      "DE-BB Neuzelle Combined P1",
+      "Build Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0,
+      615,
+      149
+    ],
+    [
+      "DE-BB Grünheide P5",
+      "BASE UPSELL",
+      "Team Tatjana",
+      0,
+      0,
+      1,
+      0,
+      101,
+      41
+    ]
   ],
   "funnelRowsRaw": [
-    ["DE-BB Brandenburg HP0 FC","HP0","BB",0,1363],
-    ["DE-BB Eichwalde HP0","HP0","BB",0,767],
-    ["DE-BB Erkner P3 HP0 - SNB","HP0","BB",0,124],
-    ["DE-BB Falkensee HP0","HP0","BB",0,2406],
-    ["DE-BB Golssen P1","BASE UPSELL","BB",182,494],
-    ["DE-BB Gosen-Neu Zittau P1 HP0","HP0","BB",0,229],
-    ["DE-BB Groß Köris HP0 - SNB","HP0","BB",0,490],
-    ["DE-BB Grünheide P2 HP0 - SNB","HP0","BB",0,510],
-    ["DE-BB Halbe & Löpten P1 HP0 - SNB","HP0","BB",0,396],
-    ["DE-BB Heidesee HP0","HP0","BB",604,2712],
-    ["DE-BB Heidesee B5-2","Build sales","BB",38,101],
-    ["DE-BB Heidesee P5-1","BASE UPSELL","BB",20,70],
-    ["DE-BB Hoppegarten P1","BASE UPSELL","BB",56,264],
-    ["DE-BB Hoppegarten P2","BASE UPSELL","BB",80,0],
-    ["DE-BB Königs Wusterhausen HP0 1","HP0","BB",0,0],
-    ["DE-BB Königs Wusterhausen HP0 2","HP0","BB",0,2759],
-    ["DE-BB Mittenwalde HP0 - SNB","HP0","BB",0,172],
-    ["DE-BB Neuzelle Combined P2","Build sales","BB",89,181],
-    ["DE-BB Neuzelle Combined P3","Build sales","BB",51,122],
-    ["DE-BB Neuzelle Combined P4","Build sales","BB",166,427],
-    ["DE-BB Rangsdorf HP0","HP0","BB",0,670],
-    ["DE-BB Zeuthen-Wildau HP0","HP0","BB",0,2628],
-    ["DE-BY Kirchroth HP0 - SNB","HP0","BY",0,535],
-    ["DE-NI Appel P1","BASE UPSELL","NI",24,343],
-    ["DE-NI Drestedt & Wenzendorf HP0 - SNB","HP0","NI",0,521],
-    ["DE-NI Handeloh P1","BASE UPSELL","NI",68,199],
-    ["DE-NI Heidenau HP0","HP0","NI",0,631],
-    ["DE-NI Kakenstorf P3","Build sales","NI",56,128],
-    ["DE-NI Königsmoor P1","Build sales","NI",186,369],
-    ["DE-NI Neu Wulmstorf P1","Build sales","NI",123,191],
-    ["DE-NI Neu Wulmstorf P2-P4","BASE UPSELL","NI",155,774],
-    ["DE-NI Rosengarten HP0","HP0","NI",0,554],
-    ["DE-NI Salzhausen Eyendorf P7","Base Sales","NI",0,387],
-    ["DE-NI Salzhausen Lübberstedt P8","Base Sales","NI",0,105],
-    ["DE-NI Salzhausen Vierhöfen HP0 - SNB","HP0","NI",0,261],
-    ["DE-NI Salzhausen Vierhöfen P2-1","BASE UPSELL","NI",17,93],
-    ["DE-NI Welle & Otter HP0 - SNB","HP0","NI",0,432],
-    ["DE-NI Welle P2","Build sales","NI",107,213],
-    ["Wistedt B1","Build sales","NI",306,571],
-    ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
-    ["DE-BB Beetzsee P2","Base Sales","BB",89,280],
-    ["DE-BB Beetzsee P3","Base Sales","BB",0,505],
-    ["DE-BB Beetzsee P4","Base Sales","BB",0,714],
-    ["DE-BB Beetzsee P5","Base Sales","BB",0,624],
-    ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
-    ["DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0","HP0","BB",0,362],
-    ["DE-BB Schönwald P1 HP0 - SNB","HP0","BB",0,162],
-    ["DE-BY Falkenfels","Base Sales","BY",0,0],
-    ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
-    ["DE-NI Ottermoor P1","Base Sales","NI",0,72],
-    ["DE-NI Salzhausen - Vierhöfen Combined HP0 - SNB","HP0","NI",0,261],
-    ["DE-NI Salzhausen - Vierhöfen Combined P2-1","BASE UPSELL","NI",17,93],
-    ["DE-Schöneiche P1-3","Base Sales","BB",0,153],
-    ["Hoppergarten Snake REV","Base Sales","BB",0,0],
-    ["Magdeburg - Ottersleben Combined REV","Base Sales","SA",0,0],
-    ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
-    ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
-    ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
-    ["DE-BB Bestensee HP0","HP0","BB",0,0],
-    ["DE-BB Stadt Velten P1 HP0","HP0","BB",0,0],
-    ["DE-BB Grünheide P4","BASE UPSELL","BB",31,84],
-    ["DE-BB Grünheide P6","BASE UPSELL","BB",28,283],
-    ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,868],
-    ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
-    ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
-    ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
-    ["Hohen Neuendorf B1-1","Build Sales","BB",0,0],
-    ["DE-BB Schwerin HP0","HP0","MV",0,0]
+    [
+      "DE-BB Brandenburg HP0 FC",
+      "HP0",
+      "BB",
+      0,
+      1363
+    ],
+    [
+      "DE-BB Eichwalde HP0",
+      "HP0",
+      "BB",
+      0,
+      767
+    ],
+    [
+      "DE-BB Erkner P3 HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      124
+    ],
+    [
+      "DE-BB Falkensee HP0",
+      "HP0",
+      "BB",
+      0,
+      2406
+    ],
+    [
+      "DE-BB Golssen P1",
+      "BASE UPSELL",
+      "BB",
+      182,
+      494
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P1 HP0",
+      "HP0",
+      "BB",
+      0,
+      229
+    ],
+    [
+      "DE-BB Groß Köris HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      490
+    ],
+    [
+      "DE-BB Grünheide P2 HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      510
+    ],
+    [
+      "DE-BB Halbe & Löpten P1 HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      396
+    ],
+    [
+      "DE-BB Heidesee HP0",
+      "HP0",
+      "BB",
+      604,
+      2712
+    ],
+    [
+      "DE-BB Heidesee B5-2",
+      "Build sales",
+      "BB",
+      38,
+      101
+    ],
+    [
+      "DE-BB Heidesee P5-1",
+      "BASE UPSELL",
+      "BB",
+      20,
+      70
+    ],
+    [
+      "DE-BB Hoppegarten P1",
+      "BASE UPSELL",
+      "BB",
+      56,
+      264
+    ],
+    [
+      "DE-BB Hoppegarten P2",
+      "BASE UPSELL",
+      "BB",
+      80,
+      0
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 1",
+      "HP0",
+      "BB",
+      2,
+      0
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 2",
+      "HP0",
+      "BB",
+      0,
+      2759
+    ],
+    [
+      "DE-BB Mittenwalde HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      172
+    ],
+    [
+      "DE-BB Neuzelle Combined P2",
+      "Build sales",
+      "BB",
+      89,
+      181
+    ],
+    [
+      "DE-BB Neuzelle Combined P3",
+      "Build sales",
+      "BB",
+      51,
+      122
+    ],
+    [
+      "DE-BB Neuzelle Combined P4",
+      "Build sales",
+      "BB",
+      166,
+      427
+    ],
+    [
+      "DE-BB Rangsdorf HP0",
+      "HP0",
+      "BB",
+      0,
+      670
+    ],
+    [
+      "DE-BB Zeuthen-Wildau HP0",
+      "HP0",
+      "BB",
+      0,
+      2628
+    ],
+    [
+      "DE-BY Kirchroth HP0 - SNB",
+      "HP0",
+      "BY",
+      0,
+      535
+    ],
+    [
+      "DE-NI Appel P1",
+      "BASE UPSELL",
+      "NI",
+      24,
+      343
+    ],
+    [
+      "DE-NI Drestedt & Wenzendorf HP0 - SNB",
+      "HP0",
+      "NI",
+      0,
+      521
+    ],
+    [
+      "DE-NI Handeloh P1",
+      "BASE UPSELL",
+      "NI",
+      68,
+      199
+    ],
+    [
+      "DE-NI Heidenau HP0",
+      "HP0",
+      "NI",
+      0,
+      631
+    ],
+    [
+      "DE-NI Kakenstorf P3",
+      "Build sales",
+      "NI",
+      56,
+      128
+    ],
+    [
+      "DE-NI Königsmoor P1",
+      "Build sales",
+      "NI",
+      186,
+      369
+    ],
+    [
+      "DE-NI Neu Wulmstorf P1",
+      "Build sales",
+      "NI",
+      123,
+      191
+    ],
+    [
+      "DE-NI Neu Wulmstorf P2-P4",
+      "BASE UPSELL",
+      "NI",
+      155,
+      774
+    ],
+    [
+      "DE-NI Rosengarten HP0",
+      "HP0",
+      "NI",
+      0,
+      554
+    ],
+    [
+      "DE-NI Salzhausen Eyendorf P7",
+      "Base Sales",
+      "NI",
+      0,
+      387
+    ],
+    [
+      "DE-NI Salzhausen Lübberstedt P8",
+      "Base Sales",
+      "NI",
+      0,
+      105
+    ],
+    [
+      "DE-NI Salzhausen Vierhöfen HP0 - SNB",
+      "HP0",
+      "NI",
+      0,
+      261
+    ],
+    [
+      "DE-NI Salzhausen Vierhöfen P2-1",
+      "BASE UPSELL",
+      "NI",
+      17,
+      93
+    ],
+    [
+      "DE-NI Welle & Otter HP0 - SNB",
+      "HP0",
+      "NI",
+      0,
+      432
+    ],
+    [
+      "DE-NI Welle P2",
+      "Build sales",
+      "NI",
+      107,
+      213
+    ],
+    [
+      "Wistedt B1",
+      "Build sales",
+      "NI",
+      306,
+      571
+    ],
+    [
+      "DE-BB Löwenberger Land P1",
+      "Build Sales",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "DE-BB Beetzsee P2",
+      "Base Sales",
+      "BB",
+      89,
+      280
+    ],
+    [
+      "DE-BB Beetzsee P3",
+      "Base Sales",
+      "BB",
+      0,
+      505
+    ],
+    [
+      "DE-BB Beetzsee P4",
+      "Base Sales",
+      "BB",
+      0,
+      714
+    ],
+    [
+      "DE-BB Beetzsee P5",
+      "Base Sales",
+      "BB",
+      0,
+      624
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 3",
+      "HP0",
+      "BB",
+      0,
+      2759
+    ],
+    [
+      "DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0",
+      "HP0",
+      "BB",
+      0,
+      362
+    ],
+    [
+      "DE-BB Schönwald P1 HP0 - SNB",
+      "HP0",
+      "BB",
+      0,
+      162
+    ],
+    [
+      "DE-BY Falkenfels",
+      "Base Sales",
+      "BY",
+      0,
+      0
+    ],
+    [
+      "DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB",
+      "HP0",
+      "BY",
+      0,
+      24
+    ],
+    [
+      "DE-NI Ottermoor P1",
+      "Base Sales",
+      "NI",
+      0,
+      72
+    ],
+    [
+      "DE-NI Salzhausen - Vierhöfen Combined HP0 - SNB",
+      "HP0",
+      "NI",
+      0,
+      261
+    ],
+    [
+      "DE-NI Salzhausen - Vierhöfen Combined P2-1",
+      "BASE UPSELL",
+      "NI",
+      17,
+      93
+    ],
+    [
+      "DE-Schöneiche P1-3",
+      "Base Sales",
+      "BB",
+      0,
+      153
+    ],
+    [
+      "Hoppergarten Snake REV",
+      "Base Sales",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "Magdeburg - Ottersleben Combined REV",
+      "Base Sales",
+      "SA",
+      0,
+      0
+    ],
+    [
+      "DE-BY Wallersdorf P1",
+      "Base Sales",
+      "BY",
+      0,
+      0
+    ],
+    [
+      "DE-BY Wallersdorf P2",
+      "Base Sales",
+      "BY",
+      0,
+      0
+    ],
+    [
+      "DE-BY Wallersdorf P3",
+      "Base Sales",
+      "BY",
+      0,
+      0
+    ],
+    [
+      "DE-BB Bestensee HP0",
+      "HP0",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "DE-BB Stadt Velten P1 HP0",
+      "HP0",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "DE-BB Grünheide P4",
+      "BASE UPSELL",
+      "BB",
+      31,
+      84
+    ],
+    [
+      "DE-BB Grünheide P6",
+      "BASE UPSELL",
+      "BB",
+      28,
+      283
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P3",
+      "Base Sales / Up Sales",
+      "BB",
+      0,
+      868
+    ],
+    [
+      "DE-BB Spreenhagen P2",
+      "BASE UPSELL",
+      "BB",
+      4,
+      63
+    ],
+    [
+      "DE-BB Schöneiche P11",
+      "BASE UPSELL",
+      "BB",
+      0,
+      186
+    ],
+    [
+      "DE-BB Spreenhagen P4",
+      "BASE UPSELL",
+      "BB",
+      0,
+      259
+    ],
+    [
+      "Hohen Neuendorf B1-1",
+      "Build Sales",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "DE-BB Schwerin HP0",
+      "HP0",
+      "MV",
+      0,
+      0
+    ]
   ],
   "cemeteryRows": [
-    ["DD - Furth S1","BY","Abandon",6,223],
-    ["DD - Furth S2","BY","Abandon",2,383],
-    ["DD - Furth S3","BY","Abandon",9,413],
-    ["DD - Furth S4","BY","Abandon",0,213],
-    ["DD - Obersußbach S1","BY","Abandon",0,255],
-    ["DD - Obersußbach S2","BY","Abandon",0,227],
-    ["DD - Obersußbach S3","BY","Abandon",0,112],
-    ["DD - Weihmichl S1","BY","Abandon",0,411],
-    ["DD - Weihmichl S2","BY","Abandon",0,255],
-    ["DD - Weihmichl S3","BY","Abandon",0,177],
-    ["DD - Weihmichl S4","BY","Abandon",0,0],
-    ["DE-BB Baruth/Mark P1","BB","Abandon",68,281],
-    ["DE-BB Baruth/Mark P2","BB","Abandon",20,164],
-    ["DE-BB Baruth/Mark P3","BB","Abandon",44,244],
-    ["DE-BB Löwenberger Land P1-2","BB","STOPP",25,210],
-    ["DE-BY Münster","BY","Abandon",0,0],
-    ["DE-BB Rietzneuendorf - Staakow P1","BB","Abandon",0,194],
-    ["DE-BB Schönefeld P1","BB","Abandon",0,0],
-    ["DE-BB Stadt Fürstenwalde P6","BB","Abandon",0,90],
-    ["DE-BB Stadt Velten P2","BB","Abandon",58,224],
-    ["DE-BB Stadt Velten P3","BB","Abandon",0,0],
-    ["DE-BY Aiterhofen HP0 - SNB","BY","Abandon",0,128],
-    ["DE-BY Saulburg","BY","Abandon",0,0],
-    ["DE-BY Steinach","BY","Abandon",0,951],
-    ["DE-BB Schönwald P5","BB","Abandon",78,137],
-    ["DE-NI Welle P3","NI","Abandon",28,32],
-    ["DE-BB Neuzelle P5","BB","STOPP 499€ FEE",0,0],
-    ["DE-BB Neuzelle P6","BB","STOPP 499€ FEE",0,0]
+    [
+      "DD - Furth S1",
+      "BY",
+      "Abandon",
+      6,
+      223
+    ],
+    [
+      "DD - Furth S2",
+      "BY",
+      "Abandon",
+      2,
+      383
+    ],
+    [
+      "DD - Furth S3",
+      "BY",
+      "Abandon",
+      9,
+      413
+    ],
+    [
+      "DD - Furth S4",
+      "BY",
+      "Abandon",
+      0,
+      213
+    ],
+    [
+      "DD - Obersußbach S1",
+      "BY",
+      "Abandon",
+      0,
+      255
+    ],
+    [
+      "DD - Obersußbach S2",
+      "BY",
+      "Abandon",
+      0,
+      227
+    ],
+    [
+      "DD - Obersußbach S3",
+      "BY",
+      "Abandon",
+      0,
+      112
+    ],
+    [
+      "DD - Weihmichl S1",
+      "BY",
+      "Abandon",
+      0,
+      411
+    ],
+    [
+      "DD - Weihmichl S2",
+      "BY",
+      "Abandon",
+      0,
+      255
+    ],
+    [
+      "DD - Weihmichl S3",
+      "BY",
+      "Abandon",
+      0,
+      177
+    ],
+    [
+      "DD - Weihmichl S4",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "DE-BB Baruth/Mark P1",
+      "BB",
+      "Abandon",
+      68,
+      281
+    ],
+    [
+      "DE-BB Baruth/Mark P2",
+      "BB",
+      "Abandon",
+      20,
+      164
+    ],
+    [
+      "DE-BB Baruth/Mark P3",
+      "BB",
+      "Abandon",
+      44,
+      244
+    ],
+    [
+      "DE-BB Löwenberger Land P1-2",
+      "BB",
+      "STOPP",
+      25,
+      210
+    ],
+    [
+      "DE-BY Münster",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "DE-BB Rietzneuendorf - Staakow P1",
+      "BB",
+      "Abandon",
+      0,
+      194
+    ],
+    [
+      "DE-BB Schönefeld P1",
+      "BB",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "DE-BB Stadt Fürstenwalde P6",
+      "BB",
+      "Abandon",
+      0,
+      90
+    ],
+    [
+      "DE-BB Stadt Velten P2",
+      "BB",
+      "Abandon",
+      58,
+      224
+    ],
+    [
+      "DE-BB Stadt Velten P3",
+      "BB",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "DE-BY Aiterhofen HP0 - SNB",
+      "BY",
+      "Abandon",
+      0,
+      128
+    ],
+    [
+      "DE-BY Saulburg",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "DE-BY Steinach",
+      "BY",
+      "Abandon",
+      0,
+      951
+    ],
+    [
+      "DE-BB Schönwald P5",
+      "BB",
+      "Abandon",
+      78,
+      137
+    ],
+    [
+      "DE-NI Welle P3",
+      "NI",
+      "Abandon",
+      28,
+      32
+    ],
+    [
+      "DE-BB Neuzelle P5",
+      "BB",
+      "STOPP 499€ FEE",
+      0,
+      0
+    ],
+    [
+      "DE-BB Neuzelle P6",
+      "BB",
+      "STOPP 499€ FEE",
+      0,
+      0
+    ]
   ],
   "potentialRows": [
-    ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Terminabstimmung läuft ev. 5.6.2026"],
-    ["37120","Bovenden","NI","Bovenden Kernort (und Eddigehausen-Rauschenwasser)","Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht","Thomas Brandes","Bürgermeister","0551 / 8201-138","brandes@bovenden.de",""],
-    ["37120","Eddigehausen","NI","Eddigehausen, Rauschenwasser","Gemeinsam mit Bovenden: Nachfragequote nicht erreicht","Bernd Riethig","Ortsrat Eddigehausen","0551 / 8201-138","flecken@bovenden.de",""],
-    ["31737","Rinteln","NI","Rinteln-Nord (Stadtgebiet Nord)","positiv","Anja Friedrich","Bürgermeisterin","05751/403-102","a.friedrich@rinteln.de",""],
-    ["37127","Gemeinde Stuhr","NI","Seckenhausen","DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern","Stephan Korte","Bürgermeister","0421 5695-200","s.korte@stuhr.de",""],
-    ["27305","Samtgemeinde Sögel","NI","Gesamte Samtgemeinde (mehrere Ortschaften)","Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet","bitte recherchieren","Samtgemeinde","05952 / 206-0","info@samtgemeinde-soegel.de",""],
-    ["14547","Fichtenwalde","BB","","","","","","",""],
-    ["14778","Amt Beetzsee REST","BB","","new area","Herr Voß","Ansprechpartner","03381 799943","k.voss@amt-beetzsee.de",""],
-    ["15306","LK Märkisch Oderland","BB","","","","","","",""],
-    ["31600","Uchte","NI","Samtgemeinde Uchte","positiv","Rüdiger Kaltofen","Samtgemeindebürgermeister","05763 183-11","s.ippisch@sg-uchte.de","Termin am 6.7.2026 um 11 Uhr"],
-    ["31609","Samtgemeinde Weser Aue","NI","","new area","Frau Schlier","Gemeinde","05021 60 250","zentrales@weser-aue.de",""],
-    ["31622","Heemsen","NI","","new area","","Samtgemeinde","05024 98050","info@heemsen.de",""],
-    ["84092","Bayerbach bei Ergoldsbach","BY","","new area","Frau Wittman","Bauamtsleitung","08771 3043","wittmann@vgem-ergoldsbach.de",""],
-    ["84095","Furth","BY","Furth","kein Interesse","","","08704911925","michael.bruckmoser@vg-furth.de",""],
-    ["84101","Furth","BY","Obersüßbach","kein Interesse","","","08704911925","michael.bruckmoser@vg-furth.de",""],
-    ["84107","Furth","BY","Weihmichl","kein Interesse","","","08704911925","michael.bruckmoser@vg-furth.de",""],
-    ["84166","Adlkofen","BY","","positiv","Herr Theiss","","08707 929-15","Johann.Theiss@adlkofen.de","Online Meeting 29.5.2026, 11.00 Uhr"],
-    ["84384","Gottfrieding","BY","","positiv","Herr Ratzinger","","08293 5011516","vg@gottfrieding.de","26.5.2026 meldet sich zurück wegen Termin am 11.6.2026"],
-    ["85077","Manching","BY","","","Sebastian Grauvogl","Rathaus","08459 85-0","sebastian.grauvogl@manching.de",""],
-    ["85107","Baar-Ebenhausen","BY","","positiv","Ernst Schartel","","08453 3205-0","ernst.schartel@baar-ebenhausen.de","Termin am 18.5.2026 / Folgetermin 28.7.2026"],
-    ["85123","Karlskron","BY","","positiv","Herr Kumpf","Bürgermeister","017670086369","kumpf@karlskron.de","Terminvorschlag machen"],
-    ["85276","Pfaffenhofen a. d. Ilm","BY","","positiv","Harald Deuschel","","08441 78 145","harald.deuschl@stadt-pfaffenhofen.de","am 9.6.2026 Plan zur Prüfung erhalten"],
-    ["92421","Schwandorf","BY","Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen","positiv","Frau Hetzenecker","Vorzimmer BM","09431 45-1 21","hetzenecker.martina@schwandorf.de","Termin 3.6.2026"],
-    ["92421","Schwandorf","BY","Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen","positiv","Markus Viehauser","Ansprechpartner","09431 - 45 - 289","viehauser.markus@schwandorf.de",""],
-    ["93055","Keilberg","BY","","new area","","Gemeinde","0941 507-0","stadt_regensburg@regensburg.de",""],
-    ["93077","Bad Abbach","BY","","","Herr Huber","Breitbandbeauftragter","09441 179411","info@bad-abbach.de","MEV abfordern über Portal https://projekttraeger-breitband.de/"],
-    ["93077","Lengfeld","BY","","","Georg Brunner","Oberverwaltungsrat","09405 9590-70","Georg.Brunner@bad-abbach.de",""],
-    ["93133","Burglengenfeld","BY","","new area","","","09471 7018-0","poststelle@burglengenfeld.de",""],
-    ["93142","Maxhütte Haidhof","BY","","new area","","","09471 30220","info@maxhuette-haidhof.de",""],
-    ["93309","Kelheim","BY","","new area","","","09441 701 - 0","info@kelheim.de",""],
-    ["93342","VG Saal a.d.Donau","BY","Teugn","positiv","Harald Reichl","","09441 - 681 25","harald.reichl@saal-donau.de","Termin am 15.6.2026 um 13 Uhr"],
-    ["94127","Neuburg am Inn","BY","","new area","","","08502 9008-0","info@neuburg-am-inn.de",""],
-    ["94315","Straubing","BY","Kagers","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-    ["94315","Straubing","BY","Tiergarten","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-    ["94315","Straubing","BY","Unteröbling","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-    ["94315","Straubing","BY","","positiv","Alexander Schießl","","09421 944 61165","alexander.schiessl@straubing.de","Termin am 10.10.2026"],
-    ["94333","Geiselhöring","BY","","T COM","Herr Eisenhut","","09423/9400-300","",""],
-    ["94350","Falkenfels","BY","","T COM","Ludwig","BM","0160 4942595","webmaster@saulburg.de",""],
-    ["94377","Steinach","BY","","kein Interesse","Frau Hammerschick","BM","09428 942033","gemeinde@steinach.bayern.de",""],
-    ["94344","Wiesenfelden","BY","Saulburg","T COM","Herr Hecht","BM","09966 94000","bauamt@wiesenfelden.de",""],
-    ["94344","Wiesenfelden","BY","Wiesenfelden","kein Interesse","Luca Raith","","09966 9400-26","l.raith@wiesenfelden.de",""],
-    ["94377","Steinach","BY","Münster","kein Interesse","Frau Hammerschick","BM","09428 942033","gemeinde@steinach.bayern.de",""],
-    ["94428","Markt Eichendorf","BY","","positiv","Frau Sabine Forstner","Bauamtsleitung","0160 4619956","Sabine.forstner@markt-eichendorf.de","Termin online 8.6.2026 um 9 Uhr"],
-    ["94431","Markt Pilsting","BY","Pilsting / Großköllnbach","positiv","Katrin Schinharl","Rathaus","09953 9301-0","katrin.schinharl@pilsting.de","Terminabstimmung läuft per Mail"],
-    ["94522","Markt Wallersdorf","BY","Wallersdorf","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
-    ["94523","Markt Wallersdorf","BY","Haidenkofen","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
-    ["94524","Markt Wallersdorf","BY","Haidlfing","Prüfung","Rainer Spielberger","Bauamt","09933 9510-18","rainer.spielberger@markt-wallersdorf.de","Entscheidung am 2.6.2026"],
-    ["94526","Metten","BY","","","","Rathaus","0991 99805-0","rathaus@markt-metten.de",""],
-    ["94532","Außernzell","BY","","new area","","","09903 93030","poststelle@schoellnach.de",""],
-    ["94560","Offenberg","BY","","","","Rathaus","0991 99808-0","gemeinde@offenberg.bayern.de",""],
-    ["94575","Windorf","BY","","new area","","Rathaus","08541-96262","info@markt-windorf.de",""],
-    ["21255","Wistedt","NI","","positiv","Sven Bauer","Bürgermeister","04182 3199","buergermeister@wistedt.de","Termin am 8.6.2026 um 15 Uhr"],
-    ["22391","Hamburg","HH","Sasel","new area","","Geschäftsstelle WBZ","+49 40 428 81 - 3345","geschaeftsstelle-wbz@wandsbek.hamburg.de",""],
-    ["27243","Samtgemeinde Harpstedt","NI","","","Yves Nagel","Samtgemeindebürgermeister","04244 8228","nagel@harpstedt.de",""]
+    [
+      "31675",
+      "Bückeburg",
+      "NI",
+      "Evesen Nord, Evesen Süd, Petzen, Röcke",
+      "positiv",
+      "Axel Wohlgemuth / Juliane Rohlfing",
+      "Bürgermeister / AP",
+      "0177 2469711 / 05722/206 131",
+      "buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de",
+      "Terminabstimmung läuft ev. 5.6.2026"
+    ],
+    [
+      "37120",
+      "Bovenden",
+      "NI",
+      "Bovenden Kernort (und Eddigehausen-Rauschenwasser)",
+      "Notwendige Mindestquote (33 %) für privatwirtschaftlichen Ausbau nach mehrmonatiger Nachfragebündelung nicht erreicht",
+      "Thomas Brandes",
+      "Bürgermeister",
+      "0551 / 8201-138",
+      "brandes@bovenden.de",
+      ""
+    ],
+    [
+      "37120",
+      "Eddigehausen",
+      "NI",
+      "Eddigehausen, Rauschenwasser",
+      "Gemeinsam mit Bovenden: Nachfragequote nicht erreicht",
+      "Bernd Riethig",
+      "Ortsrat Eddigehausen",
+      "0551 / 8201-138",
+      "flecken@bovenden.de",
+      ""
+    ],
+    [
+      "31737",
+      "Rinteln",
+      "NI",
+      "Rinteln-Nord (Stadtgebiet Nord)",
+      "positiv",
+      "Anja Friedrich",
+      "Bürgermeisterin",
+      "05751/403-102",
+      "a.friedrich@rinteln.de",
+      ""
+    ],
+    [
+      "37127",
+      "Gemeinde Stuhr",
+      "NI",
+      "Seckenhausen",
+      "DG startete laut kreiszeitung.de (Okt. 2024) weiteren Versuch für Seckenhausen – impliziert vorangegangene Absage/Scheitern",
+      "Stephan Korte",
+      "Bürgermeister",
+      "0421 5695-200",
+      "s.korte@stuhr.de",
+      ""
+    ],
+    [
+      "27305",
+      "Samtgemeinde Sögel",
+      "NI",
+      "Gesamte Samtgemeinde (mehrere Ortschaften)",
+      "Laut Instagram-Post der Samtgemeinde Sögel (Ratssitzung 01.07.2025): Rückzug der Deutschen Glasfaser Holding GmbH aus dem flächendeckenden eigenwirtschaftlichen Ausbau im Gemeindegebiet",
+      "bitte recherchieren",
+      "Samtgemeinde",
+      "05952 / 206-0",
+      "info@samtgemeinde-soegel.de",
+      ""
+    ],
+    [
+      "14547",
+      "Fichtenwalde",
+      "BB",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "14778",
+      "Amt Beetzsee REST",
+      "BB",
+      "",
+      "new area",
+      "Herr Voß",
+      "Ansprechpartner",
+      "03381 799943",
+      "k.voss@amt-beetzsee.de",
+      ""
+    ],
+    [
+      "15306",
+      "LK Märkisch Oderland",
+      "BB",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "31600",
+      "Uchte",
+      "NI",
+      "Samtgemeinde Uchte",
+      "positiv",
+      "Rüdiger Kaltofen",
+      "Samtgemeindebürgermeister",
+      "05763 183-11",
+      "s.ippisch@sg-uchte.de",
+      "Termin am 6.7.2026 um 11 Uhr"
+    ],
+    [
+      "31609",
+      "Samtgemeinde Weser Aue",
+      "NI",
+      "",
+      "new area",
+      "Frau Schlier",
+      "Gemeinde",
+      "05021 60 250",
+      "zentrales@weser-aue.de",
+      ""
+    ],
+    [
+      "31622",
+      "Heemsen",
+      "NI",
+      "",
+      "new area",
+      "",
+      "Samtgemeinde",
+      "05024 98050",
+      "info@heemsen.de",
+      ""
+    ],
+    [
+      "84092",
+      "Bayerbach bei Ergoldsbach",
+      "BY",
+      "",
+      "new area",
+      "Frau Wittman",
+      "Bauamtsleitung",
+      "08771 3043",
+      "wittmann@vgem-ergoldsbach.de",
+      ""
+    ],
+    [
+      "84095",
+      "Furth",
+      "BY",
+      "Furth",
+      "kein Interesse",
+      "",
+      "",
+      "08704911925",
+      "michael.bruckmoser@vg-furth.de",
+      ""
+    ],
+    [
+      "84101",
+      "Furth",
+      "BY",
+      "Obersüßbach",
+      "kein Interesse",
+      "",
+      "",
+      "08704911925",
+      "michael.bruckmoser@vg-furth.de",
+      ""
+    ],
+    [
+      "84107",
+      "Furth",
+      "BY",
+      "Weihmichl",
+      "kein Interesse",
+      "",
+      "",
+      "08704911925",
+      "michael.bruckmoser@vg-furth.de",
+      ""
+    ],
+    [
+      "84166",
+      "Adlkofen",
+      "BY",
+      "",
+      "positiv",
+      "Herr Theiss",
+      "",
+      "08707 929-15",
+      "Johann.Theiss@adlkofen.de",
+      "Online Meeting 29.5.2026, 11.00 Uhr"
+    ],
+    [
+      "84384",
+      "Gottfrieding",
+      "BY",
+      "",
+      "positiv",
+      "Herr Ratzinger",
+      "",
+      "08293 5011516",
+      "vg@gottfrieding.de",
+      "26.5.2026 meldet sich zurück wegen Termin am 11.6.2026"
+    ],
+    [
+      "85077",
+      "Manching",
+      "BY",
+      "",
+      "",
+      "Sebastian Grauvogl",
+      "Rathaus",
+      "08459 85-0",
+      "sebastian.grauvogl@manching.de",
+      ""
+    ],
+    [
+      "85107",
+      "Baar-Ebenhausen",
+      "BY",
+      "",
+      "positiv",
+      "Ernst Schartel",
+      "",
+      "08453 3205-0",
+      "ernst.schartel@baar-ebenhausen.de",
+      "Termin am 18.5.2026 / Folgetermin 28.7.2026"
+    ],
+    [
+      "85123",
+      "Karlskron",
+      "BY",
+      "",
+      "positiv",
+      "Herr Kumpf",
+      "Bürgermeister",
+      "017670086369",
+      "kumpf@karlskron.de",
+      "Terminvorschlag machen"
+    ],
+    [
+      "85276",
+      "Pfaffenhofen a. d. Ilm",
+      "BY",
+      "",
+      "positiv",
+      "Harald Deuschel",
+      "",
+      "08441 78 145",
+      "harald.deuschl@stadt-pfaffenhofen.de",
+      "am 9.6.2026 Plan zur Prüfung erhalten"
+    ],
+    [
+      "92421",
+      "Schwandorf",
+      "BY",
+      "Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen",
+      "positiv",
+      "Frau Hetzenecker",
+      "Vorzimmer BM",
+      "09431 45-1 21",
+      "hetzenecker.martina@schwandorf.de",
+      "Termin 3.6.2026"
+    ],
+    [
+      "92421",
+      "Schwandorf",
+      "BY",
+      "Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen",
+      "positiv",
+      "Markus Viehauser",
+      "Ansprechpartner",
+      "09431 - 45 - 289",
+      "viehauser.markus@schwandorf.de",
+      ""
+    ],
+    [
+      "93055",
+      "Keilberg",
+      "BY",
+      "",
+      "new area",
+      "",
+      "Gemeinde",
+      "0941 507-0",
+      "stadt_regensburg@regensburg.de",
+      ""
+    ],
+    [
+      "93077",
+      "Bad Abbach",
+      "BY",
+      "",
+      "",
+      "Herr Huber",
+      "Breitbandbeauftragter",
+      "09441 179411",
+      "info@bad-abbach.de",
+      "MEV abfordern über Portal https://projekttraeger-breitband.de/"
+    ],
+    [
+      "93077",
+      "Lengfeld",
+      "BY",
+      "",
+      "",
+      "Georg Brunner",
+      "Oberverwaltungsrat",
+      "09405 9590-70",
+      "Georg.Brunner@bad-abbach.de",
+      ""
+    ],
+    [
+      "93133",
+      "Burglengenfeld",
+      "BY",
+      "",
+      "new area",
+      "",
+      "",
+      "09471 7018-0",
+      "poststelle@burglengenfeld.de",
+      ""
+    ],
+    [
+      "93142",
+      "Maxhütte Haidhof",
+      "BY",
+      "",
+      "new area",
+      "",
+      "",
+      "09471 30220",
+      "info@maxhuette-haidhof.de",
+      ""
+    ],
+    [
+      "93309",
+      "Kelheim",
+      "BY",
+      "",
+      "new area",
+      "",
+      "",
+      "09441 701 - 0",
+      "info@kelheim.de",
+      ""
+    ],
+    [
+      "93342",
+      "VG Saal a.d.Donau",
+      "BY",
+      "Teugn",
+      "positiv",
+      "Harald Reichl",
+      "",
+      "09441 - 681 25",
+      "harald.reichl@saal-donau.de",
+      "Termin am 15.6.2026 um 13 Uhr"
+    ],
+    [
+      "94127",
+      "Neuburg am Inn",
+      "BY",
+      "",
+      "new area",
+      "",
+      "",
+      "08502 9008-0",
+      "info@neuburg-am-inn.de",
+      ""
+    ],
+    [
+      "94315",
+      "Straubing",
+      "BY",
+      "Kagers",
+      "positiv",
+      "Alexander Schießl",
+      "",
+      "09421 944 61165",
+      "alexander.schiessl@straubing.de",
+      "Termin am 10.10.2026"
+    ],
+    [
+      "94315",
+      "Straubing",
+      "BY",
+      "Tiergarten",
+      "positiv",
+      "Alexander Schießl",
+      "",
+      "09421 944 61165",
+      "alexander.schiessl@straubing.de",
+      "Termin am 10.10.2026"
+    ],
+    [
+      "94315",
+      "Straubing",
+      "BY",
+      "Unteröbling",
+      "positiv",
+      "Alexander Schießl",
+      "",
+      "09421 944 61165",
+      "alexander.schiessl@straubing.de",
+      "Termin am 10.10.2026"
+    ],
+    [
+      "94315",
+      "Straubing",
+      "BY",
+      "",
+      "positiv",
+      "Alexander Schießl",
+      "",
+      "09421 944 61165",
+      "alexander.schiessl@straubing.de",
+      "Termin am 10.10.2026"
+    ],
+    [
+      "94333",
+      "Geiselhöring",
+      "BY",
+      "",
+      "T COM",
+      "Herr Eisenhut",
+      "",
+      "09423/9400-300",
+      "",
+      ""
+    ],
+    [
+      "94350",
+      "Falkenfels",
+      "BY",
+      "",
+      "T COM",
+      "Ludwig",
+      "BM",
+      "0160 4942595",
+      "webmaster@saulburg.de",
+      ""
+    ],
+    [
+      "94377",
+      "Steinach",
+      "BY",
+      "",
+      "kein Interesse",
+      "Frau Hammerschick",
+      "BM",
+      "09428 942033",
+      "gemeinde@steinach.bayern.de",
+      ""
+    ],
+    [
+      "94344",
+      "Wiesenfelden",
+      "BY",
+      "Saulburg",
+      "T COM",
+      "Herr Hecht",
+      "BM",
+      "09966 94000",
+      "bauamt@wiesenfelden.de",
+      ""
+    ],
+    [
+      "94344",
+      "Wiesenfelden",
+      "BY",
+      "Wiesenfelden",
+      "kein Interesse",
+      "Luca Raith",
+      "",
+      "09966 9400-26",
+      "l.raith@wiesenfelden.de",
+      ""
+    ],
+    [
+      "94377",
+      "Steinach",
+      "BY",
+      "Münster",
+      "kein Interesse",
+      "Frau Hammerschick",
+      "BM",
+      "09428 942033",
+      "gemeinde@steinach.bayern.de",
+      ""
+    ],
+    [
+      "94428",
+      "Markt Eichendorf",
+      "BY",
+      "",
+      "positiv",
+      "Frau Sabine Forstner",
+      "Bauamtsleitung",
+      "0160 4619956",
+      "Sabine.forstner@markt-eichendorf.de",
+      "Termin online 8.6.2026 um 9 Uhr"
+    ],
+    [
+      "94431",
+      "Markt Pilsting",
+      "BY",
+      "Pilsting / Großköllnbach",
+      "positiv",
+      "Katrin Schinharl",
+      "Rathaus",
+      "09953 9301-0",
+      "katrin.schinharl@pilsting.de",
+      "Terminabstimmung läuft per Mail"
+    ],
+    [
+      "94522",
+      "Markt Wallersdorf",
+      "BY",
+      "Wallersdorf",
+      "Prüfung",
+      "Rainer Spielberger",
+      "Bauamt",
+      "09933 9510-18",
+      "rainer.spielberger@markt-wallersdorf.de",
+      "Entscheidung am 2.6.2026"
+    ],
+    [
+      "94523",
+      "Markt Wallersdorf",
+      "BY",
+      "Haidenkofen",
+      "Prüfung",
+      "Rainer Spielberger",
+      "Bauamt",
+      "09933 9510-18",
+      "rainer.spielberger@markt-wallersdorf.de",
+      "Entscheidung am 2.6.2026"
+    ],
+    [
+      "94524",
+      "Markt Wallersdorf",
+      "BY",
+      "Haidlfing",
+      "Prüfung",
+      "Rainer Spielberger",
+      "Bauamt",
+      "09933 9510-18",
+      "rainer.spielberger@markt-wallersdorf.de",
+      "Entscheidung am 2.6.2026"
+    ],
+    [
+      "94526",
+      "Metten",
+      "BY",
+      "",
+      "",
+      "",
+      "Rathaus",
+      "0991 99805-0",
+      "rathaus@markt-metten.de",
+      ""
+    ],
+    [
+      "94532",
+      "Außernzell",
+      "BY",
+      "",
+      "new area",
+      "",
+      "",
+      "09903 93030",
+      "poststelle@schoellnach.de",
+      ""
+    ],
+    [
+      "94560",
+      "Offenberg",
+      "BY",
+      "",
+      "",
+      "",
+      "Rathaus",
+      "0991 99808-0",
+      "gemeinde@offenberg.bayern.de",
+      ""
+    ],
+    [
+      "94575",
+      "Windorf",
+      "BY",
+      "",
+      "new area",
+      "",
+      "Rathaus",
+      "08541-96262",
+      "info@markt-windorf.de",
+      ""
+    ],
+    [
+      "21255",
+      "Wistedt",
+      "NI",
+      "",
+      "positiv",
+      "Sven Bauer",
+      "Bürgermeister",
+      "04182 3199",
+      "buergermeister@wistedt.de",
+      "Termin am 8.6.2026 um 15 Uhr"
+    ],
+    [
+      "22391",
+      "Hamburg",
+      "HH",
+      "Sasel",
+      "new area",
+      "",
+      "Geschäftsstelle WBZ",
+      "+49 40 428 81 - 3345",
+      "geschaeftsstelle-wbz@wandsbek.hamburg.de",
+      ""
+    ],
+    [
+      "27243",
+      "Samtgemeinde Harpstedt",
+      "NI",
+      "",
+      "",
+      "Yves Nagel",
+      "Samtgemeindebürgermeister",
+      "04244 8228",
+      "nagel@harpstedt.de",
+      ""
+    ]
   ],
   "bobLinks": {
     "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
