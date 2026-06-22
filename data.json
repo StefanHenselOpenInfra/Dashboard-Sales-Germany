@@ -22,8 +22,8 @@
       "april": 118,
       "may": 134,
       "mayForecast": 134,
-      "juneActual": 217,
-      "ytd": 635,
+      "juneActual": 218,
+      "ytd": 636,
       "forecast": 1100,
       "d2d": 14,
       "cancelledYtd": 19
@@ -50,11 +50,11 @@
       "april": 7,
       "may": 96,
       "mayForecast": 96,
-      "juneActual": 138,
-      "ytd": 241,
+      "juneActual": 159,
+      "ytd": 262,
       "forecast": 330,
       "d2d": 9,
-      "cancelledYtd": 9
+      "cancelledYtd": 10
     },
     {
       "name": "Open Infra CS",
@@ -104,6 +104,23 @@
     "Base Sales / Up Sales": {
       "april": 152,
       "may": 309,
+      "june": 334
+    },
+    "After Market / HP0 Sales": {
+      "april": 20,
+      "may": 37,
+      "june": 88
+    },
+    "Build Sales": {
+      "april": 141,
+      "may": 115,
+      "june": 103
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 152,
+      "may": 309,
       "june": 318
     },
     "After Market / HP0 Sales": {
@@ -117,36 +134,20 @@
       "june": 92
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 149,
-      "may": 310,
-      "june": 307
-    },
-    "After Market / HP0 Sales": {
-      "april": 16,
-      "may": 31,
-      "june": 70
-    },
-    "Build Sales": {
-      "april": 148,
-      "may": 119,
-      "june": 90
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1720,
-    "q2WorkingDaysDone": 58,
-    "q2WorkingDaysLeft": 7,
-    "juneForecast": 726,
+    "salesReportTotal2026": 1740,
+    "q2WorkingDaysDone": 59,
+    "q2WorkingDaysLeft": 6,
+    "q3WorkingDays": 66,
+    "juneForecast": 710,
     "jan": 42,
     "feb": 135,
     "mar": 274,
     "apr": 313,
-    "may": 461,
-    "lastUpdateDate": "19.6.2026"
+    "may": 460,
+    "lastUpdateDate": "22.6.2026"
   },
-  "netSales": 1630,
+  "netSales": 1650,
   "cancelled": 90,
   "projectRows": [
     [
@@ -339,7 +340,7 @@
       0,
       1,
       95,
-      189,
+      190,
       829
     ],
     [
@@ -587,7 +588,7 @@
       0,
       6,
       14,
-      4,
+      5,
       2038,
       94
     ],
@@ -598,7 +599,7 @@
       0,
       0,
       23,
-      26,
+      27,
       143
     ],
     [
@@ -618,7 +619,7 @@
       0,
       2,
       1,
-      21,
+      23,
       1715,
       31
     ],
@@ -662,7 +663,7 @@
       0,
       0,
       7,
-      23,
+      27,
       730,
       1
     ],
@@ -673,7 +674,7 @@
       0,
       0,
       0,
-      6,
+      13,
       914
     ],
     [
@@ -683,7 +684,7 @@
       0,
       0,
       0,
-      16,
+      21,
       722,
       184
     ],
@@ -694,7 +695,7 @@
       0,
       0,
       0,
-      0,
+      1,
       936,
       137
     ],
