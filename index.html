@@ -230,10 +230,7 @@ var projectRows = [
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0,109,12],
   ["DE-BB Gosen-Neu Zittau P4","BASE UPSELL","Rating Peak GmbH",0,0,0,1,262,77],
   ["DE-BB Gosen Neu-Zittau P3", "Build Sales", "Rating Peak GmbH", 0, 0, 0, 5, 186, 50],
-  ["Luckau Combined (Deploy 2026)","Build Sales","Rating Peak GmbH",0,0,0,0,1174,347],
-  ["DE-BB Kasel-Golzig Combined","Build Sales","Rating Peak GmbH",0,0,0,0,1093,466],
   ["DE-BB Grünheide P1","BASE UPSELL","Rating Peak GmbH",0,0,0,0,1030,234],
-  ["DE-BB Neuzelle Combined P1","Build Sales","Rating Peak GmbH",0,0,0,0,615,149],
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41]
 ];
 
@@ -308,7 +305,11 @@ var funnelRowsRaw = [
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
   ["DE-BB Teupitz P3","Base Sales","BB",0,0],
   ["DE-BB Teupitz P4","Base Sales","BB",0,0],
-  ["DE-BB Schwerin HP0","HP0","MV",0,0]
+  ["DE-BB Schwerin HP0","HP0","MV",0,0],
+  // ── off track → back in funnel ───────────────────────────────────────────
+  ["DE-BB Neuzelle Combined P1","Build Sales","BB",0,615],
+  ["DE-BB Kasel-Golzig Combined","Build Sales","BB",0,1093],
+  ["Luckau Combined (Deploy 2026)","Build Sales","BB",0,1174]
 ];
 
 var coaRowsRaw = [
@@ -1410,6 +1411,7 @@ function render(){
     var wartenProjs=[];
     var backInFunnelProjs=['DE-BB Teupitz P3','DE-BB Teupitz P4'];
     var closedProjs=['DE-BB Königs Wusterhausen HP0 1'];
+    var importantProjs=['DE-BB Neuzelle Combined P1','DE-BB Kasel-Golzig Combined','Luckau Combined (Deploy 2026)'];
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
@@ -1423,6 +1425,7 @@ function render(){
     else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
     else if(backInFunnelProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff7ed;color:#c2410c;border:2px solid #c2410c;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">11.6.2026 back in funnel</span>';
     else if(closedProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">closed 21.6.2026</span>';
+    else if(importantProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">important</span>';
     html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';

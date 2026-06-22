@@ -824,28 +824,6 @@
       50
     ],
     [
-      "Luckau Combined (Deploy 2026)",
-      "Build Sales",
-      "Rating Peak GmbH",
-      0,
-      0,
-      0,
-      0,
-      1174,
-      347
-    ],
-    [
-      "DE-BB Kasel-Golzig Combined",
-      "Build Sales",
-      "Rating Peak GmbH",
-      0,
-      0,
-      0,
-      0,
-      1093,
-      466
-    ],
-    [
       "DE-BB Grünheide P1",
       "BASE UPSELL",
       "Rating Peak GmbH",
@@ -855,17 +833,6 @@
       0,
       1030,
       234
-    ],
-    [
-      "DE-BB Neuzelle Combined P1",
-      "Build Sales",
-      "Rating Peak GmbH",
-      0,
-      0,
-      0,
-      0,
-      615,
-      149
     ],
     [
       "DE-BB Grünheide P5",
@@ -1348,6 +1315,27 @@
       "MV",
       0,
       0
+    ],
+    [
+      "DE-BB Neuzelle Combined P1",
+      "Build Sales",
+      "BB",
+      0,
+      615
+    ],
+    [
+      "DE-BB Kasel-Golzig Combined",
+      "Build Sales",
+      "BB",
+      0,
+      1093
+    ],
+    [
+      "Luckau Combined (Deploy 2026)",
+      "Build Sales",
+      "BB",
+      0,
+      1174
     ]
   ],
   "cemeteryRows": [
