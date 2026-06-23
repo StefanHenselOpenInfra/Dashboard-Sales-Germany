@@ -2336,5 +2336,14 @@
     "DE-BB Schöneiche P8": "https://bob.openinfra.com/sales-projects/4065",
     "DE-BY Kirchroth P1-1": "https://bob.openinfra.com/delivery-projects/4188",
     "DE-BB Diehlo P1_dup": "https://bob.openinfra.com/sales-projects/2779"
+  },
+  "projectTargets": {
+    "DE-BB Amt Scharmützelsee P0": 43,
+    "DE-BB Schulzendorf P3": 45,
+    "DE-BB Storkow P8": 53,
+    "DE-BB Zossen P7": 47,
+    "DE-BB Storkow P3": 45,
+    "DE-BB Birkenwerder P4": 42,
+    "DE-BB Storkow P4": 48
   }
 }

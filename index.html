@@ -203,7 +203,7 @@ var projectRows = [
   ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5,0,349,23],
   ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 12, 28, 11, 609, 168],
   // ── United Promotion GmbH ─────────────────────────────────────────────
-  ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 1, 260],
+  ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 0, 260],
   ["DE-BB Blankenfelde-Mahlow P1", "Build Sales", "United Promotion GmbH", 0, 0, 31, 3, 573, 161],
   ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0,0,121],
   ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 6, 14, 5, 2038, 94],
@@ -282,7 +282,7 @@ var funnelRowsRaw = [
   ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
   ["DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0","HP0","BB",0,362],
   ["DE-BB Schönwald P1 HP0 - SNB","HP0","BB",0,162],
-  ["DE-BY Falkenfels","Base Sales","BY",0,0],  ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
+  ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
   ["DE-NI Ottermoor P1","Base Sales","NI",0,72],
   ["DE-NI Salzhausen - Vierhöfen Combined HP0 - SNB","HP0","NI",0,261],
   ["DE-NI Salzhausen - Vierhöfen Combined P2-1","BASE UPSELL","NI",17,93],
@@ -299,8 +299,8 @@ var funnelRowsRaw = [
   ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
   ["DE-BB Grünheide P6","BASE UPSELL","BB",28,283],
   ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,868],
-  ["DE-BB Amt Scharmützelsee P4","Base Sales / Up Sales","BB",0,0],
-  ["DE-BB Amt Scharmützelsee P5","Base Sales / Up Sales","BB",0,0],
+  ["DE-BB Amt Scharmützelsee P4","Base Sales / Up Sales","BB",0,364],
+  ["DE-BB Amt Scharmützelsee P5","Base Sales / Up Sales","BB",0,147],
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
@@ -314,7 +314,13 @@ var funnelRowsRaw = [
 
 // Target uptake % per project (e.g. 43 = 43%)
 var projectTargets = {
-  "DE-BB Amt Scharmützelsee P0": 43
+  "DE-BB Amt Scharmützelsee P0": 43,
+  "DE-BB Schulzendorf P3": 45,
+  "DE-BB Storkow P8": 53,
+  "DE-BB Zossen P7": 47,
+  "DE-BB Storkow P3": 45,
+  "DE-BB Birkenwerder P4": 42,
+  "DE-BB Storkow P4": 48
 };
 
 var coaRowsRaw = [
@@ -434,7 +440,8 @@ var cemeteryRows = [
   ["DE-BB Löwenberger Land P3","BB","STOPP",79,427],
   ["DE-BB Groß Köris P3","BB","STOPP",0,0],
   ["DE-BB Neuzelle P5","BB","STOPP 499€ FEE",0,0],
-  ["DE-BB Neuzelle P6","BB","STOPP 499€ FEE",0,0]
+  ["DE-BB Neuzelle P6","BB","STOPP 499€ FEE",0,0],
+  ["DE-BY Falkenfels","BY","T COM",0,0]
 ];
 var cemeterySearch='', cemeteryRegion='All', cemeterySort='Project', cemeteryDir='asc';
 
@@ -1800,7 +1807,7 @@ function processSalesReport(ws){
 }
 
 var _heroResults=[];
-function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(cb)cb();}).catch(function(){if(cb)cb();});}
+function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(d.projectTargets)projectTargets=d.projectTargets;if(cb)cb();}).catch(function(){if(cb)cb();});}
 function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
 function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}else if(r.sectionId==='sec-coa'){coaSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
