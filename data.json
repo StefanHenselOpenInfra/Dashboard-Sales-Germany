@@ -288,7 +288,9 @@
       0,
       0,
       0,
-      1
+      1,
+      35,
+      7
     ],
     [
       "DE-BB Storkow P8",
@@ -2344,6 +2346,11 @@
     "DE-BB Zossen P7": 47,
     "DE-BB Storkow P3": 45,
     "DE-BB Birkenwerder P4": 42,
-    "DE-BB Storkow P4": 48
+    "DE-BB Storkow P4": 48,
+    "DE-BB Storkow P1-4": 37,
+    "DE-BB Storkow P5": 43,
+    "DE-BB Storkow P2": 56.7,
+    "DE-BB Birkenwerder P3-2": 43,
+    "DE-BB Storkow P7": 57
   }
 }
