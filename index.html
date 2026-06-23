@@ -174,7 +174,7 @@ var projectRows = [
   ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21,2,479,56],
   ["DE-BB Storkow P6","BASE UPSELL","Stonemedia GmbH",0,0,3,0,87,15],
   ["DE-BB Storkow P7","Base Sales / Up Sales","Stonemedia GmbH",0,2,9,4,199,30],
-  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 1],
+  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 1, 35, 7],
   ["DE-BB Storkow P8","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,18,186],
   ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 15, 16, 6, 7, 1093, 425],
   ["Märkisch Buchholz Combined","Base Sales","Stonemedia GmbH",41,7,2,1,1475,381],
@@ -320,7 +320,28 @@ var projectTargets = {
   "DE-BB Zossen P7": 47,
   "DE-BB Storkow P3": 45,
   "DE-BB Birkenwerder P4": 42,
-  "DE-BB Storkow P4": 48
+  "DE-BB Storkow P4": 48,
+  "DE-BB Storkow P1-4": 37,
+  "DE-BB Storkow P5": 43,
+  "DE-BB Storkow P2": 56.7,
+  "DE-BB Birkenwerder P3-2": 43,
+  "DE-BB Storkow P7": 57,
+  "DE-BB Zossen P6": 48,
+  "DE-BB Schöneiche P8": 34,
+  "DE-BB Löwenberger Land - Grieben P5": 43,
+  "DE-BB Spreenhagen P3 & Furstenwalde P6": 42,
+  "DE-BB Storkow P6": 56,
+  "DE-BB Birkenwerder P2-2": 40,
+  "DE-BB Gosen-Neu Zittau P4": 44,
+  "DE-BB Gosen Neu-Zittau P2": 39,
+  "DE-BB Grünheide P1": 38,
+  "DE-BB Birkenwerder P1-2": 41,
+  "DE-BB Grünheide P3": 44,
+  "DE-BB Zossen P4-2": 41,
+  "DE-BB Amt Scharmützelsee P1": 42,
+  "DE-BB Seddiner See P2": 41,
+  "DE-BB Diehlo P1": 33,
+  "DE-BB Heidesee P7": 66
 };
 
 var coaRowsRaw = [
@@ -863,6 +884,8 @@ function render(){
     if(projSortKey==='HC'){av=(a[8]||0)+(a[3]||0)+(a[4]||0)+(a[5]||0)+(a[6]||0);bv=(b[8]||0)+(b[3]||0)+(b[4]||0)+(b[5]||0)+(b[6]||0);}
     else if(projSortKey==='HP'){av=a[7]||0;bv=b[7]||0;}
     else if(projSortKey==='Uptake'){var ah=(a[8]||0)+(a[3]||0)+(a[4]||0)+(a[5]||0)+(a[6]||0),ap=a[7]||0;var bh=(b[8]||0)+(b[3]||0)+(b[4]||0)+(b[5]||0)+(b[6]||0),bp=b[7]||0;av=ap>0?ah/ap:0;bv=bp>0?bh/bp:0;}
+    else if(projSortKey==='Target'){av=projectTargets[a[0]]!=null?projectTargets[a[0]]:-1;bv=projectTargets[b[0]]!=null?projectTargets[b[0]]:-1;}
+    else if(projSortKey==='Delta Target'){var _ahc=(a[8]||0)+(a[3]||0)+(a[4]||0)+(a[5]||0)+(a[6]||0),_ahp=a[7]||0,_at=projectTargets[a[0]];var _bhc=(b[8]||0)+(b[3]||0)+(b[4]||0)+(b[5]||0)+(b[6]||0),_bhp=b[7]||0,_bt=projectTargets[b[0]];av=_at!=null&&_ahp>0?_at-(_ahc/_ahp*100):999;bv=_bt!=null&&_bhp>0?_bt-(_bhc/_bhp*100):999;}
     else{var pIdx2={Project:0,Type:1,'Sales Agency':2,March:3,April:4,May:5,June:6}[projSortKey];av=pIdx2!==undefined?a[pIdx2]:(a[5]||0);bv=pIdx2!==undefined?b[pIdx2]:(b[5]||0);}
     var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
     return projSortDir==='asc'?r:-r;
@@ -1321,7 +1344,7 @@ function render(){
   html+='</select>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="projSortKey=this.value;render();" style="flex:1;">';
-  ['Project','HP','HC','Uptake','Type','Sales Agency','March','April','May','June'].forEach(function(k){html+='<option'+(projSortKey===k?' selected':'')+'>'+k+'</option>';});
+  ['Project','HP','HC','Uptake','Target','Delta Target','Type','Sales Agency','March','April','May','June'].forEach(function(k){html+='<option'+(projSortKey===k?' selected':'')+'>'+k+'</option>';});
   html+='</select>';
   html+='<button class="btn btn-dark" onclick="projSortDir=projSortDir===\'asc\'?\'desc\':\'asc\';render();">'+(projSortDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
@@ -1351,7 +1374,7 @@ function render(){
     var gestopptList=[];
     var stoppItProjs=['Märkisch Buchholz Combined'];
     var commissionChangeProjs=[];
-    var checkAddressProjs=['DE-BB Diehlo P1'];
+    var checkAddressProjs=[];
     var startProjs={'DE-BB Falkensee HP0':'20.6.2026'};
     var targetReachedProjs=['DE-BB Amt Scharmützelsee P1'];
     var allZero=(r[6]||0)===0&&checkAddressProjs.indexOf(r[0])<0&&!startProjs[r[0]]&&targetReachedProjs.indexOf(r[0])<0;
