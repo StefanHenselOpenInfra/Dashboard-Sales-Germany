@@ -311,6 +311,11 @@ var funnelRowsRaw = [
   ["Luckau Combined (Deploy 2026)","Build Sales","BB",347,1174]
 ];
 
+// Target uptake % per project (e.g. 43 = 43%)
+var projectTargets = {
+  "DE-BB Amt Scharmützelsee P0": 43
+};
+
 var coaRowsRaw = [
   ["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],
   ["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],
@@ -321,6 +326,7 @@ var coaRowsRaw = [
   ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
   ["DE-BB Beetzsee P2","BB","United Promotion",""],
   ["DE-BB Heidesee HP0","BB","United Promotion","CoA waiting"],
+  ["DE-BB Neuzelle Combined P1","BB","United Promotion","CoA waiting"],
   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","Calc is sent to Oda"],
   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
@@ -1308,9 +1314,9 @@ function render(){
 
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
   html+='<table style="table-layout:fixed;">';
-  html+='<colgroup><col style="width:22%"><col style="width:7%"><col style="width:7%"><col style="width:8%"><col style="width:12%"><col style="width:14%"><col style="width:7%"><col style="width:7%"><col style="width:8%"><col style="width:8%"></colgroup>';
+  html+='<colgroup><col style="width:20%"><col style="width:6%"><col style="width:6%"><col style="width:7%"><col style="width:6%"><col style="width:8%"><col style="width:11%"><col style="width:12%"><col style="width:6%"><col style="width:6%"><col style="width:6%"><col style="width:6%"></colgroup>';
   html+='<thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
-  [['Project','left'],['HP','center'],['HC','center'],['Uptake','center'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
+  [['Project','left'],['HP','center'],['HC','center'],['Uptake','center'],['Target','center'],['Delta Target','center'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center']].forEach(function(col){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
@@ -1336,6 +1342,12 @@ function render(){
     html+='<td style="padding:8px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+hc+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:900;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
+    var tgt=projectTargets[r[0]];
+    var tgtCell=tgt!=null?tgt+'%':'—';
+    var deltaCell='—';var deltaColor='#9ca3af';
+    if(tgt!=null&&hp>0){var deltaVal=Math.round(tgt-(hc/hp*100));deltaCell=(deltaVal>0?'+':'')+deltaVal+'%';deltaColor=deltaVal>0?'#dc2626':'#16a34a';}
+    html+='<td style="padding:8px;text-align:center;font-weight:700;font-size:12px;color:#475569;">'+tgtCell+'</td>';
+    html+='<td style="padding:8px;text-align:center;font-weight:900;font-size:12px;color:'+deltaColor+';">'+deltaCell+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(normType(r[1]))+'</td>';
     html+='<td style="padding:8px;word-break:break-word;font-size:12px;">'+esc(r[2])+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+(r[3]||0)+'</td>';
@@ -1358,6 +1370,8 @@ function render(){
   html+='<td style="padding:8px;text-align:center;font-weight:900;color:#475569;font-size:12px;">'+(sumHP>0?sumHP:'—')+'</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumHC+'</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumUptake+'</td>';
+  html+='<td style="padding:8px;"></td>';
+  html+='<td style="padding:8px;"></td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;font-size:12px;color:#64748b;"></td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumMar+'</td>';
