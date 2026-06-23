@@ -219,7 +219,6 @@ var projectRows = [
   // ── Open Infra CS ─────────────────────────────────────────────────────
   ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 5, 2549],
   ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 0, 1877, 18],
-  ["DE-BB Falkensee HP0", "HP0", "Stonemedia GmbH", 0, 0, 0, 0, 2406],
   ["DE-BB Königs Wusterhausen HP0 2", "HP0", "Open Infra CS", 2, 1, 0, 1],
   ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 23, 1715, 31],
   ["DE-BB Zeuthen-Wildau HP0", "HP0", "Open Infra CS", 6, 3, 1, 1, 2628, 35],
@@ -300,6 +299,8 @@ var funnelRowsRaw = [
   ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
   ["DE-BB Grünheide P6","BASE UPSELL","BB",28,283],
   ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,868],
+  ["DE-BB Amt Scharmützelsee P4","Base Sales / Up Sales","BB",0,0],
+  ["DE-BB Amt Scharmützelsee P5","Base Sales / Up Sales","BB",0,0],
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
@@ -318,8 +319,6 @@ var projectTargets = {
 
 var coaRowsRaw = [
   ["DE-BY Kirchroth P1-1","BY","EnCom GmbH","Calc is sent to Oda"],
-  ["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","Calc is sent to Oda"],
-  ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH",""],
   ["DE-BB Diensdorf-Radlow","BB","EnCom GmbH",""],
 
   ["DE-BB Fürstenwalde P7","BB","United Promotion",""],
@@ -331,6 +330,7 @@ var coaRowsRaw = [
   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
+  ["DE-BB Falkensee HP0","BB","Stonemedia GmbH","CoA waiting"],
 ];
 
 var settings = {salesReportTotal2026:1740,q2WorkingDaysDone:59,q2WorkingDaysLeft:6,juneForecast:710,q3WorkingDays:66,
@@ -1346,7 +1346,8 @@ function render(){
     var commissionChangeProjs=[];
     var checkAddressProjs=['DE-BB Diehlo P1'];
     var startProjs={'DE-BB Falkensee HP0':'20.6.2026'};
-    var allZero=(r[6]||0)===0&&checkAddressProjs.indexOf(r[0])<0&&!startProjs[r[0]];
+    var targetReachedProjs=['DE-BB Amt Scharmützelsee P1'];
+    var allZero=(r[6]||0)===0&&checkAddressProjs.indexOf(r[0])<0&&!startProjs[r[0]]&&targetReachedProjs.indexOf(r[0])<0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]];
     var gestopptBadge=gestopptList.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;">gestoppt</span>':'';
@@ -1358,7 +1359,8 @@ function render(){
     var hp=r[7]||0;
     var uptakePct=hp>0?(hc/hp*100).toFixed(1)+'%':'—';
     var uptakeColor=hp>0?(hc/hp>=0.4?'#16a34a':hc/hp>=0.25?'#d97706':'#dc2626'):'#9ca3af';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var targetReachedBadge=targetReachedProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">Target reached</span>':'';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+targetReachedBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+hc+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:900;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
@@ -1452,7 +1454,7 @@ function render(){
     var importantProjs=['DE-BB Neuzelle Combined P1','Luckau Combined (Deploy 2026)'];
     // Determine badge
     var encBadge='';
-    if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
+    if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
     if(r[0]==='DE-BB Amt Scharmützelsee P3') encBadge+='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;white-space:nowrap;">waiting until digging in P1</span>';
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
     else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
