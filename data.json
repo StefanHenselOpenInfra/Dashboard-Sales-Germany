@@ -557,7 +557,7 @@
       0,
       0,
       10,
-      1,
+      0,
       260
     ],
     [
@@ -1161,13 +1161,6 @@
       162
     ],
     [
-      "DE-BY Falkenfels",
-      "Base Sales",
-      "BY",
-      0,
-      0
-    ],
-    [
       "DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB",
       "HP0",
       "BY",
@@ -1277,14 +1270,14 @@
       "Base Sales / Up Sales",
       "BB",
       0,
-      0
+      364
     ],
     [
       "DE-BB Amt Scharmützelsee P5",
       "Base Sales / Up Sales",
       "BB",
       0,
-      0
+      147
     ],
     [
       "DE-BB Spreenhagen P2",
@@ -1530,6 +1523,13 @@
       "DE-BB Neuzelle P6",
       "BB",
       "STOPP 499€ FEE",
+      0,
+      0
+    ],
+    [
+      "DE-BY Falkenfels",
+      "BY",
+      "T COM",
       0,
       0
     ]
