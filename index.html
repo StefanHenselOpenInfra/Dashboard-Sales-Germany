@@ -1252,11 +1252,14 @@ function render(){
   coaAgencies.forEach(function(a){html+='<option'+(coaAgencyFilter===a?' selected':'')+'>'+esc(a)+'</option>';});
   html+='</select>';
   html+='</div>';
-  html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
-  html+='<table><thead style="background:#fef3c7;position:sticky;top:0;"><tr>';
+  html+='<div style="overflow:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;">';
+  html+='<table style="min-width:900px;"><thead style="background:#fef3c7;position:sticky;top:0;"><tr>';
   [['Project',0],['Region',1],['Agency',2],['Status',3]].forEach(function(col){
     var active=coaSortKey===col[0];
     html+='<th style="cursor:pointer;user-select:none;" onclick="coaSortKey=\''+col[0]+'\';coaSortDir=(coaSortKey===\''+col[0]+'\'&&coaSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(active?(coaSortDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  ['Type','HP','HC','Uptake','Target','Delta Target'].forEach(function(h){
+    html+='<th style="text-align:center;">'+h+'</th>';
   });
   html+='</tr></thead><tbody>';
   coaFiltered.forEach(function(item,i){
@@ -1276,6 +1279,23 @@ function render(){
       ?'background:#fff7ed;color:#ea580c;border:2px solid #ea580c;font-weight:900;'
       :'background:#fef3c7;color:#92400e;';
     html+='<td style="padding:10px;"><span class="badge" style="'+statusStyle+'">'+esc(statusText)+'</span></td>';
+    // HP / HC lookup: try projectRows first, then funnelRowsRaw
+    var coaHP=0,coaHC=0,coaFound=false;
+    if(projectRows){var pr=projectRows.find(function(x){return x[0]===item[0];});if(pr){coaHP=pr[7]||0;coaHC=(pr[8]||0)+(pr[3]||0)+(pr[4]||0)+(pr[5]||0)+(pr[6]||0);coaFound=true;}}
+    if(!coaFound&&funnelRowsRaw){var fr=funnelRowsRaw.find(function(x){return x[0]===item[0];});if(fr){coaHP=fr[4]||0;coaHC=fr[3]||0;coaFound=true;}}
+    var coaUptakePct=coaFound&&coaHP>0?(coaHC/coaHP*100).toFixed(1)+'%':'—';
+    var coaUptakeColor=coaFound&&coaHP>0?(coaHC/coaHP>=0.4?'#16a34a':coaHC/coaHP>=0.25?'#d97706':'#dc2626'):'#9ca3af';
+    var coaTgt=projectTargets[item[0]];
+    var coaTgtCell=coaTgt!=null?coaTgt+'%':'—';
+    var coaDeltaCell='—';var coaDeltaColor='#9ca3af';
+    if(coaTgt!=null&&coaHP>0){var coaDelta=Math.round(coaTgt-(coaHC/coaHP*100));coaDeltaCell=(coaDelta>0?'+':'')+coaDelta+'%';coaDeltaColor=coaDelta>0?'#dc2626':'#16a34a';}
+    var coaType='—';if(projectRows){var _pt=projectRows.find(function(x){return x[0]===item[0];});if(_pt)coaType=normType(_pt[1]);}if(coaType==='—'&&funnelRowsRaw){var _ft=funnelRowsRaw.find(function(x){return x[0]===item[0];});if(_ft)coaType=normType(_ft[1]);}
+    html+='<td style="padding:10px;font-size:12px;color:#475569;">'+esc(coaType)+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(coaHP>0?coaHP:'—')+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;font-size:12px;">'+(coaFound?coaHC:'—')+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:'+coaUptakeColor+';font-size:12px;">'+coaUptakePct+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;font-size:12px;color:#475569;">'+coaTgtCell+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;font-size:12px;color:'+coaDeltaColor+';">'+coaDeltaCell+'</td>';
     html+='</tr>';
   });
   html+='</tbody></table></div></div></div></section>';
