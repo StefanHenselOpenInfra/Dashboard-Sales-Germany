@@ -139,36 +139,36 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:166,mayForecast:166,juneActual:95,ytd:553,forecast:1100,d2d:6,cancelledYtd:55},
-  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:134,mayForecast:134,juneActual:218,ytd:636,forecast:1100,d2d:14,cancelledYtd:19},
-  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:57,juneActual:25,ytd:196,forecast:450,d2d:2,cancelledYtd:6},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:7,may:96,mayForecast:96,juneActual:159,ytd:262,forecast:330,d2d:9,cancelledYtd:10},
-  {name:"Open Infra CS",january:5,february:6,march:11,april:9,may:2,mayForecast:2,juneActual:4,ytd:37,forecast:175,d2d:0,cancelledYtd:0},
+  {name:"Stonemedia GmbH",january:6,february:58,march:100,april:128,may:166,mayForecast:166,juneActual:101,ytd:559,forecast:1100,d2d:6,cancelledYtd:55},
+  {name:"EnCom GmbH",january:16,february:35,march:115,april:118,may:134,mayForecast:134,juneActual:224,ytd:642,forecast:1100,d2d:14,cancelledYtd:19},
+  {name:"Team Tatjana",january:3,february:24,march:40,april:47,may:57,mayForecast:57,juneActual:27,ytd:198,forecast:450,d2d:2,cancelledYtd:6},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:7,may:96,mayForecast:96,juneActual:174,ytd:277,forecast:330,d2d:9,cancelledYtd:10},
+  {name:"Open Infra CS",january:5,february:6,march:11,april:9,may:2,mayForecast:2,juneActual:16,ytd:49,forecast:175,d2d:0,cancelledYtd:0},
   {name:"Filiago",january:5,february:2,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:7,forecast:20,d2d:0,cancelledYtd:0},
   {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:6,ytd:6,forecast:0,d2d:0,comingSoon:true,cancelledYtd:0}
 ];
 
 // Brutto Q2-Actuals — Sales Report 25
 var kpiActuals = {
+  "Base Sales / Up Sales":{april:152,may:309,june:342},
+  "After Market / HP0 Sales":{april:20,may:37,june:98},
+  "Build Sales":{april:141,may:115,june:108}
+};
+var kpiPreviousDay = {
   "Base Sales / Up Sales":{april:152,may:309,june:334},
   "After Market / HP0 Sales":{april:20,may:37,june:88},
   "Build Sales":{april:141,may:115,june:103}
-};
-var kpiPreviousDay = {
-  "Base Sales / Up Sales":{april:152,may:309,june:318},
-  "After Market / HP0 Sales":{april:20,may:37,june:85},
-  "Build Sales":{april:141,may:115,june:92}
 };
 
 var projectRows = [
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
   ["DE-BB Birkenwerder P2", "Build Sales", "Stonemedia GmbH", 0, 0, 0, 22, 231, 66],
-  ["DE-BB Birkenwerder P3", "Build Sales", "Stonemedia GmbH", 0, 25, 22, 12, 583, 191],
+  ["DE-BB Birkenwerder P3", "Build Sales", "Stonemedia GmbH", 0, 25, 22, 15, 583, 191],
   ["DE-BB Birkenwerder P3-2", "BASE UPSELL", "Stonemedia GmbH", 0, 9, 12, 4, 235, 15],
-  ["DE-BB Birkenwerder P4", "BASE UPSELL", "Stonemedia GmbH", 0, 24, 35, 7, 243, 6],
+  ["DE-BB Birkenwerder P4", "BASE UPSELL", "Stonemedia GmbH", 0, 24, 35, 9, 243, 6],
   ["DE-BB Hennigsdorf P3","Build Sales","Stonemedia GmbH",15,17,4,0,633,204],
   ["DE-BB Löwenberger Land - Grieben P5","Base Sales","Stonemedia GmbH",0,4,7,1,181],
-  ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13,2,107,46],
+  ["DE-BB Storkow P2","BASE UPSELL","Stonemedia GmbH",0,0,13,3,107,46],
   ["DE-BB Storkow P3", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 25, 8, 335, 79],
   ["DE-BB Storkow P4","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,6,332,83],
   ["DE-BB Storkow P5","BASE UPSELL","Stonemedia GmbH",0,23,21,2,479,56],
@@ -181,7 +181,7 @@ var projectRows = [
   ["DE-BB Seddiner See P2","Base Sales / Up Sales","Stonemedia GmbH",0,0,0,0,751,36],
   // ── EnCom GmbH ────────────────────────────────────────────────────────
   ["DE-BB Diehlo P1","Base Sales / Up Sales","EnCom GmbH",0,0,0,0,157,1],
-  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 1, 95, 190, 829],
+  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 1, 95, 196, 829],
   ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 46, 0, 0, 904, 304],
   ["DE-BB Frankfurt (Oder) Combined P1","Build Sales","EnCom GmbH",0,0,0,0,519,134],
   ["DE-BB Frankfurt (Oder) Combined P2","Build Sales","EnCom GmbH",0,0,0,0,459,142],
@@ -199,31 +199,31 @@ var projectRows = [
   ["DE-BB Birkenwerder P1", "Build Sales", "Team Tatjana", 22, 21, 5, 2, 1100, 399],
   ["DE-BB Birkenwerder P1-2", "BASE UPSELL", "Team Tatjana", 0, 4, 8, 2, 76],
   ["DE-BB Birkenwerder P2-2", "BASE UPSELL", "Team Tatjana", 0, 0, 2, 1, 373, 37],
-  ["DE-BB Schöneiche P8", "Base Sales", "Team Tatjana", 0, 0, 8, 6, 372, 40],
+  ["DE-BB Schöneiche P8", "Base Sales", "Team Tatjana", 0, 0, 8, 7, 372, 40],
   ["DE-BB Spreenhagen P3 & Furstenwalde P6","Base Sales","Team Tatjana",13,10,5,0,349,23],
-  ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 12, 28, 11, 609, 168],
+  ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 12, 28, 12, 609, 168],
   // ── United Promotion GmbH ─────────────────────────────────────────────
-  ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 0, 260],
+  ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 1, 260],
   ["DE-BB Blankenfelde-Mahlow P1", "Build Sales", "United Promotion GmbH", 0, 0, 31, 3, 573, 161],
-  ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0,0,121],
+  ["DE-BB Heidesee P7","Base Sales","United Promotion GmbH",0,0,0,3,121],
   ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 6, 14, 5, 2038, 94],
-  ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 23, 27, 143],
+  ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 23, 28, 143],
   ["DE-BB Woltersdorf P5-1","Build Sales","United Promotion GmbH",0,1,6,0,274],
   ["DE-BB Zossen HP0","HP0","United Promotion GmbH",0,0,2,0,109,2],
   ["DE-BB Zossen P3","Build Sales","United Promotion GmbH",0,0,0,0,199,71],
   ["DE-BB Zossen P4-2", "Base Sales", "United Promotion GmbH", 0, 0, 2, 0, 241, 3],
   ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 7, 27, 730, 1],
-  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 13, 914],
+  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 16, 914],
   ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 21, 722, 184],
-  ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,1,936,137],
+  ["Hohen Neuendorf B2","Build Sales","United Promotion GmbH",0,0,0,2,936,137],
   // ── Open Infra CS ─────────────────────────────────────────────────────
   ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 5, 2549],
-  ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 0, 1877, 18],
+  ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 1, 1877, 18],
   ["DE-BB Königs Wusterhausen HP0 2", "HP0", "Open Infra CS", 2, 1, 0, 1],
-  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 23, 1715, 31],
+  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 27, 1715, 31],
   ["DE-BB Zeuthen-Wildau HP0", "HP0", "Open Infra CS", 6, 3, 1, 1, 2628, 35],
-  ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 9],
-  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 38, 1227],
+  ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 11],
+  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 41, 1227],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
   ["DE-BB Grünheide P3","BASE UPSELL","Rating Peak GmbH",0,0,0,0,680,89],
   ["DE-BB Gosen Neu-Zittau P2","Base Sales / Up Sales","Rating Peak GmbH",0,0,0,0,109,12],
@@ -360,12 +360,12 @@ var coaRowsRaw = [
   ["DE-BB Falkensee HP0","BB","Stonemedia GmbH","CoA waiting"],
 ];
 
-var settings = {salesReportTotal2026:1740,q2WorkingDaysDone:59,q2WorkingDaysLeft:6,juneForecast:710,q3WorkingDays:66,
+var settings = {salesReportTotal2026:1771,q2WorkingDaysDone:60,q2WorkingDaysLeft:5,juneForecast:709,q3WorkingDays:66,
   // Brutto monatliche Totals aus Sales Report 26
-  jan:42,feb:135,mar:274,apr:313,may:460,
-  lastUpdateDate:'22.6.2026'};
-var netSales=1650;
-var cancelled=90;
+  jan:42,feb:135,mar:274,apr:313,may:459,
+  lastUpdateDate:'24.6.2026'};
+var netSales=1678;
+var cancelled=93;
 
 var potentialRows = [
   ["31675","Bückeburg","NI","Evesen Nord, Evesen Süd, Petzen, Röcke","positiv","Axel Wohlgemuth / Juliane Rohlfing","Bürgermeister / AP","0177 2469711 / 05722/206 131","buergermeister@bueckeburg.de / jrohlfing@bueckeburg.de","Plan wird erstellt KW 25"],

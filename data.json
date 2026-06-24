@@ -8,8 +8,8 @@
       "april": 128,
       "may": 166,
       "mayForecast": 166,
-      "juneActual": 95,
-      "ytd": 553,
+      "juneActual": 101,
+      "ytd": 559,
       "forecast": 1100,
       "d2d": 6,
       "cancelledYtd": 55
@@ -22,8 +22,8 @@
       "april": 118,
       "may": 134,
       "mayForecast": 134,
-      "juneActual": 218,
-      "ytd": 636,
+      "juneActual": 224,
+      "ytd": 642,
       "forecast": 1100,
       "d2d": 14,
       "cancelledYtd": 19
@@ -36,8 +36,8 @@
       "april": 47,
       "may": 57,
       "mayForecast": 57,
-      "juneActual": 25,
-      "ytd": 196,
+      "juneActual": 27,
+      "ytd": 198,
       "forecast": 450,
       "d2d": 2,
       "cancelledYtd": 6
@@ -50,8 +50,8 @@
       "april": 7,
       "may": 96,
       "mayForecast": 96,
-      "juneActual": 159,
-      "ytd": 262,
+      "juneActual": 174,
+      "ytd": 277,
       "forecast": 330,
       "d2d": 9,
       "cancelledYtd": 10
@@ -64,8 +64,8 @@
       "april": 9,
       "may": 2,
       "mayForecast": 2,
-      "juneActual": 4,
-      "ytd": 37,
+      "juneActual": 16,
+      "ytd": 49,
       "forecast": 175,
       "d2d": 0,
       "cancelledYtd": 0
@@ -104,6 +104,23 @@
     "Base Sales / Up Sales": {
       "april": 152,
       "may": 309,
+      "june": 342
+    },
+    "After Market / HP0 Sales": {
+      "april": 20,
+      "may": 37,
+      "june": 98
+    },
+    "Build Sales": {
+      "april": 141,
+      "may": 115,
+      "june": 108
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 152,
+      "may": 309,
       "june": 334
     },
     "After Market / HP0 Sales": {
@@ -117,38 +134,21 @@
       "june": 103
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 152,
-      "may": 309,
-      "june": 318
-    },
-    "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 37,
-      "june": 85
-    },
-    "Build Sales": {
-      "april": 141,
-      "may": 115,
-      "june": 92
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1740,
-    "q2WorkingDaysDone": 59,
-    "q2WorkingDaysLeft": 6,
+    "salesReportTotal2026": 1771,
+    "q2WorkingDaysDone": 60,
+    "q2WorkingDaysLeft": 5,
     "q3WorkingDays": 66,
-    "juneForecast": 710,
+    "juneForecast": 709,
     "jan": 42,
     "feb": 135,
     "mar": 274,
     "apr": 313,
-    "may": 460,
-    "lastUpdateDate": "22.6.2026"
+    "may": 459,
+    "lastUpdateDate": "24.6.2026"
   },
-  "netSales": 1650,
-  "cancelled": 90,
+  "netSales": 1678,
+  "cancelled": 93,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -168,7 +168,7 @@
       0,
       25,
       22,
-      12,
+      15,
       583,
       191
     ],
@@ -190,7 +190,7 @@
       0,
       24,
       35,
-      7,
+      9,
       243,
       6
     ],
@@ -222,7 +222,7 @@
       0,
       0,
       13,
-      2,
+      3,
       107,
       46
     ],
@@ -342,7 +342,7 @@
       0,
       1,
       95,
-      190,
+      196,
       829
     ],
     [
@@ -526,7 +526,7 @@
       0,
       0,
       8,
-      6,
+      7,
       372,
       40
     ],
@@ -548,7 +548,7 @@
       5,
       12,
       28,
-      11,
+      12,
       609,
       168
     ],
@@ -559,7 +559,7 @@
       0,
       0,
       10,
-      0,
+      1,
       260
     ],
     [
@@ -580,7 +580,7 @@
       0,
       0,
       0,
-      0,
+      3,
       121
     ],
     [
@@ -601,7 +601,7 @@
       0,
       0,
       23,
-      27,
+      28,
       143
     ],
     [
@@ -621,7 +621,7 @@
       0,
       2,
       1,
-      23,
+      27,
       1715,
       31
     ],
@@ -676,7 +676,7 @@
       0,
       0,
       0,
-      13,
+      16,
       914
     ],
     [
@@ -697,7 +697,7 @@
       0,
       0,
       0,
-      1,
+      2,
       936,
       137
     ],
@@ -708,7 +708,7 @@
       0,
       0,
       0,
-      38,
+      41,
       1227
     ],
     [
@@ -728,7 +728,7 @@
       0,
       0,
       1,
-      0,
+      1,
       1877,
       18
     ],
@@ -770,7 +770,7 @@
       8,
       4,
       5,
-      9
+      11
     ],
     [
       "DE-BB Grünheide P3",
