@@ -1310,6 +1310,20 @@
       0
     ],
     [
+      "DE-BB Teupitz P3",
+      "Base Sales",
+      "BB",
+      73,
+      261
+    ],
+    [
+      "DE-BB Teupitz P4",
+      "Base Sales",
+      "BB",
+      71,
+      273
+    ],
+    [
       "DE-BB Schwerin HP0",
       "HP0",
       "MV",
@@ -1322,13 +1336,6 @@
       "BB",
       149,
       615
-    ],
-    [
-      "Luckau Combined (Deploy 2026)",
-      "Build Sales",
-      "BB",
-      347,
-      1174
     ]
   ],
   "cemeteryRows": [
@@ -2292,8 +2299,8 @@
     "DE-BB Storkow P5": "https://bob.openinfra.com/delivery-projects/2236",
     "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
     "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
-    "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/4146",
-    "DE-BB Teupitz P4": "https://bob.openinfra.com/delivery-projects/4146",
+    "DE-BB Teupitz P3": "https://bob.openinfra.com/sales-projects/2286",
+    "DE-BB Teupitz P4": "https://bob.openinfra.com/sales-projects/4059",
     "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
     "DE-BB Woltersdorf P5-1": "https://bob.openinfra.com/delivery-projects/2763",
     "DE-BB Zeuthen-Wildau HP0": "https://bob.openinfra.com/sales-projects/3843",
@@ -2367,6 +2374,8 @@
     "DE-BB Amt Scharmützelsee P1": 42,
     "DE-BB Seddiner See P2": 41,
     "DE-BB Diehlo P1": 33,
-    "DE-BB Heidesee P7": 66
+    "DE-BB Heidesee P7": 66,
+    "DE-BB Teupitz P3": 36,
+    "DE-BB Teupitz P4": 31
   }
 }

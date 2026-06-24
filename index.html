@@ -304,12 +304,11 @@ var funnelRowsRaw = [
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
-  ["DE-BB Teupitz P3","Base Sales","BB",0,0],
-  ["DE-BB Teupitz P4","Base Sales","BB",0,0],
+  ["DE-BB Teupitz P3","Base Sales","BB",73,261],
+  ["DE-BB Teupitz P4","Base Sales","BB",71,273],
   ["DE-BB Schwerin HP0","HP0","MV",0,0],
   // ── off track → back in funnel ───────────────────────────────────────────
-  ["DE-BB Neuzelle Combined P1","Build Sales","BB",149,615],
-  ["Luckau Combined (Deploy 2026)","Build Sales","BB",347,1174]
+  ["DE-BB Neuzelle Combined P1","Build Sales","BB",149,615]
 ];
 
 // Target uptake % per project (e.g. 43 = 43%)
@@ -341,7 +340,9 @@ var projectTargets = {
   "DE-BB Amt Scharmützelsee P1": 42,
   "DE-BB Seddiner See P2": 41,
   "DE-BB Diehlo P1": 33,
-  "DE-BB Heidesee P7": 66
+  "DE-BB Heidesee P7": 66,
+  "DE-BB Teupitz P3": 36,
+  "DE-BB Teupitz P4": 31
 };
 
 var coaRowsRaw = [
@@ -358,6 +359,7 @@ var coaRowsRaw = [
   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Falkensee HP0","BB","Stonemedia GmbH","CoA waiting"],
+  ["Luckau Combined (Deploy 2026)","BB","Stonemedia GmbH","CoA waiting"],
 ];
 
 var settings = {salesReportTotal2026:1771,q2WorkingDaysDone:60,q2WorkingDaysLeft:5,juneForecast:709,q3WorkingDays:66,
@@ -581,8 +583,8 @@ var bobLinks = {
   "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
   "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
   "DE-BB Storkow P8": "https://bob.openinfra.com/sales-projects/4007",
-  "DE-BB Teupitz P3": "https://bob.openinfra.com/delivery-projects/4146",
-  "DE-BB Teupitz P4": "https://bob.openinfra.com/delivery-projects/4146",
+  "DE-BB Teupitz P3": "https://bob.openinfra.com/sales-projects/2286",
+  "DE-BB Teupitz P4": "https://bob.openinfra.com/sales-projects/4059",
   "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
   "DE-BB Woltersdorf P5-1": "https://bob.openinfra.com/delivery-projects/2763",
   "DE-BB Zeuthen-Wildau HP0": "https://bob.openinfra.com/sales-projects/3843",
@@ -1481,7 +1483,7 @@ function render(){
     var wartenProjs=[];
     var backInFunnelProjs=['DE-BB Teupitz P3','DE-BB Teupitz P4'];
     var closedProjs=['DE-BB Königs Wusterhausen HP0 1'];
-    var importantProjs=['DE-BB Neuzelle Combined P1','Luckau Combined (Deploy 2026)'];
+    var importantProjs=['DE-BB Neuzelle Combined P1','DE-BB Teupitz P3','DE-BB Teupitz P4'];
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
