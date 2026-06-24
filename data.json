@@ -1336,6 +1336,13 @@
       "BB",
       149,
       615
+    ],
+    [
+      "Luckau Combined (Deploy 2026)",
+      "Build Sales",
+      "BB",
+      347,
+      1174
     ]
   ],
   "cemeteryRows": [
@@ -2376,6 +2383,8 @@
     "DE-BB Diehlo P1": 33,
     "DE-BB Heidesee P7": 66,
     "DE-BB Teupitz P3": 36,
-    "DE-BB Teupitz P4": 31
+    "DE-BB Teupitz P4": 31,
+    "Luckau Combined (Deploy 2026)": 34,
+    "DE-BY Kirchroth P1-1": 35
   }
 }
