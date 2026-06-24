@@ -1640,18 +1640,6 @@
       ""
     ],
     [
-      "14778",
-      "Amt Beetzsee REST",
-      "BB",
-      "",
-      "new area",
-      "Herr Voß",
-      "Ansprechpartner",
-      "03381 799943",
-      "k.voss@amt-beetzsee.de",
-      ""
-    ],
-    [
       "15306",
       "LK Märkisch Oderland",
       "BB",
@@ -1805,7 +1793,7 @@
       "Bürgermeister",
       "017670086369",
       "kumpf@karlskron.de",
-      "Terminvorschlag machen"
+      "Planung liegt vor"
     ],
     [
       "85276",
@@ -1829,7 +1817,7 @@
       "Vorzimmer BM",
       "09431 45-1 21",
       "hetzenecker.martina@schwandorf.de",
-      "Termin 3.6.2026"
+      "MEV abgegeben"
     ],
     [
       "92421",
@@ -1841,7 +1829,7 @@
       "Ansprechpartner",
       "09431 - 45 - 289",
       "viehauser.markus@schwandorf.de",
-      ""
+      "MEV abgegeben"
     ],
     [
       "93055",
@@ -1865,7 +1853,7 @@
       "Breitbandbeauftragter",
       "09441 179411",
       "info@bad-abbach.de",
-      "MEV abfordern über Portal https://projekttraeger-breitband.de/"
+      "Info MEV abgegeben"
     ],
     [
       "93077",
@@ -1925,7 +1913,7 @@
       "",
       "09441 - 681 25",
       "harald.reichl@saal-donau.de",
-      "Termin am 15.6.2026 um 13 Uhr"
+      "MEV abgegeben"
     ],
     [
       "94127",
@@ -2016,12 +2004,12 @@
       "Steinach",
       "BY",
       "",
-      "kein Interesse",
+      "positiv",
       "Frau Hammerschick",
       "BM",
       "09428 942033",
       "gemeinde@steinach.bayern.de",
-      ""
+      "MEV abgegeben"
     ],
     [
       "94344",
@@ -2052,12 +2040,12 @@
       "Steinach",
       "BY",
       "Münster",
-      "kein Interesse",
+      "positiv",
       "Frau Hammerschick",
       "BM",
       "09428 942033",
       "gemeinde@steinach.bayern.de",
-      ""
+      "MEV abgegeben"
     ],
     [
       "94428",
@@ -2081,7 +2069,7 @@
       "Rathaus",
       "09953 9301-0",
       "katrin.schinharl@pilsting.de",
-      "Terminabstimmung läuft per Mail"
+      "Info MEV abgegeben"
     ],
     [
       "94522",
@@ -2093,7 +2081,7 @@
       "Bauamt",
       "09933 9510-18",
       "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
+      "Entscheidung Ende Juni 2026"
     ],
     [
       "94523",
@@ -2105,7 +2093,7 @@
       "Bauamt",
       "09933 9510-18",
       "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
+      "Entscheidung Ende Juni 2026"
     ],
     [
       "94524",
@@ -2117,7 +2105,7 @@
       "Bauamt",
       "09933 9510-18",
       "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
+      "Entscheidung Ende Juni 2026"
     ],
     [
       "94526",
@@ -2167,6 +2155,20 @@
       "info@markt-windorf.de",
       ""
     ],
+    ["84524","Neuhaus a.Inn","BY","","","","","","","MEV abgegeben"],
+    ["90584","Markt Allersberg","BY","","","","","","","MEV abgegeben"],
+    ["91171","Greding","BY","","","","","","","MEV abgegeben"],
+    ["91522","Ansbach","BY","","","","","","","MEV abgegeben"],
+    ["92249","Vilseck","BY","","","","","","","MEV abgegeben"],
+    ["92268","Ammerthal","BY","","","","","","","MEV abgegeben"],
+    ["92318","Neumarkt i.d.OPf.","BY","","","","","","","MEV abgegeben"],
+    ["93047","Regensburg","BY","","","","","","","MEV abgegeben"],
+    ["93354","Markt Siegenburg","BY","","","","","","","MEV abgegeben"],
+    ["93356","Teugn","BY","","","","","","","MEV abgegeben"],
+    ["93358","Train","BY","","","","","","","MEV abgegeben"],
+    ["94094","Rotthalmünster","BY","","","","","","","MEV abgegeben"],
+    ["94261","Kirchdorf i.Wald","BY","","","","","","","MEV abgegeben"],
+    ["94342","Straßkirchen","BY","","","","","","","MEV abgegeben"],
     [
       "21255",
       "Wistedt",
