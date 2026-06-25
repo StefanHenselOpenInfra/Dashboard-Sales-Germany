@@ -3,13 +3,13 @@
     {
       "name": "Stonemedia GmbH",
       "january": 6,
-      "february": 58,
-      "march": 100,
-      "april": 128,
-      "may": 166,
-      "mayForecast": 166,
-      "juneActual": 101,
-      "ytd": 559,
+      "february": 66,
+      "march": 117,
+      "april": 133,
+      "may": 187,
+      "mayForecast": 187,
+      "juneActual": 108,
+      "ytd": 617,
       "forecast": 1100,
       "d2d": 6,
       "cancelledYtd": 55
@@ -17,27 +17,27 @@
     {
       "name": "EnCom GmbH",
       "january": 16,
-      "february": 35,
-      "march": 115,
-      "april": 118,
-      "may": 134,
-      "mayForecast": 134,
-      "juneActual": 224,
-      "ytd": 642,
+      "february": 37,
+      "march": 120,
+      "april": 125,
+      "may": 139,
+      "mayForecast": 139,
+      "juneActual": 245,
+      "ytd": 682,
       "forecast": 1100,
       "d2d": 14,
-      "cancelledYtd": 19
+      "cancelledYtd": 22
     },
     {
       "name": "Team Tatjana",
       "january": 3,
-      "february": 24,
+      "february": 25,
       "march": 40,
-      "april": 47,
-      "may": 57,
-      "mayForecast": 57,
-      "juneActual": 27,
-      "ytd": 198,
+      "april": 50,
+      "may": 58,
+      "mayForecast": 58,
+      "juneActual": 32,
+      "ytd": 208,
       "forecast": 450,
       "d2d": 2,
       "cancelledYtd": 6
@@ -48,13 +48,13 @@
       "february": 0,
       "march": 0,
       "april": 7,
-      "may": 96,
-      "mayForecast": 96,
-      "juneActual": 174,
-      "ytd": 277,
+      "may": 99,
+      "mayForecast": 99,
+      "juneActual": 201,
+      "ytd": 307,
       "forecast": 330,
-      "d2d": 9,
-      "cancelledYtd": 10
+      "d2d": 11,
+      "cancelledYtd": 11
     },
     {
       "name": "Open Infra CS",
@@ -64,8 +64,8 @@
       "april": 9,
       "may": 2,
       "mayForecast": 2,
-      "juneActual": 16,
-      "ytd": 49,
+      "juneActual": 5,
+      "ytd": 38,
       "forecast": 175,
       "d2d": 0,
       "cancelledYtd": 0
@@ -102,53 +102,53 @@
   ],
   "kpiActuals": {
     "Base Sales / Up Sales": {
-      "april": 152,
-      "may": 309,
-      "june": 342
+      "april": 159,
+      "may": 329,
+      "june": 390
     },
     "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 37,
-      "june": 98
+      "april": 21,
+      "may": 39,
+      "june": 99
     },
     "Build Sales": {
-      "april": 141,
-      "may": 115,
-      "june": 108
+      "april": 148,
+      "may": 123,
+      "june": 120
     }
   },
   "kpiPreviousDay": {
     "Base Sales / Up Sales": {
-      "april": 152,
-      "may": 309,
-      "june": 334
+      "april": 159,
+      "may": 329,
+      "june": 375
     },
     "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 37,
-      "june": 88
+      "april": 21,
+      "may": 39,
+      "june": 93
     },
     "Build Sales": {
-      "april": 141,
-      "may": 115,
-      "june": 103
+      "april": 148,
+      "may": 123,
+      "june": 115
     }
   },
   "settings": {
-    "salesReportTotal2026": 1771,
-    "q2WorkingDaysDone": 60,
-    "q2WorkingDaysLeft": 5,
+    "salesReportTotal2026": 1861,
+    "q2WorkingDaysDone": 61,
+    "q2WorkingDaysLeft": 4,
     "q3WorkingDays": 66,
-    "juneForecast": 709,
+    "juneForecast": 744,
     "jan": 42,
-    "feb": 135,
-    "mar": 274,
-    "apr": 313,
-    "may": 459,
-    "lastUpdateDate": "24.6.2026"
+    "feb": 146,
+    "mar": 296,
+    "apr": 328,
+    "may": 489,
+    "lastUpdateDate": "25.6.2026"
   },
-  "netSales": 1678,
-  "cancelled": 93,
+  "netSales": 1861,
+  "cancelled": 95,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -157,7 +157,7 @@
       0,
       0,
       0,
-      22,
+      21,
       231,
       66
     ],
@@ -168,7 +168,7 @@
       0,
       25,
       22,
-      15,
+      16,
       583,
       191
     ],
@@ -190,7 +190,7 @@
       0,
       24,
       35,
-      9,
+      10,
       243,
       6
     ],
@@ -255,7 +255,7 @@
       0,
       23,
       21,
-      2,
+      1,
       479,
       56
     ],
@@ -277,7 +277,7 @@
       0,
       2,
       9,
-      4,
+      5,
       199,
       30
     ],
@@ -309,7 +309,7 @@
       15,
       16,
       6,
-      7,
+      9,
       1093,
       425
     ],
@@ -342,7 +342,7 @@
       0,
       1,
       95,
-      196,
+      209,
       829
     ],
     [
@@ -417,7 +417,7 @@
       3,
       7,
       10,
-      0,
+      4,
       246,
       105
     ],
@@ -428,7 +428,7 @@
       13,
       3,
       7,
-      2,
+      3,
       324,
       153
     ],
@@ -450,7 +450,7 @@
       0,
       0,
       5,
-      9,
+      10,
       473,
       133
     ],
@@ -526,7 +526,7 @@
       0,
       0,
       8,
-      7,
+      8,
       372,
       40
     ],
@@ -548,7 +548,7 @@
       5,
       12,
       28,
-      12,
+      13,
       609,
       168
     ],
@@ -559,7 +559,7 @@
       0,
       0,
       10,
-      1,
+      2,
       260
     ],
     [
@@ -569,7 +569,7 @@
       0,
       0,
       31,
-      3,
+      6,
       573,
       161
     ],
@@ -580,7 +580,7 @@
       0,
       0,
       0,
-      3,
+      7,
       121
     ],
     [
@@ -590,7 +590,7 @@
       0,
       6,
       14,
-      5,
+      7,
       2038,
       94
     ],
@@ -601,7 +601,7 @@
       0,
       0,
       23,
-      28,
+      34,
       143
     ],
     [
@@ -621,7 +621,7 @@
       0,
       2,
       1,
-      27,
+      25,
       1715,
       31
     ],
@@ -654,7 +654,7 @@
       0,
       0,
       2,
-      0,
+      1,
       241,
       3
     ],
@@ -665,7 +665,7 @@
       0,
       0,
       7,
-      27,
+      31,
       730,
       1
     ],
@@ -676,7 +676,7 @@
       0,
       0,
       0,
-      16,
+      19,
       914
     ],
     [
@@ -686,7 +686,7 @@
       0,
       0,
       0,
-      21,
+      23,
       722,
       184
     ],
@@ -719,7 +719,7 @@
       0,
       0,
       0,
-      41,
+      36,
       1227
     ],
     [
@@ -729,7 +729,7 @@
       2,
       2,
       0,
-      5,
+      7,
       2549
     ],
     [
@@ -2155,20 +2155,174 @@
       "info@markt-windorf.de",
       ""
     ],
-    ["84524","Neuhaus a.Inn","BY","","","","","","","MEV abgegeben"],
-    ["90584","Markt Allersberg","BY","","","","","","","MEV abgegeben"],
-    ["91171","Greding","BY","","","","","","","MEV abgegeben"],
-    ["91522","Ansbach","BY","","","","","","","MEV abgegeben"],
-    ["92249","Vilseck","BY","","","","","","","MEV abgegeben"],
-    ["92268","Ammerthal","BY","","","","","","","MEV abgegeben"],
-    ["92318","Neumarkt i.d.OPf.","BY","","","","","","","MEV abgegeben"],
-    ["93047","Regensburg","BY","","","","","","","MEV abgegeben"],
-    ["93354","Markt Siegenburg","BY","","","","","","","MEV abgegeben"],
-    ["93356","Teugn","BY","","","","","","","MEV abgegeben"],
-    ["93358","Train","BY","","","","","","","MEV abgegeben"],
-    ["94094","Rotthalmünster","BY","","","","","","","MEV abgegeben"],
-    ["94261","Kirchdorf i.Wald","BY","","","","","","","MEV abgegeben"],
-    ["94342","Straßkirchen","BY","","","","","","","MEV abgegeben"],
+    [
+      "84524",
+      "Neuhaus a.Inn",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "90584",
+      "Markt Allersberg",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "91171",
+      "Greding",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "91522",
+      "Ansbach",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "92249",
+      "Vilseck",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "92268",
+      "Ammerthal",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "92318",
+      "Neumarkt i.d.OPf.",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "93047",
+      "Regensburg",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "93354",
+      "Markt Siegenburg",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "93356",
+      "Teugn",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "93358",
+      "Train",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "94094",
+      "Rotthalmünster",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "94261",
+      "Kirchdorf i.Wald",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
+    [
+      "94342",
+      "Straßkirchen",
+      "BY",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
+    ],
     [
       "21255",
       "Wistedt",
