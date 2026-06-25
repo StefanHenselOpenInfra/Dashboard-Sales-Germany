@@ -766,7 +766,7 @@
     [
       "DE-BB Zeuthen-Wildau HP0",
       "HP0",
-      "Open Infra CS",
+      "United Promotion GmbH",
       6,
       3,
       1,
@@ -990,13 +990,6 @@
       "BB",
       0,
       670
-    ],
-    [
-      "DE-BB Zeuthen-Wildau HP0",
-      "HP0",
-      "BB",
-      0,
-      2628
     ],
     [
       "DE-BY Kirchroth HP0 - SNB",
@@ -1340,13 +1333,6 @@
       "MV",
       0,
       0
-    ],
-    [
-      "Luckau Combined (Deploy 2026)",
-      "Build Sales",
-      "BB",
-      347,
-      1174
     ]
   ],
   "cemeteryRows": [
@@ -2546,5 +2532,100 @@
     "DE-BB Teupitz P4": 31,
     "Luckau Combined (Deploy 2026)": 34,
     "DE-BY Kirchroth P1-1": 35
-  }
+  },
+  "coaRowsRaw": [
+    [
+      "DE-BY Kirchroth P1-1",
+      "BY",
+      "EnCom GmbH",
+      "CoA waiting",
+      "BASE UPSELL",
+      249,
+      16
+    ],
+    [
+      "DE-BB Diensdorf-Radlow",
+      "BB",
+      "EnCom GmbH",
+      ""
+    ],
+    [
+      "DE-BB Fürstenwalde P7",
+      "BB",
+      "United Promotion",
+      "",
+      "Base Sales / Up Sales",
+      216,
+      78
+    ],
+    [
+      "DE-Rietz-Neuendorf S2",
+      "BB",
+      "EnCom GmbH",
+      ""
+    ],
+    [
+      "DE-BB Beetzsee P2",
+      "BB",
+      "United Promotion",
+      ""
+    ],
+    [
+      "DE-BB Heidesee HP0",
+      "BB",
+      "United Promotion",
+      "CoA waiting"
+    ],
+    [
+      "DE-BB Neuzelle Combined P1",
+      "BB",
+      "United Promotion",
+      "CoA waiting"
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 1",
+      "BB",
+      "Stonemedia GmbH",
+      "CoA waiting"
+    ],
+    [
+      "DE-BB Grünheide P7",
+      "BB",
+      "Rating Peak GmbH",
+      ""
+    ],
+    [
+      "DE-BB Bersteland P3",
+      "BB",
+      "Stonemedia GmbH",
+      "new calc needed"
+    ],
+    [
+      "DE-BB Bersteland P4",
+      "BB",
+      "Stonemedia GmbH",
+      "new calc needed"
+    ],
+    [
+      "DE-BB Falkensee HP0",
+      "BB",
+      "Stonemedia GmbH",
+      "CoA waiting"
+    ],
+    [
+      "Luckau Combined (Deploy 2026)",
+      "BB",
+      "Stonemedia GmbH",
+      "CoA waiting"
+    ],
+    [
+      "DE-BB Zeuthen-Wildau HP0",
+      "BB",
+      "United Promotion GmbH",
+      "CoA waiting",
+      "HP0",
+      2628,
+      46
+    ]
+  ]
 }

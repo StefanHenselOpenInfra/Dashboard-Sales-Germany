@@ -222,7 +222,7 @@ var projectRows = [
   ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 1, 1877, 18],
   ["DE-BB Königs Wusterhausen HP0 2", "HP0", "Open Infra CS", 2, 1, 0, 1],
   ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 25, 1715, 31],
-  ["DE-BB Zeuthen-Wildau HP0", "HP0", "Open Infra CS", 6, 3, 1, 1, 2628, 35],
+  ["DE-BB Zeuthen-Wildau HP0", "HP0", "United Promotion GmbH", 6, 3, 1, 1, 2628, 35],
   ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 11],
   ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 36, 1227],
   // ── Rating Peak GmbH ──────────────────────────────────────────────────
@@ -255,7 +255,6 @@ var funnelRowsRaw = [
   ["DE-BB Neuzelle Combined P3","Build sales","BB",51,122],
   ["DE-BB Neuzelle Combined P4","Build sales","BB",166,427],
   ["DE-BB Rangsdorf HP0","HP0","BB",0,670],
-  ["DE-BB Zeuthen-Wildau HP0","HP0","BB",0,2628],
   ["DE-BY Kirchroth HP0 - SNB","HP0","BY",0,535],
   ["DE-NI Appel P1","BASE UPSELL","NI",24,343],
   ["DE-NI Drestedt & Wenzendorf HP0 - SNB","HP0","NI",0,521],
@@ -308,8 +307,6 @@ var funnelRowsRaw = [
   ["DE-BB Teupitz P3","Base Sales","BB",73,261],
   ["DE-BB Teupitz P4","Base Sales","BB",71,273],
   ["DE-BB Schwerin HP0","HP0","MV",0,0],
-  // ── off track → back in funnel ───────────────────────────────────────────
-  ["Luckau Combined (Deploy 2026)","Build Sales","BB",347,1174]
 ];
 
 // Target uptake % per project (e.g. 43 = 43%)
@@ -363,6 +360,7 @@ var coaRowsRaw = [
   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Falkensee HP0","BB","Stonemedia GmbH","CoA waiting"],
   ["Luckau Combined (Deploy 2026)","BB","Stonemedia GmbH","CoA waiting"],
+  ["DE-BB Zeuthen-Wildau HP0","BB","United Promotion GmbH","CoA waiting","HP0",2628,46],
 ];
 
 var settings = {salesReportTotal2026:1861,q2WorkingDaysDone:61,q2WorkingDaysLeft:4,juneForecast:744,q3WorkingDays:66,
@@ -1850,7 +1848,7 @@ function processSalesReport(ws){
 }
 
 var _heroResults=[];
-function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(d.projectTargets)projectTargets=d.projectTargets;if(cb)cb();}).catch(function(){if(cb)cb();});}
+function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(d.projectTargets)projectTargets=d.projectTargets;if(d.coaRowsRaw)coaRowsRaw=d.coaRowsRaw;if(cb)cb();}).catch(function(){if(cb)cb();});}
 function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
 function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}else if(r.sectionId==='sec-coa'){coaSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
