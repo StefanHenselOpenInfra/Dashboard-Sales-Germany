@@ -204,6 +204,7 @@ var projectRows = [
   // ── United Promotion GmbH ──────────────────────────────────────────────
   ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 10, 2, 260],
   ["DE-BB Blankenfelde-Mahlow P1", "Build Sales", "United Promotion GmbH", 0, 0, 31, 6, 573, 161],
+  ["DE-BB Heidesee HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 0, 2712, 604],
   ["DE-BB Heidesee P7", "Base Sales", "United Promotion GmbH", 0, 0, 0, 10, 121],
   ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 6, 14, 8, 2038, 94],
   ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 23, 36, 143],
@@ -218,6 +219,8 @@ var projectRows = [
   ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 3, 936, 137],
   ["DE-BB Neuzelle Combined P1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 615, 149],
   ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 42, 1227],
+  ["DE-BB Teupitz P3", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 261, 73],
+  ["DE-BB Teupitz P4", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 273, 71],
   // ── Team Tatjana ────────────────────────────────────────────────────────
   ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 9, 2549],
   // ── Open Infra CS ───────────────────────────────────────────────────────
@@ -248,7 +251,6 @@ var funnelRowsRaw = [
   ["DE-BB Groß Köris HP0 - SNB","HP0","BB",0,490],
   ["DE-BB Grünheide P2 HP0 - SNB","HP0","BB",0,510],
   ["DE-BB Halbe & Löpten P1 HP0 - SNB","HP0","BB",0,396],
-  ["DE-BB Heidesee HP0","HP0","BB",604,2712],
   ["DE-BB Heidesee B5-2","Build sales","BB",38,101],
   ["DE-BB Heidesee P5-1","BASE UPSELL","BB",20,70],
   ["DE-BB Hoppegarten P1","BASE UPSELL","BB",56,264],
@@ -309,8 +311,6 @@ var funnelRowsRaw = [
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
-  ["DE-BB Teupitz P3","Base Sales","BB",73,261],
-  ["DE-BB Teupitz P4","Base Sales","BB",71,273],
   ["DE-BB Schwerin HP0","HP0","MV",0,0],
 ];
 
@@ -357,7 +357,7 @@ var coaRowsRaw = [
   ["DE-BB Fürstenwalde P7","BB","United Promotion","","Base Sales / Up Sales",216,78],
   ["DE-Rietz-Neuendorf S2","BB","EnCom GmbH",""],
   ["DE-BB Beetzsee P2","BB","United Promotion",""],
-  ["DE-BB Heidesee HP0","BB","United Promotion","CoA waiting"],
+  ["DE-BB Heidesee HP0","BB","United Promotion GmbH","CoA waiting","HP0",2712,604],
   ["DE-BB Neuzelle Combined P1","BB","United Promotion","CoA waiting"],
   ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","CoA waiting"],
   ["DE-BB Grünheide P7","BB","Rating Peak GmbH",""],
@@ -366,6 +366,8 @@ var coaRowsRaw = [
   ["DE-BB Falkensee HP0","BB","Stonemedia GmbH","CoA waiting"],
   ["Luckau Combined (Deploy 2026)","BB","Stonemedia GmbH","CoA waiting"],
   ["DE-BB Zeuthen-Wildau HP0","BB","United Promotion GmbH","CoA waiting","HP0",2628,46],
+  ["DE-BB Teupitz P3","BB","United Promotion GmbH","CoA waiting","Base Sales",261,73],
+  ["DE-BB Teupitz P4","BB","United Promotion GmbH","CoA waiting","Base Sales",273,71],
 ];
 
 var settings = {salesReportTotal2026:1891,q2WorkingDaysDone:61,q2WorkingDaysLeft:4,juneForecast:743,q3WorkingDays:66,
@@ -1502,10 +1504,10 @@ function render(){
     var stoneStamps=[];
     var calcReadyProjs=[];
     var wartenProjs=[];
-    var backInFunnelProjs=['DE-BB Teupitz P3','DE-BB Teupitz P4'];
+    var backInFunnelProjs=[];
     var closedProjs=[];
     var coaWaitingProjs=['DE-BB Königs Wusterhausen HP0 1'];
-    var importantProjs=['DE-BB Teupitz P3','DE-BB Teupitz P4'];
+    var importantProjs=[];
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';

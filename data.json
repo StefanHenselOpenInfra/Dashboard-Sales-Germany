@@ -574,6 +574,17 @@
       161
     ],
     [
+      "DE-BB Heidesee HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      2712,
+      604
+    ],
+    [
       "DE-BB Heidesee P7",
       "Base Sales",
       "United Promotion GmbH",
@@ -721,6 +732,28 @@
       0,
       42,
       1227
+    ],
+    [
+      "DE-BB Teupitz P3",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      261,
+      73
+    ],
+    [
+      "DE-BB Teupitz P4",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      273,
+      71
     ],
     [
       "DE-BB Schöneiche HP0",
@@ -906,13 +939,6 @@
       "BB",
       0,
       396
-    ],
-    [
-      "DE-BB Heidesee HP0",
-      "HP0",
-      "BB",
-      604,
-      2712
     ],
     [
       "DE-BB Heidesee B5-2",
@@ -1312,20 +1338,6 @@
       "BB",
       0,
       0
-    ],
-    [
-      "DE-BB Teupitz P3",
-      "Base Sales",
-      "BB",
-      73,
-      261
-    ],
-    [
-      "DE-BB Teupitz P4",
-      "Base Sales",
-      "BB",
-      71,
-      273
     ],
     [
       "DE-BB Schwerin HP0",
@@ -2573,8 +2585,11 @@
     [
       "DE-BB Heidesee HP0",
       "BB",
-      "United Promotion",
-      "CoA waiting"
+      "United Promotion GmbH",
+      "CoA waiting",
+      "HP0",
+      2712,
+      604
     ],
     [
       "DE-BB Neuzelle Combined P1",
@@ -2626,6 +2641,24 @@
       "HP0",
       2628,
       46
+    ],
+    [
+      "DE-BB Teupitz P3",
+      "BB",
+      "United Promotion GmbH",
+      "CoA waiting",
+      "Base Sales",
+      261,
+      73
+    ],
+    [
+      "DE-BB Teupitz P4",
+      "BB",
+      "United Promotion GmbH",
+      "CoA waiting",
+      "Base Sales",
+      273,
+      71
     ]
   ]
 }
