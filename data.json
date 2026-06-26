@@ -3,41 +3,41 @@
     {
       "name": "Stonemedia GmbH",
       "january": 6,
-      "february": 66,
-      "march": 117,
-      "april": 133,
-      "may": 187,
-      "mayForecast": 187,
-      "juneActual": 108,
-      "ytd": 617,
+      "february": 58,
+      "march": 100,
+      "april": 128,
+      "may": 165,
+      "mayForecast": 165,
+      "juneActual": 111,
+      "ytd": 620,
       "forecast": 1100,
       "d2d": 6,
-      "cancelledYtd": 55
+      "cancelledYtd": 57
     },
     {
       "name": "EnCom GmbH",
       "january": 16,
-      "february": 37,
-      "march": 120,
-      "april": 125,
-      "may": 139,
-      "mayForecast": 139,
-      "juneActual": 245,
-      "ytd": 682,
+      "february": 35,
+      "march": 115,
+      "april": 118,
+      "may": 134,
+      "mayForecast": 134,
+      "juneActual": 248,
+      "ytd": 685,
       "forecast": 1100,
       "d2d": 14,
-      "cancelledYtd": 22
+      "cancelledYtd": 21
     },
     {
       "name": "Team Tatjana",
       "january": 3,
-      "february": 25,
+      "february": 24,
       "march": 40,
-      "april": 50,
-      "may": 58,
-      "mayForecast": 58,
-      "juneActual": 32,
-      "ytd": 208,
+      "april": 47,
+      "may": 57,
+      "mayForecast": 57,
+      "juneActual": 38,
+      "ytd": 214,
       "forecast": 450,
       "d2d": 2,
       "cancelledYtd": 6
@@ -48,12 +48,12 @@
       "february": 0,
       "march": 0,
       "april": 7,
-      "may": 99,
-      "mayForecast": 99,
-      "juneActual": 201,
-      "ytd": 307,
+      "may": 96,
+      "mayForecast": 96,
+      "juneActual": 218,
+      "ytd": 324,
       "forecast": 330,
-      "d2d": 11,
+      "d2d": 12,
       "cancelledYtd": 11
     },
     {
@@ -92,8 +92,8 @@
       "april": 0,
       "may": 0,
       "mayForecast": 0,
-      "juneActual": 6,
-      "ytd": 6,
+      "juneActual": 8,
+      "ytd": 8,
       "forecast": 0,
       "d2d": 0,
       "comingSoon": true,
@@ -101,6 +101,23 @@
     }
   ],
   "kpiActuals": {
+    "Base Sales / Up Sales": {
+      "april": 159,
+      "may": 329,
+      "june": 410
+    },
+    "After Market / HP0 Sales": {
+      "april": 21,
+      "may": 39,
+      "june": 104
+    },
+    "Build Sales": {
+      "april": 148,
+      "may": 123,
+      "june": 126
+    }
+  },
+  "kpiPreviousDay": {
     "Base Sales / Up Sales": {
       "april": 159,
       "may": 329,
@@ -117,38 +134,21 @@
       "june": 120
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 159,
-      "may": 329,
-      "june": 375
-    },
-    "After Market / HP0 Sales": {
-      "april": 21,
-      "may": 39,
-      "june": 93
-    },
-    "Build Sales": {
-      "april": 148,
-      "may": 123,
-      "june": 115
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1861,
+    "salesReportTotal2026": 1891,
     "q2WorkingDaysDone": 61,
     "q2WorkingDaysLeft": 4,
     "q3WorkingDays": 66,
-    "juneForecast": 744,
+    "juneForecast": 743,
     "jan": 42,
     "feb": 146,
     "mar": 296,
     "apr": 328,
     "may": 489,
-    "lastUpdateDate": "25.6.2026"
+    "lastUpdateDate": "26.6.2026"
   },
-  "netSales": 1861,
-  "cancelled": 95,
+  "netSales": 1891,
+  "cancelled": 98,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -157,7 +157,7 @@
       0,
       0,
       0,
-      21,
+      23,
       231,
       66
     ],
@@ -168,7 +168,7 @@
       0,
       25,
       22,
-      16,
+      17,
       583,
       191
     ],
@@ -190,7 +190,7 @@
       0,
       24,
       35,
-      10,
+      11,
       243,
       6
     ],
@@ -233,7 +233,7 @@
       0,
       0,
       25,
-      8,
+      9,
       335,
       79
     ],
@@ -255,7 +255,7 @@
       0,
       23,
       21,
-      1,
+      2,
       479,
       56
     ],
@@ -299,7 +299,7 @@
       0,
       0,
       0,
-      18,
+      19,
       186
     ],
     [
@@ -342,7 +342,7 @@
       0,
       1,
       95,
-      209,
+      212,
       829
     ],
     [
@@ -407,7 +407,7 @@
       0,
       0,
       2,
-      5,
+      6,
       842
     ],
     [
@@ -428,7 +428,7 @@
       13,
       3,
       7,
-      3,
+      4,
       324,
       153
     ],
@@ -548,7 +548,7 @@
       5,
       12,
       28,
-      13,
+      16,
       609,
       168
     ],
@@ -580,7 +580,7 @@
       0,
       0,
       0,
-      7,
+      10,
       121
     ],
     [
@@ -590,7 +590,7 @@
       0,
       6,
       14,
-      7,
+      8,
       2038,
       94
     ],
@@ -601,7 +601,7 @@
       0,
       0,
       23,
-      34,
+      36,
       143
     ],
     [
@@ -621,7 +621,7 @@
       0,
       2,
       1,
-      25,
+      31,
       1715,
       31
     ],
@@ -665,7 +665,7 @@
       0,
       0,
       7,
-      31,
+      33,
       730,
       1
     ],
@@ -676,7 +676,7 @@
       0,
       0,
       0,
-      19,
+      22,
       914
     ],
     [
@@ -686,7 +686,7 @@
       0,
       0,
       0,
-      23,
+      24,
       722,
       184
     ],
@@ -697,7 +697,7 @@
       0,
       0,
       0,
-      2,
+      3,
       936,
       137
     ],
@@ -719,7 +719,7 @@
       0,
       0,
       0,
-      36,
+      42,
       1227
     ],
     [
@@ -729,7 +729,7 @@
       2,
       2,
       0,
-      7,
+      9,
       2549
     ],
     [
@@ -823,7 +823,7 @@
       0,
       0,
       0,
-      5,
+      7,
       186,
       50
     ],
