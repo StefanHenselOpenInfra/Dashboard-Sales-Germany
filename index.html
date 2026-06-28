@@ -140,12 +140,12 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
   {name:"Stonemedia GmbH",january:7,february:58,march:111,april:62,may:228,mayForecast:228,juneActual:114,ytd:580,forecast:1100,d2d:6,cancelledYtd:57},
-  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:118,mayForecast:118,juneActual:253,ytd:685,forecast:1100,d2d:13,cancelledYtd:22},
+  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:118,mayForecast:118,juneActual:253,ytd:685,forecast:1100,d2d:5,cancelledYtd:22},
   {name:"Team Tatjana",january:3,february:24,march:40,april:41,may:62,mayForecast:62,juneActual:38,ytd:208,forecast:450,d2d:2,cancelledYtd:6},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:84,juneActual:243,ytd:333,forecast:330,d2d:12,cancelledYtd:11},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:84,juneActual:243,ytd:333,forecast:330,d2d:9,cancelledYtd:11},
   {name:"Open Infra CS",january:5,february:6,march:12,april:9,may:2,mayForecast:2,juneActual:5,ytd:39,forecast:175,d2d:0,cancelledYtd:0},
   {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0,cancelledYtd:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:0,comingSoon:true,cancelledYtd:0}
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:1,cancelledYtd:0}
 ];
 
 // Brutto Q2-Actuals (Erstellungsdatum) — Sales Report 29
@@ -370,9 +370,10 @@ var coaRowsRaw = [
   ["DE-BB Teupitz P4","BB","United Promotion GmbH","CoA waiting","Base Sales",273,71],
 ];
 
-var settings = {salesReportTotal2026:1925,q2WorkingDaysDone:63,q2WorkingDaysLeft:2,juneForecast:729,q3WorkingDays:66,
+var settings = {salesReportTotal2026:1925,q2WorkingDaysDone:63,q2WorkingDaysLeft:2,juneForecast:729,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
   // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 30
   jan:59,feb:155,mar:292,apr:244,may:501,
+  jul:0,aug:0,sep:0,
   lastUpdateDate:'28.6.2026'}
 var netSales=1826;
 var cancelled=99;
@@ -1125,6 +1126,30 @@ function render(){
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
     html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+    html+='</div>';
+
+    // ── Q3 Brutto ──
+    var totalQ3=(S.jul||0)+(S.aug||0)+(S.sep||0);
+    var q3Target=1400;
+    var q3Reached=Math.round(totalQ3/q3Target*100);
+    var q3WD=S.q3WorkingDays||66;
+    var q3Done=S.q3WorkingDaysDone||0;
+    var q3Left=S.q3WorkingDaysLeft!=null?S.q3WorkingDaysLeft:q3WD;
+    var q3TimePct=Math.round(q3Done/q3WD*100);
+    var q3Forecast=q3Done>0?Math.round(totalQ3/q3Done*q3WD):0;
+    var q3ForecastPct=Math.round(q3Forecast/q3Target*100);
+    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:20px;">Q3 Brutto (Jul+Aug+Sep) / Ziel</p>';
+    html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
+    html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ3+'</span>';
+    html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+q3Target+'</span>';
+    html+='</div>';
+    html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+q3Reached+'%;height:100%;border-radius:9999px;"></div></div></div>';
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Reached+'%</b><br>Achievement</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+(q3Done>0?q3ForecastPct+'%':'—')+'</span><b>Forecast</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3TimePct+'%</b><br>Q3 Time';
+    html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+q3TimePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Left+'</b><br>Days left</div>';
     html+='</div>';
   }
   html+='</div></div></div></div></div>';

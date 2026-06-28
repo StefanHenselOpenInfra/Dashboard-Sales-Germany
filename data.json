@@ -25,7 +25,7 @@
       "juneActual": 253,
       "ytd": 685,
       "forecast": 1100,
-      "d2d": 13,
+      "d2d": 5,
       "cancelledYtd": 22
     },
     {
@@ -53,7 +53,7 @@
       "juneActual": 243,
       "ytd": 333,
       "forecast": 330,
-      "d2d": 12,
+      "d2d": 9,
       "cancelledYtd": 11
     },
     {
@@ -95,8 +95,7 @@
       "juneActual": 8,
       "ytd": 8,
       "forecast": 0,
-      "d2d": 0,
-      "comingSoon": true,
+      "d2d": 1,
       "cancelledYtd": 0
     }
   ],
@@ -145,7 +144,12 @@
     "mar": 292,
     "apr": 244,
     "may": 501,
-    "lastUpdateDate": "28.6.2026"
+    "lastUpdateDate": "28.6.2026",
+    "q3WorkingDaysDone": 0,
+    "q3WorkingDaysLeft": 66,
+    "jul": 0,
+    "aug": 0,
+    "sep": 0
   },
   "netSales": 1826,
   "cancelled": 99,
