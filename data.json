@@ -162,7 +162,7 @@
       0,
       0,
       0,
-      41,
+      22,
       231,
       66
     ],
@@ -171,10 +171,10 @@
       "Build Sales",
       "Stonemedia GmbH",
       0,
-      25,
       22,
       22,
-      583,
+      17,
+      579,
       191
     ],
     [
@@ -345,10 +345,10 @@
       "Base Sales",
       "EnCom GmbH",
       0,
-      1,
-      95,
-      267,
-      829
+      0,
+      75,
+      213,
+      835
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -455,7 +455,7 @@
       3,
       7,
       10,
-      4,
+      0,
       246,
       105
     ],
@@ -511,8 +511,8 @@
       12,
       7,
       2,
-      292,
-      106
+      307,
+      105
     ],
     [
       "DE-BB Zossen P4",
@@ -533,8 +533,8 @@
       21,
       5,
       3,
-      1100,
-      399
+      1097,
+      395
     ],
     [
       "DE-BB Birkenwerder P1-2",
@@ -649,8 +649,8 @@
       "United Promotion GmbH",
       0,
       0,
-      23,
-      51,
+      17,
+      37,
       143
     ],
     [
@@ -2425,9 +2425,9 @@
     "DE-BB Beetzsee P5": "https://bob.openinfra.com/delivery-projects/4307",
     "DE-BB Bersteland P3": "https://bob.openinfra.com/delivery-projects/3748",
     "DE-BB Bersteland P4": "https://bob.openinfra.com/delivery-projects/3747",
-    "DE-BB Birkenwerder P1": "https://bob.openinfra.com/delivery-projects/2232",
+    "DE-BB Birkenwerder P1": "https://bob.openinfra.com/sales-projects/3992",
     "DE-BB Birkenwerder P1-2": "https://bob.openinfra.com/delivery-projects/4116",
-    "DE-BB Birkenwerder P2": "https://bob.openinfra.com/delivery-projects/2231",
+    "DE-BB Birkenwerder P2": "https://bob.openinfra.com/sales-projects/3988",
     "DE-BB Birkenwerder P2-2": "https://bob.openinfra.com/delivery-projects/4098",
     "DE-BB Birkenwerder P3": "https://bob.openinfra.com/delivery-projects/2257",
     "DE-BB Birkenwerder P3-2": "https://bob.openinfra.com/delivery-projects/4093",
@@ -2492,13 +2492,13 @@
     "DE-BB Zossen P4-2": "https://bob.openinfra.com/delivery-projects/4090",
     "DE-BB Zossen P6": "https://bob.openinfra.com/delivery-projects/3701",
     "DE-BB Zossen P7": "https://bob.openinfra.com/delivery-projects/4165",
-    "DE-BY Kirchroth P3": "https://bob.openinfra.com/delivery-projects/3108",
+    "DE-BY Kirchroth P3": "https://bob.openinfra.com/sales-projects/4062",
     "DE-BY Kirchroth P4": "https://bob.openinfra.com/delivery-projects/3441",
     "DE-BY Kirchroth P5": "https://bob.openinfra.com/sales-projects/4082",
     "DE-BY Leiblfing P1": "https://bob.openinfra.com/delivery-projects/3799",
     "DE-BY Parkstetten P1": "https://bob.openinfra.com/delivery-projects/3009",
     "DE-BY Steinach": "https://bob.openinfra.com/delivery-projects/3769",
-    "DE-BY Straubing P1": "https://bob.openinfra.com/delivery-projects/3542",
+    "DE-BY Straubing P1": "https://bob.openinfra.com/sales-projects/2611",
     "DE-NI Handeloh P1": "https://bob.openinfra.com/delivery-projects/2048",
     "DE-NI Kakenstorf P3": "https://bob.openinfra.com/delivery-projects/2747",
     "DE-NI Königsmoor P1": "https://bob.openinfra.com/delivery-projects/2624",
