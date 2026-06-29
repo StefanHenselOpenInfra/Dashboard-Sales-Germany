@@ -336,6 +336,8 @@
       0,
       0,
       0,
+      0,
+      1103,
       0
     ],
     [
@@ -345,7 +347,9 @@
       0,
       0,
       0,
-      0
+      0,
+      1174,
+      347
     ],
     [
       "DE-BB Diehlo P1",
@@ -2570,7 +2574,7 @@
     "Heidenau B4": "https://bob.openinfra.com/delivery-projects/2628",
     "Hohen Neuendorf B1": "https://bob.openinfra.com/delivery-projects/2254",
     "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
-    "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/delivery-projects/3771",
+    "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/sales-projects/4322",
     "Nienburg Projekte KSB": "https://www.google.com/maps/d/edit?mid=1O_2TNymgRyUs9JkqnBv0dheWnM3GE54&ll=52.68645321738002%2C9.134187513199254&z=12",
     "DE-BB Seddiner See P2": "https://bob.openinfra.com/delivery-projects/1750",
     "Wistedt B1": "https://bob.openinfra.com/delivery-projects/1964",
@@ -2651,7 +2655,13 @@
     "Hohen Neuendorf B1": 45,
     "Hohen Neuendorf B2": 45,
     "DE-BB Neuzelle Combined P1": 45,
-    "DE-BB Gosen Neu-Zittau P3": 45
+    "DE-BB Gosen Neu-Zittau P3": 45,
+    "DE-BY Kirchroth P4": 50,
+    "DE-BY Straubing P1": 40,
+    "DE-BY Kirchroth P3": 50,
+    "DE-BB Amt Scharmützelsee P3": "T.b.a.",
+    "DE-BB Amt Scharmützelsee P5": "T.b.a.",
+    "DE-BB Amt Scharmützelsee P4": 40
   },
   "coaRowsRaw": [
     [
