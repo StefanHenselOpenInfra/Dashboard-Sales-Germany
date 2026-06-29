@@ -22,8 +22,8 @@
       "april": 121,
       "may": 118,
       "mayForecast": 118,
-      "juneActual": 253,
-      "ytd": 685,
+      "juneActual": 254,
+      "ytd": 686,
       "forecast": 1100,
       "d2d": 5,
       "cancelledYtd": 22
@@ -50,8 +50,8 @@
       "april": 6,
       "may": 84,
       "mayForecast": 84,
-      "juneActual": 243,
-      "ytd": 333,
+      "juneActual": 245,
+      "ytd": 335,
       "forecast": 330,
       "d2d": 9,
       "cancelledYtd": 11
@@ -103,6 +103,23 @@
     "Base Sales / Up Sales": {
       "april": 91,
       "may": 346,
+      "june": 413
+    },
+    "After Market / HP0 Sales": {
+      "april": 20,
+      "may": 36,
+      "june": 128
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 135
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 91,
+      "may": 346,
       "june": 410
     },
     "After Market / HP0 Sales": {
@@ -116,29 +133,12 @@
       "june": 136
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 91,
-      "may": 346,
-      "june": 385
-    },
-    "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 36,
-      "june": 104
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 119
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1925,
+    "salesReportTotal2026": 1928,
     "q2WorkingDaysDone": 63,
     "q2WorkingDaysLeft": 2,
     "q3WorkingDays": 66,
-    "juneForecast": 729,
+    "juneForecast": 745,
     "jan": 59,
     "feb": 155,
     "mar": 292,
@@ -149,9 +149,10 @@
     "q3WorkingDaysLeft": 66,
     "jul": 0,
     "aug": 0,
-    "sep": 0
+    "sep": 0,
+    "jun_actual": 677
   },
-  "netSales": 1826,
+  "netSales": 1829,
   "cancelled": 99,
   "projectRows": [
     [
@@ -346,7 +347,7 @@
       0,
       1,
       95,
-      266,
+      267,
       829
     ],
     [
@@ -359,6 +360,39 @@
       0,
       904,
       304
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P3",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      868,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P4",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      364,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P5",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      147,
+      0
     ],
     [
       "DE-BB Frankfurt (Oder) Combined P1",
@@ -411,7 +445,7 @@
       0,
       0,
       2,
-      9,
+      10,
       842
     ],
     [
@@ -454,7 +488,7 @@
       0,
       0,
       5,
-      15,
+      19,
       473,
       133
     ],
@@ -636,7 +670,7 @@
       0,
       2,
       1,
-      61,
+      66,
       1715,
       31
     ],
@@ -680,7 +714,7 @@
       0,
       0,
       7,
-      60,
+      62,
       730,
       1
     ],
@@ -701,7 +735,7 @@
       0,
       0,
       0,
-      46,
+      47,
       722,
       184
     ],
@@ -1293,27 +1327,6 @@
       "BB",
       28,
       283
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P3",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      868
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P4",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      364
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P5",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      147
     ],
     [
       "DE-BB Spreenhagen P2",
@@ -2663,6 +2676,33 @@
       "Base Sales",
       273,
       71
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P3",
+      "BB",
+      "EnCom GmbH",
+      "",
+      "Base Sales / Up Sales",
+      868,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P4",
+      "BB",
+      "EnCom GmbH",
+      "CoA waiting",
+      "Base Sales / Up Sales",
+      364,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P5",
+      "BB",
+      "EnCom GmbH",
+      "",
+      "Base Sales / Up Sales",
+      147,
+      0
     ]
   ],
   "salesReportTotal2026": 1925,

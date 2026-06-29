@@ -140,9 +140,9 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
   {name:"Stonemedia GmbH",january:7,february:58,march:111,april:62,may:228,mayForecast:228,juneActual:114,ytd:580,forecast:1100,d2d:6,cancelledYtd:57},
-  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:118,mayForecast:118,juneActual:253,ytd:685,forecast:1100,d2d:5,cancelledYtd:22},
+  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:118,mayForecast:118,juneActual:254,ytd:686,forecast:1100,d2d:5,cancelledYtd:22},
   {name:"Team Tatjana",january:3,february:24,march:40,april:41,may:62,mayForecast:62,juneActual:38,ytd:208,forecast:450,d2d:2,cancelledYtd:6},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:84,juneActual:243,ytd:333,forecast:330,d2d:9,cancelledYtd:11},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:84,juneActual:245,ytd:335,forecast:330,d2d:9,cancelledYtd:11},
   {name:"Open Infra CS",january:5,february:6,march:12,april:9,may:2,mayForecast:2,juneActual:5,ytd:39,forecast:175,d2d:0,cancelledYtd:0},
   {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0,cancelledYtd:0},
   {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:1,cancelledYtd:0}
@@ -150,14 +150,14 @@ var partners = [
 
 // Brutto Q2-Actuals (Erstellungsdatum) — Sales Report 29
 var kpiActuals = {
+  "Base Sales / Up Sales":{april:91,may:346,june:413},
+  "After Market / HP0 Sales":{april:20,may:36,june:128},
+  "Build Sales":{april:133,may:119,june:135}
+};
+var kpiPreviousDay = {
   "Base Sales / Up Sales":{april:91,may:346,june:410},
   "After Market / HP0 Sales":{april:20,may:36,june:128},
   "Build Sales":{april:133,may:119,june:136}
-};
-var kpiPreviousDay = {
-  "Base Sales / Up Sales":{april:91,may:346,june:385},
-  "After Market / HP0 Sales":{april:20,may:36,june:104},
-  "Build Sales":{april:133,may:119,june:119}
 };
 
 var projectRows = [
@@ -180,17 +180,20 @@ var projectRows = [
   ["Märkisch Buchholz Combined", "Base Sales", "Stonemedia GmbH", 41, 7, 2, 1, 1475, 381],
   // ── EnCom GmbH ─────────────────────────────────────────────────────────
   ["DE-BB Diehlo P1", "Base Sales / Up Sales", "EnCom GmbH", 0, 0, 0, 0, 157, 1],
-  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 1, 95, 266, 829],
+  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 1, 95, 267, 829],
   ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 46, 0, 0, 904, 304],
+  ["DE-BB Amt Scharmützelsee P3", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 868, 0],
+  ["DE-BB Amt Scharmützelsee P4", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 364, 0],
+  ["DE-BB Amt Scharmützelsee P5", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 147, 0],
   ["DE-BB Frankfurt (Oder) Combined P1", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 519, 134],
   ["DE-BB Frankfurt (Oder) Combined P2", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 459, 142],
   ["DE-BB Frankfurt (Oder) Combined P3", "Build Sales", "EnCom GmbH", 31, 11, 0, 0, 213, 86],
   ["DE-BB Frankfurt (Oder) Combined P4", "Build Sales", "EnCom GmbH", 0, 23, 7, 3, 344, 66],
-  ["DE-BB Königs Wusterhausen HP0 3", "HP0", "EnCom GmbH", 0, 0, 2, 9, 842],
+  ["DE-BB Königs Wusterhausen HP0 3", "HP0", "EnCom GmbH", 0, 0, 2, 10, 842],
   ["DE-BY Kirchroth P3", "BASE UPSELL", "EnCom GmbH", 3, 7, 10, 4, 246, 105],
   ["DE-BY Kirchroth P4", "BASE UPSELL", "EnCom GmbH", 13, 3, 7, 7, 324, 153],
   ["DE-BY Kirchroth P5", "Build Sales", "EnCom GmbH", 34, 14, 1, 0, 154, 49],
-  ["DE-BY Leiblfing P1", "Build Sales", "EnCom GmbH", 0, 0, 5, 15, 473, 133],
+  ["DE-BY Leiblfing P1", "Build Sales", "EnCom GmbH", 0, 0, 5, 19, 473, 133],
   ["DE-BY Parkstetten P1", "BASE UPSELL", "EnCom GmbH", 2, 0, 0, 0, 396, 99],
   ["DE-BY Straubing P1", "BASE UPSELL", "EnCom GmbH", 3, 12, 7, 2, 292, 106],
   ["DE-BB Zossen P4", "Build Sales", "EnCom GmbH", 0, 1, 0, 8, 590, 246],
@@ -209,13 +212,13 @@ var projectRows = [
   ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 6, 14, 11, 2038, 94],
   ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 23, 51, 143],
   ["DE-BB Woltersdorf P5-1", "Build Sales", "United Promotion GmbH", 0, 1, 6, 0, 274],
-  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 61, 1715, 31],
+  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 66, 1715, 31],
   ["DE-BB Zossen HP0", "HP0", "United Promotion GmbH", 0, 0, 2, 0, 109, 2],
   ["DE-BB Zossen P3", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 199, 71],
   ["DE-BB Zossen P4-2", "Base Sales", "United Promotion GmbH", 0, 0, 2, 3, 241, 3],
-  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 7, 60, 730, 1],
+  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 7, 62, 730, 1],
   ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 52, 914],
-  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 46, 722, 184],
+  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 47, 722, 184],
   ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 6, 936, 137],
   ["DE-BB Neuzelle Combined P1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 615, 149],
   ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 61, 1227],
@@ -305,9 +308,6 @@ var funnelRowsRaw = [
   ["DE-BB Grünheide P4","BASE UPSELL","BB",31,84],
   ["DE-BB Grünheide P5","BASE UPSELL","BB",0,0],
   ["DE-BB Grünheide P6","BASE UPSELL","BB",28,283],
-  ["DE-BB Amt Scharmützelsee P3","Base Sales / Up Sales","BB",0,868],
-  ["DE-BB Amt Scharmützelsee P4","Base Sales / Up Sales","BB",0,364],
-  ["DE-BB Amt Scharmützelsee P5","Base Sales / Up Sales","BB",0,147],
   ["DE-BB Spreenhagen P2","BASE UPSELL","BB",4,63],
   ["DE-BB Schöneiche P11","BASE UPSELL","BB",0,186],
   ["DE-BB Spreenhagen P4","BASE UPSELL","BB",0,259],
@@ -368,14 +368,17 @@ var coaRowsRaw = [
   ["DE-BB Zeuthen-Wildau HP0","BB","United Promotion GmbH","CoA waiting","HP0",2628,46],
   ["DE-BB Teupitz P3","BB","United Promotion GmbH","CoA waiting","Base Sales",261,73],
   ["DE-BB Teupitz P4","BB","United Promotion GmbH","CoA waiting","Base Sales",273,71],
+  ["DE-BB Amt Scharmützelsee P3","BB","EnCom GmbH","","Base Sales / Up Sales",868,0],
+  ["DE-BB Amt Scharmützelsee P4","BB","EnCom GmbH","CoA waiting","Base Sales / Up Sales",364,0],
+  ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH","","Base Sales / Up Sales",147,0],
 ];
 
-var settings = {salesReportTotal2026:1925,q2WorkingDaysDone:63,q2WorkingDaysLeft:2,juneForecast:729,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
+var settings = {salesReportTotal2026:1928,q2WorkingDaysDone:63,q2WorkingDaysLeft:2,juneForecast:745,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
   // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 30
   jan:59,feb:155,mar:292,apr:244,may:501,
   jul:0,aug:0,sep:0,
   lastUpdateDate:'28.6.2026'}
-var netSales=1826;
+var netSales=1829;
 var cancelled=99;
 
 var potentialRows = [
@@ -1013,7 +1016,7 @@ function render(){
           '<span style="font-size:3rem;font-weight:900;">'+k.actual+'</span>'+
           '<span style="color:#64748b;margin-left:8px;">/ '+k.target+'</span>'+
           '<div style="margin-top:4px;display:flex;align-items:center;gap:8px;">'+
-            '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Brutto / Ziel</p>'+
+            '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Gross / Target</p>'+
             (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' last update '+(settings.lastUpdateDate||'')+'</span>':
              k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' last update '+(settings.lastUpdateDate||'')+'</span>':'')+
           '</div>'+
@@ -1086,10 +1089,10 @@ function render(){
       html+='<div style="font-size:15px;font-weight:900;color:#f2d1b3;margin-bottom:16px;">'+esc(_heroActiveAgency)+'</div>';
     }
     html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
-    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">YTD Brutto Gesamt</div>';
+    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">YTD Gross Total</div>';
     html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+(_ap.ytd||0)+'</div>';
-    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">Ziel 2026: '+(_ap.forecast||'—')+' &nbsp;·&nbsp; D2D heute: <b style="color:#86efac;">'+(_ap.d2d||0)+'</b></div></div>';
-    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Signed (Apr+Mai+Jun) / Jahres-Ziel</p>';
+    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);">Target 2026: '+(_ap.forecast||'—')+' &nbsp;·&nbsp; D2D heute: <b style="color:#86efac;">'+(_ap.d2d||0)+'</b></div></div>';
+    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Signed (Apr+Mai+Jun) / Annual Target</p>';
     html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
     html+='<span style="font-size:3.5rem;font-weight:900;">'+_apQ2+'</span>';
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+_apTarget+'</span>';
@@ -1102,18 +1105,18 @@ function render(){
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>~'+_apJunFcst+'</b><br>Jun Fcst</div>';
     html+='</div>';
     html+='<div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;">';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+_apPct+'%</b><br>Q2 / Ziel</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+_apPct+'%</b><br>Q2 / Target</div>';
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
     html+='</div>';
   } else {
     html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
-    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Brutto Sales Total</div>';
+    html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Gross Sales Total</div>';
     html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
     var grossSales=S.salesReportTotal2026;
     var cancelRate=(cancelled/grossSales*100).toFixed(1);
-    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);"><span style="color:#fca5a5;">'+cancelled+' storniert &nbsp;·&nbsp; Stornoquote '+cancelRate+'%</span></div></div>';
+    html+='<div style="font-size:11px;color:rgba(242,209,179,.7);"><span style="color:#fca5a5;">'+cancelled+' cancelled &nbsp;·&nbsp; Cancellation Quota '+cancelRate+'%</span></div></div>';
     var totalVsYesterday=kpis.reduce(function(s,k){return s+k.vsYesterday;},0);
-    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Brutto (Apr+Mai+Jun) / Ziel</p>';
+    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Gross (Apr+Mai+Jun) / Target</p>';
     html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
     html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
@@ -1138,7 +1141,7 @@ function render(){
     var q3TimePct=Math.round(q3Done/q3WD*100);
     var q3Forecast=q3Done>0?Math.round(totalQ3/q3Done*q3WD):0;
     var q3ForecastPct=Math.round(q3Forecast/q3Target*100);
-    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:20px;">Q3 Brutto (Jul+Aug+Sep) / Ziel</p>';
+    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:20px;">Q3 Gross (Jul+Aug+Sep) / Target</p>';
     html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
     html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ3+'</span>';
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+q3Target+'</span>';
@@ -1252,7 +1255,7 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Eigenziel + Q2-Delta</span>')+'</p></div>';
+  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Own Target + Q2-Delta</span>')+'</p></div>';
   if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){html+=agencyLogos[selectedAgencies[0]].replace('<svg ','<svg style="height:42px;width:auto;border-radius:6px;" ');}
   html+='<span class="badge tag-amber">2026</span></div>';
   var q3Pace=_fp?undefined:Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
@@ -1282,7 +1285,7 @@ function render(){
   },1));
   html+='<div class="card" style="border:2px solid #E4A489;margin-top:16px;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
-  html+='<div><h2>Cancellation Quota</h2><p style="color:#64748b;">Stornierungen je Partner (YTD Brutto)</p></div>';
+  html+='<div><h2>Cancellation Quota</h2><p style="color:#64748b;">Stornierungen je Partner (YTD Gross)</p></div>';
   html+='<div style="text-align:right;">';
   html+='<div style="font-size:2rem;font-weight:900;color:'+(globalRate>10?'#dc2626':globalRate>5?'#d97706':'#059669')+';">'+globalRate.toFixed(1)+'%</div>';
   html+='<div style="font-size:11px;color:#64748b;">'+(selectedAgencies===null?'Gesamt':'')+'·&nbsp;'+totalCancelAll+' / '+totalGrossAll+'</div>';
@@ -1426,7 +1429,7 @@ function render(){
     var commissionChangeProjs=[];
     var checkAddressProjs=[];
     var startProjs={'DE-BB Falkensee HP0':'20.6.2026'};
-    var targetReachedProjs=['DE-BB Amt Scharmützelsee P1'];
+    var targetReachedProjs=['DE-BB Storkow P2','DE-BB Amt Scharmützelsee P0','DE-BB Amt Scharmützelsee P1','DE-BB Schulzendorf P3'];
     var allZero=(r[6]||0)===0&&checkAddressProjs.indexOf(r[0])<0&&!startProjs[r[0]]&&targetReachedProjs.indexOf(r[0])<0;
     html+='<tr style="background:'+(i%2===0?'#fff':'rgba(248,234,223,.4)')+'">';
     var bobUrl=bobLinks[r[0]];
@@ -1536,7 +1539,6 @@ function render(){
     // Determine badge
     var encBadge='';
     if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
-    if(r[0]==='DE-BB Amt Scharmützelsee P3') encBadge+='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;white-space:nowrap;">waiting until digging in P1</span>';
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
     else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
     else if(pruefenRotProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">PRÜFEN</span>';
@@ -1867,13 +1869,13 @@ function processSalesReport(ws){
   if(juneLeft) settings.q2WorkingDaysLeft=parseInt(juneLeft);
   
   var summary='✅ Sales Report importiert!\n\n'+
-    'Brutto: '+totalBrutto+' | Storno: '+totalCancel+' | Netto: '+totalNetto+'\n'+
+    'Gross: '+totalBrutto+' | Storno: '+totalCancel+' | Netto: '+totalNetto+'\n'+
     'Juni: '+juneBrutto+' Aufträge\n'+
     'KPI Juni: Base='+kpiJune.base+' HP0='+kpiJune.hp0+' Build='+kpiJune.build+'\n\n'+
     'Partner Juni-Werte:\n'+
     partners.map(function(p){return p.name+': '+p.juneActual;}).join('\n');
   
-  showStatus('✅ Sales Report importiert! '+totalBrutto+' Brutto, Juni='+juneBrutto);
+  showStatus('✅ Sales Report importiert! '+totalBrutto+' Gross, Juni='+juneBrutto);
   var lbl=document.getElementById('last-import-label');
   lbl.style.display='inline';
   lbl.textContent='Sales Report: '+new Date().toLocaleString('de-DE');
