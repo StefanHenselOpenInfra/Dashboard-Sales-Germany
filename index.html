@@ -1320,6 +1320,11 @@ function render(){
   });
   var coaIdx={Project:0,Region:1,Agency:2,Status:3}[coaSortKey];
   coaFiltered.sort(function(a,b){
+    if(coaSortKey==='Urgent'){
+      var au=urgentCoaProjs.indexOf(a[0])>=0?1:0;
+      var bu=urgentCoaProjs.indexOf(b[0])>=0?1:0;
+      return coaSortDir==='asc'?au-bu:bu-au;
+    }
     var av=a[coaIdx]||'',bv=b[coaIdx]||'';
     var r=String(av).localeCompare(String(bv));
     return coaSortDir==='asc'?r:-r;
@@ -1343,9 +1348,11 @@ function render(){
     var active=coaSortKey===col[0];
     html+='<th style="cursor:pointer;user-select:none;" onclick="coaSortKey=\''+col[0]+'\';coaSortDir=(coaSortKey===\''+col[0]+'\'&&coaSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(active?(coaSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
-  ['Type','HP','HC','Uptake','Target','Delta Target','Urgent'].forEach(function(h){
+  ['Type','HP','HC','Uptake','Target','Delta Target'].forEach(function(h){
     html+='<th style="text-align:center;">'+h+'</th>';
   });
+  var urgentActive=coaSortKey==='Urgent';
+  html+='<th style="text-align:center;cursor:pointer;user-select:none;" onclick="coaSortKey=\'Urgent\';coaSortDir=(coaSortKey===\'Urgent\'&&coaSortDir===\'desc\')?\'asc\':\'desc\';render();">Urgent '+(urgentActive?(coaSortDir==='asc'?'↑':'↓'):'')+'</th>';
   html+='</tr></thead><tbody>';
   coaFiltered.forEach(function(item,i){
     html+='<tr style="background:'+(i%2===0?'rgba(255,241,242,.6)':'#fff')+'">';
