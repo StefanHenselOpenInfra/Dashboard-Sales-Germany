@@ -266,8 +266,6 @@ var funnelRowsRaw = [
   ["DE-BB Heidesee P5-1","BASE UPSELL","BB",20,70],
   ["DE-BB Hoppegarten P1","BASE UPSELL","BB",56,264],
   ["DE-BB Hoppegarten P2","BASE UPSELL","BB",80,0],
-  ["DE-BB Königs Wusterhausen HP0 1","HP0","BB",2,0],
-  ["DE-BB Königs Wusterhausen HP0 2","HP0","BB",0,2759],
   ["DE-BB Mittenwalde HP0 - SNB","HP0","BB",0,172],
   ["DE-BB Neuzelle Combined P2","Build sales","BB",89,181],
   ["DE-BB Neuzelle Combined P3","Build sales","BB",51,122],
@@ -292,12 +290,10 @@ var funnelRowsRaw = [
 
   ["Wistedt B1","Build sales","NI",306,571],
   ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
-  ["DE-BB Beetzsee P2","Base Sales","BB",89,280],
   ["DE-BB Beetzsee P3","Base Sales","BB",0,505],
   ["DE-BB Beetzsee P4","Base Sales","BB",0,714],
   ["DE-BB Beetzsee P5","Base Sales","BB",0,624],
   // ── Ergänzt aus Excel ─────────────────────────────────────────────────────
-  ["DE-BB Königs Wusterhausen HP0 3","HP0","BB",0,2759],
   ["DE-BB Löwenberger Land - Grundmühle & Linde P2&P4 HP0","HP0","BB",0,362],
   ["DE-BB Schönwald P1 HP0 - SNB","HP0","BB",0,162],
   ["DE-BY Stephansposching P1 - Phase 1 & 1.5 - SNB","HP0","BY",0,24],
@@ -1445,6 +1441,7 @@ function render(){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
+  var runCoaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Königs Wusterhausen HP0 1','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
   projs.forEach(function(r,i){
     var gestopptList=[];
     var stoppItProjs=['Märkisch Buchholz Combined'];
@@ -1465,7 +1462,8 @@ function render(){
     var uptakePct=hp>0?(hc/hp*100).toFixed(1)+'%':'—';
     var uptakeColor=hp>0?(hc/hp>=0.4?'#16a34a':hc/hp>=0.25?'#d97706':'#dc2626'):'#9ca3af';
     var targetReachedBadge=targetReachedProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">Target reached</span>':'';
-    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+targetReachedBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var coaMissingBadge=runCoaMissingProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;vertical-align:middle;white-space:nowrap;">CoA missing</span>':'';
+    html+='<td style="padding:8px;font-weight:600;word-break:break-word;line-height:1.3;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+targetReachedBadge+coaMissingBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:700;">'+hc+'</td>';
     html+='<td style="padding:8px;text-align:center;font-weight:900;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
