@@ -839,6 +839,7 @@ function svgLineChart(data,refY,refLabel,maxY,color){
 
 // ── RENDER ───────────────────────────────────────────────────────────────────
 function render(){
+  var urgentCoaProjs=['DE-BB Heidesee HP0','DE-BB Eichwalde HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Königs Wusterhausen HP0 1','DE-BY Kirchroth P1-1'];
   var c=computeKpis();
   var kpis=c.kpis,totals=c.totals,timePct=c.timePct;
   var totalQ2=kpis.reduce(function(s,k){return s+k.actual;},0);
@@ -1342,7 +1343,7 @@ function render(){
     var active=coaSortKey===col[0];
     html+='<th style="cursor:pointer;user-select:none;" onclick="coaSortKey=\''+col[0]+'\';coaSortDir=(coaSortKey===\''+col[0]+'\'&&coaSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(active?(coaSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
-  ['Type','HP','HC','Uptake','Target','Delta Target'].forEach(function(h){
+  ['Type','HP','HC','Uptake','Target','Delta Target','Urgent'].forEach(function(h){
     html+='<th style="text-align:center;">'+h+'</th>';
   });
   html+='</tr></thead><tbody>';
@@ -1381,6 +1382,8 @@ function render(){
     html+='<td style="padding:10px;text-align:center;font-weight:900;color:'+coaUptakeColor+';font-size:12px;">'+coaUptakePct+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:700;font-size:12px;color:#475569;">'+coaTgtCell+'</td>';
     html+='<td style="padding:10px;text-align:center;font-weight:900;font-size:12px;color:'+coaDeltaColor+';">'+coaDeltaCell+'</td>';
+    var isUrgent=urgentCoaProjs.indexOf(item[0])>=0;
+    html+='<td style="padding:10px;text-align:center;">'+(isUrgent?'<span style="background:#1d4ed8;color:#fff;border-radius:6px;padding:2px 10px;font-size:11px;font-weight:900;">urgent</span>':'<span style="color:#9ca3af;">—</span>')+'</td>';
     html+='</tr>';
   });
   html+='</tbody></table></div></div></div></section>';
