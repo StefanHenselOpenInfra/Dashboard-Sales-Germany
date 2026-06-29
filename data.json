@@ -926,15 +926,8 @@
       "DE-BB Brandenburg HP0 FC",
       "HP0",
       "BB",
-      0,
+      274,
       1363
-    ],
-    [
-      "DE-BB Eichwalde HP0",
-      "HP0",
-      "BB",
-      0,
-      767
     ],
     [
       "DE-BB Erkner P3 HP0 - SNB",
@@ -2428,12 +2421,14 @@
     "DE-BB Birkenwerder P1": "https://bob.openinfra.com/sales-projects/3992",
     "DE-BB Birkenwerder P1-2": "https://bob.openinfra.com/sales-projects/4096",
     "DE-BB Birkenwerder P2": "https://bob.openinfra.com/sales-projects/3988",
-    "DE-BB Birkenwerder P2-2": "https://bob.openinfra.com/delivery-projects/4098",
+    "DE-BB Birkenwerder P2-2": "https://bob.openinfra.com/sales-projects/3994",
     "DE-BB Birkenwerder P3": "https://bob.openinfra.com/delivery-projects/2257",
     "DE-BB Birkenwerder P3-2": "https://bob.openinfra.com/sales-projects/4097",
     "DE-BB Birkenwerder P4": "https://bob.openinfra.com/sales-projects/4095",
     "DE-BB Blankenfelde-Mahlow P1": "https://bob.openinfra.com/delivery-projects/1947",
+    "DE-BB Brandenburg HP0 FC": "https://bob.openinfra.com/delivery-projects/4032",
     "DE-BB Diensdorf-Radlow": "https://bob.openinfra.com/sales-projects/4009",
+    "DE-BB Eichwalde HP0": "https://bob.openinfra.com/sales-projects/3268",
     "DE-BB Falkensee HP0": "https://bob.openinfra.com/sales-projects/3826",
     "DE-BB Frankfurt (Oder) Combined P1": "https://bob.openinfra.com/sales-projects/3852",
     "DE-BB Frankfurt (Oder) Combined P2": "https://bob.openinfra.com/sales-projects/3851",
@@ -2480,7 +2475,7 @@
     "DE-BB Storkow P4": "https://bob.openinfra.com/sales-projects/1818",
     "DE-BB Storkow P5": "https://bob.openinfra.com/sales-projects/1819",
     "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
-    "DE-BB Storkow P7": "https://bob.openinfra.com/delivery-projects/4139",
+    "DE-BB Storkow P7": "https://bob.openinfra.com/sales-projects/4092",
     "DE-BB Teupitz P3": "https://bob.openinfra.com/sales-projects/2286",
     "DE-BB Teupitz P4": "https://bob.openinfra.com/sales-projects/4059",
     "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269",
@@ -2607,6 +2602,15 @@
       "HP0",
       2712,
       604
+    ],
+    [
+      "DE-BB Eichwalde HP0",
+      "BB",
+      "United Promotion GmbH",
+      "",
+      "HP0",
+      837,
+      71
     ],
     [
       "DE-BB Neuzelle Combined P1",
