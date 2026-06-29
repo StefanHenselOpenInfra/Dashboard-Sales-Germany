@@ -330,6 +330,24 @@
       381
     ],
     [
+      "DE-BB Königs Wusterhausen HP0 1",
+      "HP0",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "Luckau Combined (Deploy 2026)",
+      "Base Sales",
+      "Stonemedia GmbH",
+      0,
+      0,
+      0,
+      0
+    ],
+    [
       "DE-BB Diehlo P1",
       "Base Sales / Up Sales",
       "EnCom GmbH",
@@ -449,6 +467,17 @@
       842
     ],
     [
+      "DE-BY Kirchroth P1-1",
+      "BASE UPSELL",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      249,
+      16
+    ],
+    [
       "DE-BY Kirchroth P3",
       "BASE UPSELL",
       "EnCom GmbH",
@@ -526,6 +555,24 @@
       246
     ],
     [
+      "DE-BB Diensdorf-Radlow",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "DE-Rietz-Neuendorf S2",
+      "Base Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0
+    ],
+    [
       "DE-BB Birkenwerder P1",
       "Build Sales",
       "Team Tatjana",
@@ -599,6 +646,37 @@
       10,
       2,
       260
+    ],
+    [
+      "DE-BB Beetzsee P2",
+      "Base Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      "DE-BB Eichwalde HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      837,
+      71
+    ],
+    [
+      "DE-BB Fürstenwalde P7",
+      "Base Sales / Up Sales",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      216,
+      78
     ],
     [
       "DE-BB Blankenfelde-Mahlow P1",
@@ -828,7 +906,7 @@
     [
       "DE-BB Königs Wusterhausen HP0 2",
       "HP0",
-      "Open Infra CS",
+      "United Promotion GmbH",
       2,
       1,
       0,
@@ -908,6 +986,15 @@
       0,
       1030,
       234
+    ],
+    [
+      "DE-BB Grünheide P7",
+      "Base Sales",
+      "Rating Peak GmbH",
+      0,
+      0,
+      0,
+      0
     ],
     [
       "DE-BB Grünheide P5",
@@ -2437,13 +2524,13 @@
     "DE-BB Fürstenwalde P7": "https://bob.openinfra.com/delivery-projects/3210",
     "DE-BB Gosen Neu-Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
     "DE-BB Gosen-Neu Zittau P2": "https://bob.openinfra.com/sales-projects/4310",
-    "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
+    "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/sales-projects/4309",
     "DE-BB Gosen-Neu Zittau P4": "https://bob.openinfra.com/sales-projects/4311",
     "DE-BB Groß Köris P3": "https://bob.openinfra.com/delivery-projects/2825",
     "DE-BB Grünheide P1": "https://bob.openinfra.com/sales-projects/4317",
     "DE-BB Grünheide P3": "https://bob.openinfra.com/delivery-projects/2904",
     "DE-BB Grünheide P4": "https://bob.openinfra.com/delivery-projects/2905",
-    "DE-BB Grünheide P5": "https://bob.openinfra.com/delivery-projects/3025",
+    "DE-BB Grünheide P5": "https://bob.openinfra.com/sales-projects/4199",
     "DE-BB Grünheide P6": "https://bob.openinfra.com/delivery-projects/3026",
     "DE-BB Grünheide P7": "https://bob.openinfra.com/delivery-projects/3027",
     "DE-BB Heidesee B5-2": "https://bob.openinfra.com/delivery-projects/3049",
@@ -2451,6 +2538,7 @@
     "DE-BB Heidesee P5-1": "https://bob.openinfra.com/delivery-projects/2777",
     "DE-BB Hennigsdorf P3": "https://bob.openinfra.com/sales-projects/2489",
     "DE-BB Königs Wusterhausen HP0 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
+    "DE-BB Königs Wusterhausen HP0 2": "https://bob.openinfra.com/sales-projects/3840",
     "DE-BB Königs Wusterhausen HP0 3": "https://bob.openinfra.com/sales-projects/4051",
     "DE-BB Löwenberger Land - Grieben P5": "https://bob.openinfra.com/delivery-projects/3112",
     "DE-BB Löwenberger Land P1": "https://bob.openinfra.com/delivery-projects/2920",
