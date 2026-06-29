@@ -304,8 +304,8 @@
       0,
       0,
       0,
-      21,
-      186
+      19,
+      184
     ],
     [
       "Kasel-Golzig Combined",
@@ -705,7 +705,7 @@
       2,
       3,
       241,
-      3
+      0
     ],
     [
       "DE-BB Zossen P6",
@@ -714,7 +714,7 @@
       0,
       0,
       7,
-      62,
+      34,
       730,
       1
     ],
@@ -725,8 +725,8 @@
       0,
       0,
       0,
-      52,
-      914
+      30,
+      918
     ],
     [
       "Hohen Neuendorf B1",
@@ -2420,7 +2420,7 @@
     "DE-BB Bersteland P4": "https://bob.openinfra.com/delivery-projects/3747",
     "DE-BB Birkenwerder P1": "https://bob.openinfra.com/sales-projects/3992",
     "DE-BB Birkenwerder P1-2": "https://bob.openinfra.com/sales-projects/4096",
-    "DE-BB Birkenwerder P2": "https://bob.openinfra.com/sales-projects/3988",
+    "DE-BB Birkenwerder P2": "https://bob.openinfra.com/sales-projects/4098",
     "DE-BB Birkenwerder P2-2": "https://bob.openinfra.com/sales-projects/3994",
     "DE-BB Birkenwerder P3": "https://bob.openinfra.com/delivery-projects/2257",
     "DE-BB Birkenwerder P3-2": "https://bob.openinfra.com/sales-projects/4097",
@@ -2474,7 +2474,7 @@
     "DE-BB Storkow P3": "https://bob.openinfra.com/sales-projects/1817",
     "DE-BB Storkow P4": "https://bob.openinfra.com/sales-projects/1818",
     "DE-BB Storkow P5": "https://bob.openinfra.com/sales-projects/1819",
-    "DE-BB Storkow P6": "https://bob.openinfra.com/delivery-projects/4138",
+    "DE-BB Storkow P6": "https://bob.openinfra.com/sales-projects/4093",
     "DE-BB Storkow P7": "https://bob.openinfra.com/sales-projects/4092",
     "DE-BB Teupitz P3": "https://bob.openinfra.com/sales-projects/2286",
     "DE-BB Teupitz P4": "https://bob.openinfra.com/sales-projects/4059",
@@ -2484,9 +2484,9 @@
     "DE-BB Zossen HP0": "https://bob.openinfra.com/sales-projects/4047",
     "DE-BB Zossen P3": "https://bob.openinfra.com/delivery-projects/2420",
     "DE-BB Zossen P4": "https://bob.openinfra.com/delivery-projects/2423",
-    "DE-BB Zossen P4-2": "https://bob.openinfra.com/delivery-projects/4090",
-    "DE-BB Zossen P6": "https://bob.openinfra.com/delivery-projects/3701",
-    "DE-BB Zossen P7": "https://bob.openinfra.com/delivery-projects/4165",
+    "DE-BB Zossen P4-2": "https://bob.openinfra.com/sales-projects/4103",
+    "DE-BB Zossen P6": "https://bob.openinfra.com/sales-projects/3185",
+    "DE-BB Zossen P7": "https://bob.openinfra.com/sales-projects/4312",
     "DE-BY Kirchroth P3": "https://bob.openinfra.com/sales-projects/4062",
     "DE-BY Kirchroth P4": "https://bob.openinfra.com/delivery-projects/3441",
     "DE-BY Kirchroth P5": "https://bob.openinfra.com/sales-projects/4082",
