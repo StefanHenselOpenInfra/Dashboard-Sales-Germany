@@ -139,111 +139,111 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:7,february:58,march:111,april:62,may:228,mayForecast:228,juneActual:114,ytd:580,forecast:1100,d2d:6,cancelledYtd:57},
-  {name:"EnCom GmbH",january:20,february:55,march:118,april:121,may:118,mayForecast:118,juneActual:254,ytd:686,forecast:1100,d2d:5,cancelledYtd:22},
-  {name:"Team Tatjana",january:3,february:24,march:40,april:41,may:62,mayForecast:62,juneActual:38,ytd:208,forecast:450,d2d:2,cancelledYtd:6},
-  {name:"United Promotion GmbH",january:0,february:0,march:0,april:6,may:84,mayForecast:84,juneActual:245,ytd:335,forecast:330,d2d:9,cancelledYtd:11},
-  {name:"Open Infra CS",january:5,february:6,march:12,april:9,may:2,mayForecast:2,juneActual:5,ytd:39,forecast:175,d2d:0,cancelledYtd:0},
-  {name:"Filiago",january:13,february:2,march:1,april:0,may:0,mayForecast:0,juneActual:0,ytd:16,forecast:20,d2d:0,cancelledYtd:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:1,cancelledYtd:0}
+  {name:"Stonemedia GmbH",january:7,february:48,march:76,april:62,may:221,mayForecast:221,juneActual:121,ytd:535,forecast:1100,d2d:7,cancelledYtd:52},
+  {name:"EnCom GmbH",january:18,february:55,march:119,april:121,may:119,mayForecast:119,juneActual:256,ytd:688,forecast:1100,d2d:2,cancelledYtd:25},
+  {name:"Team Tatjana",january:5,february:25,march:42,april:43,may:62,mayForecast:62,juneActual:41,ytd:218,forecast:450,d2d:1,cancelledYtd:6},
+  {name:"United Promotion GmbH",january:3,february:13,march:42,april:13,may:92,mayForecast:92,juneActual:253,ytd:416,forecast:330,d2d:6,cancelledYtd:20},
+  {name:"Open Infra CS",january:8,february:11,march:10,april:5,may:6,mayForecast:6,juneActual:13,ytd:53,forecast:175,d2d:0,cancelledYtd:0},
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:0,cancelledYtd:0},
+  {name:"Filiago",january:2,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:2,forecast:20,d2d:0,cancelledYtd:0}
 ];
 
 // Brutto Q2-Actuals (Erstellungsdatum) — Sales Report 29
 var kpiActuals = {
-  "Base Sales / Up Sales":{april:91,may:346,june:413},
-  "After Market / HP0 Sales":{april:20,may:36,june:128},
-  "Build Sales":{april:133,may:119,june:135}
+  "Base Sales / Up Sales":{"april":91,"may":346,"june":420},
+  "After Market / HP0 Sales":{"april":20,"may":35,"june":128},
+  "Build Sales":{"april":133,"may":119,"june":144}
 };
 var kpiPreviousDay = {
-  "Base Sales / Up Sales":{april:91,may:346,june:410},
-  "After Market / HP0 Sales":{april:20,may:36,june:128},
-  "Build Sales":{april:133,may:119,june:136}
+  "Base Sales / Up Sales":{"april":91,"may":346,"june":413},
+  "After Market / HP0 Sales":{"april":20,"may":36,"june":128},
+  "Build Sales":{"april":133,"may":119,"june":135}
 };
 
 var projectRows = [
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
-  ["DE-BB Birkenwerder P2", "Build Sales", "Stonemedia GmbH", 0, 0, 0, 22, 231, 66],
-  ["DE-BB Birkenwerder P3", "Build Sales", "Stonemedia GmbH", 0, 22, 22, 17, 579, 191],
-  ["DE-BB Birkenwerder P3-2", "BASE UPSELL", "Stonemedia GmbH", 0, 9, 12, 4, 235, 15],
-  ["DE-BB Birkenwerder P4", "BASE UPSELL", "Stonemedia GmbH", 0, 24, 35, 18, 243, 0],
-  ["DE-BB Hennigsdorf P3", "Build Sales", "Stonemedia GmbH", 15, 17, 4, 0, 633, 204],
-  ["DE-BB Löwenberger Land - Grieben P5", "Base Sales", "Stonemedia GmbH", 0, 4, 7, 1, 181],
-  ["DE-BB Storkow P2", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 13, 4, 107, 46],
-  ["DE-BB Storkow P3", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 25, 8, 335, 79],
+  ["DE-BB Birkenwerder P2", "Build Sales", "Stonemedia GmbH", 0, 0, 0, 31, 231, 66],
+  ["DE-BB Birkenwerder P3", "Build Sales", "Stonemedia GmbH", 0, 20, 25, 18, 579, 191],
+  ["DE-BB Birkenwerder P3-2", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 21, 4, 235, 15],
+  ["DE-BB Birkenwerder P4", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 59, 12, 243, 0],
+  ["DE-BB Hennigsdorf P3", "Build Sales", "Stonemedia GmbH", 14, 18, 4, 0, 633, 204],
+  ["DE-BB Löwenberger Land - Grieben P5", "Base Sales", "Stonemedia GmbH", 0, 0, 11, 1, 181],
+  ["DE-BB Storkow P2", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 13, 3, 107, 46],
+  ["DE-BB Storkow P3", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 24, 9, 335, 79],
   ["DE-BB Storkow P4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 6, 332, 83],
-  ["DE-BB Storkow P5", "BASE UPSELL", "Stonemedia GmbH", 0, 23, 21, 1, 479, 56],
+  ["DE-BB Storkow P5", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 44, 2, 479, 56],
   ["DE-BB Storkow P6", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 3, 0, 87, 15],
-  ["DE-BB Storkow P7", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 2, 9, 5, 199, 30],
-  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 2, 35, 7],
+  ["DE-BB Storkow P7", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 10, 5, 199, 30],
+  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 1, 35, 7],
   ["DE-BB Storkow P8", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 19, 184],
-  ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 15, 16, 6, 13, 1093, 425],
-  ["Märkisch Buchholz Combined", "Base Sales", "Stonemedia GmbH", 41, 7, 2, 1, 1475, 381],
-  ["DE-BB Königs Wusterhausen HP0 1", "HP0", "Stonemedia GmbH", 0, 0, 0, 0, 1103, 0],
+  ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 16, 16, 5, 9, 1093, 425],
+  ["Märkisch Buchholz Combined", "Base Sales", "Stonemedia GmbH", 45, 7, 2, 1, 1475, 381],
+  ["DE-BB Königs Wusterhausen HP0 1", "HP0", "Stonemedia GmbH", 1, 1, 0, 0, 1103, 0],
   ["Luckau Combined (Deploy 2026)", "Base Sales", "Stonemedia GmbH", 0, 0, 0, 0, 1174, 347],
   // ── EnCom GmbH ─────────────────────────────────────────────────────────
   ["DE-BB Diehlo P1", "Base Sales / Up Sales", "EnCom GmbH", 0, 0, 0, 0, 157, 1],
-  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 0, 75, 213, 835],
-  ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 46, 0, 0, 904, 304],
+  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 0, 81, 215, 835],
+  ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 52, 0, 0, 904, 304],
   ["DE-BB Amt Scharmützelsee P3", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 689, 0],
   ["DE-BB Amt Scharmützelsee P4", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 364, 0],
   ["DE-BB Amt Scharmützelsee P5", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 147, 0],
   ["DE-BB Frankfurt (Oder) Combined P1", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 519, 134],
   ["DE-BB Frankfurt (Oder) Combined P2", "Build Sales", "EnCom GmbH", 0, 0, 0, 0, 459, 142],
   ["DE-BB Frankfurt (Oder) Combined P3", "Build Sales", "EnCom GmbH", 31, 11, 0, 0, 213, 86],
-  ["DE-BB Frankfurt (Oder) Combined P4", "Build Sales", "EnCom GmbH", 0, 23, 7, 3, 344, 66],
-  ["DE-BB Königs Wusterhausen HP0 3", "HP0", "EnCom GmbH", 0, 0, 2, 10, 842],
+  ["DE-BB Frankfurt (Oder) Combined P4", "Build Sales", "EnCom GmbH", 0, 21, 9, 2, 344, 66],
+  ["DE-BB Königs Wusterhausen HP0 3", "HP0", "EnCom GmbH", 0, 0, 2, 7, 842],
   ["DE-BY Kirchroth P1-1", "BASE UPSELL", "EnCom GmbH", 0, 0, 0, 0, 249, 16],
-  ["DE-BY Kirchroth P3", "BASE UPSELL", "EnCom GmbH", 3, 7, 10, 0, 246, 105],
-  ["DE-BY Kirchroth P4", "BASE UPSELL", "EnCom GmbH", 13, 3, 7, 7, 324, 153],
-  ["DE-BY Kirchroth P5", "Build Sales", "EnCom GmbH", 34, 14, 1, 0, 154, 49],
-  ["DE-BY Leiblfing P1", "Build Sales", "EnCom GmbH", 0, 0, 5, 19, 473, 133],
+  ["DE-BY Kirchroth P3", "BASE UPSELL", "EnCom GmbH", 5, 7, 6, 4, 246, 105],
+  ["DE-BY Kirchroth P4", "BASE UPSELL", "EnCom GmbH", 14, 3, 6, 4, 324, 153],
+  ["DE-BY Kirchroth P5", "Build Sales", "EnCom GmbH", 35, 14, 1, 0, 154, 49],
+  ["DE-BY Leiblfing P1", "Build Sales", "EnCom GmbH", 0, 0, 7, 14, 473, 133],
   ["DE-BY Parkstetten P1", "BASE UPSELL", "EnCom GmbH", 2, 0, 0, 0, 396, 99],
   ["DE-BY Straubing P1", "BASE UPSELL", "EnCom GmbH", 3, 12, 7, 2, 307, 105],
   ["DE-BB Zossen P4", "Build Sales", "EnCom GmbH", 0, 1, 0, 8, 590, 246],
   ["DE-BB Diensdorf-Radlow", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 318, 0],
   ["DE-Rietz-Neuendorf S2", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 274, 68],
   // ── Team Tatjana ────────────────────────────────────────────────────────
-  ["DE-BB Birkenwerder P1", "Build Sales", "Team Tatjana", 22, 21, 5, 3, 1097, 395],
-  ["DE-BB Birkenwerder P1-2", "BASE UPSELL", "Team Tatjana", 0, 4, 8, 2, 76],
+  ["DE-BB Birkenwerder P1", "Build Sales", "Team Tatjana", 22, 20, 6, 2, 1097, 395],
+  ["DE-BB Birkenwerder P1-2", "BASE UPSELL", "Team Tatjana", 0, 0, 12, 2, 76],
   ["DE-BB Birkenwerder P2-2", "BASE UPSELL", "Team Tatjana", 0, 0, 2, 1, 373, 37],
   ["DE-BB Schöneiche P8", "Base Sales", "Team Tatjana", 0, 0, 8, 8, 372, 40],
   ["DE-BB Spreenhagen P3 & Furstenwalde P6", "Base Sales", "Team Tatjana", 13, 10, 5, 0, 349, 23],
-  ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 12, 28, 20, 609, 168],
+  ["DE-BB Stadt Fürstenwalde P4", "Build Sales", "Team Tatjana", 5, 11, 28, 17, 609, 168],
   // ── United Promotion GmbH ──────────────────────────────────────────────
   ["DE-BB Beetzsee P1 HP0", "HP0", "United Promotion GmbH", 0, 0, 9, 2, 260],
   ["DE-BB Beetzsee P2", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 280, 89],
   ["DE-BB Blankenfelde-Mahlow P1", "Build Sales", "United Promotion GmbH", 0, 0, 28, 6, 573, 161],
   ["DE-BB Eichwalde HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 0, 837, 71],
   ["DE-BB Fürstenwalde P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 0, 216, 78],
-  ["DE-BB Heidesee HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 0, 2712, 604],
+  ["DE-BB Heidesee HP0", "HP0", "United Promotion GmbH", 11, 1, 0, 0, 2712, 604],
   ["DE-BB Heidesee P7", "Base Sales", "United Promotion GmbH", 0, 0, 0, 10, 121],
   ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 5, 14, 8, 2038, 94],
-  ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 18, 37, 143],
+  ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 18, 39, 143],
   ["DE-BB Woltersdorf P5-1", "Build Sales", "United Promotion GmbH", 0, 1, 6, 0, 274],
-  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 0, 1, 41, 1715, 31],
+  ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 41, 1715, 31],
   ["DE-BB Zossen HP0", "HP0", "United Promotion GmbH", 0, 0, 2, 0, 109, 2],
   ["DE-BB Zossen P3", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 199, 71],
   ["DE-BB Zossen P4-2", "Base Sales", "United Promotion GmbH", 0, 0, 1, 1, 241, 0],
-  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 5, 36, 730, 1],
-  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 31, 918],
-  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 26, 722, 184],
+  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 5, 38, 730, 1],
+  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 32, 918],
+  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 27, 722, 184],
   ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 3, 936, 137],
   ["DE-BB Neuzelle Combined P1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 615, 149],
   ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 44, 1227],
-  ["DE-BB Teupitz P3", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 261, 73],
-  ["DE-BB Teupitz P4", "Base Sales", "United Promotion GmbH", 0, 0, 0, 0, 273, 71],
+  ["DE-BB Teupitz P3", "Base Sales", "United Promotion GmbH", 3, 0, 6, 0, 261, 73],
+  ["DE-BB Teupitz P4", "Base Sales", "United Promotion GmbH", 21, 0, 1, 0, 273, 71],
   // ── Team Tatjana ────────────────────────────────────────────────────────
-  ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 16, 2549],
+  ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 11, 2549],
   // ── Open Infra CS ───────────────────────────────────────────────────────
-  ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 0, 0, 1, 2, 1877, 18],
+  ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 1, 0, 1, 1, 1877, 18],
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
   ["DE-BB Seddiner See P2", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 0, 751, 36],
   // ── Open Infra CS ───────────────────────────────────────────────────────
-  ["DE-BB Königs Wusterhausen HP0 2", "HP0", "United Promotion GmbH", 0, 0, 0, 0, 2829, 83],
+  ["DE-BB Königs Wusterhausen HP0 2", "HP0", "United Promotion GmbH", 2, 1, 0, 1, 2829, 83],
   // ── United Promotion GmbH ──────────────────────────────────────────────
-  ["DE-BB Zeuthen-Wildau HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 0, 2628, 35],
+  ["DE-BB Zeuthen-Wildau HP0", "HP0", "United Promotion GmbH", 5, 3, 1, 1, 2628, 35],
   // ── Open Infra CS ───────────────────────────────────────────────────────
-  ["DE-CS", "HP0", "Open Infra CS", 8, 4, 5, 15],
+  ["DE-CS", "HP0", "Open Infra CS", 9, 5, 5, 12],
   // ── Rating Peak GmbH ────────────────────────────────────────────────────
   ["DE-BB Grünheide P3", "BASE UPSELL", "Rating Peak GmbH", 0, 0, 0, 0, 680, 89],
   ["DE-BB Gosen Neu-Zittau P2", "Base Sales / Up Sales", "Rating Peak GmbH", 0, 0, 0, 0, 109, 12],
@@ -289,6 +289,7 @@ var funnelRowsRaw = [
   ["DE-NI Welle P2","Build sales","NI",107,213],
 
   ["Wistedt B1","Build sales","NI",306,571],
+  ["DE-BB Zossen P7-1","Base Sales / Up Sales","BB",0,245],
   ["DE-BB Löwenberger Land P1","Build Sales","BB",0,0],
   ["DE-BB Beetzsee P3","Base Sales","BB",0,505],
   ["DE-BB Beetzsee P4","Base Sales","BB",0,714],
@@ -418,11 +419,11 @@ var coaRowsRaw = [
   ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH","","Base Sales / Up Sales",147,0],
 ];
 
-var settings = {salesReportTotal2026:1928,q2WorkingDaysDone:63,q2WorkingDaysLeft:2,juneForecast:745,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
-  // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 30
-  jan:59,feb:155,mar:292,apr:244,may:501,
+var settings = {salesReportTotal2026:1943,q2WorkingDaysDone:64,q2WorkingDaysLeft:1,juneForecast:726,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
+  // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 32
+  jan:59,feb:155,mar:291,apr:244,may:501,
   jul:0,aug:0,sep:0,
-  lastUpdateDate:'28.6.2026'}
+  lastUpdateDate:'30.6.2026'}
 var netSales=1829;
 var cancelled=99;
 
@@ -549,6 +550,7 @@ var bobLinks = {
   "DE-NI Salzhausen L\u00fcbberstedt P8": "https://bob.openinfra.com/sales-projects/4111",
   "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
   "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
+  "DE-BB Beetzsee P3": "https://bob.openinfra.com/delivery-projects/4305",
   "DE-BB Spreenhagen P4": "https://bob.openinfra.com/delivery-projects/2913",
   "DE-BB Storkow P8": "https://bob.openinfra.com/sales-projects/4007",
   "DE-BB Heidesee P7": "https://bob.openinfra.com/sales-projects/2737",
@@ -627,6 +629,9 @@ var bobLinks = {
   "DE-BB Königs Wusterhausen HP0 2": "https://bob.openinfra.com/sales-projects/3840",
   "DE-BB Königs Wusterhausen HP0 3": "https://bob.openinfra.com/sales-projects/4051",
   "DE-BB Löwenberger Land - Grieben P5": "https://bob.openinfra.com/delivery-projects/3112",
+  "DE-BB Zossen P7-1": "https://bob.openinfra.com/sales-projects/4030",
+  "DE-Schöneiche P1-3": "https://bob.openinfra.com/delivery-projects/3759",
+  "DE-BB Schöneiche P11": "https://bob.openinfra.com/delivery-projects/3831",
   "DE-BB Löwenberger Land P1": "https://bob.openinfra.com/delivery-projects/2920",
   "DE-BB Löwenberger Land P1-2": "https://bob.openinfra.com/delivery-projects/4087",
   "DE-BB Löwenberger Land P3": "https://bob.openinfra.com/delivery-projects/2914",
@@ -1597,9 +1602,12 @@ function render(){
     var coaWaitingProjs=['DE-BB Königs Wusterhausen HP0 1'];
     var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Königs Wusterhausen HP0 1','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
     var importantProjs=[];
+    var upStampProjs=['DE-BB Zossen P7-1'];
     // Determine badge
     var encBadge='';
-    if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
+    if(r[0]==='DE-Schöneiche P1-3'||r[0]==='DE-BB Schöneiche P11'){encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Stonemedia GmbH</span><span style="margin-left:6px;background:#f0fdf4;color:#16a34a;border:2px solid #16a34a;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">approved</span>';}
+    else if(r[0]==='DE-BB Zossen P7-1'||r[0]==='DE-BB Beetzsee P3'||r[0]==='DE-BB Beetzsee P4'||r[0]==='DE-BB Beetzsee P5'){encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">United Promotion GmbH</span><span style="margin-left:6px;background:#f0fdf4;color:#16a34a;border:2px solid #16a34a;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">approved</span>';}
+    else if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
     else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
     else if(pruefenRotProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">PRÜFEN</span>';
@@ -1610,6 +1618,7 @@ function render(){
     else if(backInFunnelProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff7ed;color:#c2410c;border:2px solid #c2410c;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">11.6.2026 back in funnel</span>';
     else if(coaWaitingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#dc2626;color:#fff;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">CoA waiting</span>';
     else if(coaMissingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;">CoA missing</span>';
+    else if(upStampProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">United Promotion GmbH</span>';
     else if(importantProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">important</span>';
     html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
     html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
