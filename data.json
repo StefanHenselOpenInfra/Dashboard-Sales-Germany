@@ -3,15 +3,15 @@
     {
       "name": "Stonemedia GmbH",
       "january": 7,
-      "february": 48,
-      "march": 76,
+      "february": 59,
+      "march": 110,
       "april": 62,
-      "may": 221,
-      "mayForecast": 221,
-      "juneActual": 121,
-      "ytd": 535,
-      "forecast": 1100,
-      "d2d": 7,
+      "may": 228,
+      "mayForecast": 228,
+      "juneActual": 124,
+      "ytd": 590,
+      "forecast": 985,
+      "d2d": 5,
       "cancelledYtd": 52
     },
     {
@@ -22,10 +22,10 @@
       "april": 121,
       "may": 119,
       "mayForecast": 119,
-      "juneActual": 256,
-      "ytd": 688,
-      "forecast": 1100,
-      "d2d": 2,
+      "juneActual": 257,
+      "ytd": 689,
+      "forecast": 1509,
+      "d2d": 3,
       "cancelledYtd": 25
     },
     {
@@ -38,22 +38,22 @@
       "mayForecast": 62,
       "juneActual": 41,
       "ytd": 218,
-      "forecast": 450,
-      "d2d": 1,
+      "forecast": 348,
+      "d2d": 3,
       "cancelledYtd": 6
     },
     {
       "name": "United Promotion GmbH",
-      "january": 3,
-      "february": 13,
-      "march": 42,
+      "january": 0,
+      "february": 0,
+      "march": 0,
       "april": 13,
       "may": 92,
       "mayForecast": 92,
-      "juneActual": 253,
-      "ytd": 416,
-      "forecast": 330,
-      "d2d": 6,
+      "juneActual": 264,
+      "ytd": 369,
+      "forecast": 1209,
+      "d2d": 11,
       "cancelledYtd": 20
     },
     {
@@ -66,7 +66,7 @@
       "mayForecast": 6,
       "juneActual": 13,
       "ytd": 53,
-      "forecast": 175,
+      "forecast": 93,
       "d2d": 0,
       "cancelledYtd": 0
     },
@@ -80,8 +80,8 @@
       "mayForecast": 0,
       "juneActual": 8,
       "ytd": 8,
-      "forecast": 0,
-      "d2d": 0,
+      "forecast": 33,
+      "d2d": 1,
       "cancelledYtd": 0
     },
     {
@@ -94,12 +94,29 @@
       "mayForecast": 0,
       "juneActual": 0,
       "ytd": 2,
-      "forecast": 20,
+      "forecast": 2,
       "d2d": 0,
       "cancelledYtd": 0
     }
   ],
   "kpiActuals": {
+    "Base Sales / Up Sales": {
+      "april": 91,
+      "may": 346,
+      "june": 428
+    },
+    "After Market / HP0 Sales": {
+      "april": 20,
+      "may": 35,
+      "june": 131
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 148
+    }
+  },
+  "kpiPreviousDay": {
     "Base Sales / Up Sales": {
       "april": 91,
       "may": 346,
@@ -116,29 +133,12 @@
       "june": 144
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 91,
-      "may": 346,
-      "june": 413
-    },
-    "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 36,
-      "june": 128
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 135
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 1943,
-    "q2WorkingDaysDone": 64,
-    "q2WorkingDaysLeft": 1,
+    "salesReportTotal2026": 1958,
+    "q2WorkingDaysDone": 65,
+    "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "juneForecast": 726,
+    "juneForecast": 708,
     "jan": 59,
     "feb": 155,
     "mar": 291,
@@ -150,7 +150,8 @@
     "jul": 0,
     "aug": 0,
     "sep": 0,
-    "jun_actual": 677
+    "jun_actual": 677,
+    "jun": 708
   },
   "netSales": 1829,
   "cancelled": 99,
@@ -271,7 +272,7 @@
       0,
       0,
       3,
-      0,
+      1,
       87,
       15
     ],
@@ -293,7 +294,7 @@
       0,
       0,
       0,
-      1,
+      2,
       35,
       7
     ],
@@ -314,7 +315,7 @@
       16,
       16,
       5,
-      9,
+      10,
       1093,
       425
     ],
@@ -369,7 +370,7 @@
       0,
       0,
       81,
-      215,
+      216,
       835
     ],
     [
@@ -727,7 +728,7 @@
       0,
       5,
       14,
-      8,
+      9,
       2038,
       94
     ],
@@ -802,7 +803,7 @@
       0,
       0,
       5,
-      38,
+      40,
       730,
       1
     ],
@@ -813,7 +814,7 @@
       0,
       0,
       0,
-      32,
+      35,
       918
     ],
     [
@@ -823,7 +824,7 @@
       0,
       0,
       0,
-      27,
+      28,
       722,
       184
     ],
@@ -834,7 +835,7 @@
       0,
       0,
       0,
-      3,
+      5,
       936,
       137
     ],
@@ -856,7 +857,7 @@
       0,
       0,
       0,
-      44,
+      46,
       1227
     ],
     [

@@ -46,6 +46,8 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 .pb-danger{background:#dc2626;}
 .pb-bg-success{background:#d1fae5;}
 .pb-bg-danger{background:#fee2e2;}
+.pb-purple{background:#7c3aed;}
+.pb-bg-purple{background:#ede9fe;}
 .pb-time{background:#d89c6c;}
 .pb-time-bg{background:#f3dfcf;}
 /* Modal */
@@ -97,7 +99,7 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
   <button class="btn btn-brown" onclick="scrollToSection('sec-projects')">Running Projects</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
-  <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Excel importieren</button>
+  <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Import Excel</button>
   <button class="btn" onclick="window.print()" style="background:#1e293b;color:#fff;">🖨 PDF Export</button>
   <span id="last-import-label" style="font-size:11px;color:#888;display:none;"></span>
 </nav>
@@ -106,18 +108,18 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 <div class="overlay hidden" id="import-modal">
   <div class="modal">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <h2>📥 Excel-Daten importieren</h2>
+      <h2>📥 Import Excel Data</h2>
       <button onclick="closeImport()" style="border:none;background:none;font-size:24px;cursor:pointer;color:#888;">×</button>
     </div>
     <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
       <div style="font-size:3rem;margin-bottom:8px;">📊</div>
-      <div style="font-weight:700;color:#4d3428;">Excel-Datei hier ablegen</div>
-      <div style="font-size:12px;color:#888;margin-top:4px;">oder klicken zum Auswählen (.xlsx)</div>
+      <div style="font-weight:700;color:#4d3428;">Drop Excel file here</div>
+      <div style="font-size:12px;color:#888;margin-top:4px;">or click to select (.xlsx)</div>
       <input type="file" id="file-input" accept=".xlsx,.xls" class="hidden" onchange="handleFileSelect(event)"/>
     </div>
     <div id="import-status" style="margin-top:16px;display:none;padding:12px;border-radius:12px;background:#f8f8f8;font-weight:600;font-size:13px;"></div>
     <div style="margin-top:20px;background:#f8eadf;border:1px solid #e7c9b0;border-radius:1rem;padding:16px;font-size:12px;">
-      <div style="font-weight:900;color:#4d3428;margin-bottom:8px;">📋 Erwartete Excel-Blätter:</div>
+      <div style="font-weight:900;color:#4d3428;margin-bottom:8px;">📋 Expected Excel Sheets:</div>
       <div style="line-height:1.8;color:#555;">
         <b>Partners</b> — Partner, January, February, March, April, May, MayForecast, YTD, Forecast2026, D2D<br>
         <b>KPIs</b> — Category, April, May<br>
@@ -125,7 +127,7 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
         <b>Funnel</b> — Project, Type, Region, Sold, HP<br>
         <b>Settings</b> — SalesReportTotal2026, Q2WorkingDaysDone, Q2WorkingDaysLeft, JuneForecast
       </div>
-      <button class="btn btn-brown" style="margin-top:12px;" onclick="downloadTemplate()">⬇ Template herunterladen</button>
+      <button class="btn btn-brown" style="margin-top:12px;" onclick="downloadTemplate()">⬇ Download Template</button>
     </div>
   </div>
 </div>
@@ -139,25 +141,25 @@ input:focus,select:focus{box-shadow:0 0 0 2px #d89c6c;}
 // ── DEFAULT DATA ─────────────────────────────────────────────────────────────
 // Brutto-Werte aus Spalte O "Säljteam (senaste order)" — Sales Report 9 — YTD-Summe = 1188
 var partners = [
-  {name:"Stonemedia GmbH",january:7,february:48,march:76,april:62,may:221,mayForecast:221,juneActual:121,ytd:535,forecast:1100,d2d:7,cancelledYtd:52},
-  {name:"EnCom GmbH",january:18,february:55,march:119,april:121,may:119,mayForecast:119,juneActual:256,ytd:688,forecast:1100,d2d:2,cancelledYtd:25},
-  {name:"Team Tatjana",january:5,february:25,march:42,april:43,may:62,mayForecast:62,juneActual:41,ytd:218,forecast:450,d2d:1,cancelledYtd:6},
-  {name:"United Promotion GmbH",january:3,february:13,march:42,april:13,may:92,mayForecast:92,juneActual:253,ytd:416,forecast:330,d2d:6,cancelledYtd:20},
-  {name:"Open Infra CS",january:8,february:11,march:10,april:5,may:6,mayForecast:6,juneActual:13,ytd:53,forecast:175,d2d:0,cancelledYtd:0},
-  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:0,d2d:0,cancelledYtd:0},
-  {name:"Filiago",january:2,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:2,forecast:20,d2d:0,cancelledYtd:0}
+  {name:"Stonemedia GmbH",january:7,february:59,march:110,april:62,may:228,mayForecast:228,juneActual:124,ytd:590,forecast:985,d2d:5,cancelledYtd:52},
+  {name:"EnCom GmbH",january:18,february:55,march:119,april:121,may:119,mayForecast:119,juneActual:257,ytd:689,forecast:1509,d2d:3,cancelledYtd:25},
+  {name:"Team Tatjana",january:5,february:25,march:42,april:43,may:62,mayForecast:62,juneActual:41,ytd:218,forecast:348,d2d:3,cancelledYtd:6},
+  {name:"United Promotion GmbH",january:0,february:0,march:0,april:13,may:92,mayForecast:92,juneActual:264,ytd:369,forecast:1209,d2d:11,cancelledYtd:20},
+  {name:"Open Infra CS",january:8,february:11,march:10,april:5,may:6,mayForecast:6,juneActual:13,ytd:53,forecast:93,d2d:0,cancelledYtd:0},
+  {name:"Rating Peak GmbH",january:0,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:8,ytd:8,forecast:33,d2d:1,cancelledYtd:0},
+  {name:"Filiago",january:2,february:0,march:0,april:0,may:0,mayForecast:0,juneActual:0,ytd:2,forecast:2,d2d:0,cancelledYtd:0}
 ];
 
 // Brutto Q2-Actuals (Erstellungsdatum) — Sales Report 29
 var kpiActuals = {
+  "Base Sales / Up Sales":{"april":91,"may":346,"june":428},
+  "After Market / HP0 Sales":{"april":20,"may":35,"june":131},
+  "Build Sales":{"april":133,"may":119,"june":148}
+};
+var kpiPreviousDay = {
   "Base Sales / Up Sales":{"april":91,"may":346,"june":420},
   "After Market / HP0 Sales":{"april":20,"may":35,"june":128},
   "Build Sales":{"april":133,"may":119,"june":144}
-};
-var kpiPreviousDay = {
-  "Base Sales / Up Sales":{"april":91,"may":346,"june":413},
-  "After Market / HP0 Sales":{"april":20,"may":36,"june":128},
-  "Build Sales":{"april":133,"may":119,"june":135}
 };
 
 var projectRows = [
@@ -172,17 +174,17 @@ var projectRows = [
   ["DE-BB Storkow P3", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 24, 9, 335, 79],
   ["DE-BB Storkow P4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 6, 332, 83],
   ["DE-BB Storkow P5", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 44, 2, 479, 56],
-  ["DE-BB Storkow P6", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 3, 0, 87, 15],
+  ["DE-BB Storkow P6", "BASE UPSELL", "Stonemedia GmbH", 0, 0, 3, 1, 87, 15],
   ["DE-BB Storkow P7", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 10, 5, 199, 30],
-  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 1, 35, 7],
+  ["DE-BB Storkow P1-4", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 2, 35, 7],
   ["DE-BB Storkow P8", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 19, 184],
-  ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 16, 16, 5, 9, 1093, 425],
+  ["Kasel-Golzig Combined", "Build Sales", "Stonemedia GmbH", 16, 16, 5, 10, 1093, 425],
   ["Märkisch Buchholz Combined", "Base Sales", "Stonemedia GmbH", 45, 7, 2, 1, 1475, 381],
   ["DE-BB Königs Wusterhausen HP0 1", "HP0", "Stonemedia GmbH", 1, 1, 0, 0, 1103, 0],
   ["Luckau Combined (Deploy 2026)", "Base Sales", "Stonemedia GmbH", 0, 0, 0, 0, 1174, 347],
   // ── EnCom GmbH ─────────────────────────────────────────────────────────
   ["DE-BB Diehlo P1", "Base Sales / Up Sales", "EnCom GmbH", 0, 0, 0, 0, 157, 1],
-  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 0, 81, 215, 835],
+  ["DE-BB Amt Scharmützelsee P0", "Base Sales", "EnCom GmbH", 0, 0, 81, 216, 835],
   ["DE-BB Amt Scharmützelsee P1", "Base Sales", "EnCom GmbH", 29, 52, 0, 0, 904, 304],
   ["DE-BB Amt Scharmützelsee P3", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 689, 0],
   ["DE-BB Amt Scharmützelsee P4", "Base Sales", "EnCom GmbH", 0, 0, 0, 0, 364, 0],
@@ -217,19 +219,19 @@ var projectRows = [
   ["DE-BB Fürstenwalde P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 0, 216, 78],
   ["DE-BB Heidesee HP0", "HP0", "United Promotion GmbH", 11, 1, 0, 0, 2712, 604],
   ["DE-BB Heidesee P7", "Base Sales", "United Promotion GmbH", 0, 0, 0, 10, 121],
-  ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 5, 14, 8, 2038, 94],
+  ["DE-BB Schulzendorf HP0", "HP0", "United Promotion GmbH", 0, 5, 14, 9, 2038, 94],
   ["DE-BB Schulzendorf P3", "Base Sales", "United Promotion GmbH", 0, 0, 18, 39, 143],
   ["DE-BB Woltersdorf P5-1", "Build Sales", "United Promotion GmbH", 0, 1, 6, 0, 274],
   ["DE-BB Woltersdorf HP0", "HP0", "United Promotion GmbH", 0, 2, 1, 41, 1715, 31],
   ["DE-BB Zossen HP0", "HP0", "United Promotion GmbH", 0, 0, 2, 0, 109, 2],
   ["DE-BB Zossen P3", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 199, 71],
   ["DE-BB Zossen P4-2", "Base Sales", "United Promotion GmbH", 0, 0, 1, 1, 241, 0],
-  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 5, 38, 730, 1],
-  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 32, 918],
-  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 27, 722, 184],
-  ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 3, 936, 137],
+  ["DE-BB Zossen P6", "Base Sales", "United Promotion GmbH", 0, 0, 5, 40, 730, 1],
+  ["DE-BB Zossen P7", "Base Sales / Up Sales", "United Promotion GmbH", 0, 0, 0, 35, 918],
+  ["Hohen Neuendorf B1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 28, 722, 184],
+  ["Hohen Neuendorf B2", "Build Sales", "United Promotion GmbH", 0, 0, 0, 5, 936, 137],
   ["DE-BB Neuzelle Combined P1", "Build Sales", "United Promotion GmbH", 0, 0, 0, 0, 615, 149],
-  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 44, 1227],
+  ["DE-BB Stadt Fürstenwalde P1-P3 HP0", "HP0", "United Promotion GmbH", 0, 0, 0, 46, 1227],
   ["DE-BB Teupitz P3", "Base Sales", "United Promotion GmbH", 3, 0, 6, 0, 261, 73],
   ["DE-BB Teupitz P4", "Base Sales", "United Promotion GmbH", 21, 0, 1, 0, 273, 71],
   // ── Team Tatjana ────────────────────────────────────────────────────────
@@ -419,9 +421,9 @@ var coaRowsRaw = [
   ["DE-BB Amt Scharmützelsee P5","BB","EnCom GmbH","","Base Sales / Up Sales",147,0],
 ];
 
-var settings = {salesReportTotal2026:1943,q2WorkingDaysDone:64,q2WorkingDaysLeft:1,juneForecast:726,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
-  // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 32
-  jan:59,feb:155,mar:291,apr:244,may:501,
+var settings = {salesReportTotal2026:1958,q2WorkingDaysDone:65,q2WorkingDaysLeft:0,juneForecast:708,q3WorkingDays:66,q3WorkingDaysDone:0,q3WorkingDaysLeft:66,
+  // Brutto monatliche Totals (Erstellungsdatum) — Sales Report 33
+  jan:59,feb:155,mar:291,apr:244,may:501,jun:708,
   jul:0,aug:0,sep:0,
   lastUpdateDate:'30.6.2026'}
 var netSales=1829;
@@ -720,7 +722,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Kommune', potentia
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
 var coaSearch='', coaAgencyFilter='All', coaSortKey='Agency', coaSortDir='asc';
-var agencySortKey='June Ist', agencySortDir='desc';
+var agencySortKey='June', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -794,23 +796,28 @@ function computeKpis(){
   function getKpi(label,target){
     var src=kpiActuals[label]||{april:0,may:0};
     var juneAct=src.june||0;
-    var juneProj=Math.round(juneAct/juneDone*juneRem);
+    // Q2 complete — actual = final, no more projection
     var actual=src.april+src.may+juneAct;
-    var forecast=actual+juneProj;
-    var prevSrc=kpiPreviousDay
-[label]||{april:0,may:0,june:0};
-    // vsYesterday = nur Juni-Veränderung (laufender Monat), keine abgeschlossenen Monate
+    var forecast=actual; // Q2 done, forecast = actual
+    var prevSrc=kpiPreviousDay[label]||{april:0,may:0,june:0};
     var vsYesterday=juneAct-(prevSrc.june||0);
-    var q2delta=target-forecast;
+    var q2delta=target-actual;  // pos=shortfall, neg=surplus
     var q3WD=settings.q3WorkingDays||66;
-    var q3needed=target+Math.max(0,q2delta);
+    var q3Left=settings.q3WorkingDaysLeft!=null?settings.q3WorkingDaysLeft:q3WD;
+    // Q3 adjusted: target + q2delta (surplus reduces Q3 need; can go negative = already ahead)
+    var q3needed=target+q2delta;
+    var q3reqDay=(q3needed>0&&q3Left>0)?+(q3needed/q3Left).toFixed(1):0;
+    var q3actual=(src.jul||0)+(src.aug||0)+(src.sep||0);
+    // surplus from Q2 counts toward Q3; can exceed 100%
+    var q3effective=q3actual+Math.max(0,-q2delta);
+    var q3pct=target>0?Math.round(q3effective/target*100):100;
     return{
-      title:label,actual:actual,target:target,forecast:forecast,
-      delta:q2delta,pct:Math.round(actual/target*100),
-      forecastPct:Math.round(forecast/target*100),timePct:timePct,
-      pace:(q3needed/q3WD).toFixed(1).replace('.',','),
-      needed:Math.max(0,(target-actual)/leftWD).toFixed(1).replace('.',','),
-      ok:forecast>=target,vsYesterday:vsYesterday
+      title:label,actual:actual,target:target,forecast:actual,
+      q2delta:q2delta,q3needed:q3needed,q3actual:q3actual,q3pct:q3pct,
+      q3reqDay:(+q3reqDay).toFixed(1).replace('.',','),
+      pct:Math.round(actual/target*100),
+      forecastPct:Math.round(actual/target*100),timePct:timePct,
+      ok:actual>=target,vsYesterday:vsYesterday
     };
   }
 
@@ -907,9 +914,10 @@ function render(){
     var pct=Math.round((cur-prev)/prev*100);
     return (pct>=0?'+':'')+pct+'%';
   }
-  // Q3-Projektion: Q2-Delta aufholen + Q3-Ziel
-  var q2Delta=Math.max(0,totalTarget-totalForecast);
-  var q3Needed=totalTarget+q2Delta;
+  // Q3-Projektion: Q3-Ziel adjustiert um Q2-Delta (Übertrag)
+  var q3Target=1400;
+  var q3Q2delta=totalTarget-totalQ2;  // pos=Q2 Rückstand, neg=Q2 Übertreffen
+  var q3Needed=q3Target+q3Q2delta;    // Q3 Ziel korrigiert um Q2-Ergebnis
   var q3Monthly=Math.round(q3Needed/3);
   var jul=q3Monthly, aug=q3Monthly, sep=q3Needed-jul-aug;
 
@@ -923,23 +931,26 @@ function render(){
   var cMay=_fp?_fp.reduce(function(s,p){return s+(p.may||0);},0):S.may;
   var cJuneAct=_fp?_fp.reduce(function(s,p){return s+(p.juneActual||0);},0):totals.juneActual;
   var cJuneFcst=Math.round(cJuneAct/_juneDoneChart*22);
-  var chartAgencyLabel=_fp?(_fp.length===1?' – '+_fp[0].name:' – '+_fp.length+' Agenturen'):'';
+  var chartAgencyLabel=_fp?(_fp.length===1?' – '+_fp[0].name:' – '+_fp.length+' agencies'):'';
 
+  var cJunAct=_fp?_fp.reduce(function(s,p){return s+(p.juneActual||0);},0):(S.jun||totals.juneActual);
+  // Q3 daily pace needed = (Q3 target adjusted for Q2 delta) / Q3 working days
+  var q3DailyNeeded=+(q3Needed/(S.q3WorkingDays||66)).toFixed(1);
   var salesData=_fp?[
     {month:'Jan',value:cJan,growth:null},
     {month:'Feb',value:cFeb,growth:growthLabel(cFeb,cJan)},
     {month:'Mar',value:cMar,growth:growthLabel(cMar,cFeb)},
     {month:'Apr',value:cApr,growth:growthLabel(cApr,cMar)},
     {month:'May',value:cMay,growth:growthLabel(cMay,cApr)},
-    {month:'June Forecast',value:cJuneFcst,growth:growthLabel(cJuneFcst,cMay),forecast:true}
+    {month:'Jun',value:cJunAct,growth:growthLabel(cJunAct,cMay)}
   ]:[
     {month:'Jan',value:jan,growth:null},
     {month:'Feb',value:feb,growth:growthLabel(feb,jan)},
     {month:'Mar',value:mar,growth:growthLabel(mar,feb)},
     {month:'Apr',value:apr,growth:growthLabel(apr,mar)},
     {month:'May',value:S.may,growth:growthLabel(S.may,apr)},
-    {month:'June Forecast',value:Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*22),growth:growthLabel(Math.round(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)*22),S.may),forecast:true},
-    {month:'Jul Q3',value:jul,growth:growthLabel(jul,mayF),forecast:true,q3:true},
+    {month:'Jun',value:S.jun||totals.juneActual,growth:growthLabel(S.jun||totals.juneActual,S.may)},
+    {month:'Jul Q3',value:jul,growth:growthLabel(jul,S.jun||totals.juneActual),forecast:true,q3:true},
     {month:'Aug Q3',value:aug,growth:growthLabel(aug,jul),forecast:true,q3:true},
     {month:'Sep Q3',value:sep,growth:growthLabel(sep,aug),forecast:true,q3:true}
   ];
@@ -947,12 +958,15 @@ function render(){
     {month:'Jan',value:+(cJan/22).toFixed(1)},{month:'Feb',value:+(cFeb/20).toFixed(1)},
     {month:'Mar',value:+(cMar/22).toFixed(1)},{month:'Apr',value:+(cApr/22).toFixed(1)},
     {month:'May',value:+(cMay/21).toFixed(1)},
-    {month:'Jun Forecast',value:+(cJuneAct/_juneDoneChart).toFixed(1),forecast:true}
+    {month:'Jun',value:+(cJunAct/22).toFixed(1)}
   ]:[
     {month:'Jan',value:+(jan/22).toFixed(1)},{month:'Feb',value:+(feb/20).toFixed(1)},
     {month:'Mar',value:+(mar/22).toFixed(1)},{month:'Apr',value:+(apr/22).toFixed(1)},
-    {month:'May',value:+(S.may/21).toFixed(1)},{month:'Jun Forecast',value:+(totals.juneActual/Math.max(1,S.q2WorkingDaysDone-43)).toFixed(1),forecast:true},{month:'Target June',value:+(mayF/21).toFixed(1),forecast:true},
-    {month:'Jul Q3',value:+(jul/23).toFixed(1)},{month:'Aug Q3',value:+(aug/21).toFixed(1)},{month:'Sep Q3',value:+(sep/22).toFixed(1)}
+    {month:'May',value:+(S.may/21).toFixed(1)},
+    {month:'Jun',value:+((S.jun||totals.juneActual)/22).toFixed(1)},
+    {month:'Jul Q3',value:+(jul/23).toFixed(1),forecast:true,q3:true},
+    {month:'Aug Q3',value:+(aug/21).toFixed(1),forecast:true,q3:true},
+    {month:'Sep Q3',value:+(sep/22).toFixed(1),forecast:true,q3:true}
   ];
 
   // filter/sort projects
@@ -1005,8 +1019,8 @@ function render(){
   // agency sort
   var visiblePartners=selectedAgencies?partners.filter(function(p){return selectedAgencies.indexOf(p.name)>=0;}):partners;
   var sortedPartners=[...visiblePartners].sort(function(a,b){
-    var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may','June Ist':'juneActual','Target June':'mayForecast',YTD:'ytd','Forecast 2026':'forecast'};
-    var k=km[agencySortKey]||'may';
+    var km={Partner:'name',January:'january',February:'february',March:'march',April:'april',May:'may',June:'juneActual',July:'julyActual',YTD:'ytd','Forecast 2026':'forecast'};
+    var k=km[agencySortKey]||'juneActual';
     var av=k==='name'?a.name:(a[k]||0);
     var bv=k==='name'?b.name:(b[k]||0);
     var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
@@ -1029,7 +1043,7 @@ function render(){
         '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
           '<div>'+
             '<h3>'+esc(k.title)+'</h3>'+
-            '<span class="badge tag-slate" style="margin-top:10px;">'+k.projects+' Projekt'+(k.projects!==1?'e':'')+'</span>'+
+            '<span class="badge tag-slate" style="margin-top:10px;">'+k.projects+' Project'+(k.projects!==1?'s':'')+'</span>'+
           '</div>'+
           '<span style="font-size:1.5rem;">📋</span>'+
         '</div>'+
@@ -1038,7 +1052,7 @@ function render(){
             '<span style="font-size:3rem;font-weight:900;">'+k.actual+'</span>'+
             '<span style="color:#64748b;margin-left:8px;">HC Q2</span>'+
             '<div style="margin-top:4px;">'+
-              '<p style="margin:0;font-size:12px;color:#64748b;">von '+k.hp+' HP gesamt</p>'+
+              '<p style="margin:0;font-size:12px;color:#64748b;">of '+k.hp+' HP total</p>'+
             '</div>'+
           '</div>'+
           '<div style="font-size:2rem;font-weight:900;color:'+uptakeCol+';">'+k.pct+'%</div>'+
@@ -1052,46 +1066,73 @@ function render(){
         '<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;">'+
           '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.forecast+'</b><br><span style="color:#64748b;">HC Forecast Jun</span></div>'+
           '<div style="background:#0f172a;border-radius:1rem;padding:10px;color:#fff;"><b style="font-size:1.5rem;font-weight:900;">'+k.forecastPct+'%</b><br><b>Uptake Fcst</b></div>'+
-          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.pace+'</b><br><span style="color:#64748b;">Pace Q3/Tag</span></div>'+
-          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+(k.hp-k.actual)+'</b><br><span style="color:#64748b;">HP offen</span></div>'+
+          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.pace+'</b><br><span style="color:#64748b;">Pace Q3/Day</span></div>'+
+          '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+(k.hp-k.actual)+'</b><br><span style="color:#64748b;">HP open</span></div>'+
         '</div>'+
       '</div>';
     }
+    var q2DeltaCol=k.q2delta>0?'#dc2626':'#059669';
+    var q2DeltaLabel=k.q2delta>0?(k.q2delta+' missing'):(Math.abs(k.q2delta)+' ahead');
     return'<div class="card" style="border:2px solid '+(k.ok?'#a7f3d0':'#fecaca')+';">'+
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">'+
         '<div>'+
           '<h3>'+esc(k.title)+'</h3>'+
-          '<span class="badge '+bgBadge+'" style="margin-top:10px;">'+(k.ok?'✓ On track':'⚠ Off track')+'</span>'+
+          '<span class="badge '+bgBadge+'" style="margin-top:10px;">'+(k.ok?'✓ Q2 Target achieved':'⚠ Q2 Target missed')+'</span>'+
         '</div>'+
         '<span style="font-size:1.5rem;">⚡</span>'+
       '</div>'+
-      '<div style="margin-top:24px;display:flex;align-items:flex-end;justify-content:space-between;">'+
+      '<div style="margin-top:16px;margin-bottom:10px;display:flex;align-items:center;gap:10px;">'+
+        '<div style="flex:1;height:2px;background:linear-gradient(to right,rgba(71,85,105,.05),rgba(71,85,105,.3),rgba(71,85,105,.05));"></div>'+
+        '<span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#64748b;white-space:nowrap;">Q2 2026</span>'+
+        '<div style="flex:1;height:2px;background:linear-gradient(to left,rgba(71,85,105,.05),rgba(71,85,105,.3),rgba(71,85,105,.05));"></div>'+
+      '</div>'+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;">'+
         '<div>'+
           '<span style="font-size:3rem;font-weight:900;">'+k.actual+'</span>'+
           '<span style="color:#64748b;margin-left:8px;">/ '+k.target+'</span>'+
           '<div style="margin-top:4px;display:flex;align-items:center;gap:8px;">'+
-            '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Gross / Target</p>'+
-            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' last update '+(settings.lastUpdateDate||'')+'</span>':
-             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' last update '+(settings.lastUpdateDate||'')+'</span>':'')+
+            '<p style="margin:0;font-size:12px;color:#64748b;">Q2 Final / Target</p>'+
+            (k.vsYesterday>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsYesterday+' SR33</span>':
+             k.vsYesterday<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsYesterday+' SR33</span>':'')+
           '</div>'+
         '</div>'+
         '<div style="font-size:2rem;font-weight:900;color:'+col+';">'+k.pct+'%</div>'+
       '</div>'+
       '<div style="margin-top:16px;">'+pb(k.pct,100,k.ok?'pb-success':'pb-danger',k.ok?'pb-bg-success':'pb-bg-danger')+'</div>'+
-      '<div style="margin-top:16px;background:#FBF5ED;border:1px solid rgba(216,156,108,.4);border-radius:1rem;padding:12px;">'+
-        '<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;"><span>Q2 Time Progress</span><span>'+timePct+'%</span></div>'+
-        '<div class="pb pb-time-bg"><div class="pb pb-time" style="width:'+timePct+'%;height:100%;border-radius:9999px;"></div></div>'+
-        '<div style="display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px;"><span>01 Apr</span><span>30 Jun</span></div>'+
-      '</div>'+
       '<div style="margin-top:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:12px;font-size:13px;display:flex;justify-content:space-between;align-items:center;">'+
-        '<span style="font-weight:700;color:#475569;">Delta Forecast</span>'+
-        '<span style="font-weight:900;color:'+col+';">'+(k.delta>0?k.delta+' missing':Math.abs(k.delta)+' ahead')+'</span>'+
+        '<span style="font-weight:700;color:#475569;">Q2 Delta</span>'+
+        '<span style="font-weight:900;color:'+q2DeltaCol+';">'+q2DeltaLabel+'</span>'+
       '</div>'+
-      '<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;">'+
-        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.forecast+'</b><br><span style="color:#64748b;">Forecast</span></div>'+
-        '<div style="background:#0f172a;border-radius:1rem;padding:10px;color:#fff;"><b style="font-size:1.5rem;font-weight:900;">'+k.forecastPct+'%</b><br><b>Q2 Forecast</b></div>'+
-        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.pace+'</b><br><span style="color:#64748b;">Pace/Day</span></div>'+
-        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.needed+'</b><br><span style="color:#64748b;">Required/Day</span></div>'+
+      '<div style="margin-top:16px;margin-bottom:10px;display:flex;align-items:center;gap:10px;">'+
+        '<div style="flex:1;height:2px;background:linear-gradient(to right,rgba(124,58,237,.05),rgba(124,58,237,.35),rgba(124,58,237,.05));"></div>'+
+        '<span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7c3aed;white-space:nowrap;">Q3 2026</span>'+
+        '<div style="flex:1;height:2px;background:linear-gradient(to left,rgba(124,58,237,.05),rgba(124,58,237,.35),rgba(124,58,237,.05));"></div>'+
+      '</div>'+
+      '<div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px;">'+
+        '<div>'+
+          '<span style="font-size:3rem;font-weight:900;">'+k.q3actual+'</span>'+
+          '<span style="color:#64748b;margin-left:8px;">/ '+(k.q3needed>0?k.q3needed:0)+'</span>'+
+          '<div style="font-size:12px;color:#64748b;margin-top:4px;">Q3 Actual / Target</div>'+
+        '</div>'+
+        '<div style="font-size:2rem;font-weight:900;color:'+(k.q3pct>=100?'#059669':'#7c3aed')+';">'+k.q3pct+'%</div>'+
+      '</div>'+
+      '<div style="margin-bottom:12px;">'+pb(k.q3pct,100,k.q3pct>=100?'pb-success':'pb-purple',k.q3pct>=100?'pb-bg-success':'pb-bg-purple')+'</div>'+
+      '<div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:1rem;padding:12px;font-size:13px;">'+
+        '<div style="font-weight:700;color:#5b21b6;margin-bottom:6px;">Q3 Delta</div>'+
+        '<div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:900;">'+
+          '<span style="background:#fff;border:2px solid '+(k.q2delta>0?'#dc2626':'#059669')+';border-radius:8px;padding:3px 10px;color:'+(k.q2delta>0?'#dc2626':'#059669')+';">'+k.q2delta+'</span>'+
+          '<span style="color:#7c3aed;font-size:18px;">+</span>'+
+          '<span style="background:#fff;border:2px solid #7c3aed;border-radius:8px;padding:3px 10px;color:#5b21b6;">'+k.target+'</span>'+
+          '<span style="color:#7c3aed;font-size:18px;">=</span>'+
+          '<span style="background:'+(k.q3needed<=0?'#059669':'#5b21b6')+';color:#fff;border-radius:8px;padding:3px 10px;font-size:15px;">'+(k.q3needed<=0?(Math.abs(k.q3needed)+' ahead'):k.q3needed)+'</span>'+
+        '</div>'+
+        '<div style="margin-top:6px;font-size:11px;color:#7c3aed;font-weight:600;">'+(k.q2delta>0?'Q2 shortfall':'Q2 surplus')+' &nbsp;+&nbsp; Q3 base target &nbsp;=&nbsp; Q3 adjusted</div>'+
+      '</div>'+
+      '<div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;">'+
+        '<div style="background:#f8fafc;border-radius:1rem;padding:10px;"><b>'+k.actual+'</b><br><span style="color:#64748b;">Q2 Final</span></div>'+
+        '<div style="background:'+(k.ok?'#f0fdf4':'#fff1f2')+';border:2px solid '+(k.ok?'#86efac':'#fca5a5')+';border-radius:1rem;padding:10px;"><b style="color:'+q2DeltaCol+';">'+q2DeltaLabel+'</b><br><span style="color:#64748b;">Q2 vs Target</span></div>'+
+        '<div style="background:#ede9fe;border:2px solid #7c3aed;border-radius:1rem;padding:10px;"><b style="color:#5b21b6;">'+k.q3needed+'</b><br><span style="color:#64748b;">Q3 Adj. Target</span></div>'+
+        '<div style="background:#0f172a;border-radius:1rem;padding:10px;color:#fff;"><b style="font-size:1.4rem;font-weight:900;">'+k.q3reqDay+'</b><br><b style="font-size:11px;">Req/Day Q3</b></div>'+
       '</div>'+
     '</div>';
   }
@@ -1110,13 +1151,13 @@ function render(){
   html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
   html+='<div style="margin-top:24px;position:relative;max-width:480px;" class="hero-search-wrap">';
-  html+='<input id="hero-search" type="text" placeholder="🔍  Projekt suchen..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
+  html+='<input id="hero-search" type="text" placeholder="🔍  Search project..." oninput="heroSearch(this.value)" style="width:100%;padding:12px 16px;border-radius:1rem;border:none;font-size:14px;font-weight:600;outline:none;background:rgba(255,255,255,0.15);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);" />';
   html+='<div id="hero-results" style="position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:560px;overflow-y:auto;z-index:200;margin-top:4px;display:none;"></div>';
   html+='</div>';
   // ── Agency filter pills ──
   var _heroActive=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
   html+='<div class="hero-agency-bar" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;">';
-  html+='<span style="font-size:11px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:.05em;">Agentur:</span>';
+  html+='<span style="font-size:11px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:.05em;">Agency:</span>';
   html+='<button onclick="setHeroAgency(null)" style="font-size:11px;padding:4px 13px;border-radius:9999px;border:2px solid '+(!_heroActive?'#f2d1b3':'rgba(255,255,255,.2)')+';cursor:pointer;font-weight:700;background:'+(!_heroActive?'rgba(255,255,255,.22)':'rgba(255,255,255,.07)')+';color:'+(!_heroActive?'#f2d1b3':'rgba(255,255,255,.7)')+';">Alle</button>';
   partners.forEach(function(p){
     var act=_heroActive===p.name;
@@ -1131,11 +1172,8 @@ function render(){
   if(_heroActiveAgency){
     var _ap=partners.find(function(p){return p.name===_heroActiveAgency;})||{};
     var _apQ2=(_ap.april||0)+(_ap.may||0)+(_ap.juneActual||0);
-    var _apFcst=Math.round((_ap.juneActual||0)/Math.max(1,S.q2WorkingDaysDone-43)*22)+(_ap.april||0)+(_ap.may||0);
     var _apTarget=_ap.forecast||1;
     var _apPct=Math.round(_apQ2/_apTarget*100);
-    var _apFPct=Math.round(_apFcst/_apTarget*100);
-    var _apJunFcst=Math.round((_ap.juneActual||0)/Math.max(1,S.q2WorkingDaysDone-43)*22);
     // logo if available
     if(agencyLogos&&agencyLogos[_heroActiveAgency]){
       html+='<div style="margin-bottom:16px;">'+agencyLogos[_heroActiveAgency].replace('<svg ','<svg style="height:44px;width:auto;border-radius:6px;" ')+'</div>';
@@ -1152,25 +1190,34 @@ function render(){
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+_apTarget+'</span>';
     html+='</div>';
     html+='<div style="margin-top:12px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+Math.min(_apPct,100)+'%;height:100%;border-radius:9999px;"></div></div></div>';
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+(_ap.april||0)+'</b><br>Apr</div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+(_ap.may||0)+'</b><br>Mai</div>';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:10px;"><b>'+(_ap.juneActual||0)+'</b><br>Jun Ist</div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>~'+_apJunFcst+'</b><br>Jun Fcst</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+(_ap.may||0)+'</b><br>May</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:10px;"><b>'+(_ap.juneActual||0)+'</b><br>Jun Final</div>';
     html+='</div>';
     html+='<div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+_apQ2+'</b><br>Q2 Final</div>';
     html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+_apPct+'%</b><br>Q2 / Target</div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
     html+='</div>';
   } else {
+    html+='<div style="margin-bottom:20px;display:flex;align-items:center;gap:12px;">';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to right,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='<span style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap;">2026 Total</span>';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to left,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='</div>';
     html+='<div style="background:rgba(255,255,255,.06);border:1px solid rgba(216,156,108,.3);border-radius:1rem;padding:12px;margin-bottom:16px;">';
     html+='<div style="font-size:11px;font-weight:700;color:#f2d1b3;text-transform:uppercase;letter-spacing:.1em;">2026 Gross Sales Total</div>';
     html+='<div style="font-size:2rem;font-weight:900;margin-top:4px;">'+S.salesReportTotal2026+'</div>';
     var grossSales=S.salesReportTotal2026;
     var cancelRate=(cancelled/grossSales*100).toFixed(1);
     html+='<div style="font-size:11px;color:rgba(242,209,179,.7);"><span style="color:#fca5a5;">'+cancelled+' cancelled &nbsp;·&nbsp; Cancellation Quota '+cancelRate+'%</span></div></div>';
+    html+='<div style="margin-top:4px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to right,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='<span style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap;">Q2 2026</span>';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to left,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='</div>';
     var totalVsYesterday=kpis.reduce(function(s,k){return s+k.vsYesterday;},0);
-    html+='<p style="font-size:13px;color:#cbd5e1;">Q2 Gross (Apr+Mai+Jun) / Target</p>';
+    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:0;">Q2 Gross (Apr+Mai+Jun) / Target</p>';
     html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
     html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ2+'</span>';
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
@@ -1178,13 +1225,12 @@ function render(){
     html+='</div>';
     html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
     html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Achievement</div>';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+forecastReached+'%</span><b>Forecast</b></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+timePct+'%</b><br>Q2 Time';
-    html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+timePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q2WorkingDaysLeft+'</b><br>Days left</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+targetReached+'%</b><br>Q2 Final</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+q3Needed+'</span><b>Q3 Adj. Target</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Monthly+'</b><br>Avg/Month Q3';
+    html+='<div style="margin-top:4px;font-size:10px;color:rgba(255,255,255,.5);">Target adjusted</div></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q3WorkingDaysLeft+'</b><br>Q3 Days</div>';
     html+='</div>';
-
     // ── Q3 Brutto ──
     var totalQ3=(S.jul||0)+(S.aug||0)+(S.sep||0);
     var q3Target=1400;
@@ -1195,7 +1241,23 @@ function render(){
     var q3TimePct=Math.round(q3Done/q3WD*100);
     var q3Forecast=q3Done>0?Math.round(totalQ3/q3Done*q3WD):0;
     var q3ForecastPct=Math.round(q3Forecast/q3Target*100);
-    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:20px;">Q3 Gross (Jul+Aug+Sep) / Target</p>';
+    html+='<div style="margin-top:28px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to right,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='<span style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap;">Q3 2026</span>';
+    html+='<div style="flex:1;height:2px;background:linear-gradient(to left,rgba(255,255,255,.05),rgba(255,255,255,.3),rgba(255,255,255,.05));"></div>';
+    html+='</div>';
+    html+='<div style="margin-bottom:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:1rem;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:900;">';
+    html+='<span style="color:rgba(255,255,255,.5);font-weight:600;font-size:12px;">Q3 Delta</span>';
+    html+='<span style="flex:1;display:flex;align-items:center;gap:6px;">';
+    html+='<span style="background:rgba(255,255,255,.15);border:2px solid '+(q3Q2delta<0?'#4ade80':'#f87171')+';border-radius:8px;padding:2px 10px;color:'+(q3Q2delta<0?'#4ade80':'#f87171')+';">'+q3Q2delta+'</span>';
+    html+='<span style="color:rgba(255,255,255,.4);font-size:16px;">+</span>';
+    html+='<span style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:8px;padding:2px 10px;">'+q3Target+'</span>';
+    html+='<span style="color:rgba(255,255,255,.4);font-size:16px;">=</span>';
+    html+='<span style="background:#C86750;border-radius:8px;padding:2px 12px;font-size:14px;">'+q3Needed+'</span>';
+    html+='</span>';
+    html+='<span style="font-size:11px;color:rgba(255,255,255,.4);font-weight:500;">Q2 delta &nbsp;+&nbsp; Q3 base &nbsp;=&nbsp; Q3 adjusted</span>';
+    html+='</div>';
+    html+='<p style="font-size:13px;color:#cbd5e1;margin-top:0;">Q3 Gross (Jul+Aug+Sep) / Target</p>';
     html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
     html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ3+'</span>';
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+q3Target+'</span>';
@@ -1215,8 +1277,8 @@ function render(){
   var _kpiAgency=selectedAgencies&&selectedAgencies.length===1?selectedAgencies[0]:null;
   html+='<section id="sec-kpi" style="scroll-margin-top:70px;"><div class="container">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Q2 KPI Cards'+(_kpiAgency?' <span style="font-size:1rem;font-weight:700;color:#C86750;background:#FBF5ED;border-radius:.5rem;padding:3px 10px;">'+esc(_kpiAgency)+'</span>':'')+'</h2>';
-  html+=(_kpiAgency?'<p style="color:#64748b;">HC signed je Kategorie aus Running Projects · HP = verfügbare Haushalte</p>':'<p style="color:#64748b;">Status, pace, and forecast per category.</p>');
+  html+='<div><h2>Q2 Final &amp; Q3 Target'+(_kpiAgency?' <span style="font-size:1rem;font-weight:700;color:#C86750;background:#FBF5ED;border-radius:.5rem;padding:3px 10px;">'+esc(_kpiAgency)+'</span>':'')+'</h2>';
+  html+=(_kpiAgency?'<p style="color:#64748b;">HC signed per category from Running Projects · HP = available households</p>':'<p style="color:#64748b;">Q2 closed · Q3 target adjusted by Q2 delta · Required/Day for Q3</p>');
   html+='</div>';
   html+='<span class="badge tag-slate no-print">Status: today</span><button class="btn-xlsx no-print" onclick="exportKpiXLSX()">⬇ Excel</button></div>';
   html+='<div class="kpi-grid">'+kpis.map(kpiCard).join('')+'</div>';
@@ -1235,7 +1297,7 @@ function render(){
   html+='<h2 style="font-size:2rem;">👥 Agency Overview</h2>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="agencySortKey=this.value;render();" style="width:auto;">';
-  ['June Ist','May','Target June','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
+  ['June','July','May','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
     html+='<option'+(agencySortKey===k?' selected':'')+'>'+k+'</option>';
   });
   html+='</select>';
@@ -1243,65 +1305,63 @@ function render(){
   html+='</div></div>';
   window._agencyFilterNeeded=false;
   html+='<div style="overflow-x:auto;border-radius:1rem;border:1px solid #e2e8f0;">';
+  // pre-compute June total for July target share calculation
+  var totJuneAct=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
+  var julyTotalTarget=450;
   html+='<table><thead style="background:#f1f5f9;"><tr>';
-  ['#','Partner','June Ist','June Forecast','Target June','May','April','March','Feb','Jan','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D'].forEach(function(h){
+  ['#','Partner','Jan','Feb','March','April','May','June','July Ist','July Target','July Forecast','YTD','Forecast 2026','D2D'].forEach(function(h){
     html+='<th style="text-align:center;">'+h+'</th>';
   });
   html+='</tr></thead><tbody>';
   sortedPartners.forEach(function(p,i){
-    var q2s=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);
-    var q2q4=q2s*3;
-    var fc=(p.january||0)+(p.february||0)+(p.march||0)+q2q4;
+    var fc=(p.january||0)+(p.february||0)+(p.march||0)+p.ytd;
+    var julyAct=p.julyActual||0;
+    // July target: proportional share of 450 based on June actuals
+    var julyTarget=totJuneAct>0?Math.round((p.juneActual||0)/totJuneAct*julyTotalTarget):0;
+    // July forecast based on Q3 working days ratio
+    var q3WDdone=S.q3WorkingDaysDone||0;
+    var julyFcst=q3WDdone>0?Math.round(julyAct/q3WDdone*23):0;
     html+='<tr>';
     html+='<td style="font-weight:900;color:#C86750;">#'+(i+1)+'</td>';
     html+='<td style="font-weight:600;white-space:nowrap;">'+esc(p.name)+(p.comingSoon?'<span class="badge tag-amber" style="margin-left:8px;">soon</span>':'')+'</td>';
-    var juneDone=Math.max(1,S.q2WorkingDaysDone-43);
-    var juneFcst=p.juneActual>0?Math.round((p.juneActual/juneDone)*22):0;
-    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#363E36':'#94a3b8')+';text-align:center;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
-    var arrow=''; if(juneFcst>0&&p.may>0){if(juneFcst>p.may)arrow='<span style="color:#363E36;font-size:14px;margin-left:4px;">&#8679;</span>';else if(juneFcst<p.may)arrow='<span style="color:#dc2626;font-size:14px;margin-left:4px;">&#8681;</span>';}
-    html+='<td style="text-align:center;">'+(juneFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+juneFcst+arrow+'</span>':'<span style="color:#94a3b8;font-weight:700;">0</span>')+'</td>';
-    html+='<td style="font-weight:700;color:#2563eb;text-align:center;">'+(p.mayForecast||0)+'</td>';
-    html+='<td style="font-weight:900;color:#252121;text-align:center;">'+(p.may||0)+'</td>';
-    html+='<td style="text-align:center;">'+(p.april||0)+'</td>';
-    html+='<td style="text-align:center;">'+(p.march||0)+'</td>';
-    html+='<td style="text-align:center;">'+(p.february||0)+'</td>';
+    // Jan – Jul in order
     html+='<td style="text-align:center;">'+(p.january||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.february||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.march||0)+'</td>';
+    html+='<td style="text-align:center;">'+(p.april||0)+'</td>';
+    html+='<td style="font-weight:900;color:#252121;text-align:center;">'+(p.may||0)+'</td>';
+    html+='<td style="font-weight:900;color:'+(p.juneActual>0?'#363E36':'#94a3b8')+';text-align:center;background:'+(p.juneActual>0?'rgba(209,250,229,0.3)':'transparent')+';">'+(p.juneActual||0)+'</td>';
+    html+='<td style="font-weight:900;color:'+(julyAct>0?'#7c3aed':'#94a3b8')+';text-align:center;background:'+(julyAct>0?'rgba(237,233,254,0.5)':'transparent')+';">'+julyAct+'</td>';
+    html+='<td style="text-align:center;background:rgba(254,243,199,0.5);"><span style="font-weight:700;color:#92400e;">'+julyTarget+'</span></td>';
+    html+='<td style="text-align:center;">'+(julyFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#5b21b6;border:2px solid #7c3aed;border-radius:9999px;">'+julyFcst+'</span>':'<span style="color:#94a3b8;font-weight:700;">—</span>')+'</td>';
     html+='<td style="font-weight:700;text-align:center;">'+(p.ytd||0)+'</td>';
-    html+='<td style="text-align:center;">'+fc+'</td>';
-    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2s+'</td>';
-    html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+q2q4+'</td>';
+    html+='<td style="text-align:center;">'+(p.forecast||0)+'</td>';
     html+='<td style="font-weight:900;color:#C86750;text-align:center;">'+(p.d2d||0)+'</td>';
     html+='</tr>';
   });
   // totals row
-  var totQ2s=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+q;},0);
-  var totQ2q4=totQ2s*3;
-  var totFc=visiblePartners.reduce(function(s,p){var q=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);return s+(p.january||0)+(p.february||0)+(p.march||0)+q*3;},0);
-  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
-  html+='<td style="text-align:center;">Σ</td><td>Total</td>';
-  var totJuneAct=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
-  var juneDoneTot=Math.max(1,S.q2WorkingDaysDone-43);
-  var totJuneFcst=visiblePartners.reduce(function(s,p){return s+(p.juneActual>0?Math.round((p.juneActual/juneDoneTot)*22):0);},0);
-  html+='<td style="text-align:center;color:#363E36;font-weight:900;">'+totJuneAct+'</td>';
-  html+='<td style="text-align:center;"><span style="display:inline-block;min-width:40px;padding:2px 8px;font-weight:900;color:#363E36;border:2px solid #dc2626;border-radius:9999px;text-align:center;">'+totJuneFcst+'</span></td>';
-  var vTotMayFc=visiblePartners.reduce(function(s,p){return s+(p.mayForecast||0);},0);
+  var totJulyAct=visiblePartners.reduce(function(s,p){return s+(p.julyActual||0);},0);
   var vTotMay=visiblePartners.reduce(function(s,p){return s+(p.may||0);},0);
   var vTotApr=visiblePartners.reduce(function(s,p){return s+(p.april||0);},0);
   var vTotMar=visiblePartners.reduce(function(s,p){return s+(p.march||0);},0);
   var vTotFeb=visiblePartners.reduce(function(s,p){return s+(p.february||0);},0);
   var vTotJan=visiblePartners.reduce(function(s,p){return s+(p.january||0);},0);
   var vTotYtd=visiblePartners.reduce(function(s,p){return s+(p.ytd||0);},0);
+  var vTotFcst=visiblePartners.reduce(function(s,p){return s+(p.forecast||0);},0);
   var vTotD2d=visiblePartners.reduce(function(s,p){return s+(p.d2d||0);},0);
-  html+='<td style="text-align:center;color:#2563eb;font-weight:900;">'+vTotMayFc+'</td>';
-  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+vTotMay+'</td>';
-  html+='<td style="text-align:center;">'+vTotApr+'</td>';
-  html+='<td style="text-align:center;">'+vTotMar+'</td>';
-  html+='<td style="text-align:center;">'+vTotFeb+'</td>';
+  html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
+  html+='<td style="text-align:center;">Σ</td><td>Total</td>';
   html+='<td style="text-align:center;">'+vTotJan+'</td>';
+  html+='<td style="text-align:center;">'+vTotFeb+'</td>';
+  html+='<td style="text-align:center;">'+vTotMar+'</td>';
+  html+='<td style="text-align:center;">'+vTotApr+'</td>';
+  html+='<td style="text-align:center;color:#252121;font-weight:900;">'+vTotMay+'</td>';
+  html+='<td style="text-align:center;color:#363E36;font-weight:900;">'+totJuneAct+'</td>';
+  html+='<td style="text-align:center;color:#7c3aed;font-weight:900;">'+totJulyAct+'</td>';
+  html+='<td style="text-align:center;background:rgba(254,243,199,0.5);"><span style="font-weight:700;color:#92400e;">'+julyTotalTarget+'</span></td>';
+  html+='<td style="text-align:center;"><span style="color:#94a3b8;font-weight:700;">—</span></td>';
   html+='<td style="text-align:center;">'+vTotYtd+'</td>';
-  html+='<td style="text-align:center;">'+totFc+'</td>';
-  html+='<td style="text-align:center;color:#C86750;">'+totQ2s+'</td>';
-  html+='<td style="text-align:center;color:#C86750;">'+totQ2q4+'</td>';
+  html+='<td style="text-align:center;">'+vTotFcst+'</td>';
   html+='<td style="text-align:center;color:#C86750;">'+vTotD2d+'</td></tr>';
   html+='</tbody></table></div></div></div></section>';
 
@@ -1309,11 +1369,11 @@ function render(){
   html+='<section id="sec-sales" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun gefiltert':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Own Target + Q2-Delta</span>')+'</p></div>';
+  html+='<div><h2>Sales Development'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Jan–Jun filtered':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Q3 = Target '+q3Target+' + Q2 Delta ('+q3Q2delta+')</span>')+'</p></div>';
   if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){html+=agencyLogos[selectedAgencies[0]].replace('<svg ','<svg style="height:42px;width:auto;border-radius:6px;" ');}
   html+='<span class="badge tag-amber">2026</span></div>';
-  var q3Pace=_fp?undefined:Math.round((totalTarget+Math.max(0,totalTarget-totalForecast))/3);
-  var q3PaceLabel=_fp?undefined:'Q3 Target Pace '+q3Pace+'/Monat';
+  var q3Pace=_fp?undefined:q3Monthly;
+  var q3PaceLabel=_fp?undefined:'Avg '+q3Monthly+'/Month Q3 (Target '+q3Needed+')';
   html+=svgLineChart(salesData,q3Pace,q3PaceLabel,900,'#3182ce');
   html+='</div></div></section>';
 
@@ -1321,10 +1381,12 @@ function render(){
   html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Daily Sales Average'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">Average daily sales development'+(_fp?' (gefiltert)':'')+'</p></div>';
+  html+='<div><h2>Daily Sales Average'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Avg daily sales filtered':'Jan–Sep &middot; <span style="color:#7c3aed;font-weight:700;">&#x25CF; Required daily pace Q3</span>')+'</p></div>';
   if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){html+=agencyLogos[selectedAgencies[0]].replace('<svg ','<svg style="height:42px;width:auto;border-radius:6px;" ');}
   html+='<span class="badge tag-success">2026</span></div>';
-  html+=svgLineChart(dailyData,_fp?undefined:20,_fp?undefined:'Target 20/day',35,'#363E36');
+  var q3DailyRef=_fp?undefined:q3DailyNeeded;
+  var q3DailyLabel=_fp?undefined:'Req. '+q3DailyNeeded+'/Day Q3 (Target '+q3Needed+')';
+  html+=svgLineChart(dailyData,q3DailyRef,q3DailyLabel,35,'#363E36');
   html+='</div>';
 
   // ── CANCELLATION QUOTA CARD ──────────────────────────────────────────────
@@ -1339,10 +1401,10 @@ function render(){
   },1));
   html+='<div class="card" style="border:2px solid #E4A489;margin-top:16px;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
-  html+='<div><h2>Cancellation Quota</h2><p style="color:#64748b;">Stornierungen je Partner (YTD Gross)</p></div>';
+  html+='<div><h2>Cancellation Quota</h2><p style="color:#64748b;">Cancellations per partner (YTD Gross)</p></div>';
   html+='<div style="text-align:right;">';
   html+='<div style="font-size:2rem;font-weight:900;color:'+(globalRate>10?'#dc2626':globalRate>5?'#d97706':'#059669')+';">'+globalRate.toFixed(1)+'%</div>';
-  html+='<div style="font-size:11px;color:#64748b;">'+(selectedAgencies===null?'Gesamt':'')+'·&nbsp;'+totalCancelAll+' / '+totalGrossAll+'</div>';
+  html+='<div style="font-size:11px;color:#64748b;">'+(selectedAgencies===null?'Total':'')+'·&nbsp;'+totalCancelAll+' / '+totalGrossAll+'</div>';
   html+='</div></div>';
   cancelPartners.forEach(function(p){
     var gross=p.ytd||0;
@@ -1358,7 +1420,7 @@ function render(){
     html+='</div>';
   });
   if(totalCancelAll===0&&cancelPartners.length>0){
-    html+='<div style="text-align:center;color:#94a3b8;font-size:12px;padding:8px 0;">0 Stornierungen</div>';
+    html+='<div style="text-align:center;color:#94a3b8;font-size:12px;padding:8px 0;">0 cancellations</div>';
   }
   html+='</div>';
   html+='</div></section>';
@@ -1536,7 +1598,7 @@ function render(){
   var sumHP=projs.reduce(function(s,r){return s+(r[7]||0);},0);
   var sumUptake=sumHP>0?(sumHC/sumHP*100).toFixed(1)+'%':'—';
   html+='<tr style="border-top:2px solid #C86750;background:#FBF5ED;font-weight:900;">';
-  html+='<td style="padding:8px;">Σ Auswahl ('+projs.length+' Projekte)</td>';
+  html+='<td style="padding:8px;">Σ Selection ('+projs.length+' projects)</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;color:#475569;font-size:12px;">'+(sumHP>0?sumHP:'—')+'</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumHC+'</td>';
   html+='<td style="padding:8px;text-align:center;font-weight:900;">'+sumUptake+'</td>';
@@ -1609,7 +1671,7 @@ function render(){
     else if(r[0]==='DE-BB Zossen P7-1'||r[0]==='DE-BB Beetzsee P3'||r[0]==='DE-BB Beetzsee P4'||r[0]==='DE-BB Beetzsee P5'){encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">United Promotion GmbH</span><span style="margin-left:6px;background:#f0fdf4;color:#16a34a;border:2px solid #16a34a;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">approved</span>';}
     else if(r[0]==='DE-BB Amt Scharmützelsee P2'||r[0]==='DE-BB Amt Scharmützelsee P3'||r[0]==='DE-BB Amt Scharmützelsee P4'||r[0]==='DE-BB Amt Scharmützelsee P5') encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">EnCom GmbH</span>';
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
-    else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">prüfen</span>';
+    else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">check</span>';
     else if(pruefenRotProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">PRÜFEN</span>';
     else if(stoppFeeProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>';
     else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
@@ -1755,11 +1817,11 @@ function render(){
     html+='<section id="sec-cemetery" style="scroll-margin-top:70px;"><div class="container">';
     html+='<div class="card" style="border:2px solid #374151;">';
     html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
-    html+='<div><h2 style="color:#111827;">&#127944; Cemetery</h2><p style="color:#6b7280;">Abgebrochene Projekte ('+cemSrc.length+')</p></div></div>';
-    html+='<input id="cem-search" value="'+(window._cemSearch||'')+'" placeholder="Projekt suchen..." style="margin-bottom:16px;" oninput="window._cemSearch=this.value;render();">';
+    html+='<div><h2 style="color:#111827;">&#127944; Cemetery</h2><p style="color:#6b7280;">Abandoned projects ('+cemSrc.length+')</p></div></div>';
+    html+='<input id="cem-search" value="'+(window._cemSearch||'')+'" placeholder="Search project..." style="margin-bottom:16px;" oninput="window._cemSearch=this.value;render();">';
     html+='<div style="overflow-y:auto;max-height:500px;border-radius:1rem;border:1px solid #e5e7eb;">';
     html+='<table><thead style="background:#374151;color:#fff;position:sticky;top:0;"><tr>';
-    html+='<th>Projekt</th><th>Region</th><th>Kategorie</th><th style="text-align:center;">Sold</th><th style="text-align:center;">HP</th></tr></thead><tbody>';
+    html+='<th>Project</th><th>Region</th><th>Category</th><th style="text-align:center;">Sold</th><th style="text-align:center;">HP</th></tr></thead><tbody>';
     cemF.forEach(function(r,i){
       html+='<tr style="background:'+(i%2===0?'#fff':'#f9fafb')+';">';
       var bobUrlC=bobLinks[r[0]]; html+='<td style="padding:10px;color:#6b7280;text-decoration:line-through;">'+(bobUrlC?'<a href="'+bobUrlC+'" target="_blank" style="color:#6b7280;text-decoration:line-through;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+'</td>';
@@ -1854,7 +1916,7 @@ function processFile(file){
         var rows=XLSX.utils.sheet_to_json(wb.Sheets['Settings']);
         if(rows.length>0){var r=rows[0];settings={salesReportTotal2026:Number(r['SalesReportTotal2026']||settings.salesReportTotal2026),q2WorkingDaysDone:Number(r['Q2WorkingDaysDone']||settings.q2WorkingDaysDone),q2WorkingDaysLeft:Number(r['Q2WorkingDaysLeft']||settings.q2WorkingDaysLeft),juneForecast:Number(r['JuneForecast']||settings.juneForecast),jan:settings.jan,feb:settings.feb,mar:settings.mar,apr:settings.apr,may:Number(r['MayTotal']||settings.may)};imported.push('Settings');}
       }
-      if(imported.length===0){showStatus('⚠ Kein bekanntes Format. Sales Report oder Partner/KPI/Settings Blätter erwartet.');return;}
+      if(imported.length===0){showStatus('⚠ Unknown format. Expected Sales Report or Partner/KPI/Settings sheets.');return;}
       showStatus('✅ Importiert: '+imported.join(', '));
       var lbl=document.getElementById('last-import-label');lbl.style.display='inline';lbl.textContent='Letzter Import: '+new Date().toLocaleString('de-DE');
       setTimeout(function(){closeImport();render();},1000);
@@ -1914,7 +1976,7 @@ function processSalesReport(ws){
   
   var juneBrutto=totalGross[6]||0;
   var totalBrutto=Object.values(totalGross).reduce(function(s,v){return s+v;},0);
-  var totalNetto=totalBrutto-totalCancel;
+  var totalNet=totalBrutto-totalCancel;
   
   // Update partners june actual + cancelled
   partners.forEach(function(p){
@@ -1935,19 +1997,19 @@ function processSalesReport(ws){
   settings.lastUpdateDate=_now.getDate()+'.'+(_now.getMonth()+1)+'.'+_now.getFullYear();
   
   // Ask for working days
-  var juneDone=prompt('Wieviele Werktage in Juni sind bisher rum?','5');
-  var juneLeft=prompt('Wieviele Werktage in Juni bleiben noch?','17');
+  var juneDone=prompt('How many June working days are done?','5');
+  var juneLeft=prompt('How many June working days remain?','17');
   if(juneDone) settings.q2WorkingDaysDone=43+parseInt(juneDone);
   if(juneLeft) settings.q2WorkingDaysLeft=parseInt(juneLeft);
   
-  var summary='✅ Sales Report importiert!\n\n'+
-    'Gross: '+totalBrutto+' | Storno: '+totalCancel+' | Netto: '+totalNetto+'\n'+
-    'Juni: '+juneBrutto+' Aufträge\n'+
+  var summary='✅ Sales Report imported!\n\n'+
+    'Gross: '+totalBrutto+' | Cancelled: '+totalCancel+' | Net: '+totalNet+'\n'+
+    'June: '+juneBrutto+' orders\n'+
     'KPI Juni: Base='+kpiJune.base+' HP0='+kpiJune.hp0+' Build='+kpiJune.build+'\n\n'+
     'Partner Juni-Werte:\n'+
     partners.map(function(p){return p.name+': '+p.juneActual;}).join('\n');
   
-  showStatus('✅ Sales Report importiert! '+totalBrutto+' Gross, Juni='+juneBrutto);
+  showStatus('✅ Sales Report imported! '+totalBrutto+' Gross, June='+juneBrutto);
   var lbl=document.getElementById('last-import-label');
   lbl.style.display='inline';
   lbl.textContent='Sales Report: '+new Date().toLocaleString('de-DE');
@@ -1956,7 +2018,7 @@ function processSalesReport(ws){
 
 var _heroResults=[];
 function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(d.projectTargets)projectTargets=d.projectTargets;if(d.coaRowsRaw)coaRowsRaw=d.coaRowsRaw;if(cb)cb();}).catch(function(){if(cb)cb();});}
-function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">Kein Ergebnis</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
+function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'PLZ '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">No results</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
 function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){window._cemSearch=r.name;render();}else if(r.sectionId==='sec-coa'){coaSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
 document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
 var agencyLogos={'EnCom GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 84"><rect width="260" height="84" rx="6" fill="#073d4e"/><rect x="14" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><text x="68" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#f5c200">En</text><text x="116" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#29abe2">Com</text></svg>','United Promotion GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84"><rect width="420" height="84" rx="6" fill="#000"/><defs><linearGradient id="upg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9c8"/><stop offset="100%" stop-color="#7b2fff"/></linearGradient><linearGradient id="upg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7b2fff"/><stop offset="100%" stop-color="#00c9c8"/></linearGradient></defs><ellipse cx="38" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg1)" stroke-width="3" transform="rotate(-30 38 42)"/><ellipse cx="52" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg2)" stroke-width="3" transform="rotate(30 52 42)"/><rect x="30" y="26" width="30" height="30" rx="8" fill="url(#upg1)"/><text x="45" y="48" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">up</text><text x="96" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">united</text><text x="222" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="300" fill="#fff">promotion</text></svg>','Rating Peak GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 84"><rect width="320" height="84" rx="6" fill="#0f1f35"/><polygon points="42,62 62,28 82,62" fill="#2a7a9a"/><polygon points="22,62 48,32 74,62" fill="#4a9db8"/><polygon points="58,62 82,20 106,62" fill="#1a5a7a"/><polygon points="72,22 82,8 92,22" fill="#f5c200"/><text x="118" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="400" fill="#4ab8d8" letter-spacing="1">RATING</text><text x="214" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#f5c200" letter-spacing="1">PEAK</text></svg>','Stonemedia GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84"><rect width="340" height="84" rx="6" fill="#1a2a3a"/><path d="M107 22 Q107 14 114 10 Q121 14 121 22" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><path d="M103 26 Q103 12 114 6 Q125 12 125 26" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><circle cx="114" cy="30" r="3" fill="#e8a020"/><text x="18" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">STONE</text><text x="135" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">ME</text><text x="185" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">D</text><circle cx="218" cy="46" r="3.5" fill="#cc2200"/><text x="212" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">iA</text><text x="88" y="70" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#8a9bb0" letter-spacing="5">GROUP</text></svg>'};
