@@ -392,7 +392,7 @@ var projectTargets = {
   "DE-BY Kirchroth P3": 50,
   "DE-BB Amt Scharmützelsee P3": 41,
   "DE-BB Amt Scharmützelsee P4": 40,
-  "DE-BB Amt Scharmützelsee P5": "T.b.a."
+  "DE-BB Amt Scharmützelsee P5": 46
 };
 
 var coaRowsRaw = [
@@ -1616,6 +1616,7 @@ function render(){
     else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';
     else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
     else if(backInFunnelProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff7ed;color:#c2410c;border:2px solid #c2410c;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">11.6.2026 back in funnel</span>';
+    else if(r[0]==='DE-BB Spreenhagen P4') encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">after Grünheide P4, P6, P7</span>';
     else if(coaWaitingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#dc2626;color:#fff;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">CoA waiting</span>';
     else if(coaMissingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;">CoA missing</span>';
     else if(upStampProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">United Promotion GmbH</span>';
