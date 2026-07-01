@@ -1450,6 +1450,293 @@
       "MV",
       0,
       0
+    ],
+    [
+      "DE-NI Welle & Otter HP0",
+      "HP0",
+      "NI",
+      1024,
+      1461
+    ],
+    [
+      "DE-NI Drestedt & Wenzendorf HP0",
+      "HP0",
+      "NI",
+      889,
+      1403
+    ],
+    [
+      "DE-BY Stephansposching P1",
+      "BASE UPSELL",
+      "BY",
+      504,
+      1166
+    ],
+    [
+      "DE-NI Salzhausen - Vierhöfen Combined HP0",
+      "HP0",
+      "NI",
+      448,
+      709
+    ],
+    [
+      "DE-BY Aiterhofen HP0",
+      "HP0",
+      "BY",
+      432,
+      567
+    ],
+    [
+      "DE-BB Zossen P5",
+      "BASE UPSELL",
+      "BB",
+      420,
+      916
+    ],
+    [
+      "DE-BB Grunheide P2 HP0",
+      "HP0",
+      "BB",
+      398,
+      908
+    ],
+    [
+      "DE-BB Q3-25 Stadt Oranienburg",
+      "Base Sales",
+      "BB",
+      361,
+      1703
+    ],
+    [
+      "DE-BY Hofkirchen P1",
+      "BASE UPSELL",
+      "BY",
+      361,
+      986
+    ],
+    [
+      "DE-BB Groß Köris HP0",
+      "HP0",
+      "BB",
+      341,
+      831
+    ],
+    [
+      "DE-NI Wistedt P1",
+      "BASE UPSELL",
+      "NI",
+      302,
+      569
+    ],
+    [
+      "DE-BY Oberschneiding P2",
+      "BASE UPSELL",
+      "BY",
+      291,
+      620
+    ],
+    [
+      "DE-BB Halbe & Löpten P1 HP0",
+      "HP0",
+      "BB",
+      290,
+      690
+    ],
+    [
+      "DE-BY Metten P1",
+      "BASE UPSELL",
+      "BY",
+      252,
+      2376
+    ],
+    [
+      "DE-Bestensee South",
+      "BASE UPSELL",
+      "BB",
+      246,
+      249
+    ],
+    [
+      "DE-BB Schönwald P1 HP0",
+      "HP0",
+      "BB",
+      224,
+      385
+    ],
+    [
+      "DE-BY Irlbach P1",
+      "BASE UPSELL",
+      "BY",
+      186,
+      452
+    ],
+    [
+      "DE-Heidesee HP0 (B1-B4)",
+      "HP0",
+      "BB",
+      183,
+      206
+    ],
+    [
+      "DE-BB Wilsdruff - Grumbach & Braunsdorf P3",
+      "BASE UPSELL",
+      "BB",
+      175,
+      853
+    ],
+    [
+      "DE-BY Kirchroth HP0",
+      "HP0",
+      "BY",
+      165,
+      380
+    ],
+    [
+      "DE-BB Mittenwalde HP0",
+      "HP0",
+      "BB",
+      163,
+      335
+    ],
+    [
+      "DE-BB Brikenwerder-Hohen-Neuendorf HP0",
+      "HP0",
+      "BB",
+      150,
+      1333
+    ],
+    [
+      "Rosengarten BS1-2",
+      "Build Sales",
+      "NI",
+      139,
+      141
+    ],
+    [
+      "DE-Stadt Oranienburg S27.1.1",
+      "Base Sales",
+      "BB",
+      115,
+      295
+    ],
+    [
+      "DE-Stadt Oranienburg S27.1.2",
+      "Base Sales",
+      "BB",
+      111,
+      316
+    ],
+    [
+      "DE-BB Magdeburg - Diesdorf P3",
+      "BASE UPSELL",
+      "BB",
+      109,
+      657
+    ],
+    [
+      "DE-BB Erkner P3 HP0",
+      "HP0",
+      "BB",
+      105,
+      229
+    ],
+    [
+      "DE-BB Q3-9 Stadt Hohen Neuendorf",
+      "Base Sales",
+      "BB",
+      104,
+      865
+    ],
+    [
+      "DE-BB Magdeburg - Ottersleben P2",
+      "BASE UPSELL",
+      "BB",
+      90,
+      350
+    ],
+    [
+      "Heidenau",
+      "BASE UPSELL",
+      "NI",
+      83,
+      103
+    ],
+    [
+      "DE-BB Schönwald P5",
+      "BASE UPSELL",
+      "BB",
+      78,
+      139
+    ],
+    [
+      "DE-BB Guben P2",
+      "BASE UPSELL",
+      "BB",
+      73,
+      666
+    ],
+    [
+      "Königs Wusterhausen 8.1 SOUTH",
+      "Base Sales",
+      "BB",
+      70,
+      107
+    ],
+    [
+      "DE-BB Magdeburg - Ottersleben P3",
+      "BASE UPSELL",
+      "BB",
+      69,
+      592
+    ],
+    [
+      "DE-Rosengarten HP0",
+      "HP0",
+      "NI",
+      68,
+      132
+    ],
+    [
+      "DE-BB Rietz-Neuendorf P2",
+      "BASE UPSELL",
+      "BB",
+      68,
+      274
+    ],
+    [
+      "DE-BB Baruth/Mark P1",
+      "BASE UPSELL",
+      "BB",
+      68,
+      283
+    ],
+    [
+      "DE-BB Magdeburg - Stadtfeld P1",
+      "BASE UPSELL",
+      "BB",
+      64,
+      624
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P3",
+      "BASE UPSELL",
+      "BB",
+      57,
+      184
+    ],
+    [
+      "DE-BB Magdeburg - Ottersleben P1",
+      "BASE UPSELL",
+      "BB",
+      52,
+      267
+    ],
+    [
+      "DE-BY Tittling P1",
+      "BASE UPSELL",
+      "BY",
+      51,
+      1149
     ]
   ],
   "cemeteryRows": [
