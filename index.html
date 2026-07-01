@@ -237,7 +237,7 @@ var projectRows = [
   // ── Team Tatjana ────────────────────────────────────────────────────────
   ["DE-BB Schöneiche HP0", "HP0", "Team Tatjana", 2, 2, 0, 11, 4096, 1541],
   // ── Open Infra CS ───────────────────────────────────────────────────────
-  ["DE-BB Falkensee HP0", "HP0", "Open Infra CS", 1, 0, 1, 1, 2741, 339],
+  ["DE-BB Falkensee HP0", "HP0", "Stonemedia GmbH", 1, 0, 1, 1, 2741, 339],
   // ── Stonemedia GmbH ───────────────────────────────────────────────────
   ["DE-BB Seddiner See P2", "Base Sales / Up Sales", "Stonemedia GmbH", 0, 0, 0, 0, 752, 36],
   // ── Open Infra CS ───────────────────────────────────────────────────────
@@ -245,7 +245,6 @@ var projectRows = [
   // ── United Promotion GmbH ──────────────────────────────────────────────
   ["DE-BB Zeuthen-Wildau HP0", "HP0", "United Promotion GmbH", 5, 3, 1, 1, 2924, 328],
   // ── Open Infra CS ───────────────────────────────────────────────────────
-  ["DE-CS", "HP0", "Open Infra CS", 9, 5, 5, 179, 179, 0],
   // ── Rating Peak GmbH ────────────────────────────────────────────────────
   ["DE-BB Grünheide P3", "BASE UPSELL", "Rating Peak GmbH", 0, 0, 0, 0, 809, 90],
   ["DE-BB Gosen Neu-Zittau P2", "Base Sales / Up Sales", "Rating Peak GmbH", 0, 0, 0, 0, 109, 12],
@@ -1770,7 +1769,7 @@ function render(){
   [{title:'Bayern Contact',name:'Markus Brunhofer',role:'Leiter Bayerisches Breitbandzentrum',org:'Landesamt für Digitalisierung, Breitband und Vermessung',addr:'Kirchensteig 1, 92224 Amberg',tel:'+49 (9621) 96543 80',telLink:'+499621965380',email:'markus.brunhofer@ldbv.bayern.de'},
    {title:'Breitbandberatung Bayern',name:'Walter Huber',role:'Breitbandberatung Bayern',tel:'+49 (0) 9181 / 406 1333',telLink:'+499181406133',email:'info@breitbandberatung.de'},
    {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technischer Leiter',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'},
-   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Leitung Geschäftsbereich Breitband',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',email:'klaus.eckel@ik-t.de'}
+   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Leitung Geschäftsbereich Breitband',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',tel2:'+49 (170) 71 55 94 8',telLink2:'+491707155948',email:'klaus.eckel@ik-t.de'}
   ].forEach(function(c){
     html+='<div style="background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:13px;">';
     html+='<div style="font-weight:900;color:#363E36;margin-bottom:8px;">'+esc(c.title)+'</div>';
@@ -1779,6 +1778,7 @@ function render(){
     if(c.org)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.org)+'</div>';
     if(c.addr)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.addr)+'</div>';
     html+='<div style="margin-top:8px;">Tel: <a href="tel:'+c.telLink+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(c.tel)+'</a></div>';
+    if(c.tel2)html+='<div>Tel: <a href="tel:'+c.telLink2+'" style="color:#C86750;font-weight:700;text-decoration:underline;">'+esc(c.tel2)+'</a></div>';
     html+='<div><a href="mailto:'+esc(c.email)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;">'+esc(c.email)+'</a></div>';
     html+='</div>';
   });
