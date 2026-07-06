@@ -1680,7 +1680,7 @@
       335
     ],
     [
-      "DE-BB Brikenwerder-Hohen-Neuendorf HP0",
+      "DE-BB Birkenwerder-Hohen-Neuendorf HP0",
       "HP0",
       "BB",
       150,
@@ -3008,11 +3008,11 @@
     "DE-BB Königs Wusterhausen HP0 2": "https://bob.openinfra.com/sales-projects/3840/sales-periods",
     "DE-BB Zeuthen-Wildau HP0": "https://bob.openinfra.com/sales-projects/3843/sales-periods",
     "Märkisch Buchholz Combined": "https://bob.openinfra.com/sales-projects/4060",
-    "DE-BB Brikenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
     "DE-BB Groß Köris HP0": "https://bob.openinfra.com/sales-projects/4050",
     "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857",
     "DE-BB Grunheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
-    "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods"
+    "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
+    "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844"
   },
   "projectTargets": {
     "DE-BB Amt Scharmützelsee P0": 43,
@@ -3258,5 +3258,16 @@
   "mar": 292,
   "apr": 244,
   "may": 501,
-  "lastUpdateDate": "2.7.2026"
+  "lastUpdateDate": "2.7.2026",
+  "funnelPrioList": [
+    "DE-BB Bestensee HP0",
+    "DE-BB Birkenwerder-Hohen-Neuendorf HP0",
+    "DE-BB Stadt Velten P1 HP0",
+    "DE-BB Beetzsee P4",
+    "DE-BB Beetzsee P5",
+    "DE-BB Beetzsee P3",
+    "DE-BB Zossen P7-1",
+    "DE-BB Schöneiche P11",
+    "DE-Schöneiche P1-3"
+  ]
 }
