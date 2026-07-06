@@ -69,8 +69,8 @@
       "may": 5,
       "mayForecast": 6,
       "juneActual": 12,
-      "julyActual": 1,
-      "ytd": 38,
+      "julyActual": 0,
+      "ytd": 37,
       "forecast": 93,
       "d2d": 1,
       "cancelledYtd": 0
@@ -1120,18 +1120,6 @@
       0
     ],
     [
-      "DE-BB Brandenburg HP0 FC 2",
-      "HP0",
-      "United Promotion GmbH",
-      0,
-      0,
-      0,
-      0,
-      0,
-      86,
-      0
-    ],
-    [
       "DE-CS",
       "Base Sales / Up Sales",
       "Open Infra CS",
@@ -1142,18 +1130,6 @@
       0,
       0,
       0
-    ],
-    [
-      "Rosengarten B3",
-      "Build Sales",
-      "Open Infra CS",
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
     ]
   ],
   "funnelRowsRaw": [
