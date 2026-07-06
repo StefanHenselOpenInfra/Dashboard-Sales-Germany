@@ -1141,13 +1141,6 @@
       245
     ],
     [
-      "DE-BB Brandenburg HP0 FC",
-      "HP0",
-      "BB",
-      274,
-      1363
-    ],
-    [
       "DE-BB Erkner P3 HP0 - SNB",
       "HP0",
       "BB",
@@ -1250,7 +1243,7 @@
       "HP0",
       "BB",
       0,
-      670
+      361
     ],
     [
       "DE-BY Kirchroth HP0 - SNB",
@@ -1487,15 +1480,15 @@
       "DE-BB Bestensee HP0",
       "HP0",
       "BB",
-      0,
-      0
+      8,
+      1369
     ],
     [
       "DE-BB Stadt Velten P1 HP0",
       "HP0",
       "BB",
-      0,
-      0
+      1,
+      971
     ],
     [
       "DE-BB Grünheide P4",
@@ -1592,8 +1585,8 @@
       "DE-BB Grunheide P2 HP0",
       "HP0",
       "BB",
-      398,
-      908
+      0,
+      502
     ],
     [
       "DE-BB Q3-25 Stadt Oranienburg",
@@ -1608,13 +1601,6 @@
       "BY",
       361,
       986
-    ],
-    [
-      "DE-BB Groß Köris HP0",
-      "HP0",
-      "BB",
-      341,
-      831
     ],
     [
       "DE-NI Wistedt P1",
@@ -2030,6 +2016,34 @@
       "T COM",
       0,
       0
+    ],
+    [
+      "DE-BB Brandenburg HP0 FC",
+      "BB",
+      "Abandon",
+      274,
+      1363
+    ],
+    [
+      "DE-BB Löwenberger Land P3",
+      "BB",
+      "STOPP",
+      79,
+      427
+    ],
+    [
+      "DE-BB Groß Köris P3",
+      "BB",
+      "STOPP",
+      0,
+      0
+    ],
+    [
+      "DE-BB Groß Köris HP0",
+      "BB",
+      "Abandon",
+      341,
+      831
     ]
   ],
   "potentialRows": [
@@ -2860,7 +2874,7 @@
     "DE-BB Grunheide P6": "https://bob.openinfra.com/delivery-projects/3026",
     "DE-BB Grunheide P7": "https://bob.openinfra.com/delivery-projects/3027",
     "DE-BB Schwerin HP0": "https://bob.openinfra.com/sales-projects/3732",
-    "DE-BB Stadt Velten P1 HP0": "https://bob.openinfra.com/sales-projects/2181",
+    "DE-BB Stadt Velten P1 HP0": "https://bob.openinfra.com/sales-projects/2181/sales-periods",
     "DE-BB Schönwald P5": "https://bob.openinfra.com/sales-projects/3502",
     "DD - Furth S1": "https://bob.openinfra.com/sales-projects/3430",
     "DD - Furth S2": "https://bob.openinfra.com/sales-projects/3431",
@@ -2993,7 +3007,12 @@
     "DE-BB Falkensee HP0": "https://bob.openinfra.com/sales-projects/3826/sales-periods",
     "DE-BB Königs Wusterhausen HP0 2": "https://bob.openinfra.com/sales-projects/3840/sales-periods",
     "DE-BB Zeuthen-Wildau HP0": "https://bob.openinfra.com/sales-projects/3843/sales-periods",
-    "Märkisch Buchholz Combined": "https://bob.openinfra.com/sales-projects/4060"
+    "Märkisch Buchholz Combined": "https://bob.openinfra.com/sales-projects/4060",
+    "DE-BB Brikenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
+    "DE-BB Groß Köris HP0": "https://bob.openinfra.com/sales-projects/4050",
+    "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857",
+    "DE-BB Grunheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
+    "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods"
   },
   "projectTargets": {
     "DE-BB Amt Scharmützelsee P0": 43,
