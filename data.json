@@ -1,6 +1,21 @@
 {
   "partners": [
     {
+      "name": "United Promotion GmbH",
+      "january": 0,
+      "february": 0,
+      "march": 0,
+      "april": 6,
+      "may": 84,
+      "mayForecast": 92,
+      "juneActual": 262,
+      "julyActual": 86,
+      "ytd": 438,
+      "forecast": 1209,
+      "d2d": 11,
+      "cancelledYtd": 19
+    },
+    {
       "name": "Stonemedia GmbH",
       "january": 7,
       "february": 48,
@@ -9,11 +24,11 @@
       "may": 221,
       "mayForecast": 228,
       "juneActual": 124,
-      "julyActual": 21,
-      "ytd": 557,
+      "julyActual": 24,
+      "ytd": 560,
       "forecast": 985,
       "d2d": 4,
-      "cancelledYtd": 52
+      "cancelledYtd": 56
     },
     {
       "name": "EnCom GmbH",
@@ -24,11 +39,11 @@
       "may": 119,
       "mayForecast": 119,
       "juneActual": 258,
-      "julyActual": 15,
-      "ytd": 588,
+      "julyActual": 18,
+      "ytd": 591,
       "forecast": 1509,
       "d2d": 4,
-      "cancelledYtd": 25
+      "cancelledYtd": 23
     },
     {
       "name": "Team Tatjana",
@@ -39,41 +54,26 @@
       "may": 62,
       "mayForecast": 62,
       "juneActual": 39,
-      "julyActual": 1,
-      "ytd": 210,
+      "julyActual": 7,
+      "ytd": 216,
       "forecast": 348,
       "d2d": 4,
       "cancelledYtd": 6
     },
     {
-      "name": "United Promotion GmbH",
-      "january": 0,
-      "february": 0,
-      "march": 0,
-      "april": 6,
-      "may": 84,
-      "mayForecast": 92,
-      "juneActual": 262,
-      "julyActual": 66,
-      "ytd": 418,
-      "forecast": 1209,
-      "d2d": 11,
-      "cancelledYtd": 20
-    },
-    {
       "name": "Open Infra CS",
-      "january": 2,
-      "february": 4,
+      "january": 8,
+      "february": 10,
       "march": 9,
       "april": 5,
       "may": 5,
       "mayForecast": 6,
       "juneActual": 12,
       "julyActual": 0,
-      "ytd": 37,
+      "ytd": 49,
       "forecast": 93,
       "d2d": 1,
-      "cancelledYtd": 0
+      "cancelledYtd": 10
     },
     {
       "name": "Rating Peak GmbH",
@@ -88,7 +88,7 @@
       "ytd": 8,
       "forecast": 33,
       "d2d": 0,
-      "cancelledYtd": 0
+      "cancelledYtd": 1
     },
     {
       "name": "Filiago",
@@ -108,6 +108,26 @@
   ],
   "kpiActuals": {
     "Base Sales / Up Sales": {
+      "april": 98,
+      "may": 352,
+      "june": 460,
+      "july": 83
+    },
+    "After Market / HP0 Sales": {
+      "april": 13,
+      "may": 30,
+      "june": 108,
+      "july": 43
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 141,
+      "july": 10
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
       "april": 102,
       "may": 352,
       "june": 411,
@@ -126,35 +146,15 @@
       "july": 15
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 91,
-      "may": 346,
-      "june": 428,
-      "july": 43
-    },
-    "After Market / HP0 Sales": {
-      "april": 20,
-      "may": 35,
-      "june": 131,
-      "july": 18
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 148,
-      "july": 5
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 2064,
+    "salesReportTotal2026": 2096,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 2,
-    "q3WorkingDaysLeft": 64,
-    "julyWorkingDaysDone": 3,
-    "julyWorkingDaysLeft": 20,
+    "q3WorkingDaysDone": 4,
+    "q3WorkingDaysLeft": 62,
+    "julyWorkingDaysDone": 4,
+    "julyWorkingDaysLeft": 19,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -163,13 +163,13 @@
     "may": 501,
     "jun": 709,
     "jun_actual": 709,
-    "jul": 104,
+    "jul": 136,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "5.7.2026"
+    "lastUpdateDate": "7.7.2026"
   },
   "netSales": 1981,
-  "cancelled": 106,
+  "cancelled": 115,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -178,9 +178,9 @@
       0,
       0,
       0,
-      31,
+      0,
       235,
-      56,
+      87,
       0
     ],
     [
@@ -188,11 +188,11 @@
       "Build Sales",
       "Stonemedia GmbH",
       0,
-      20,
-      25,
-      18,
+      0,
+      0,
+      0,
       579,
-      189,
+      252,
       0
     ],
     [
@@ -201,10 +201,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      21,
-      4,
+      0,
+      0,
       235,
-      15,
+      40,
       0
     ],
     [
@@ -213,22 +213,22 @@
       "Stonemedia GmbH",
       0,
       0,
-      59,
-      12,
+      0,
+      0,
       243,
-      6,
+      77,
       0
     ],
     [
       "DE-BB Hennigsdorf P3",
       "Build Sales",
       "Stonemedia GmbH",
-      14,
-      18,
-      4,
+      0,
+      0,
+      0,
       0,
       633,
-      204,
+      240,
       0
     ],
     [
@@ -237,10 +237,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      11,
-      1,
-      166,
       0,
+      0,
+      166,
+      12,
       0
     ],
     [
@@ -249,10 +249,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      13,
-      3,
+      0,
+      0,
       107,
-      46,
+      62,
       1
     ],
     [
@@ -261,10 +261,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      24,
-      9,
+      0,
+      0,
       335,
-      79,
+      112,
       4
     ],
     [
@@ -274,9 +274,9 @@
       0,
       0,
       0,
-      6,
+      0,
       332,
-      83,
+      89,
       0
     ],
     [
@@ -285,11 +285,11 @@
       "Stonemedia GmbH",
       0,
       0,
-      44,
-      2,
+      0,
+      0,
       478,
-      55,
-      8
+      101,
+      11
     ],
     [
       "DE-BB Storkow P6",
@@ -297,10 +297,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      3,
-      1,
+      0,
+      0,
       87,
-      14,
+      18,
       0
     ],
     [
@@ -309,10 +309,10 @@
       "Stonemedia GmbH",
       0,
       0,
-      10,
-      5,
+      0,
+      0,
       199,
-      30,
+      45,
       1
     ],
     [
@@ -322,9 +322,9 @@
       0,
       0,
       0,
-      2,
+      0,
       35,
-      7,
+      9,
       1
     ],
     [
@@ -334,33 +334,33 @@
       0,
       0,
       0,
-      19,
-      184,
       0,
+      184,
+      19,
       3
     ],
     [
       "Kasel-Golzig Combined",
       "Build Sales",
       "Stonemedia GmbH",
-      16,
-      16,
-      5,
-      10,
+      0,
+      0,
+      0,
+      0,
       1123,
-      425,
+      472,
       0
     ],
     [
       "Märkisch Buchholz Combined",
       "Base Sales",
       "Stonemedia GmbH",
-      45,
-      7,
-      2,
-      1,
+      0,
+      0,
+      0,
+      0,
       1924,
-      460,
+      515,
       0
     ],
     [
@@ -405,11 +405,11 @@
       "EnCom GmbH",
       0,
       0,
-      81,
-      217,
-      836,
       0,
-      10
+      0,
+      836,
+      298,
+      12
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -487,12 +487,12 @@
       "DE-BB Frankfurt (Oder) Combined P3",
       "Build Sales",
       "EnCom GmbH",
-      31,
-      11,
+      0,
+      0,
       0,
       0,
       213,
-      86,
+      128,
       0
     ],
     [
@@ -500,11 +500,11 @@
       "Build Sales",
       "EnCom GmbH",
       0,
-      21,
-      9,
-      2,
+      0,
+      0,
+      0,
       344,
-      66,
+      98,
       0
     ],
     [
@@ -513,11 +513,11 @@
       "EnCom GmbH",
       0,
       0,
-      2,
-      7,
+      0,
+      0,
       842,
       11,
-      2
+      3
     ],
     [
       "DE-BY Kirchroth P1-1",
@@ -535,36 +535,36 @@
       "DE-BY Kirchroth P3",
       "BASE UPSELL",
       "EnCom GmbH",
-      5,
-      7,
-      6,
-      4,
+      0,
+      0,
+      0,
+      0,
       246,
-      103,
+      125,
       0
     ],
     [
       "DE-BY Kirchroth P4",
       "BASE UPSELL",
       "EnCom GmbH",
-      14,
-      3,
-      6,
-      4,
+      0,
+      0,
+      0,
+      0,
       325,
-      152,
+      179,
       0
     ],
     [
       "DE-BY Kirchroth P5",
       "Build Sales",
       "EnCom GmbH",
-      35,
-      14,
-      1,
+      0,
+      0,
+      0,
       0,
       154,
-      48,
+      98,
       0
     ],
     [
@@ -573,34 +573,34 @@
       "EnCom GmbH",
       0,
       0,
-      7,
-      14,
+      0,
+      0,
       473,
-      128,
+      149,
       1
     ],
     [
       "DE-BY Parkstetten P1",
       "BASE UPSELL",
       "EnCom GmbH",
-      2,
+      0,
       0,
       0,
       0,
       396,
-      99,
+      101,
       0
     ],
     [
       "DE-BY Straubing P1",
       "BASE UPSELL",
       "EnCom GmbH",
-      3,
-      12,
-      7,
-      2,
+      0,
+      0,
+      0,
+      0,
       307,
-      105,
+      129,
       2
     ],
     [
@@ -608,11 +608,11 @@
       "Build Sales",
       "EnCom GmbH",
       0,
-      1,
       0,
-      8,
+      0,
+      0,
       590,
-      246,
+      255,
       0
     ],
     [
@@ -628,7 +628,7 @@
       0
     ],
     [
-      "DE-BB Rietz-Neuendorf P2",
+      "DE-BB Rietz-Neuendorf S2",
       "Base Sales",
       "EnCom GmbH",
       0,
@@ -643,12 +643,12 @@
       "DE-BB Birkenwerder P1",
       "Build Sales",
       "Team Tatjana",
-      22,
-      20,
-      6,
-      2,
+      0,
+      0,
+      0,
+      0,
       1097,
-      396,
+      446,
       0
     ],
     [
@@ -657,10 +657,10 @@
       "Team Tatjana",
       0,
       0,
-      12,
-      2,
+      0,
+      0,
       112,
-      1,
+      15,
       0
     ],
     [
@@ -669,10 +669,10 @@
       "Team Tatjana",
       0,
       0,
-      2,
-      1,
+      0,
+      0,
       373,
-      37,
+      40,
       0
     ],
     [
@@ -681,35 +681,35 @@
       "Team Tatjana",
       0,
       0,
-      8,
-      8,
+      0,
+      0,
       372,
-      40,
+      56,
       0
     ],
     [
       "DE-BB Spreenhagen P3 & Furstenwalde P6",
       "Base Sales",
       "Team Tatjana",
-      13,
-      10,
-      5,
+      0,
+      0,
+      0,
       0,
       443,
-      51,
-      1
+      79,
+      3
     ],
     [
       "DE-BB Stadt Fürstenwalde P4",
       "Build Sales",
       "Team Tatjana",
-      5,
-      11,
-      28,
-      17,
+      0,
+      0,
+      0,
+      0,
       609,
-      166,
-      0
+      227,
+      4
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -717,8 +717,8 @@
       "United Promotion GmbH",
       0,
       0,
-      9,
-      2,
+      0,
+      0,
       260,
       11,
       0
@@ -741,10 +741,10 @@
       "United Promotion GmbH",
       0,
       0,
-      28,
-      6,
+      0,
+      0,
       573,
-      159,
+      193,
       0
     ],
     [
@@ -790,9 +790,9 @@
       0,
       0,
       0,
-      10,
-      121,
       0,
+      121,
+      10,
       0
     ],
     [
@@ -800,12 +800,12 @@
       "HP0",
       "United Promotion GmbH",
       0,
-      5,
-      14,
-      9,
+      0,
+      0,
+      0,
       1943,
       62,
-      5
+      13
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -813,10 +813,10 @@
       "United Promotion GmbH",
       0,
       0,
-      18,
-      39,
-      143,
       0,
+      0,
+      143,
+      57,
       10
     ],
     [
@@ -824,11 +824,11 @@
       "Build Sales",
       "United Promotion GmbH",
       0,
-      1,
-      6,
+      0,
+      0,
       0,
       407,
-      131,
+      138,
       0
     ],
     [
@@ -837,11 +837,11 @@
       "United Promotion GmbH",
       0,
       0,
-      1,
-      41,
+      0,
+      0,
       1696,
       48,
-      13
+      15
     ],
     [
       "DE-BB Zossen HP0",
@@ -849,7 +849,7 @@
       "United Promotion GmbH",
       0,
       0,
-      2,
+      0,
       0,
       107,
       2,
@@ -873,11 +873,11 @@
       "United Promotion GmbH",
       0,
       0,
-      1,
-      1,
+      0,
+      0,
       289,
-      3,
-      5
+      5,
+      6
     ],
     [
       "DE-BB Zossen P6",
@@ -885,11 +885,11 @@
       "United Promotion GmbH",
       0,
       0,
-      5,
-      40,
-      731,
       0,
-      11
+      0,
+      731,
+      45,
+      14
     ],
     [
       "DE-BB Zossen P7",
@@ -898,10 +898,10 @@
       0,
       0,
       0,
-      35,
-      918,
       0,
-      9
+      918,
+      35,
+      10
     ],
     [
       "Hohen Neuendorf B1",
@@ -910,9 +910,9 @@
       0,
       0,
       0,
-      28,
+      0,
       986,
-      184,
+      212,
       1
     ],
     [
@@ -922,10 +922,10 @@
       0,
       0,
       0,
-      5,
+      0,
       935,
-      134,
-      3
+      139,
+      4
     ],
     [
       "DE-BB Neuzelle Combined P1",
@@ -946,10 +946,10 @@
       0,
       0,
       0,
-      46,
+      0,
       1227,
       54,
-      6
+      7
     ],
     [
       "DE-BB Teupitz P3",
@@ -982,7 +982,7 @@
       0,
       0,
       0,
-      9,
+      0,
       2549,
       15,
       0
@@ -1033,7 +1033,7 @@
       0,
       2628,
       11,
-      1
+      4
     ],
     [
       "DE-BB Grünheide P3",
@@ -1066,9 +1066,9 @@
       0,
       0,
       0,
-      1,
+      0,
       262,
-      77,
+      78,
       0
     ],
     [
@@ -1078,9 +1078,9 @@
       0,
       0,
       0,
-      7,
+      0,
       184,
-      50,
+      57,
       0
     ],
     [
@@ -1113,22 +1113,22 @@
       "Team Tatjana",
       0,
       0,
-      1,
+      0,
       0,
       101,
-      41,
+      42,
       0
     ],
     [
       "DE-CS",
       "Base Sales / Up Sales",
       "Open Infra CS",
-      9,
-      5,
-      5,
-      12,
       0,
       0,
+      0,
+      0,
+      0,
+      31,
       0
     ]
   ],
@@ -2978,7 +2978,6 @@
     "DE-NI Salzhausen - Lübberstedt P8": "https://bob.openinfra.com/sales-projects/4111",
     "DE-NI Welle P2": "https://bob.openinfra.com/delivery-projects/2629",
     "DE-NI Welle P3": "https://bob.openinfra.com/delivery-projects/3607",
-    "DE-BB Rietz-Neuendorf P2": "https://bob.openinfra.com/sales-projects/3387",
     "Heidenau B4": "https://bob.openinfra.com/delivery-projects/2628",
     "Hohen Neuendorf B1": "https://bob.openinfra.com/delivery-projects/2254",
     "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
@@ -3012,7 +3011,8 @@
     "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857",
     "DE-BB Grunheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
     "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
-    "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844"
+    "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
+    "DE-BB Rietz-Neuendorf S2": "https://bob.openinfra.com/sales-projects/3387"
   },
   "projectTargets": {
     "DE-BB Amt Scharmützelsee P0": 43,
@@ -3114,10 +3114,10 @@
       78
     ],
     [
-      "DE-BB Rietz-Neuendorf P2",
+      "DE-BB Rietz-Neuendorf S2",
       "BB",
       "EnCom GmbH",
-      ""
+      "CoA waiting"
     ],
     [
       "DE-BB Beetzsee P2",
