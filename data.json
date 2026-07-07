@@ -104,6 +104,21 @@
       "forecast": 2,
       "d2d": 0,
       "cancelledYtd": 0
+    },
+    {
+      "name": "Aurora Sales GmbH",
+      "january": 0,
+      "february": 0,
+      "march": 0,
+      "april": 0,
+      "may": 0,
+      "mayForecast": 0,
+      "juneActual": 0,
+      "julyActual": 0,
+      "ytd": 0,
+      "forecast": 0,
+      "d2d": 0,
+      "cancelledYtd": 0
     }
   ],
   "kpiActuals": {
