@@ -1644,13 +1644,6 @@
       690
     ],
     [
-      "DE-BY Metten P1",
-      "BASE UPSELL",
-      "BY",
-      252,
-      2376
-    ],
-    [
       "DE-Bestensee South",
       "BASE UPSELL",
       "BB",
@@ -2064,6 +2057,13 @@
       "STOPP",
       0,
       0
+    ],
+    [
+      "DE-BY Metten P1",
+      "BY",
+      "Abandon",
+      252,
+      2376
     ]
   ],
   "potentialRows": [
@@ -3167,12 +3167,6 @@
       "DE-BB Neuzelle Combined P1",
       "BB",
       "United Promotion GmbH",
-      "CoA waiting"
-    ],
-    [
-      "DE-BB Königs Wusterhausen HP0 1",
-      "BB",
-      "Stonemedia GmbH",
       "CoA waiting"
     ],
     [

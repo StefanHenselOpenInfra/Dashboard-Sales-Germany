@@ -339,7 +339,6 @@ var funnelRowsRaw = [
   ["DE-NI Wistedt P1","BASE UPSELL","NI",302,569],
   ["DE-BY Oberschneiding P2","BASE UPSELL","BY",291,620],
   ["DE-BB Halbe & Löpten P1 HP0","HP0","BB",290,690],
-  ["DE-BY Metten P1","BASE UPSELL","BY",252,2376],
   ["DE-Bestensee South","BASE UPSELL","BB",246,249],
   ["DE-BB Schönwald P1 HP0","HP0","BB",224,385],
   ["DE-BY Irlbach P1","BASE UPSELL","BY",186,452],
@@ -368,7 +367,7 @@ var funnelRowsRaw = [
   ["DE-BY Tittling P1","BASE UPSELL","BY",51,1149],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","BB",2,1103]
 ];
-var funnelPrioList = ["DE-BB Birkenwerder-Hohen-Neuendorf HP0", "DE-BB Stadt Velten P1 HP0", "DE-BB Beetzsee P4", "DE-BB Beetzsee P5", "DE-BB Beetzsee P3", "DE-BB Zossen P7-1", "DE-BB Schöneiche P11", "DE-Schöneiche P1-3"];
+var funnelPrioList = ["DE-BB Königs Wusterhausen HP0 1","DE-BB Birkenwerder-Hohen-Neuendorf HP0", "DE-BB Stadt Velten P1 HP0", "DE-BB Beetzsee P4", "DE-BB Beetzsee P5", "DE-BB Beetzsee P3", "DE-BB Zossen P7-1", "DE-BB Schöneiche P11", "DE-Schöneiche P1-3"];
 
 // Target uptake % per project (e.g. 43 = 43%)
 var projectTargets = {
@@ -459,7 +458,6 @@ var coaRowsRaw = [
   ["DE-BB Heidesee HP0","BB","United Promotion GmbH","CoA waiting","HP0",2712,604],
   ["DE-BB Eichwalde HP0","BB","United Promotion GmbH","CoA waiting","HP0",837,71],
   ["DE-BB Neuzelle Combined P1","BB","United Promotion GmbH","CoA waiting"],
-  ["DE-BB Königs Wusterhausen HP0 1","BB","Stonemedia GmbH","CoA waiting"],
   ["DE-BB Grünheide P7","BB","Rating Peak GmbH","CoA waiting"],
   ["DE-BB Bersteland P3","BB","Stonemedia GmbH","new calc needed"],
   ["DE-BB Bersteland P4","BB","Stonemedia GmbH","new calc needed"],
@@ -584,7 +582,8 @@ var cemeteryRows = [
   ["DE-BY Falkenfels","BY","T COM",0,0],
   ["DE-BB Brandenburg HP0 FC","BB","Abandon",274,1363],
   ["DE-BB Löwenberger Land P3","BB","STOPP",79,427],
-  ["DE-BB Groß Köris P3","BB","STOPP",0,0]
+  ["DE-BB Groß Köris P3","BB","STOPP",0,0],
+  ["DE-BY Metten P1","BY","Abandon",252,2376]
 ];
 var cemeterySearch='', cemeteryRegion='All', cemeterySort='Project', cemeteryDir='asc';
 
@@ -760,7 +759,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Municipality', pot
 
 // state
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='May', projSortDir='desc';
-var funnelSearch='', funnelTypeFilter='All', funnelSortKey='HP', funnelSortDir='desc';
+var funnelSearch='', funnelTypeFilter='All', funnelRegionFilter='All', funnelSortKey='HP', funnelSortDir='desc';
 var coaSearch='', coaAgencyFilter='All', coaSortKey='Agency', coaSortDir='asc';
 var agencySortKey='July', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
@@ -1052,6 +1051,7 @@ function render(){
   });
   var funnel=funnelRows.filter(function(r){
     return(funnelTypeFilter==='All'||normType(r[1])===funnelTypeFilter)&&
+      (funnelRegionFilter==='All'||r[2]===funnelRegionFilter)&&
       r.join(' ').toLowerCase().includes(funnelSearch.toLowerCase());
   });
   var funnelPrioMap={};
@@ -1698,10 +1698,14 @@ function render(){
   html+='<h2>Projects in Funnel</h2>';
   html+='<div style="display:flex;gap:8px;"><button class="btn-xlsx" onclick="exportFunnelXLSX()">⬇ Excel</button><button class="btn btn-brown" onclick="exportFunnelCSV()">CSV</button></div></div>';
 
-  html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
   html+='<input value="'+esc(funnelSearch)+'" id="search-funnel" placeholder="Search funnel..." onkeydown="if(event.key===String.fromCharCode(13)){event.preventDefault();}" oninput="funnelSearch=this.value;render();">';
   html+='<select onchange="funnelTypeFilter=this.value;render();">';
   fTypes.forEach(function(t){html+='<option'+(funnelTypeFilter===t?' selected':'')+'>'+esc(t)+'</option>';});
+  html+='</select>';
+  var fRegions=['All'].concat(funnelRows.map(function(r){return r[2];}).filter(function(v,i,a){return v&&a.indexOf(v)===i;}).sort());
+  html+='<select onchange="funnelRegionFilter=this.value;render();">';
+  fRegions.forEach(function(r){html+='<option'+(funnelRegionFilter===r?' selected':'')+'>'+esc(r)+'</option>';});
   html+='</select>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="funnelSortKey=this.value;render();" style="flex:1;">';
