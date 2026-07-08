@@ -265,7 +265,8 @@ var projectRows = [
   ["DE-BB Grünheide P7","Base Sales","Rating Peak GmbH",0,0,0,0,140,0,0],
   ["DE-BB Grünheide P5","BASE UPSELL","Team Tatjana",0,0,1,0,101,41,0],
   ["DE-CS","Base Sales / Up Sales","Open Infra CS",9,5,5,12,0,0,0],
-  ["DE-BB Groß Köris HP0","HP0","United Promotion GmbH",0,0,0,0,490,0,0]
+  ["DE-BB Groß Köris HP0","HP0","United Promotion GmbH",0,0,0,0,490,0,0],
+  ["DE-BB Bestensee HP0","HP0","Aurora Sales GmbH",0,0,0,0,1369,8,0]
 ];
 
 var funnelRowsRaw = [
@@ -318,7 +319,6 @@ var funnelRowsRaw = [
   ["DE-BY Wallersdorf P1","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P2","Base Sales","BY",0,0],
   ["DE-BY Wallersdorf P3","Base Sales","BY",0,0],
-  ["DE-BB Bestensee HP0","HP0","BB",8,1369],
   ["DE-BB Stadt Velten P1 HP0","HP0","BB",1,971],
   ["DE-BB Grünheide P4","BASE UPSELL","BB",31,84],
   ["DE-BB Grünheide P6","BASE UPSELL","BB",28,283],
@@ -368,7 +368,7 @@ var funnelRowsRaw = [
   ["DE-BY Tittling P1","BASE UPSELL","BY",51,1149],
   ["DE-BB Königs Wusterhausen HP0 1","HP0","BB",2,1103]
 ];
-var funnelPrioList = ["DE-BB Bestensee HP0", "DE-BB Birkenwerder-Hohen-Neuendorf HP0", "DE-BB Stadt Velten P1 HP0", "DE-BB Beetzsee P4", "DE-BB Beetzsee P5", "DE-BB Beetzsee P3", "DE-BB Zossen P7-1", "DE-BB Schöneiche P11", "DE-Schöneiche P1-3"];
+var funnelPrioList = ["DE-BB Birkenwerder-Hohen-Neuendorf HP0", "DE-BB Stadt Velten P1 HP0", "DE-BB Beetzsee P4", "DE-BB Beetzsee P5", "DE-BB Beetzsee P3", "DE-BB Zossen P7-1", "DE-BB Schöneiche P11", "DE-Schöneiche P1-3"];
 
 // Target uptake % per project (e.g. 43 = 43%)
 var projectTargets = {
@@ -1622,7 +1622,7 @@ function render(){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
-  var runCoaMissingProjs=['DE-BB Groß Köris HP0','DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Amt Scharmützelsee P4','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
+  var runCoaMissingProjs=['DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Amt Scharmützelsee P4','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
   var coaWaitingProjs=[];
   projs.forEach(function(r,i){
     var gestopptList=[];
@@ -1740,7 +1740,7 @@ function render(){
     var backInFunnelProjs=[];
     var closedProjs=[];
     var coaWaitingProjs=[];
-    var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Königs Wusterhausen HP0 1','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
+    var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf S2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
     var importantProjs=[];
     var upStampProjs=['DE-BB Zossen P7-1'];
     // Determine badge

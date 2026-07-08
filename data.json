@@ -1145,6 +1145,18 @@
       490,
       0,
       0
+    ],
+    [
+      "DE-BB Bestensee HP0",
+      "HP0",
+      "Aurora Sales GmbH",
+      0,
+      0,
+      0,
+      0,
+      1369,
+      8,
+      0
     ]
   ],
   "funnelRowsRaw": [
@@ -1490,13 +1502,6 @@
       "BY",
       0,
       0
-    ],
-    [
-      "DE-BB Bestensee HP0",
-      "HP0",
-      "BB",
-      8,
-      1369
     ],
     [
       "DE-BB Stadt Velten P1 HP0",
