@@ -1189,20 +1189,6 @@
       229
     ],
     [
-      "DE-BB Groß Köris HP0 - SNB",
-      "HP0",
-      "BB",
-      0,
-      490
-    ],
-    [
-      "DE-BB Grünheide P2 HP0 - SNB",
-      "HP0",
-      "BB",
-      0,
-      510
-    ],
-    [
       "DE-BB Halbe & Löpten P1 HP0 - SNB",
       "HP0",
       "BB",
@@ -1602,7 +1588,7 @@
       916
     ],
     [
-      "DE-BB Grunheide P2 HP0",
+      "DE-BB Grünheide P2 HP0",
       "HP0",
       "BB",
       0,
@@ -3029,7 +3015,7 @@
     "Märkisch Buchholz Combined": "https://bob.openinfra.com/sales-projects/4060",
     "DE-BB Groß Köris HP0": "https://bob.openinfra.com/sales-projects/4050",
     "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857",
-    "DE-BB Grunheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
+    "DE-BB Grünheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
     "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
     "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
     "DE-BB Rietz-Neuendorf S2": "https://bob.openinfra.com/sales-projects/3387"
