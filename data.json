@@ -9,8 +9,8 @@
       "may": 92,
       "mayForecast": 92,
       "juneActual": 264,
-      "julyActual": 86,
-      "ytd": 438,
+      "julyActual": 103,
+      "ytd": 455,
       "forecast": 1209,
       "d2d": 11,
       "cancelledYtd": 19
@@ -19,13 +19,13 @@
       "name": "Stonemedia GmbH",
       "january": 7,
       "february": 48,
-      "march": 77,
-      "april": 62,
+      "march": 76,
+      "april": 61,
       "may": 222,
       "mayForecast": 228,
       "juneActual": 125,
-      "julyActual": 24,
-      "ytd": 560,
+      "julyActual": 22,
+      "ytd": 558,
       "forecast": 985,
       "d2d": 4,
       "cancelledYtd": 56
@@ -39,8 +39,8 @@
       "may": 119,
       "mayForecast": 119,
       "juneActual": 258,
-      "julyActual": 18,
-      "ytd": 591,
+      "julyActual": 21,
+      "ytd": 594,
       "forecast": 1509,
       "d2d": 4,
       "cancelledYtd": 23
@@ -54,8 +54,8 @@
       "may": 62,
       "mayForecast": 62,
       "juneActual": 30,
-      "julyActual": 7,
-      "ytd": 216,
+      "julyActual": 4,
+      "ytd": 213,
       "forecast": 348,
       "d2d": 4,
       "cancelledYtd": 6
@@ -126,6 +126,26 @@
       "april": 98,
       "may": 352,
       "june": 460,
+      "july": 86
+    },
+    "After Market / HP0 Sales": {
+      "april": 13,
+      "may": 30,
+      "june": 108,
+      "july": 58
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 141,
+      "july": 12
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 98,
+      "may": 352,
+      "june": 460,
       "july": 83
     },
     "After Market / HP0 Sales": {
@@ -141,35 +161,15 @@
       "july": 10
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 102,
-      "may": 352,
-      "june": 411,
-      "july": 61
-    },
-    "After Market / HP0 Sales": {
-      "april": 9,
-      "may": 30,
-      "june": 147,
-      "july": 28
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 148,
-      "july": 15
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 2096,
+    "salesReportTotal2026": 2116,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 4,
-    "q3WorkingDaysLeft": 62,
-    "julyWorkingDaysDone": 4,
-    "julyWorkingDaysLeft": 19,
+    "q3WorkingDaysDone": 5,
+    "q3WorkingDaysLeft": 61,
+    "julyWorkingDaysDone": 5,
+    "julyWorkingDaysLeft": 18,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -178,12 +178,12 @@
     "may": 501,
     "jun": 709,
     "jun_actual": 709,
-    "jul": 136,
+    "jul": 156,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "7.7.2026"
+    "lastUpdateDate": "8.7.2026"
   },
-  "netSales": 1981,
+  "netSales": 2001,
   "cancelled": 115,
   "projectRows": [
     [
@@ -379,18 +379,6 @@
       0
     ],
     [
-      "DE-BB Königs Wusterhausen HP0 1",
-      "HP0",
-      "Stonemedia GmbH",
-      1,
-      1,
-      0,
-      0,
-      1103,
-      2,
-      0
-    ],
-    [
       "Luckau Combined (Deploy 2026)",
       "Base Sales",
       "Stonemedia GmbH",
@@ -400,7 +388,7 @@
       0,
       2210,
       415,
-      2
+      0
     ],
     [
       "DE-BB Diehlo P1",
@@ -424,7 +412,7 @@
       217,
       836,
       0,
-      12
+      13
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -508,7 +496,7 @@
       0,
       213,
       86,
-      0
+      1
     ],
     [
       "DE-BB Frankfurt (Oder) Combined P4",
@@ -532,7 +520,7 @@
       7,
       842,
       11,
-      3
+      4
     ],
     [
       "DE-BY Kirchroth P1-1",
@@ -712,7 +700,7 @@
       0,
       443,
       51,
-      3
+      0
     ],
     [
       "DE-BB Stadt Fürstenwalde P4",
@@ -820,7 +808,7 @@
       9,
       1943,
       62,
-      13
+      17
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -856,7 +844,7 @@
       41,
       1696,
       48,
-      15
+      21
     ],
     [
       "DE-BB Zossen HP0",
@@ -892,7 +880,7 @@
       1,
       289,
       3,
-      6
+      7
     ],
     [
       "DE-BB Zossen P6",
@@ -916,7 +904,7 @@
       35,
       918,
       0,
-      10
+      12
     ],
     [
       "Hohen Neuendorf B1",
@@ -928,7 +916,7 @@
       28,
       986,
       184,
-      1
+      2
     ],
     [
       "Hohen Neuendorf B2",
@@ -964,7 +952,7 @@
       46,
       1227,
       54,
-      7
+      8
     ],
     [
       "DE-BB Teupitz P3",
@@ -1048,7 +1036,7 @@
       1,
       2628,
       11,
-      4
+      6
     ],
     [
       "DE-BB Grünheide P3",
@@ -1143,6 +1131,18 @@
       5,
       12,
       0,
+      0,
+      0
+    ],
+    [
+      "DE-BB Groß Köris HP0",
+      "HP0",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      0,
+      490,
       0,
       0
     ]
@@ -1826,6 +1826,13 @@
       "BY",
       51,
       1149
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 1",
+      "HP0",
+      "BB",
+      2,
+      1103
     ]
   ],
   "cemeteryRows": [
@@ -2052,13 +2059,6 @@
       "STOPP",
       0,
       0
-    ],
-    [
-      "DE-BB Groß Köris HP0",
-      "BB",
-      "Abandon",
-      341,
-      831
     ]
   ],
   "potentialRows": [
