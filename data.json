@@ -609,18 +609,6 @@
       2
     ],
     [
-      "DE-BB Zossen P4",
-      "Build Sales",
-      "EnCom GmbH",
-      0,
-      1,
-      0,
-      8,
-      590,
-      246,
-      0
-    ],
-    [
       "DE-BB Diensdorf-Radlow",
       "Base Sales",
       "EnCom GmbH",
@@ -1162,6 +1150,13 @@
     ]
   ],
   "funnelRowsRaw": [
+    [
+      "DE-BB Zossen P4",
+      "Build Sales",
+      "BB",
+      255,
+      590
+    ],
     [
       "DE-BB Zossen P7-1",
       "Base Sales / Up Sales",
@@ -3271,5 +3266,8 @@
     "DE-BB Zossen P7-1",
     "DE-BB Schöneiche P11",
     "DE-Schöneiche P1-3"
+  ],
+  "upStampProjs": [
+    "DE-BB Zossen P4"
   ]
 }
