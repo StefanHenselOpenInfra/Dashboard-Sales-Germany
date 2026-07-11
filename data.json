@@ -9,10 +9,11 @@
       "may": 92,
       "mayForecast": 92,
       "juneActual": 264,
-      "julyActual": 117,
-      "ytd": 469,
+      "julyActual": 156,
+      "ytd": 508,
       "forecast": 1209,
-      "d2d": 11,
+      "d2d": 19.5,
+      "manpower": 11,
       "cancelledYtd": 19
     },
     {
@@ -24,10 +25,11 @@
       "may": 222,
       "mayForecast": 222,
       "juneActual": 125,
-      "julyActual": 25,
-      "ytd": 561,
+      "julyActual": 35,
+      "ytd": 571,
       "forecast": 985,
-      "d2d": 4,
+      "d2d": 4.4,
+      "manpower": 4,
       "cancelledYtd": 56
     },
     {
@@ -39,10 +41,11 @@
       "may": 119,
       "mayForecast": 119,
       "juneActual": 258,
-      "julyActual": 25,
-      "ytd": 598,
+      "julyActual": 38,
+      "ytd": 611,
       "forecast": 1509,
-      "d2d": 4,
+      "d2d": 4.8,
+      "manpower": 4,
       "cancelledYtd": 23
     },
     {
@@ -54,10 +57,11 @@
       "may": 62,
       "mayForecast": 62,
       "juneActual": 30,
-      "julyActual": 7,
-      "ytd": 216,
+      "julyActual": 10,
+      "ytd": 219,
       "forecast": 348,
-      "d2d": 4,
+      "d2d": 1.3,
+      "manpower": 4,
       "cancelledYtd": 6
     },
     {
@@ -69,10 +73,11 @@
       "may": 5,
       "mayForecast": 5,
       "juneActual": 12,
-      "julyActual": 0,
-      "ytd": 49,
+      "julyActual": 1,
+      "ytd": 50,
       "forecast": 93,
-      "d2d": 1,
+      "d2d": 0.1,
+      "manpower": 1,
       "cancelledYtd": 0
     },
     {
@@ -83,11 +88,12 @@
       "april": 0,
       "may": 0,
       "mayForecast": 0,
-      "juneActual": 1,
+      "juneActual": 6,
       "julyActual": 0,
-      "ytd": 8,
+      "ytd": 6,
       "forecast": 33,
       "d2d": 0,
+      "manpower": 0,
       "cancelledYtd": 1
     },
     {
@@ -118,10 +124,31 @@
       "ytd": 0,
       "forecast": 0,
       "d2d": 0,
+      "manpower": 0,
       "cancelledYtd": 0
     }
   ],
   "kpiActuals": {
+    "Base Sales / Up Sales": {
+      "april": 98,
+      "may": 352,
+      "june": 460,
+      "july": 125
+    },
+    "After Market / HP0 Sales": {
+      "april": 13,
+      "may": 30,
+      "june": 108,
+      "july": 91
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 141,
+      "july": 24
+    }
+  },
+  "kpiPreviousDay": {
     "Base Sales / Up Sales": {
       "april": 98,
       "may": 352,
@@ -141,35 +168,15 @@
       "july": 18
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 98,
-      "may": 352,
-      "june": 460,
-      "july": 86
-    },
-    "After Market / HP0 Sales": {
-      "april": 13,
-      "may": 30,
-      "june": 108,
-      "july": 58
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 141,
-      "july": 12
-    }
-  },
   "settings": {
-    "salesReportTotal2026": 2135,
+    "salesReportTotal2026": 2200,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 6,
-    "q3WorkingDaysLeft": 60,
-    "julyWorkingDaysDone": 6,
-    "julyWorkingDaysLeft": 17,
+    "q3WorkingDaysDone": 8,
+    "q3WorkingDaysLeft": 58,
+    "julyWorkingDaysDone": 8,
+    "julyWorkingDaysLeft": 15,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -178,10 +185,10 @@
     "may": 501,
     "jun": 709,
     "jun_actual": 709,
-    "jul": 175,
+    "jul": 240,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "9.7.2026",
+    "lastUpdateDate": "11.7.2026",
     "cancelled": 115,
     "netSales": 2020
   },
@@ -366,7 +373,7 @@
       10,
       1123,
       425,
-      1
+      2
     ],
     [
       "Märkisch Buchholz Combined",
@@ -414,7 +421,7 @@
       217,
       836,
       0,
-      16
+      28
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -522,7 +529,7 @@
       7,
       842,
       14,
-      5
+      6
     ],
     [
       "DE-BY Kirchroth P1-1",
@@ -702,7 +709,7 @@
       17,
       609,
       166,
-      4
+      7
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -798,7 +805,7 @@
       9,
       1944,
       47,
-      17
+      23
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -810,7 +817,7 @@
       39,
       143,
       0,
-      10
+      11
     ],
     [
       "DE-BB Woltersdorf P5-1",
@@ -834,7 +841,7 @@
       41,
       1702,
       65,
-      23
+      38
     ],
     [
       "DE-BB Zossen HP0",
@@ -882,7 +889,7 @@
       40,
       731,
       0,
-      16
+      21
     ],
     [
       "DE-BB Zossen P7",
@@ -894,7 +901,7 @@
       35,
       918,
       0,
-      15
+      19
     ],
     [
       "Hohen Neuendorf B1",
@@ -918,7 +925,7 @@
       5,
       935,
       134,
-      9
+      11
     ],
     [
       "DE-BB Neuzelle Combined P1",
@@ -942,7 +949,7 @@
       46,
       1227,
       54,
-      9
+      13
     ],
     [
       "DE-BB Teupitz P3",
@@ -1002,7 +1009,7 @@
       0,
       752,
       36,
-      0
+      9
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -1026,7 +1033,7 @@
       1,
       2586,
       7,
-      6
+      8
     ],
     [
       "DE-BB Grünheide P3",
@@ -1071,9 +1078,9 @@
       0,
       0,
       0,
-      0,
+      5,
       184,
-      57,
+      50,
       0
     ],
     [
@@ -1147,16 +1154,21 @@
       1362,
       0,
       0
-    ]
-  ],
-  "funnelRowsRaw": [
+    ],
     [
       "DE-BB Zossen P4",
       "Build Sales",
-      "BB",
-      255,
-      590
-    ],
+      "United Promotion GmbH",
+      0,
+      1,
+      0,
+      8,
+      591,
+      246,
+      0
+    ]
+  ],
+  "funnelRowsRaw": [
     [
       "DE-BB Zossen P7-1",
       "Base Sales / Up Sales",
@@ -3265,9 +3277,8 @@
     "DE-BB Beetzsee P3",
     "DE-BB Zossen P7-1",
     "DE-BB Schöneiche P11",
-    "DE-Schöneiche P1-3"
+    "DE-Schöneiche P1-3",
+    "DE-BB Rangsdorf HP0"
   ],
-  "upStampProjs": [
-    "DE-BB Zossen P4"
-  ]
+  "upStampProjs": []
 }
