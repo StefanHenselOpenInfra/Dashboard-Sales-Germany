@@ -14,7 +14,7 @@
       "forecast": 1209,
       "d2d": 19.5,
       "manpower": 11,
-      "cancelledYtd": 19
+      "cancelledYtd": 20
     },
     {
       "name": "Stonemedia GmbH",
@@ -26,11 +26,11 @@
       "mayForecast": 222,
       "juneActual": 125,
       "julyActual": 35,
-      "ytd": 571,
+      "ytd": 625,
       "forecast": 985,
       "d2d": 4.4,
       "manpower": 4,
-      "cancelledYtd": 56
+      "cancelledYtd": 62
     },
     {
       "name": "EnCom GmbH",
@@ -42,11 +42,11 @@
       "mayForecast": 119,
       "juneActual": 258,
       "julyActual": 38,
-      "ytd": 611,
+      "ytd": 728,
       "forecast": 1509,
       "d2d": 4.8,
       "manpower": 4,
-      "cancelledYtd": 23
+      "cancelledYtd": 25
     },
     {
       "name": "Team Tatjana",
@@ -74,7 +74,7 @@
       "mayForecast": 5,
       "juneActual": 12,
       "julyActual": 1,
-      "ytd": 50,
+      "ytd": 40,
       "forecast": 93,
       "d2d": 0.1,
       "manpower": 1,
@@ -88,9 +88,9 @@
       "april": 0,
       "may": 0,
       "mayForecast": 0,
-      "juneActual": 6,
+      "juneActual": 8,
       "julyActual": 0,
-      "ytd": 6,
+      "ytd": 8,
       "forecast": 33,
       "d2d": 0,
       "manpower": 0,
@@ -106,9 +106,10 @@
       "mayForecast": 0,
       "juneActual": 0,
       "julyActual": 0,
-      "ytd": 2,
+      "ytd": 16,
       "forecast": 2,
       "d2d": 0,
+      "manpower": 0,
       "cancelledYtd": 0
     },
     {
@@ -153,19 +154,19 @@
       "april": 98,
       "may": 352,
       "june": 460,
-      "july": 94
+      "july": 125
     },
     "After Market / HP0 Sales": {
       "april": 13,
       "may": 30,
       "june": 108,
-      "july": 63
+      "july": 91
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 18
+      "july": 24
     }
   },
   "settings": {
@@ -188,12 +189,12 @@
     "jul": 240,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "11.7.2026",
-    "cancelled": 115,
-    "netSales": 2020
+    "lastUpdateDate": "12.7.2026",
+    "cancelled": 116,
+    "netSales": 2084
   },
-  "netSales": 2020,
-  "cancelled": 115,
+  "netSales": 2084,
+  "cancelled": 116,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -1078,7 +1079,7 @@
       0,
       0,
       0,
-      5,
+      7,
       184,
       50,
       0
