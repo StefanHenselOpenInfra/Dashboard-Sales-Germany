@@ -1178,7 +1178,7 @@
       245
     ],
     [
-      "DE-BB Erkner P3 HP0 - SNB",
+      "DE-BB Erkner P3 HP0",
       "HP0",
       "BB",
       0,
@@ -1195,8 +1195,8 @@
       "DE-BB Gosen-Neu Zittau P1 HP0",
       "HP0",
       "BB",
-      0,
-      229
+      3,
+      226
     ],
     [
       "DE-BB Halbe & Löpten P1 HP0 - SNB",
@@ -1692,8 +1692,8 @@
       "DE-BB Birkenwerder-Hohen-Neuendorf HP0",
       "HP0",
       "BB",
-      150,
-      1333
+      0,
+      1183
     ],
     [
       "Rosengarten BS1-2",
@@ -1722,13 +1722,6 @@
       "BB",
       109,
       657
-    ],
-    [
-      "DE-BB Erkner P3 HP0",
-      "HP0",
-      "BB",
-      105,
-      229
     ],
     [
       "DE-BB Q3-9 Stadt Hohen Neuendorf",
@@ -3012,7 +3005,7 @@
     "DE-BB Königs Wusterhausen HP0 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
     "DE-BB Königs Wusterhausen HP0 3": "https://bob.openinfra.com/sales-projects/4051/sales-periods",
     "DE-BB Beetzsee P1 HP0": "https://bob.openinfra.com/sales-projects/4038/sales-periods",
-    "DE-BB Eichwalde HP0": "https://bob.openinfra.com/sales-projects/3268/sales-periods",
+    "DE-BB Eichwalde HP0": "https://bob.openinfra.com/sales-projects/3268/sales-periods", "DE-BB Erkner P3 HP0": "https://bob.openinfra.com/sales-projects/4049", "DE-BB Gosen-Neu Zittau P1 HP0": "https://bob.openinfra.com/sales-projects/3556/sales-periods",
     "DE-BB Heidesee HP0": "https://bob.openinfra.com/sales-projects/3827/sales-periods",
     "DE-BB Schulzendorf HP0": "https://bob.openinfra.com/sales-projects/3842/sales-periods",
     "DE-BB Woltersdorf HP0": "https://bob.openinfra.com/sales-projects/3269/sales-periods",
