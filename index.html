@@ -1588,12 +1588,19 @@ function render(){
   // Contact cards
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">';
   [{title:'Bavaria Contact',name:'Markus Brunhofer',role:'Head of Bavarian Broadband Centre',org:'State Office for Digitalisation, Broadband and Surveying',addr:'Kirchensteig 1, 92224 Amberg',tel:'+49 (9621) 96543 80',telLink:'+499621965380',email:'markus.brunhofer@ldbv.bayern.de'},
-   {title:'Broadband Advisory Bavaria',name:'Walter Huber',role:'Broadband Advisory Bavaria',tel:'+49 (0) 9181 / 406 1333',telLink:'+499181406133',email:'info@breitbandberatung.de'},
+   {title:'Breitbandberatung Bayern',name:'Walter Huber',role:'Broadband Advisory Bavaria',tel:'+49 (0) 9181 / 406 1333',telLink:'+499181406133',email:'info@breitbandberatung.de'},
    {title:'Breitbandberatung Corwese GmbH',name:'Sebastian Ranzinger',role:'Technical Director',tel:'0160 96370766',telLink:'+4916096370766',email:'sebastian.ranzinger@corwese.de'},
-   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Head of Broadband Division',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',tel2:'+49 (170) 71 55 94 8',telLink2:'+491707155948',email:'klaus.eckel@ik-t.de'}
+   {title:'IK-T GmbH',name:'Klaus Eckel',role:'Dipl.-Ing. (univ.) · Head of Broadband Division',org:'Innovative Kommunikations-Technologien · Margaretenstraße 15 · 93047 Regensburg',tel:'+49 (941) 28 09 77 33',telLink:'+4994128097733',tel2:'+49 (170) 71 55 94 8',telLink2:'+491707155948',email:'klaus.eckel@ik-t.de'},
+   {title:'WFG Dahme-Spreewald',name:'Marion Schirmer',role:'Geschäftsführerin',org:'Wirtschaftsförderungsgesellschaft Dahme-Spreewald mbH',addr:'Freiheitstraße 120 B, 15745 Wildau',tel:'+49 (0) 3375 5238 30',telLink:'+4933755238300',tel2:'+49 (0) 170 3309 365',telLink2:'+491703309365',email:'schirmer@wfg-lds.de'},
+   {title:'WFG Dahme-Spreewald',name:'Jana Carouge',role:'Dipl.-Kffr. · Projektleiterin',org:'Wirtschaftsförderungsgesellschaft Dahme-Spreewald mbH',addr:'Freiheitstraße 120 B, 15745 Wildau',tel:'+49 (0) 3375 5238 50',telLink:'+4933755238500',email:'carouge@wfg-lds.de'},
+   {title:'LK Teltow-Fläming',name:'Stefanie Seifert',role:'Sachgebietsleiterin Wirtschaftsförderung, Tourismus und Mobilität',org:'Kreisverwaltung Teltow-Fläming',addr:'Am Nuthefließ 2, 14943 Luckenwalde',tel:'03371 608-1350',telLink:'+493371608135',email:'Stefanie.Seifert@teltow-flaeming.de'},
+   {title:'WInTO – LK Oberhavel',name:'Michael Schmidt',role:'Wirtschafts-, Innovations- und Tourismusförderung GmbH (WInTO)',org:'WInTO GmbH',addr:'Neuendorfstraße 23a, 16761 Hennigsdorf',tel:'03302 866 76 30',telLink:'+4933028667630',email:'schmidt@winto-gmbh.de',link:'https://winto-gmbh.de/'},
+   {title:'WFBB – LK Oberhavel',name:'Dr. Heinz Roth',role:'Leiter RegionalCenter Nordost Brandenburg',org:'Wirtschaftsförderung Land Brandenburg GmbH',addr:'Alfred-Nobel-Straße 1, Haus 26, 16225 Eberswalde',tel:'03334 81877-10',telLink:'+4933348187710'},
+   {title:'LK Potsdam-Mittelmark',name:'Marion Muschert',role:'Service Wirtschaftsförderung',org:'Landkreis Potsdam-Mittelmark',tel:'+49 33841 91-226',telLink:'+4933841912260',email:'marion.muschert@potsdam-mittelmark.de'},
+   {title:'LK Oder-Spree',name:'Kay Noack',role:'Sachbearbeiter · Kreisentwicklung & Investitionsförderung, Kreisplanung, Verkehrsplanung',org:'Landkreis Oder-Spree',addr:'Breitscheidstraße 7, 15848 Beeskow',tel:'03366 35-1616',telLink:'+4933663516160',email:'Kay.Noack@landkreis-oder-spree.de',link:'https://www.landkreis-oder-spree.de/Politik-Landkreis/Kreisverwaltung/Ansprechpartner/Herr-Noack.php?object=tx,3410.1.1&ModID=9&FID=2689.3462.1&NavID=2426.40&KatID=1.101&TypSel=1.101&alpha=N&kat=1%2C&kuo=1&ort=Beeskow&sfkat=1&sfplz=1'}
   ].forEach(function(c){
     html+='<div style="background:#FBF5ED;border:1px solid #E4A489;border-radius:1rem;padding:16px;font-size:13px;">';
-    html+='<div style="font-weight:900;color:#363E36;margin-bottom:8px;">'+esc(c.title)+'</div>';
+    html+='<div style="font-weight:900;color:#363E36;margin-bottom:8px;">'+(c.link?'<a href="'+esc(c.link)+'" target="_blank" style="color:#363E36;text-decoration:underline;">'+esc(c.title)+'</a>':esc(c.title))+'</div>';
     html+='<div style="font-weight:700;">'+esc(c.name)+'</div>';
     html+='<div style="color:#64748b;">'+esc(c.role||'')+'</div>';
     if(c.org)html+='<div style="color:#64748b;font-size:12px;">'+esc(c.org)+'</div>';
