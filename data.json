@@ -3052,6 +3052,7 @@
     "DE-BB Grünheide P1": 38,
     "DE-BB Birkenwerder P1-2": 41,
     "DE-BB Grünheide P3": 44,
+    "DE-BB Grünheide P5": 51,
     "DE-BB Zossen P4-2": 41,
     "DE-BB Amt Scharmützelsee P1": 42,
     "DE-BB Seddiner See P2": 41,
@@ -3279,5 +3280,19 @@
     "DE-Schöneiche P1-3",
     "DE-BB Rangsdorf HP0"
   ],
-  "upStampProjs": []
+  "upStampProjs": [],
+  "projectJulDelta": {
+    "Hohen Neuendorf B2": 5,
+    "DE-BB Zossen P6": 5,
+    "DE-BB Stadt Fürstenwalde P4": 2,
+    "DE-BB Zossen P4-2": 1,
+    "DE-BB Woltersdorf HP0": 1,
+    "DE-BB Fürstenwalde P7": 7,
+    "DE-BB Königs Wusterhausen HP0 3": 1,
+    "DE-BB Zossen P7": 2,
+    "DE-BB Schulzendorf HP0": 1,
+    "DE-BB Amt Scharmützelsee P0": 6,
+    "DE-BB Zeuthen-Wildau HP0": 1,
+    "DE-BB Frankfurt (Oder) Combined P1": 1
+  }
 }
