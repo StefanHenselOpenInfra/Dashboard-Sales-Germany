@@ -9,8 +9,8 @@
       "may": 92,
       "mayForecast": 92,
       "juneActual": 264,
-      "julyActual": 162,
-      "ytd": 514,
+      "julyActual": 185,
+      "ytd": 543,
       "forecast": 1209,
       "d2d": 19.5,
       "manpower": 11,
@@ -20,13 +20,13 @@
       "name": "Stonemedia GmbH",
       "january": 7,
       "february": 48,
-      "march": 76,
+      "march": 75,
       "april": 61,
-      "may": 222,
-      "mayForecast": 222,
-      "juneActual": 125,
+      "may": 221,
+      "mayForecast": 221,
+      "juneActual": 124,
       "julyActual": 35,
-      "ytd": 625,
+      "ytd": 571,
       "forecast": 985,
       "d2d": 4.4,
       "manpower": 4,
@@ -36,13 +36,13 @@
       "name": "EnCom GmbH",
       "january": 4,
       "february": 33,
-      "march": 119,
-      "april": 121,
-      "may": 119,
-      "mayForecast": 119,
+      "march": 90,
+      "april": 69,
+      "may": 118,
+      "mayForecast": 118,
       "juneActual": 258,
-      "julyActual": 42,
-      "ytd": 732,
+      "julyActual": 50,
+      "ytd": 622,
       "forecast": 1509,
       "d2d": 4.8,
       "manpower": 4,
@@ -57,8 +57,8 @@
       "may": 62,
       "mayForecast": 62,
       "juneActual": 30,
-      "julyActual": 12,
-      "ytd": 221,
+      "julyActual": 14,
+      "ytd": 223,
       "forecast": 348,
       "d2d": 1.3,
       "manpower": 4,
@@ -132,6 +132,26 @@
   "kpiActuals": {
     "Base Sales / Up Sales": {
       "april": 98,
+      "may": 351,
+      "june": 460,
+      "july": 149
+    },
+    "After Market / HP0 Sales": {
+      "april": 13,
+      "may": 30,
+      "june": 108,
+      "july": 100
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 141,
+      "july": 36
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 98,
       "may": 352,
       "june": 460,
       "july": 128
@@ -149,52 +169,32 @@
       "july": 28
     }
   },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 98,
-      "may": 352,
-      "june": 460,
-      "july": 125
-    },
-    "After Market / HP0 Sales": {
-      "april": 13,
-      "may": 30,
-      "june": 108,
-      "july": 91
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 141,
-      "july": 24
-    }
-  },
   "settings": {
     "salesReportTotal2026": 2200,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 8,
-    "q3WorkingDaysLeft": 58,
-    "julyWorkingDaysDone": 8,
-    "julyWorkingDaysLeft": 15,
+    "q3WorkingDaysDone": 9,
+    "q3WorkingDaysLeft": 57,
+    "julyWorkingDaysDone": 9,
+    "julyWorkingDaysLeft": 14,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
     "mar": 292,
     "apr": 244,
-    "may": 501,
+    "may": 500,
     "jun": 709,
     "jun_actual": 709,
-    "jul": 252,
+    "jul": 285,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "12.7.2026",
+    "lastUpdateDate": "14.7.2026",
     "cancelled": 116,
-    "netSales": 2096
+    "netSales": 2127
   },
-  "netSales": 2096,
-  "cancelled": 116,
+  "netSales": 2127,
+  "cancelled": 117,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -396,8 +396,8 @@
       0,
       0,
       0,
-      2210,
-      415,
+      1174,
+      347,
       2
     ],
     [
@@ -422,7 +422,7 @@
       217,
       836,
       0,
-      31
+      37
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -482,7 +482,7 @@
       0,
       519,
       133,
-      1
+      2
     ],
     [
       "DE-BB Frankfurt (Oder) Combined P2",
@@ -529,8 +529,8 @@
       2,
       7,
       842,
-      14,
-      6
+      15,
+      7
     ],
     [
       "DE-BY Kirchroth P1-1",
@@ -591,18 +591,6 @@
       473,
       118,
       1
-    ],
-    [
-      "DE-BY Parkstetten P1",
-      "BASE UPSELL",
-      "EnCom GmbH",
-      2,
-      0,
-      0,
-      0,
-      396,
-      99,
-      0
     ],
     [
       "DE-BY Straubing P1",
@@ -710,7 +698,7 @@
       17,
       609,
       166,
-      9
+      11
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -770,7 +758,7 @@
       0,
       216,
       78,
-      0
+      7
     ],
     [
       "DE-BB Heidesee HP0",
@@ -805,8 +793,8 @@
       14,
       9,
       1944,
-      52,
-      28
+      53,
+      29
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -841,8 +829,8 @@
       1,
       41,
       1702,
-      65,
-      38
+      66,
+      39
     ],
     [
       "DE-BB Zossen HP0",
@@ -878,7 +866,7 @@
       1,
       289,
       3,
-      7
+      8
     ],
     [
       "DE-BB Zossen P6",
@@ -890,7 +878,7 @@
       40,
       731,
       0,
-      21
+      26
     ],
     [
       "DE-BB Zossen P7",
@@ -902,7 +890,7 @@
       35,
       918,
       0,
-      19
+      21
     ],
     [
       "Hohen Neuendorf B1",
@@ -926,7 +914,7 @@
       5,
       935,
       134,
-      12
+      17
     ],
     [
       "DE-BB Neuzelle Combined P1",
@@ -1033,8 +1021,8 @@
       1,
       1,
       2586,
-      7,
-      8
+      8,
+      9
     ],
     [
       "DE-BB Grünheide P3",
@@ -1170,6 +1158,13 @@
     ]
   ],
   "funnelRowsRaw": [
+    [
+      "DE-BY Parkstetten P1",
+      "BASE UPSELL",
+      "BY",
+      101,
+      396
+    ],
     [
       "DE-BB Zossen P7-1",
       "Base Sales / Up Sales",
@@ -1335,7 +1330,7 @@
       "DE-NI Rosengarten HP0",
       "HP0",
       "NI",
-      0,
+      1,
       554
     ],
     [
@@ -2053,6 +2048,13 @@
       "Abandon",
       252,
       2376
+    ],
+    [
+      "DE-BB Rietz-Neuendorf P3",
+      "BB",
+      "too expensive",
+      0,
+      0
     ]
   ],
   "potentialRows": [
@@ -2939,7 +2941,7 @@
     "DE-BB Heidesee B5-2": "https://bob.openinfra.com/delivery-projects/3049",
     "DE-BB Heidesee P5-1": "https://bob.openinfra.com/delivery-projects/2777",
     "DE-BB Hennigsdorf P3": "https://bob.openinfra.com/sales-projects/2489",
-    "DE-BB Löwenberger Land - Grieben P5": "https://bob.openinfra.com/delivery-projects/3112",
+    "DE-BB Löwenberger Land - Grieben P5": "https://bob.openinfra.com/sales-projects/2720",
     "DE-BB Zossen P7-1": "https://bob.openinfra.com/sales-projects/4030",
     "DE-Schöneiche P1-3": "https://bob.openinfra.com/delivery-projects/3759",
     "DE-BB Löwenberger Land P1": "https://bob.openinfra.com/delivery-projects/2920",
@@ -2990,7 +2992,7 @@
     "Heidenau B4": "https://bob.openinfra.com/delivery-projects/2628",
     "Hohen Neuendorf B1": "https://bob.openinfra.com/delivery-projects/2254",
     "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
-    "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/sales-projects/4322",
+    "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/delivery-projects/3771",
     "Kasel-Golzig Combined": "https://bob.openinfra.com/sales-projects/4058",
     "DE-BB Kasel-Golzig Combined": "https://bob.openinfra.com/sales-projects/4058",
     "Nienburg Projekte KSB": "https://www.google.com/maps/d/edit?mid=1O_2TNymgRyUs9JkqnBv0dheWnM3GE54&ll=52.68645321738002%2C9.134187513199254&z=12",
@@ -3023,7 +3025,8 @@
     "DE-BB Grünheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
     "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
     "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
-    "DE-BB Rietz-Neuendorf P2": "https://bob.openinfra.com/sales-projects/3387"
+    "DE-BB Rietz-Neuendorf P2": "https://bob.openinfra.com/sales-projects/3387",
+    "DE-BB Rietz-Neuendorf P3": "https://bob.openinfra.com/sales-projects/4359"
   },
   "projectTargets": {
     "DE-BB Amt Scharmützelsee P0": 43,
