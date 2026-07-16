@@ -432,6 +432,7 @@ var potentialSearch='', potentialRegion='All', potentialSort='Municipality', pot
 var projectSearch='', typeFilter='All', salesFilter='All', projSortKey='July', projSortDir='desc';
 var funnelSearch='', funnelTypeFilter='All', funnelRegionFilter='All', funnelSortKey='HP', funnelSortDir='desc';
 var coaSearch='', coaAgencyFilter='All', coaSortKey='Agency', coaSortDir='asc';
+var cemeterySearch='', cemeteryRegion='All', cemeterySort='Project', cemeteryDir='asc';
 var agencySortKey='July', agencySortDir='desc';
 var selectedAgencies=null; // null = alle
 
@@ -486,7 +487,7 @@ var projectRows = [
   ["DE-BB Königs Wusterhausen HP0 3","HP0","EnCom GmbH",0,0,2,7,842,17,9],
   ["DE-BY Kirchroth P3","BASE UPSELL","EnCom GmbH",5,7,6,4,246,103,0],
   ["DE-BY Kirchroth P4","BASE UPSELL","EnCom GmbH",14,3,6,4,325,152,0],
-    ["DE-BY Kirchroth P1-1","BASE UPSELL","Aurora Sales GmbH",0,0,0,0,249,0,16],
+    ["DE-BY Kirchroth P1-1","BASE UPSELL","EnCom GmbH",0,0,0,0,249,0,16],
   ["DE-BY Kirchroth P5","Build Sales","EnCom GmbH",35,14,1,0,154,48,0],
   ["DE-BY Leiblfing P1","Build Sales","EnCom GmbH",0,0,7,14,473,118,6],
   ["DE-BY Straubing P1","BASE UPSELL","EnCom GmbH",3,12,7,2,307,105,2],
@@ -706,7 +707,7 @@ function svgLineChart(data,refY,refLabel,maxY,color){
 
 // ── RENDER ───────────────────────────────────────────────────────────────────
 function render(){
-  var urgentCoaProjs=['DE-BB Rietz-Neuendorf P2','DE-BB Heidesee HP0','DE-BB Eichwalde HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BY Kirchroth P1-1','DE-BB Amt Scharmützelsee P3'];
+  var urgentCoaProjs=['DE-BB Rietz-Neuendorf P2','DE-BB Heidesee HP0','DE-BB Eichwalde HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3'];
   var c=computeKpis();
   var kpis=c.kpis,totals=c.totals,timePct=c.timePct;
   var totalQ2=kpis.reduce(function(s,k){return s+k.actual;},0);
@@ -1223,7 +1224,7 @@ function render(){
   html+='<td style="text-align:center;color:#7c3aed;font-weight:900;">'+totJulyAct+'</td>';
   var vTotJulyTarget=visiblePartners.reduce(function(s,p){return s+(allPartnersJuneAct>0?Math.round((p.juneActual||0)/allPartnersJuneAct*julyTotalTarget):0);},0);
   html+='<td style="text-align:center;background:rgba(254,243,199,0.5);"><span style="font-weight:700;color:#92400e;">'+vTotJulyTarget+'</span></td>';
-  var vTotJulyFcst=S.q3WorkingDaysDone>0?Math.round(totJulyAct/S.q3WorkingDaysDone*23):0;
+  var vTotJulyFcst=julWDdone>0?Math.round((S.jul||0)/julWDdone*julWDtotal):0;
   html+='<td style="text-align:center;">'+(vTotJulyFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#5b21b6;border:2px solid #7c3aed;border-radius:9999px;">'+vTotJulyFcst+'</span>':'<span style="color:#94a3b8;font-weight:700;">—</span>')+'</td>';
   html+='<td style="text-align:center;">'+vTotYtd+'</td>';
   html+='<td style="text-align:center;">'+vTotFcst+'</td>';
@@ -1419,7 +1420,7 @@ function render(){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
-  var runCoaMissingProjs=['DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Amt Scharmützelsee P4','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
+  var runCoaMissingProjs=['DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Amt Scharmützelsee P4','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
   var coaWaitingProjs=[];
   projs.forEach(function(r,i){
     var gestopptList=[];
@@ -1523,7 +1524,7 @@ function render(){
 
   html+='<div style="overflow-y:auto;max-height:700px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
   html+='<table><thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
-  var prioIcon=funnelSortKey==='Prio'?(funnelSortDir==='asc'?' ↑':' ↓'):''; html+='<th style="text-align:center;padding:8px;font-weight:900;cursor:pointer;"  id="prio-th">Prio'+prioIcon+'</th>';
+  var prioIcon=funnelSortKey==='Prio'?(funnelSortDir==='asc'?' ↑':' ↓'):''; html+='<th style="text-align:center;padding:8px;font-weight:900;cursor:pointer;" onclick="if(funnelSortKey===\'Prio\'){funnelSortDir=funnelSortDir===\'asc\'?\'desc\':\'asc\';}else{funnelSortKey=\'Prio\';funnelSortDir=\'desc\';}render();" id="prio-th">Prio'+prioIcon+'</th>';
   [['Project','Project'],['Status','Type'],['Region','Region'],['HC','Sold'],['HP','HP'],['Uptake','%']].forEach(function(col){
     html+='<th style="cursor:pointer;" onclick="funnelSortKey=\''+col[1]+'\';funnelSortDir=(funnelSortKey===\''+col[1]+'\'&&funnelSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(funnelSortKey===col[1]?(funnelSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
@@ -1544,7 +1545,7 @@ function render(){
     var backInFunnelProjs=[];
     var closedProjs=[];
     var coaWaitingProjs=[];
-    var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BY Kirchroth P1-1','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
+    var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
     var importantProjs=[];
     var upStampProjs=['DE-BB Zossen P7-1'];
     // Determine badge
@@ -1556,6 +1557,188 @@ function render(){
     else if(netzmacherProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Netzmacher</span>';
     else if(r[0]==='DE-BB Stadt Velten P1 HP0') encBadge='<span style="margin-left:8px;background:#eff6ff;color:#1d4ed8;border:2px solid #1d4ed8;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Aurora Sales GmbH</span>';
     else if(pruefenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">check</span>';
+    else if(bauStoppProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Baustopp</span>';
+    else if(pruefenRotProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">PRÜFEN</span>';
+    else if(stoppFeeProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">STOPP 499€ FEE</span>';
+    else if(stoneStamps.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:1px solid #363E36;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:900;">Stonemedia GmbH</span>';
+    else if(calcReadyProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#F1FAF1;color:#363E36;border:2px solid #363E36;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">Calc ready</span>';
+    else if(wartenProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">auf Build Sales warten</span>';
+    else if(backInFunnelProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff7ed;color:#c2410c;border:2px solid #c2410c;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">11.6.2026 back in funnel</span>';
+    else if(coaWaitingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#dc2626;color:#fff;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;">CoA waiting</span>';
+    else if(coaMissingProjs.indexOf(r[0])>=0) encBadge='<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;">CoA missing</span>';
+    html+='<td style="padding:10px;font-weight:600;">'+(bobUrlF?'<a href="'+bobUrlF+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+encBadge+'</td>';
+    html+='<td style="padding:10px;">'+esc(normType(r[1]))+'</td>';
+    html+='<td style="padding:10px;font-weight:600;">'+esc(r[2])+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[4]+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:900;color:#C86750;">'+esc(r[5])+'</td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── CEMETERY ──
+  var cemFiltered=cemeteryRows.filter(function(r){
+    return(cemeteryRegion==='All'||r[1]===cemeteryRegion)&&
+      r.join(' ').toLowerCase().includes(cemeterySearch.toLowerCase());
+  });
+  var cemRegions=['All'].concat([...new Set(cemeteryRows.map(function(r){return r[1];}))]);
+  var cemIdx={Project:0,Region:1,Category:2,Sold:3,HP:4};
+  cemFiltered.sort(function(a,b){
+    var i=cemIdx[cemeterySort]!==undefined?cemIdx[cemeterySort]:0;
+    var av=a[i],bv=b[i];
+    var r=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));
+    return cemeteryDir==='asc'?r:-r;
+  });
+  var cemTotalSold=cemFiltered.reduce(function(s,r){return s+(r[3]||0);},0);
+  var cemTotalHP=cemFiltered.reduce(function(s,r){return s+(r[4]||0);},0);
+
+  html+='<section id="sec-cemetery" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid #374151;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+  html+='<div><h2 style="color:#111827;">&#127944; Cemetery</h2><p style="color:#6b7280;">Abgebrochene / aufgegebene Projekte</p></div>';
+  html+='<span class="badge" style="background:#374151;color:#fff;">'+cemFiltered.length+' Projekte</span></div>';
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<input id="search-cemetery" value="'+esc(cemeterySearch)+'" placeholder="Projekt suchen..." oninput="cemeterySearch=this.value;render();">';
+  html+='<select onchange="cemeteryRegion=this.value;render();">';
+  cemRegions.forEach(function(r){html+='<option'+(cemeteryRegion===r?' selected':'')+'>'+esc(r)+'</option>';});
+  html+='</select>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="cemeterySort=this.value;render();" style="flex:1;">';
+  ['Project','Region','Category','Sold','HP'].forEach(function(k){html+='<option'+(cemeterySort===k?' selected':'')+'>'+k+'</option>';});
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="cemeteryDir=cemeteryDir===\'asc\'?\'desc\':\'asc\';render();">'+(cemeteryDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">';
+  [['Projekte',cemFiltered.length],['Total Sold',cemTotalSold],['Total HP',cemTotalHP.toLocaleString('de-DE')]].forEach(function(item){
+    html+='<div style="background:#f9fafb;border-radius:1rem;padding:12px;border:1px solid #e5e7eb;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;color:#111827;">'+item[1]+'</div></div>';
+  });
+  html+='</div>';
+  html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
+  html+='<table><thead style="background:#374151;color:#fff;position:sticky;top:0;"><tr>';
+  [['Project','Project'],['Region','Region'],['Category','Category'],['Sold','Sold'],['HP','HP']].forEach(function(col){
+    html+='<th style="cursor:pointer;" onclick="cemeterySort=\''+col[1]+'\';cemeteryDir=(cemeterySort===\''+col[1]+'\'&&cemeteryDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(cemeterySort===col[1]?(cemeteryDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  cemFiltered.forEach(function(r,i){
+    html+='<tr style="background:'+(i%2===0?'#fff':'#f9fafb')+';opacity:0.85;">';
+    html+='<td style="padding:10px;font-weight:600;color:#374151;text-decoration:line-through;text-decoration-color:#9ca3af;">'+esc(r[0])+'</td>';
+    html+='<td style="padding:10px;font-weight:600;">'+esc(r[1])+'</td>';
+    html+='<td style="padding:10px;"><span style="background:#fee2e2;color:#dc2626;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">'+esc(r[2])+'</span></td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[3]+'</td>';
+    html+='<td style="padding:10px;text-align:center;font-weight:700;">'+r[4]+'</td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── NEW POTENTIAL ──
+  var potCols=['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info'];
+  var potRegions=['All'].concat([...new Set(potentialRows.map(function(r){return r[2];}).filter(Boolean))]);
+  var potFiltered=potentialRows.filter(function(r){
+    return(potentialRegion==='All'||r[2]===potentialRegion)&&
+      r.join(' ').toLowerCase().includes(potentialSearch.toLowerCase());
+  });
+  var potColIdx={'PLZ':0,'Kommune':1,'Region':2,'Ortsteil':3,'Comment':4,'AP':5,'Art':6,'Telefon':7,'E-Mail':8,'Info':9};
+  var psi=(potColIdx[potentialSort]!==undefined)?potColIdx[potentialSort]:1;
+  potFiltered.sort(function(a,b){
+    var av=a[psi]||'',bv=b[psi]||'';
+    var r=String(av).localeCompare(String(bv),'de',{numeric:true});
+    return potentialDir==='asc'?r:-r;
+  });
+  function commentColor(r){
+    var c=(r[4]||'').toLowerCase();
+    var name=(r[1]||'').toLowerCase();
+    if(c.includes('kein interesse'))return'background:rgba(254,226,226,.7);color:#991b1b;';
+    if(c.includes('t com'))return'background:rgba(254,226,226,.7);color:#991b1b;';
+    if(c.includes('prüfung'))return'background:rgba(255,237,213,.7);color:#9a3412;';
+    if(c.includes('positiv'))return'background:rgba(209,250,229,.7);color:#065f46;';
+    return'';
+  }
+  html+='<section id="sec-potential" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid #e7c9b0;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">';
+  html+='<div><h2>New Potential</h2><p style="color:#64748b;">Upcoming expansion opportunities and strategic focus areas.</p></div>';
+  html+='<span class="badge tag-amber">Pipeline 2026</span></div>';
+  html+='<div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;margin-bottom:16px;">';
+  html+='<input value="'+esc(potentialSearch)+'" placeholder="Suchen..." oninput="potentialSearch=this.value;render();">';
+  html+='<select onchange="potentialRegion=this.value;render();">';
+  potRegions.forEach(function(r){html+='<option'+(potentialRegion===r?' selected':'')+'>'+esc(r)+'</option>';});
+  html+='</select>';
+  html+='<div style="display:flex;gap:8px;">';
+  html+='<select onchange="potentialSort=this.value;render();" style="flex:1;">';
+  ['PLZ','Kommune','Region','Comment'].forEach(function(k){html+='<option'+(potentialSort===k?' selected':'')+'>'+k+'</option>';});
+  html+='</select>';
+  html+='<button class="btn btn-dark" onclick="potentialDir=potentialDir===\'asc\'?\'desc\':\'asc\';render();">'+(potentialDir==='asc'?'↑':'↓')+'</button>';
+  html+='</div></div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">';
+  var positiv=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('positiv');}).length;
+  var keins=potFiltered.filter(function(r){return(r[4]||'').toLowerCase().includes('kein interesse');}).length;
+  [['Einträge',potFiltered.length],['Positiv ✅',positiv],['Kein Interesse ❌',keins]].forEach(function(item){
+    html+='<div style="background:#f8eadf;border-radius:1rem;padding:12px;border:1px solid #e7c9b0;">';
+    html+='<div style="font-size:11px;font-weight:700;color:#9c5f38;text-transform:uppercase;">'+item[0]+'</div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+  });
+  html+='</div>';
+  html+='<div style="overflow:auto;max-height:750px;border-radius:1rem;border:1px solid #e5e7eb;">';
+  html+='<table style="min-width:1200px;"><thead style="background:#f3dfcf;position:sticky;top:0;"><tr>';
+  potCols.forEach(function(col){
+    var sortable=['PLZ','Kommune','Region','Comment'].indexOf(col)>=0;
+    html+='<th style="'+(sortable?'cursor:pointer;':'')+'" '+(sortable?'onclick="potentialSort=\''+col+'\';potentialDir=(potentialSort===\''+col+'\'&&potentialDir===\'asc\')?\'desc\':\'asc\';render();"':'')+'>'+col+' '+(potentialSort===col?(potentialDir==='asc'?'↑':'↓'):'')+'</th>';
+  });
+  html+='</tr></thead><tbody>';
+  potFiltered.forEach(function(r,i){
+    var cc=commentColor(r);
+    html+='<tr style="'+(cc||'background:'+(i%2===0?'#fff':'rgba(248,234,223,.3)'))+'">';
+    html+='<td style="padding:8px;white-space:nowrap;">'+esc(r[0])+'</td>';
+    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+esc(r[1])+'</td>';
+    html+='<td style="padding:8px;font-weight:600;">'+esc(r[2])+'</td>';
+    html+='<td style="padding:8px;font-size:12px;">'+esc(r[3])+'</td>';
+    var cmt=r[4]||'new area';
+    html+='<td style="padding:8px;font-size:12px;min-width:180px;">'+esc(cmt)+'</td>';
+    html+='<td style="padding:8px;font-weight:600;white-space:nowrap;">'+esc(r[5])+'</td>';
+    html+='<td style="padding:8px;font-size:12px;">'+esc(r[6])+'</td>';
+    var tel=r[7]||'';
+    var telClean=tel.replace(/[^0-9+]/g,'');
+    var telHref=telClean.startsWith('0')?'+49'+telClean.slice(1):telClean;
+    html+='<td style="padding:8px;white-space:nowrap;">'+(tel?'<a href="tel:'+esc(telHref)+'" style="color:#9c5f38;font-weight:700;text-decoration:underline;">'+esc(tel)+'</a>':'')+'</td>';
+    var mail=r[8]||'';
+    html+='<td style="padding:8px;">'+(mail?'<a href="mailto:'+esc(mail)+'" style="color:#1d4ed8;font-weight:700;text-decoration:underline;font-size:12px;">'+esc(mail)+'</a>':'')+'</td>';
+    html+='<td style="padding:8px;font-size:12px;min-width:160px;color:#475569;">'+esc(r[9]||'')+'</td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table></div></div></div></section>';
+
+  // ── FOOTER ──
+  html+='<div style="background:#4d3428;color:#fff;padding:32px 0;margin-top:20px;">';
+  html+='<div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
+  html+='<div>📈 Make daily sales pace visible</div>';
+  html+='<div>📅 Calculate Q2 progress automatically</div>';
+  html+='<div>✅ Manage teams and targets transparently</div>';
+  html+='</div></div>';
+
+  document.getElementById('app').innerHTML=html;
+}
+
+var _heroResults=[];
+function loadData(cb){fetch('data.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){if(d.partners)partners=d.partners;if(d.kpiActuals)kpiActuals=d.kpiActuals;if(d.kpiPreviousDay)kpiPreviousDay=d.kpiPreviousDay;if(d.settings)settings=d.settings;if(d.projectRows)projectRows=d.projectRows;if(d.funnelRowsRaw)funnelRowsRaw=d.funnelRowsRaw;if(d.funnelPrioList)funnelPrioList=d.funnelPrioList;if(d.cemeteryRows)cemeteryRows=d.cemeteryRows;if(d.potentialRows)potentialRows=d.potentialRows;if(d.bobLinks)bobLinks=d.bobLinks;if(d.netSales)netSales=d.netSales;if(d.cancelled)cancelled=d.cancelled;if(d.projectTargets)projectTargets=d.projectTargets;if(d.coaRowsRaw)coaRowsRaw=d.coaRowsRaw;if(cb)cb();}).catch(function(){if(cb)cb();});}
+
+function heroSearch(val){var box=document.getElementById('hero-results');if(!box)return;if(!val||val.length<2){box.style.display='none';_heroResults=[];return;}var q=val.toLowerCase();_heroResults=[];if(projectRows)projectRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Running Projects',sectionId:'sec-projects'});});if(funnelRowsRaw)funnelRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:normType(r[1]),section:'Projects in Funnel',sectionId:'sec-funnel'});});if(potentialRows)potentialRows.forEach(function(r){if((r[1]||'').toLowerCase().includes(q))_heroResults.push({name:(r[1]||'')+(r[3]?' / '+r[3]:''),sub:'ZIP '+r[0]+' '+r[2],section:'New Potential',sectionId:'sec-potential'});});if(cemeteryRows)cemeteryRows.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2],section:'Cemetery',sectionId:'sec-cemetery'});});if(coaRowsRaw)coaRowsRaw.forEach(function(r){if(r[0].toLowerCase().includes(q))_heroResults.push({name:r[0],sub:r[2]+' · CoA missing',section:"CoA's missing",sectionId:'sec-coa'});});if(_heroResults.length===0){box.innerHTML='<div style="padding:16px;color:#64748b;font-size:13px;">No results</div>';}else{box.innerHTML=_heroResults.slice(0,15).map(function(r,i){return'<div onclick="selHR('+i+')" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;"><div style="font-weight:700;font-size:13px;color:#252121;">'+r.name+'</div><div style="font-size:11px;color:#64748b;margin-top:2px;">'+r.sub+' &middot; <b style="color:#C86750;">'+r.section+'</b></div></div>';}).join('');}box.style.display='block';}
+
+function selHR(i){var r=_heroResults[i];if(!r)return;var el=document.getElementById(r.sectionId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});if(r.sectionId==='sec-projects'){projectSearch=r.name;render();}else if(r.sectionId==='sec-funnel'){funnelSearch=r.name;render();}else if(r.sectionId==='sec-potential'){potentialSearch=r.name;render();}else if(r.sectionId==='sec-cemetery'){cemeterySearch=r.name;render();}else if(r.sectionId==='sec-coa'){coaSearch=r.name;render();}var box=document.getElementById('hero-results');if(box)box.style.display='none';var inp=document.getElementById('hero-search');if(inp)inp.value='';}
+
+document.addEventListener('click',function(e){var box=document.getElementById('hero-results');if(box&&!box.contains(e.target)&&e.target.id!=='hero-search')box.style.display='none';});
+
+var agencyLogos={'EnCom GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 84"><rect width="260" height="84" rx="6" fill="#073d4e"/><rect x="14" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="18" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="33" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="14" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="29" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><rect x="44" y="48" width="11" height="11" rx="2.5" fill="#29abe2"/><text x="68" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#f5c200">En</text><text x="116" y="59" font-family="Georgia,serif" font-size="38" font-weight="bold" fill="#29abe2">Com</text></svg>','United Promotion GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84"><rect width="420" height="84" rx="6" fill="#000"/><defs><linearGradient id="upg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9c8"/><stop offset="100%" stop-color="#7b2fff"/></linearGradient><linearGradient id="upg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7b2fff"/><stop offset="100%" stop-color="#00c9c8"/></linearGradient></defs><ellipse cx="38" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg1)" stroke-width="3" transform="rotate(-30 38 42)"/><ellipse cx="52" cy="42" rx="22" ry="30" fill="none" stroke="url(#upg2)" stroke-width="3" transform="rotate(30 52 42)"/><rect x="30" y="26" width="30" height="30" rx="8" fill="url(#upg1)"/><text x="45" y="48" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">up</text><text x="96" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">united</text><text x="222" y="50" font-family="Arial,sans-serif" font-size="28" font-weight="300" fill="#fff">promotion</text></svg>','Stonemedia GmbH':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84"><rect width="340" height="84" rx="6" fill="#1a2a3a"/><path d="M107 22 Q107 14 114 10 Q121 14 121 22" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><path d="M103 26 Q103 12 114 6 Q125 12 125 26" fill="none" stroke="#e8a020" stroke-width="2.5" stroke-linecap="round"/><circle cx="114" cy="30" r="3" fill="#e8a020"/><text x="18" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">STONE</text><text x="135" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">ME</text><text x="185" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">D</text><circle cx="218" cy="46" r="3.5" fill="#cc2200"/><text x="212" y="55" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#8a9bb0" letter-spacing="1">iA</text><text x="88" y="70" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#8a9bb0" letter-spacing="5">GROUP</text></svg>'};
+
+function exportXLSX(filename,sheets){var wb=XLSX.utils.book_new();sheets.forEach(function(s){var ws=XLSX.utils.aoa_to_sheet(s.data);XLSX.utils.book_append_sheet(wb,ws,s.name);});XLSX.writeFile(wb,filename);}
+function exportAgencyXLSX(){var rows=[['Partner','January','February','March','April','May','May Forecast','YTD','Forecast 2026','Q2 Forecast','Q2-Q4 Forecast','D2D']];partners.forEach(function(p){var q2s=(p.april||0)+(p.mayForecast||0)+Math.round((p.mayForecast||0)*1.05);rows.push([p.name,p.january||0,p.february||0,p.march||0,p.april||0,p.may||0,p.mayForecast||0,p.ytd||0,p.forecast||0,q2s,q2s*3,p.d2d||0]);});exportXLSX('agency_overview.xlsx',[{name:'Agency Overview',data:rows}]);}
+function exportProjectsXLSX(){var rows=[['Project','Type','Sales Agency','March','April','May','July','HP','HC']];projectRows.forEach(function(r){rows.push(r);});exportXLSX('running_projects.xlsx',[{name:'Running Projects',data:rows}]);}
+function exportFunnelXLSX(){var rows=[['Project','Type','Region','Sold','HP','Uptake %']];funnelRowsRaw.forEach(function(r){var pct=r[4]>0?(r[3]/r[4]*100).toFixed(1)+'%':'0%';rows.push([r[0],r[1],r[2],r[3],r[4],pct]);});exportXLSX('projects_funnel.xlsx',[{name:'Projects Funnel',data:rows}]);}
+function exportPotentialXLSX(){var rows=[['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info']];potentialRows.forEach(function(r){rows.push(r);});exportXLSX('new_potential.xlsx',[{name:'New Potential',data:rows}]);}
+function exportKpiXLSX(){var c=computeKpis();var rows=[['Category','Q2 Actual','Q2 Target','Forecast','Q2 Forecast %','Pace/Day','Required/Day','Status']];c.kpis.forEach(function(k){rows.push([k.title,k.actual,k.target,k.forecast,k.forecastPct+'%',k.pace,k.needed,k.status]);});exportXLSX('kpi_cards.xlsx',[{name:'KPI Cards',data:rows}]);}
+function exportAllXLSX(){var c=computeKpis();var kpiRows=[['Category','Q2 Actual','Q2 Target','Forecast','Q2 Forecast %','Pace/Day','Required/Day','Status']];c.kpis.forEach(function(k){kpiRows.push([k.title,k.actual,k.target,k.forecast,k.forecastPct+'%',k.pace,k.needed,k.status]);});var agRows=[['Partner','January','February','March','April','May','May Forecast','YTD','Forecast 2026','D2D']];partners.forEach(function(p){agRows.push([p.name,p.january||0,p.february||0,p.march||0,p.april||0,p.may||0,p.mayForecast||0,p.ytd||0,p.forecast||0,p.d2d||0]);});var prRows=[['Project','Type','Agency','March','April','May','July','HP','HC']];projectRows.forEach(function(r){prRows.push(r);});var fnRows=[['Project','Type','Region','Sold','HP','%']];funnelRowsRaw.forEach(function(r){var pct=r[4]>0?(r[3]/r[4]*100).toFixed(1)+'%':'0%';fnRows.push([r[0],r[1],r[2],r[3],r[4],pct]);});var potRows=[['PLZ','Kommune','Region','Ortsteil','Comment','AP','Art','Telefon','E-Mail','Info']];potentialRows.forEach(function(r){potRows.push(r);});exportXLSX('dashboard_complete.xlsx',[{name:'KPI Cards',data:kpiRows},{name:'Agency Overview',data:agRows},{name:'Running Projects',data:prRows},{name:'Projects Funnel',data:fnRows},{name:'New Potential',data:potRows}]);}
+function exportFunnelCSV(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([['Project;Type;Region;Sold;HP'].concat(funnelRowsRaw.map(function(r){return r.join(';');})).join('\n')],{type:'text/csv;charset=utf-8;'}));a.download='funnel.csv';
     a.click();}
 loadData(render);
 
