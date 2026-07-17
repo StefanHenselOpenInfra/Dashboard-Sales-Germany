@@ -712,8 +712,8 @@ function render(){
           '<span style="font-size:3rem;font-weight:900;">'+k.q3actual+'</span>'+
           '<span style="color:#64748b;margin-left:8px;">/ '+(k.q3needed>0?k.q3needed:0)+'</span>'+
           '<div style="font-size:12px;color:#64748b;margin-top:4px;display:flex;align-items:center;gap:6px;">Q3 Actual / Target'+
-            (k.vsLastSR>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsLastSR+' SR36</span>':
-             k.vsLastSR<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsLastSR+' SR36</span>':'')+
+            (k.vsLastSR>0?'<span style="background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">+'+k.vsLastSR+' vs prev. SR</span>':
+             k.vsLastSR<0?'<span style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;border-radius:9999px;padding:1px 8px;font-size:11px;font-weight:900;">'+k.vsLastSR+' vs prev. SR</span>':'')+
           '</div>'+
         '</div>'+
         '<div style="font-size:2rem;font-weight:900;color:'+(k.q3pct>=100?'#059669':'#7c3aed')+';">'+k.q3pct+'%</div>'+
