@@ -484,6 +484,12 @@ function svgLineChart(data,refY,refLabel,maxY,color){
     '</svg>';
 }
 
+function setHeroAgency(name){
+  if(name===null){selectedAgencies=null;}
+  else{selectedAgencies=[name];}
+  render();
+}
+
 // ── RENDER ───────────────────────────────────────────────────────────────────
 function render(){
   var urgentCoaProjs=['DE-BB Rietz-Neuendorf P2','DE-BB Heidesee HP0','DE-BB Eichwalde HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3'];
