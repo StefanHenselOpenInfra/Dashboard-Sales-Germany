@@ -9,10 +9,10 @@
       "may": 92,
       "mayForecast": 92,
       "juneActual": 264,
-      "julyActual": 225,
-      "ytd": 575,
+      "julyActual": 238,
+      "ytd": 588,
       "forecast": 1209,
-      "d2d": 19.5,
+      "d2d": 18.3,
       "manpower": 11,
       "cancelledYtd": 20
     },
@@ -25,10 +25,10 @@
       "may": 221,
       "mayForecast": 221,
       "juneActual": 124,
-      "julyActual": 37,
-      "ytd": 573,
+      "julyActual": 48,
+      "ytd": 584,
       "forecast": 985,
-      "d2d": 4.4,
+      "d2d": 3.7,
       "manpower": 4,
       "cancelledYtd": 62
     },
@@ -41,10 +41,10 @@
       "may": 118,
       "mayForecast": 118,
       "juneActual": 258,
-      "julyActual": 74,
-      "ytd": 640,
+      "julyActual": 81,
+      "ytd": 647,
       "forecast": 1509,
-      "d2d": 4.8,
+      "d2d": 6.2,
       "manpower": 4,
       "cancelledYtd": 25
     },
@@ -57,10 +57,10 @@
       "may": 62,
       "mayForecast": 62,
       "juneActual": 30,
-      "julyActual": 22,
-      "ytd": 230,
+      "julyActual": 24,
+      "ytd": 232,
       "forecast": 348,
-      "d2d": 1.3,
+      "d2d": 1.8,
       "manpower": 4,
       "cancelledYtd": 6
     },
@@ -73,10 +73,10 @@
       "may": 5,
       "mayForecast": 5,
       "juneActual": 12,
-      "julyActual": 1,
-      "ytd": 40,
+      "julyActual": 5,
+      "ytd": 44,
       "forecast": 93,
-      "d2d": 0.1,
+      "d2d": 0.4,
       "manpower": 1,
       "cancelledYtd": 0
     },
@@ -92,7 +92,7 @@
       "julyActual": 6,
       "ytd": 8,
       "forecast": 33,
-      "d2d": 0,
+      "d2d": 0.5,
       "manpower": 0,
       "cancelledYtd": 1
     },
@@ -108,7 +108,7 @@
       "julyActual": 0,
       "ytd": 16,
       "forecast": 2,
-      "d2d": 0,
+      "d2d": 0.0,
       "manpower": 0,
       "cancelledYtd": 0
     },
@@ -124,7 +124,7 @@
       "julyActual": 1,
       "ytd": 1,
       "forecast": 0,
-      "d2d": 0,
+      "d2d": 0.1,
       "manpower": 0,
       "cancelledYtd": 0
     }
@@ -134,7 +134,27 @@
       "april": 99,
       "may": 351,
       "june": 460,
-      "july": 217
+      "july": 204
+    },
+    "After Market / HP0 Sales": {
+      "april": 12,
+      "may": 30,
+      "june": 108,
+      "july": 132
+    },
+    "Build Sales": {
+      "april": 133,
+      "may": 119,
+      "june": 141,
+      "july": 67
+    }
+  },
+  "kpiPreviousDay": {
+    "Base Sales / Up Sales": {
+      "april": 99,
+      "may": 351,
+      "june": 460,
+      "july": 194
     },
     "After Market / HP0 Sales": {
       "april": 12,
@@ -146,27 +166,7 @@
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 31
-    }
-  },
-  "kpiPreviousDay": {
-    "Base Sales / Up Sales": {
-      "april": 99,
-      "may": 351,
-      "june": 460,
-      "july": 182
-    },
-    "After Market / HP0 Sales": {
-      "april": 12,
-      "may": 30,
-      "june": 108,
-      "july": 116
-    },
-    "Build Sales": {
-      "april": 133,
-      "may": 119,
-      "june": 141,
-      "july": 51
+      "july": 54
     }
   },
   "settings": {
@@ -174,10 +174,10 @@
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 12,
-    "q3WorkingDaysLeft": 54,
-    "julyWorkingDaysDone": 12,
-    "julyWorkingDaysLeft": 11,
+    "q3WorkingDaysDone": 13,
+    "q3WorkingDaysLeft": 53,
+    "julyWorkingDaysDone": 13,
+    "julyWorkingDaysLeft": 10,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -186,12 +186,12 @@
     "may": 500,
     "jun": 709,
     "jun_actual": 709,
-    "jul": 370,
+    "jul": 403,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "16.7.2026",
-    "cancelled": 116,
-    "netSales": 2127
+    "lastUpdateDate": "18.7.2026",
+    "cancelled": 124,
+    "netSales": 2160
   },
   "netSales": 2185,
   "cancelled": 124,
@@ -374,7 +374,7 @@
       10,
       1123,
       425,
-      3
+      8
     ],
     [
       "Märkisch Buchholz Combined",
@@ -410,7 +410,7 @@
       217,
       836,
       0,
-      49
+      50
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -470,7 +470,7 @@
       0,
       519,
       133,
-      4
+      8
     ],
     [
       "DE-BB Frankfurt (Oder) Combined P2",
@@ -518,7 +518,7 @@
       7,
       842,
       17,
-      12
+      13
     ],
     [
       "DE-BY Kirchroth P3",
@@ -552,9 +552,9 @@
       0,
       0,
       0,
-      249,
-      0,
-      16
+      248,
+      16,
+      0
     ],
     [
       "DE-BY Kirchroth P5",
@@ -686,7 +686,7 @@
       17,
       609,
       166,
-      14
+      15
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -782,7 +782,7 @@
       9,
       1944,
       55,
-      31
+      32
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -842,7 +842,7 @@
       0,
       199,
       70,
-      0
+      2
     ],
     [
       "DE-BB Zossen P4-2",
@@ -866,7 +866,7 @@
       40,
       731,
       0,
-      33
+      34
     ],
     [
       "DE-BB Zossen P7",
@@ -878,7 +878,7 @@
       35,
       918,
       0,
-      28
+      31
     ],
     [
       "Hohen Neuendorf B1",
@@ -926,7 +926,7 @@
       46,
       1227,
       56,
-      16
+      22
     ],
     [
       "DE-BB Teupitz P3",
@@ -986,7 +986,7 @@
       0,
       752,
       36,
-      9
+      15
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -1142,7 +1142,7 @@
       8,
       591,
       246,
-      0
+      1
     ],
     [
       "DE-BB Diehlo P1",
@@ -3281,22 +3281,28 @@
   ],
   "upStampProjs": [],
   "projectJulDelta": {
+    "DE-BB Seddiner See P2": 6,
+    "DE-BB Stadt Fürstenwalde P1-P3 HP0": 6,
+    "Kasel-Golzig Combined": 5,
+    "DE-BB Gosen-Neu Zittau P3": 5,
+    "DE-BB Frankfurt (Oder) Combined P1": 4,
+    "DE-BB Zossen P7": 3,
+    "DE-BB Schöneiche HPO": 2,
+    "Luckau Combined": 2,
+    "DE-BB Zossen P3": 2,
     "DE-BB Amt Scharmützelsee P0": 1,
-    "DE-BB Frankfurt (Oder) Combined P1": 2,
-    "DE-BB Königs Wusterhausen HP0 3": 3,
-    "DE-BB Birkenwerder P2-2": 1,
-    "DE-BB Woltersdorf HP0": 1,
+    "DE-BB Königs Wusterhausen HP0 3": 1,
+    "DE-BB Schulzendorf HP0": 1,
+    "DE-BB Stadt Fürstenwalde P4": 1,
+    "DE-BB Zossen P4": 1,
     "DE-BB Zossen P6": 1,
-    "DE-BB Zossen P7": 4,
-    "Hohen Neuendorf B2": 1,
-    "DE-BB Stadt Fürstenwalde P1-P3 HP0": 1,
-    "DE-BB Gosen-Neu Zittau P4": 1,
-    "DE-CS": 4
+    "DE-NI Rosengarten HP0": 1
   },
   "agencyJulDelta": {
-    "United Promotion GmbH": 8,
-    "EnCom GmbH": 6,
-    "Team Tatjana": 1,
-    "Rating Peak GmbH": 6
+    "United Promotion GmbH": 13,
+    "Stonemedia GmbH": 11,
+    "EnCom GmbH": 7,
+    "Team Tatjana": 2,
+    "Open Infra CS": 4
   }
 }
