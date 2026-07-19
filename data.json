@@ -325,7 +325,7 @@
       3,
       1,
       87,
-      14,
+      15,
       0
     ],
     [
@@ -552,7 +552,7 @@
       0,
       0,
       0,
-      248,
+      249,
       16,
       0
     ],
@@ -672,8 +672,8 @@
       10,
       5,
       0,
-      443,
-      51,
+      349,
+      23,
       3
     ],
     [
@@ -852,7 +852,7 @@
       0,
       1,
       1,
-      289,
+      241,
       3,
       8
     ],
@@ -876,9 +876,9 @@
       0,
       0,
       35,
-      918,
+      923,
       0,
-      31
+      29
     ],
     [
       "Hohen Neuendorf B1",
@@ -888,8 +888,8 @@
       0,
       0,
       28,
-      986,
-      184,
+      987,
+      186,
       4
     ],
     [
@@ -1020,8 +1020,8 @@
       0,
       0,
       0,
-      809,
-      90,
+      680,
+      89,
       0
     ],
     [
@@ -1050,14 +1050,14 @@
     ],
     [
       "DE-BB Gosen Neu-Zittau P3",
-      "Build Sales",
+      "Base Sales",
       "Rating Peak GmbH",
       0,
       0,
       0,
       7,
-      184,
-      50,
+      185,
+      52,
       0
     ],
     [
@@ -2879,7 +2879,7 @@
     "DE-BB Diehlo P1": "https://bob.openinfra.com/sales-projects/2779",
     "DE-BB Neuzelle P5": "https://bob.openinfra.com/delivery-projects/4145",
     "DE-BB Neuzelle P6": "https://bob.openinfra.com/delivery-projects/3698",
-    "DE-BB Gosen Neu-Zittau P2": "https://bob.openinfra.com/delivery-projects/2907",
+    "DE-BB Gosen Neu-Zittau P2": "https://bob.openinfra.com/sales-projects/4310",
     "DE-NI Salzhausen Eyendorf P7": "https://bob.openinfra.com/delivery-projects/3693",
     "DE-NI Salzhausen Lübberstedt P8": "https://bob.openinfra.com/sales-projects/4111",
     "DE-BB Spreenhagen P2": "https://bob.openinfra.com/delivery-projects/2912",
@@ -2937,13 +2937,13 @@
     "DE-BB Frankfurt (Oder) Combined P3": "https://bob.openinfra.com/sales-projects/3850",
     "DE-BB Frankfurt (Oder) Combined P4": "https://bob.openinfra.com/sales-projects/3849",
     "DE-BB Fürstenwalde P7": "https://bob.openinfra.com/sales-projects/2765",
-    "DE-BB Gosen Neu-Zittau P3": "https://bob.openinfra.com/delivery-projects/2908",
+    "DE-BB Gosen Neu-Zittau P3": "https://bob.openinfra.com/sales-projects/4309",
     "DE-BB Gosen-Neu Zittau P2": "https://bob.openinfra.com/sales-projects/4310",
     "DE-BB Gosen-Neu Zittau P3": "https://bob.openinfra.com/sales-projects/4309",
     "DE-BB Gosen-Neu Zittau P4": "https://bob.openinfra.com/sales-projects/4311",
     "DE-BB Groß Köris P3": "https://bob.openinfra.com/delivery-projects/2825",
     "DE-BB Grünheide P1": "https://bob.openinfra.com/sales-projects/4317",
-    "DE-BB Grünheide P3": "https://bob.openinfra.com/delivery-projects/2904",
+    "DE-BB Grünheide P3": "https://bob.openinfra.com/sales-projects/4321",
     "DE-BB Grünheide P4": "https://bob.openinfra.com/delivery-projects/2905",
     "DE-BB Grünheide P5": "https://bob.openinfra.com/sales-projects/4199",
     "DE-BB Grünheide P6": "https://bob.openinfra.com/delivery-projects/3026",
@@ -3000,19 +3000,19 @@
     "DE-NI Welle P2": "https://bob.openinfra.com/delivery-projects/2629",
     "DE-NI Welle P3": "https://bob.openinfra.com/delivery-projects/3607",
     "Heidenau B4": "https://bob.openinfra.com/delivery-projects/2628",
-    "Hohen Neuendorf B1": "https://bob.openinfra.com/delivery-projects/2254",
+    "Hohen Neuendorf B1": "https://bob.openinfra.com/sales-projects/4110",
     "Hohen Neuendorf B2": "https://bob.openinfra.com/delivery-projects/2253",
     "Luckau Combined (Deploy 2026)": "https://bob.openinfra.com/delivery-projects/3771",
     "Kasel-Golzig Combined": "https://bob.openinfra.com/sales-projects/4058",
     "DE-BB Kasel-Golzig Combined": "https://bob.openinfra.com/sales-projects/4058",
     "Nienburg Projekte KSB": "https://www.google.com/maps/d/edit?mid=1O_2TNymgRyUs9JkqnBv0dheWnM3GE54&ll=52.68645321738002%2C9.134187513199254&z=12",
-    "DE-BB Seddiner See P2": "https://bob.openinfra.com/delivery-projects/1750",
+    "DE-BB Seddiner See P2": "https://bob.openinfra.com/sales-projects/4324",
     "Wistedt B1": "https://bob.openinfra.com/delivery-projects/1964",
     "DE-BY Wallersdorf P1": "https://bob.openinfra.com/delivery-projects/4293",
     "DE-BY Wallersdorf P2": "https://bob.openinfra.com/delivery-projects/4294",
     "DE-BY Wallersdorf P3": "https://bob.openinfra.com/delivery-projects/4295",
     "DE-BB Schöneiche P8": "https://bob.openinfra.com/sales-projects/4065",
-    "DE-BY Kirchroth P1-1": "https://bob.openinfra.com/delivery-projects/4188",
+    "DE-BY Kirchroth P1-1": "https://bob.openinfra.com/sales-projects/4319",
     "DE-BB Diehlo P1_dup": "https://bob.openinfra.com/sales-projects/2779",
     "DE-BB Königs Wusterhausen HP0 1": "https://bob.openinfra.com/sales-projects/3828/sales-periods",
     "DE-BB Königs Wusterhausen HP0 3": "https://bob.openinfra.com/sales-projects/4051/sales-periods",
