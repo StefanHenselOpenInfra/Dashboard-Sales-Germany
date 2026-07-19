@@ -732,8 +732,8 @@
       0,
       0,
       0,
-      772,
-      0,
+      767,
+      1,
       1
     ],
     [
@@ -816,8 +816,8 @@
       2,
       1,
       41,
-      1702,
-      72,
+      1703,
+      83,
       46
     ],
     [
@@ -925,7 +925,7 @@
       0,
       46,
       1227,
-      56,
+      61,
       22
     ],
     [
@@ -961,7 +961,7 @@
       0,
       0,
       2549,
-      10,
+      11,
       0
     ],
     [
@@ -1009,7 +1009,7 @@
       1,
       1,
       2586,
-      10,
+      11,
       11
     ],
     [
@@ -1164,8 +1164,8 @@
       0,
       0,
       0,
-      971,
-      1,
+      987,
+      0,
       0
     ],
     [
@@ -3031,7 +3031,7 @@
     "DE-BB Zeuthen-Wildau HP0": "https://bob.openinfra.com/sales-projects/3843/sales-periods",
     "Märkisch Buchholz Combined": "https://bob.openinfra.com/sales-projects/4060",
     "DE-BB Groß Köris HP0": "https://bob.openinfra.com/sales-projects/4050/sales-periods",
-    "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857",
+    "DE-BB Rangsdorf HP0": "https://bob.openinfra.com/sales-projects/3857/sales-periods",
     "DE-BB Grünheide P2 HP0": "https://bob.openinfra.com/sales-projects/3637/sales-periods",
     "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
     "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
