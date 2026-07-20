@@ -701,18 +701,6 @@
       0
     ],
     [
-      "DE-BB Beetzsee P2",
-      "Base Sales",
-      "United Promotion GmbH",
-      0,
-      0,
-      0,
-      0,
-      280,
-      89,
-      0
-    ],
-    [
       "DE-BB Blankenfelde-Mahlow P1",
       "Build Sales",
       "United Promotion GmbH",
@@ -1825,6 +1813,13 @@
       "BB",
       2,
       1103
+    ],
+    [
+      "DE-BB Beetzsee P2",
+      "Base Sales",
+      "BB",
+      89,
+      280
     ]
   ],
   "cemeteryRows": [
@@ -3118,12 +3113,6 @@
       "DE-BB Diensdorf-Radlow",
       "BB",
       "EnCom GmbH",
-      ""
-    ],
-    [
-      "DE-BB Beetzsee P2",
-      "BB",
-      "United Promotion GmbH",
       ""
     ],
     [
