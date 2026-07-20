@@ -1213,7 +1213,7 @@ function render(){
     html+='<th style="cursor:pointer;text-align:'+col[1]+'" onclick="projSortKey=\''+col[0]+'\';projSortDir=(projSortKey===\''+col[0]+'\'&&projSortDir===\'desc\')?\'asc\':\'desc\';render();">'+col[0]+' '+(projSortKey===col[0]?(projSortDir==='asc'?'↑':'↓'):'')+'</th>';
   });
   html+='</tr></thead><tbody>';
-  var runCoaMissingProjs=['DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Amt Scharmützelsee P4','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)'];
+  var runCoaMissingProjs=['DE-BB Diensdorf-Radlow','DE-BB Beetzsee P2','DE-BB Königs Wusterhausen HP0 1','DE-BB Grünheide P7','DE-BY Kirchroth P1-1','DE-BB Amt Scharmützelsee P4','DE-BB Falkensee HP0','DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Stadt Velten P1 HP0','DE-BB Rangsdorf HP0'];
   var coaWaitingProjs=[];
   projs.forEach(function(r,i){
     var gestopptList=[];
@@ -1338,7 +1338,7 @@ function render(){
     var backInFunnelProjs=[];
     var closedProjs=[];
     var coaWaitingProjs=[];
-    var coaMissingProjs=['DE-BB Königs Wusterhausen HP0 2','DE-BB Heidesee HP0','DE-BB Neuzelle Combined P1','DE-BB Falkensee HP0','DE-BB Zeuthen-Wildau HP0','DE-BB Teupitz P3','DE-BB Teupitz P4','DE-BB Amt Scharmützelsee P3','DE-BB Amt Scharmützelsee P4','DE-BB Amt Scharmützelsee P5','DE-BB Diensdorf-Radlow','DE-BB Fürstenwalde P7','DE-BB Rietz-Neuendorf P2','DE-BB Beetzsee P2','DE-BB Eichwalde HP0','DE-BB Grünheide P7','Luckau Combined (Deploy 2026)','DE-BB Bersteland P3','DE-BB Bersteland P4'];
+    var coaMissingProjs=['DE-BB Diensdorf-Radlow','DE-BB Beetzsee P2','DE-BB Königs Wusterhausen HP0 1','DE-BB Grünheide P7','DE-BY Kirchroth P1-1','DE-BB Amt Scharmützelsee P4','DE-BB Falkensee HP0','DE-BB Bestensee HP0','DE-BB Groß Köris HP0','DE-BB Stadt Velten P1 HP0','DE-BB Rangsdorf HP0'];
     var importantProjs=[];
     var upStampProjs=['DE-BB Zossen P7-1'];
     // Determine badge
