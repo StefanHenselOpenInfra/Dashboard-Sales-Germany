@@ -3121,142 +3121,73 @@
       ""
     ],
     [
-      "DE-BB Fürstenwalde P7",
-      "BB",
-      "United Promotion GmbH",
-      "",
-      "Base Sales / Up Sales",
-      216,
-      78
-    ],
-    [
-      "DE-BB Rietz-Neuendorf S2",
-      "BB",
-      "EnCom GmbH",
-      "CoA waiting"
-    ],
-    [
       "DE-BB Beetzsee P2",
       "BB",
       "United Promotion GmbH",
       ""
     ],
     [
-      "DE-BB Heidesee HP0",
+      "DE-BB Königs Wusterhausen HP0 1",
       "BB",
       "United Promotion GmbH",
-      "CoA waiting",
-      "HP0",
-      2712,
-      604
-    ],
-    [
-      "DE-BB Eichwalde HP0",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting",
-      "HP0",
-      837,
-      71
-    ],
-    [
-      "DE-BB Neuzelle Combined P1",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting"
+      "",
+      "HP0"
     ],
     [
       "DE-BB Grünheide P7",
       "BB",
       "Rating Peak GmbH",
-      "CoA waiting"
+      ""
     ],
     [
-      "DE-BB Bersteland P3",
-      "BB",
-      "Stonemedia GmbH",
-      "new calc needed"
-    ],
-    [
-      "DE-BB Bersteland P4",
-      "BB",
-      "Stonemedia GmbH",
-      "new calc needed"
-    ],
-    [
-      "DE-BB Falkensee HP0",
-      "BB",
-      "Stonemedia GmbH",
-      "CoA waiting"
-    ],
-    [
-      "Luckau Combined (Deploy 2026)",
-      "BB",
-      "Stonemedia GmbH",
-      "CoA waiting"
-    ],
-    [
-      "DE-BB Zeuthen-Wildau HP0",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting",
-      "HP0",
-      2628,
-      46
-    ],
-    [
-      "DE-BB Teupitz P3",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting",
-      "Base Sales",
-      261,
-      73
-    ],
-    [
-      "DE-BB Teupitz P4",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting",
-      "Base Sales",
-      273,
-      71
-    ],
-    [
-      "DE-BB Königs Wusterhausen HP0 2",
-      "BB",
-      "United Promotion GmbH",
-      "CoA waiting",
-      "HP0",
-      2768,
-      4
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P3",
-      "BB",
+      "DE-BY Kirchroth P1-1",
+      "BY",
       "EnCom GmbH",
-      "CoA waiting",
-      "Base Sales / Up Sales",
-      868,
-      0
+      ""
     ],
     [
       "DE-BB Amt Scharmützelsee P4",
       "BB",
       "EnCom GmbH",
-      "CoA waiting",
+      "",
       "Base Sales / Up Sales",
       364,
       0
     ],
     [
-      "DE-BB Amt Scharmützelsee P5",
+      "DE-BB Falkensee HP0",
       "BB",
-      "EnCom GmbH",
-      "CoA waiting",
-      "Base Sales / Up Sales",
-      147,
-      0
+      "Stonemedia GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Bestensee HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Groß Köris HP0",
+      "BB",
+      "United Promotion GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Stadt Velten P1 HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Rangsdorf HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
     ]
   ],
   "salesReportTotal2026": 1981,
