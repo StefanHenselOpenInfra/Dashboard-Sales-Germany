@@ -1025,18 +1025,6 @@
       0
     ],
     [
-      "DE-BB Gosen-Neu Zittau P4",
-      "BASE UPSELL",
-      "Rating Peak GmbH",
-      0,
-      0,
-      0,
-      1,
-      262,
-      77,
-      1
-    ],
-    [
       "DE-BB Gosen Neu-Zittau P3",
       "Base Sales",
       "Rating Peak GmbH",
@@ -1167,6 +1155,18 @@
       361,
       0,
       0
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P4",
+      "BASE UPSELL",
+      "United Promotion GmbH",
+      0,
+      0,
+      0,
+      1,
+      262,
+      77,
+      1
     ]
   ],
   "funnelRowsRaw": [
