@@ -4,42 +4,42 @@
       "name": "United Promotion GmbH",
       "jan": 0,
       "feb": 0,
-      "mar": 43,
-      "apr": 13,
-      "may": 92,
+      "mar": 0,
+      "apr": 6,
+      "may": 84,
       "juneActual": 262,
-      "julyActual": 254,
-      "ytd": 612,
-      "cancelledYtd": 63,
-      "d2d": 16.9,
+      "julyActual": 329,
+      "ytd": 681,
+      "cancelledYtd": 58,
+      "d2d": 18.3,
       "manpower": 11
     },
     {
       "name": "Stonemedia GmbH",
       "jan": 7,
       "feb": 48,
-      "mar": 75,
-      "apr": 61,
-      "may": 221,
+      "mar": 111,
+      "apr": 62,
+      "may": 228,
       "juneActual": 124,
-      "julyActual": 53,
-      "ytd": 589,
-      "cancelledYtd": 58,
-      "d2d": 3.5,
+      "julyActual": 80,
+      "ytd": 670,
+      "cancelledYtd": 66,
+      "d2d": 4.4,
       "manpower": 4
     },
     {
       "name": "EnCom GmbH",
       "jan": 4,
       "feb": 33,
-      "mar": 90,
-      "apr": 69,
-      "may": 118,
+      "mar": 118,
+      "apr": 121,
+      "may": 117,
       "juneActual": 257,
-      "julyActual": 91,
-      "ytd": 662,
-      "cancelledYtd": 24,
-      "d2d": 6.1,
+      "julyActual": 101,
+      "ytd": 789,
+      "cancelledYtd": 26,
+      "d2d": 5.6,
       "manpower": 4
     },
     {
@@ -50,10 +50,10 @@
       "apr": 41,
       "may": 62,
       "juneActual": 39,
-      "julyActual": 35,
-      "ytd": 244,
-      "cancelledYtd": 7,
-      "d2d": 2.3,
+      "julyActual": 47,
+      "ytd": 256,
+      "cancelledYtd": 8,
+      "d2d": 2.6,
       "manpower": 4
     },
     {
@@ -64,8 +64,8 @@
       "apr": 5,
       "may": 5,
       "juneActual": 12,
-      "julyActual": 10,
-      "ytd": 49,
+      "julyActual": 11,
+      "ytd": 60,
       "cancelledYtd": 0,
       "d2d": 0.7,
       "manpower": 1
@@ -81,14 +81,14 @@
       "julyActual": 6,
       "ytd": 14,
       "cancelledYtd": 1,
-      "d2d": 0.4,
+      "d2d": 0.3,
       "manpower": 0
     },
     {
       "name": "Filiago",
       "jan": 16,
       "feb": 0,
-      "mar": 0,
+      "mar": 1,
       "apr": 0,
       "may": 0,
       "juneActual": 0,
@@ -115,50 +115,51 @@
   ],
   "kpiActuals": {
     "Base Sales / Up Sales": {
-      "april": 95,
-      "may": 350,
-      "june": 447,
-      "july": 225
+      "april": 98,
+      "may": 351,
+      "june": 459,
+      "july": 292
     },
     "After Market / HP0 Sales": {
-      "april": 15,
+      "april": 13,
       "may": 30,
-      "june": 119,
-      "july": 149
+      "june": 108,
+      "july": 196
     },
     "Build Sales": {
-      "april": 134,
-      "may": 120,
+      "april": 133,
+      "may": 119,
       "june": 141,
-      "july": 76
+      "july": 88
     }
   },
   "settings": {
-    "salesReportTotal2026": 2407,
+    "salesReportTotal2026": 2534,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 15,
-    "q3WorkingDaysLeft": 51,
-    "julyWorkingDaysDone": 15,
-    "julyWorkingDaysLeft": 8,
+    "q3WorkingDaysDone": 18,
+    "q3WorkingDaysLeft": 48,
+    "julyWorkingDaysDone": 18,
+    "julyWorkingDaysLeft": 5,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
     "mar": 292,
     "apr": 244,
     "may": 500,
-    "jun": 707,
-    "jun_actual": 707,
-    "jul": 450,
+    "jun": 708,
+    "jun_actual": 708,
+    "jul": 576,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "22.7.2026",
-    "cancelled": 156,
-    "netSales": 2251
+    "lastUpdateDate": "25.7.2026",
+    "cancelled": 161,
+    "netSales": 2373,
+    "previousJul": 472
   },
-  "netSales": 2251,
-  "cancelled": 156,
+  "netSales": 2373,
+  "cancelled": 161,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -278,7 +279,7 @@
       2,
       478,
       55,
-      12
+      14
     ],
     [
       "DE-BB Storkow P6",
@@ -338,7 +339,7 @@
       10,
       1094,
       422,
-      8
+      12
     ],
     [
       "Märkisch Buchholz Combined",
@@ -370,11 +371,11 @@
       "EnCom GmbH",
       0,
       0,
-      81,
+      80,
       216,
       836,
       0,
-      55
+      61
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -398,7 +399,7 @@
       0,
       519,
       133,
-      10
+      11
     ],
     [
       "DE-BB Frankfurt (Oder) Combined P2",
@@ -446,7 +447,7 @@
       7,
       842,
       17,
-      14
+      17
     ],
     [
       "DE-BY Kirchroth P3",
@@ -521,18 +522,6 @@
       2
     ],
     [
-      "DE-BB Rietz-Neuendorf P2",
-      "Base Sales",
-      "EnCom GmbH",
-      0,
-      0,
-      0,
-      0,
-      318,
-      68,
-      0
-    ],
-    [
       "DE-BB Birkenwerder P1",
       "Build Sales",
       "Team Tatjana",
@@ -566,7 +555,7 @@
       1,
       373,
       37,
-      5
+      6
     ],
     [
       "DE-BB Schöneiche P8",
@@ -590,7 +579,7 @@
       0,
       349,
       23,
-      7
+      10
     ],
     [
       "DE-BB Stadt Fürstenwalde P4",
@@ -602,7 +591,7 @@
       17,
       609,
       166,
-      19
+      22
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -614,7 +603,7 @@
       2,
       260,
       11,
-      0
+      3
     ],
     [
       "DE-BB Blankenfelde-Mahlow P1",
@@ -662,7 +651,7 @@
       0,
       2108,
       1,
-      1
+      2
     ],
     [
       "DE-BB Heidesee P7",
@@ -686,7 +675,7 @@
       9,
       1945,
       60,
-      38
+      70
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -722,7 +711,7 @@
       41,
       1709,
       56,
-      48
+      51
     ],
     [
       "DE-BB Zossen HP0",
@@ -758,7 +747,7 @@
       1,
       241,
       3,
-      8
+      10
     ],
     [
       "DE-BB Zossen P6",
@@ -770,7 +759,7 @@
       40,
       731,
       0,
-      35
+      42
     ],
     [
       "DE-BB Zossen P7",
@@ -782,7 +771,7 @@
       35,
       923,
       0,
-      31
+      45
     ],
     [
       "Hohen Neuendorf B1",
@@ -794,7 +783,7 @@
       28,
       987,
       186,
-      4
+      5
     ],
     [
       "Hohen Neuendorf B2",
@@ -806,19 +795,7 @@
       5,
       936,
       136,
-      23
-    ],
-    [
-      "DE-BB Neuzelle Combined P1",
-      "Build Sales",
-      "United Promotion GmbH",
-      0,
-      0,
-      0,
-      0,
-      615,
-      148,
-      0
+      26
     ],
     [
       "DE-BB Stadt Fürstenwalde P1-P3 HP0",
@@ -830,7 +807,7 @@
       46,
       1227,
       61,
-      26
+      34
     ],
     [
       "DE-BB Teupitz P3",
@@ -866,7 +843,7 @@
       0,
       2549,
       11,
-      4
+      9
     ],
     [
       "DE-BB Falkensee HP0",
@@ -890,7 +867,7 @@
       0,
       752,
       36,
-      18
+      39
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -914,7 +891,7 @@
       1,
       2586,
       11,
-      13
+      14
     ],
     [
       "DE-BB Grünheide P3",
@@ -931,7 +908,7 @@
     [
       "DE-BB Gosen Neu-Zittau P2",
       "Base Sales / Up Sales",
-      "Rating Peak GmbH",
+      "Aurora Sales GmbH",
       0,
       0,
       0,
@@ -943,7 +920,7 @@
     [
       "DE-BB Gosen Neu-Zittau P3",
       "Base Sales",
-      "Rating Peak GmbH",
+      "Aurora Sales GmbH",
       0,
       0,
       0,
@@ -998,7 +975,7 @@
       12,
       0,
       0,
-      4
+      11
     ],
     [
       "DE-BB Groß Köris HP0",
@@ -1091,6 +1068,13 @@
       "Base Sales",
       "BB",
       0,
+      318
+    ],
+    [
+      "DE-BB Rietz-Neuendorf P2",
+      "Base Sales",
+      "BB",
+      68,
       318
     ],
     [
@@ -1624,6 +1608,125 @@
       "BB",
       0,
       259
+    ],
+    [
+      "DE-BB Schwerin HP0",
+      "HP0",
+      "BB",
+      0,
+      0
+    ],
+    [
+      "DE-BB Schwerin P1",
+      "BASE UPSELL",
+      "BB",
+      29,
+      145
+    ],
+    [
+      "DE-BY Karlskron P1",
+      "BASE UPSELL",
+      "BY",
+      0,
+      1113
+    ],
+    [
+      "DE-BY Baar Ebenhausen P1",
+      "BASE UPSELL",
+      "BY",
+      0,
+      1797
+    ],
+    [
+      "DE-NI Rinteln P1",
+      "BASE UPSELL",
+      "NI",
+      0,
+      1652
+    ],
+    [
+      "DE-BY MEV Ansbach",
+      "MEV",
+      "BY",
+      0,
+      2136
+    ],
+    [
+      "DE-BY MEV Greding",
+      "MEV",
+      "BY",
+      0,
+      333
+    ],
+    [
+      "DE-BY MEV Kirchdorf",
+      "MEV",
+      "BY",
+      0,
+      325
+    ],
+    [
+      "DE-BY MEV Markt Allersberg",
+      "MEV",
+      "BY",
+      0,
+      637
+    ],
+    [
+      "DE-BY MEV Markt Bad Abbach",
+      "MEV",
+      "BY",
+      0,
+      2338
+    ],
+    [
+      "DE-BY MEV Markt Siegenburg",
+      "MEV",
+      "BY",
+      0,
+      1322
+    ],
+    [
+      "DE-BY MEV Neumarkt i.d.Of",
+      "MEV",
+      "BY",
+      0,
+      6355
+    ],
+    [
+      "DE-BY MEV Regensburg",
+      "MEV",
+      "BY",
+      0,
+      936
+    ],
+    [
+      "DE-BY MEV Saal a.d. Donau",
+      "MEV",
+      "BY",
+      0,
+      843
+    ],
+    [
+      "DE-BY MEV Teugn",
+      "MEV",
+      "BY",
+      0,
+      638
+    ],
+    [
+      "DE-BY MEV Vilseck",
+      "MEV",
+      "BY",
+      0,
+      1577
+    ],
+    [
+      "DE-BY MEV Markt Eichendorf",
+      "MEV",
+      "BY",
+      0,
+      2144
     ]
   ],
   "cemeteryRows": [
@@ -1794,6 +1897,83 @@
       "Abandon",
       0,
       951
+    ],
+    [
+      "DE-BB Schönwald P5",
+      "BB",
+      "Abandon",
+      78,
+      137
+    ],
+    [
+      "DE-NI Welle P3",
+      "NI",
+      "Abandon",
+      28,
+      32
+    ],
+    [
+      "DE-BB Neuzelle P5",
+      "BB",
+      "STOPP 499€ FEE",
+      0,
+      0
+    ],
+    [
+      "DE-BB Neuzelle P6",
+      "BB",
+      "STOPP 499€ FEE",
+      0,
+      0
+    ],
+    [
+      "DE-BY Falkenfels",
+      "BY",
+      "T COM",
+      0,
+      0
+    ],
+    [
+      "DE-BB Brandenburg HP0 FC",
+      "BB",
+      "Abandon",
+      274,
+      1363
+    ],
+    [
+      "DE-BB Löwenberger Land P3",
+      "BB",
+      "STOPP",
+      79,
+      427
+    ],
+    [
+      "DE-BB Groß Köris P3",
+      "BB",
+      "STOPP",
+      0,
+      0
+    ],
+    [
+      "DE-BY Metten P1",
+      "BY",
+      "Abandon",
+      252,
+      2376
+    ],
+    [
+      "DE-BB Rietz-Neuendorf P3",
+      "BB",
+      "too expensive",
+      0,
+      0
+    ],
+    [
+      "DE-BB Neuzelle Combined P1",
+      "BB",
+      "T COM",
+      0,
+      615
     ]
   ],
   "potentialRows": [
@@ -2598,7 +2778,11 @@
     "DE-BB Bestensee HP0": "https://bob.openinfra.com/sales-projects/3825/sales-periods",
     "DE-BB Birkenwerder-Hohen-Neuendorf HP0": "https://bob.openinfra.com/sales-projects/3844",
     "DE-BB Rietz-Neuendorf P2": "https://bob.openinfra.com/sales-projects/3387",
-    "DE-BB Rietz-Neuendorf P3": "https://bob.openinfra.com/sales-projects/4359"
+    "DE-BB Rietz-Neuendorf P3": "https://bob.openinfra.com/sales-projects/4359",
+    "DE-BB Schwerin P1": "https://bob.openinfra.com/sales-projects/2282",
+    "DE-BY Karlskron P1": "https://bob.openinfra.com/sales-projects/4367",
+    "DE-BY Baar Ebenhausen P1": "https://bob.openinfra.com/sales-projects/4327",
+    "DE-NI Rinteln P1": "https://bob.openinfra.com/sales-projects/4368"
   },
   "julyDailyData": {
     "United Promotion GmbH": [
@@ -2608,7 +2792,7 @@
       6,
       5,
       16,
-      18,
+      17,
       14,
       23,
       16,
@@ -2623,43 +2807,10 @@
       1,
       3,
       11,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "EnCom Gmbh": [
-      4,
-      5,
-      1,
-      4,
-      1,
-      3,
-      2,
-      5,
-      7,
-      3,
-      6,
-      1,
-      8,
-      3,
-      9,
-      7,
-      11,
-      1,
-      2,
-      3,
-      4,
-      1,
-      0,
-      0,
-      0,
+      14,
+      23,
+      28,
+      12,
       0,
       0,
       0,
@@ -2689,10 +2840,43 @@
       0,
       3,
       2,
+      5,
+      14,
+      9,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "EnCom GmbH": [
+      4,
+      5,
       1,
-      0,
-      0,
-      0,
+      4,
+      1,
+      3,
+      2,
+      5,
+      7,
+      3,
+      6,
+      1,
+      8,
+      3,
+      9,
+      7,
+      11,
+      1,
+      2,
+      3,
+      4,
+      2,
+      2,
+      6,
+      1,
       0,
       0,
       0,
@@ -2722,6 +2906,39 @@
       0,
       3,
       8,
+      3,
+      5,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "Open Infra CS": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -2751,6 +2968,39 @@
       0,
       3,
       3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "Filiago": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -2798,92 +3048,26 @@
       0,
       0,
       0
-    ],
-    "DE-Open Infra CS": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      2,
-      1,
-      0,
-      0,
-      0,
-      1,
-      4,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "_total": [
-      21,
-      45,
-      24,
-      11,
-      8,
-      26,
-      20,
-      20,
-      34,
-      28,
-      14,
-      1,
-      31,
-      22,
-      28,
-      29,
-      37,
-      3,
-      3,
-      13,
-      29,
-      3,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
     ]
   },
   "kpiPreviousDay": {
     "Base Sales / Up Sales": {
-      "april": 99,
-      "may": 351,
-      "june": 460,
-      "july": 216
+      "april": 86,
+      "may": 345,
+      "june": 440,
+      "july": 219
     },
     "After Market / HP0 Sales": {
       "april": 12,
       "may": 30,
       "june": 108,
-      "july": 134
+      "july": 154
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 72
+      "july": 78
     }
   },
   "funnelPrioList": [
@@ -2899,9 +3083,27 @@
     "DE-BB Schöneiche P11",
     "DE-Schöneiche P1-3",
     "DE-BB Diensdorf-Radlow",
+    "DE-BB Rietz-Neuendorf P2",
     "DE-BB Amt Scharmützelsee P3",
     "DE-BB Amt Scharmützelsee P4",
-    "DE-BB Amt Scharmützelsee P5"
+    "DE-BB Amt Scharmützelsee P5",
+    "DE-BB Schwerin P1",
+    "DE-BY Karlskron P1",
+    "DE-BY Baar Ebenhausen P1",
+    "DE-BB Gosen-Neu Zittau P1 HP0",
+    "DE-NI Rinteln P1",
+    "DE-BY MEV Ansbach",
+    "DE-BY MEV Greding",
+    "DE-BY MEV Kirchdorf",
+    "DE-BY MEV Markt Allersberg",
+    "DE-BY MEV Markt Bad Abbach",
+    "DE-BY MEV Markt Siegenburg",
+    "DE-BY MEV Neumarkt i.d.Of",
+    "DE-BY MEV Regensburg",
+    "DE-BY MEV Saal a.d. Donau",
+    "DE-BY MEV Teugn",
+    "DE-BY MEV Vilseck",
+    "DE-BY MEV Markt Eichendorf"
   ],
   "funnelTargetReachedProjs": [
     "Kasel-Golzig Combined",
@@ -2989,21 +3191,22 @@
     "DE-BB Bestensee HP0": 4
   },
   "projectJulDelta": {
-    "DE-BB Spreenhagen P3 & Furstenwalde P6": 7,
-    "DE-BB Schulzendorf HP0": 5,
-    "DE-BB Gosen Neu-Zittau P3": 5,
-    "DE-BB Schöneiche HP0": 4,
-    "Luckau Combined (Deploy 2026)": 2,
-    "DE-BB Amt Scharmützelsee P0": 2,
-    "DE-BB Frankfurt (Oder) Combined P1": 2,
+    "DE-BB Schulzendorf HP0": 19,
+    "DE-BB Zossen P7": 8,
+    "DE-BB Seddiner See P2": 6,
+    "DE-BB Amt Scharmützelsee P0": 5,
+    "DE-BB Stadt Fürstenwalde P1-P3 HP0": 4,
+    "DE-BB Zossen P6": 4,
+    "Kasel-Golzig Combined": 3,
+    "DE-BB Königs Wusterhausen HP0 3": 2,
     "DE-BB Stadt Fürstenwalde P4": 2,
-    "DE-BB Woltersdorf HP0": 2,
-    "DE-BB Stadt Fürstenwalde P1-P3 HP0": 2,
-    "DE-BB Storkow P5": 1,
-    "DE-BB Storkow P7": 1,
-    "DE-BB Königs Wusterhausen HP0 3": 1,
-    "DE-BB Birkenwerder P2-2": 1,
-    "DE-BB Zeuthen-Wildau HP0": 1
+    "DE-BB Zeuthen-Wildau HP0": 1,
+    "DE-BB Schöneiche HP0": 1,
+    "DE-BB Zossen P4-2": 1,
+    "DE-BB Woltersdorf HP0": 1,
+    "Hohen Neuendorf B2": 1,
+    "DE-BB Heidesee HP0": 1,
+    "DE-BB Spreenhagen P3 & Furstenwalde P6": 1
   },
   "coaRowsRaw": [
     [
@@ -3075,5 +3278,8 @@
     "EnCom GmbH": 5,
     "Open Infra CS": 4,
     "Stonemedia GmbH": 2
-  }
+  },
+  "calcReadyProjs": [
+    "DE-BB Gosen-Neu Zittau P1 HP0"
+  ]
 }
