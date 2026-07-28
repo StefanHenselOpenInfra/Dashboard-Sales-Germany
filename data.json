@@ -8,10 +8,10 @@
       "apr": 6,
       "may": 84,
       "juneActual": 262,
-      "julyActual": 329,
-      "ytd": 681,
+      "julyActual": 364,
+      "ytd": 716,
       "cancelledYtd": 58,
-      "d2d": 18.3,
+      "d2d": 19.2,
       "manpower": 11
     },
     {
@@ -22,8 +22,8 @@
       "apr": 62,
       "may": 228,
       "juneActual": 124,
-      "julyActual": 80,
-      "ytd": 670,
+      "julyActual": 84,
+      "ytd": 674,
       "cancelledYtd": 66,
       "d2d": 4.4,
       "manpower": 4
@@ -36,10 +36,10 @@
       "apr": 121,
       "may": 117,
       "juneActual": 257,
-      "julyActual": 101,
-      "ytd": 789,
+      "julyActual": 116,
+      "ytd": 804,
       "cancelledYtd": 26,
-      "d2d": 5.6,
+      "d2d": 6.1,
       "manpower": 4
     },
     {
@@ -50,8 +50,8 @@
       "apr": 41,
       "may": 62,
       "juneActual": 39,
-      "julyActual": 47,
-      "ytd": 256,
+      "julyActual": 49,
+      "ytd": 258,
       "cancelledYtd": 8,
       "d2d": 2.6,
       "manpower": 4
@@ -64,10 +64,10 @@
       "apr": 5,
       "may": 5,
       "juneActual": 12,
-      "julyActual": 11,
-      "ytd": 60,
+      "julyActual": 12,
+      "ytd": 61,
       "cancelledYtd": 0,
-      "d2d": 0.7,
+      "d2d": 0.6,
       "manpower": 1
     },
     {
@@ -106,57 +106,57 @@
       "apr": 0,
       "may": 0,
       "juneActual": 0,
-      "julyActual": 1,
-      "ytd": 1,
+      "julyActual": 3,
+      "ytd": 3,
       "cancelledYtd": 0,
-      "d2d": 0.1,
+      "d2d": 0.2,
       "manpower": 0
     }
   ],
   "kpiActuals": {
     "Base Sales / Up Sales": {
-      "april": 98,
-      "may": 351,
-      "june": 459,
-      "july": 292
+      "april": 86,
+      "may": 345,
+      "june": 440,
+      "july": 300
     },
     "After Market / HP0 Sales": {
-      "april": 13,
+      "april": 12,
       "may": 30,
-      "june": 108,
-      "july": 196
+      "june": 107,
+      "july": 215
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 88
+      "july": 90
     }
   },
   "settings": {
-    "salesReportTotal2026": 2534,
+    "salesReportTotal2026": 2591,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 18,
-    "q3WorkingDaysLeft": 48,
-    "julyWorkingDaysDone": 18,
-    "julyWorkingDaysLeft": 5,
+    "q3WorkingDaysDone": 19,
+    "q3WorkingDaysLeft": 47,
+    "julyWorkingDaysDone": 19,
+    "julyWorkingDaysLeft": 4,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
     "mar": 292,
     "apr": 244,
     "may": 500,
-    "jun": 708,
-    "jun_actual": 708,
-    "jul": 576,
+    "jun": 707,
+    "jun_actual": 707,
+    "jul": 634,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "25.7.2026",
-    "cancelled": 161,
-    "netSales": 2373,
-    "previousJul": 472
+    "lastUpdateDate": "28.7.2026",
+    "cancelled": 162,
+    "netSales": 2429,
+    "previousJul": 576
   },
   "netSales": 2373,
   "cancelled": 161,
@@ -339,7 +339,7 @@
       10,
       1094,
       422,
-      12
+      13
     ],
     [
       "Märkisch Buchholz Combined",
@@ -373,9 +373,9 @@
       0,
       80,
       216,
-      836,
-      0,
-      61
+      839,
+      4,
+      77
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -387,6 +387,42 @@
       0,
       904,
       298,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P3",
+      "Base Sales / Up Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      689,
+      0,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P4",
+      "Base Sales / Up Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      364,
+      0,
+      0
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P5",
+      "Base Sales / Up Sales",
+      "EnCom GmbH",
+      0,
+      0,
+      0,
+      0,
+      147,
+      0,
       0
     ],
     [
@@ -446,8 +482,8 @@
       2,
       7,
       842,
-      17,
-      17
+      28,
+      19
     ],
     [
       "DE-BY Kirchroth P3",
@@ -555,7 +591,7 @@
       1,
       373,
       37,
-      6
+      7
     ],
     [
       "DE-BB Schöneiche P8",
@@ -602,7 +638,7 @@
       9,
       2,
       260,
-      11,
+      14,
       3
     ],
     [
@@ -650,8 +686,8 @@
       0,
       0,
       2108,
-      1,
-      2
+      20,
+      3
     ],
     [
       "DE-BB Heidesee P7",
@@ -673,9 +709,9 @@
       5,
       14,
       9,
-      1945,
-      60,
-      70
+      1946,
+      105,
+      76
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -687,7 +723,7 @@
       39,
       143,
       0,
-      13
+      16
     ],
     [
       "DE-BB Woltersdorf P5-1",
@@ -710,7 +746,7 @@
       1,
       41,
       1709,
-      56,
+      96,
       51
     ],
     [
@@ -759,7 +795,7 @@
       40,
       731,
       0,
-      42
+      46
     ],
     [
       "DE-BB Zossen P7",
@@ -771,7 +807,7 @@
       35,
       923,
       0,
-      45
+      52
     ],
     [
       "Hohen Neuendorf B1",
@@ -795,7 +831,7 @@
       5,
       936,
       136,
-      26
+      27
     ],
     [
       "DE-BB Stadt Fürstenwalde P1-P3 HP0",
@@ -805,9 +841,9 @@
       0,
       0,
       46,
-      1227,
-      61,
-      34
+      1230,
+      88,
+      43
     ],
     [
       "DE-BB Teupitz P3",
@@ -842,8 +878,8 @@
       0,
       0,
       2549,
-      11,
-      9
+      28,
+      10
     ],
     [
       "DE-BB Falkensee HP0",
@@ -854,7 +890,7 @@
       1,
       1,
       2400,
-      1,
+      5,
       1
     ],
     [
@@ -867,7 +903,7 @@
       0,
       752,
       36,
-      39
+      42
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -878,7 +914,7 @@
       0,
       1,
       2746,
-      0,
+      6,
       0
     ],
     [
@@ -890,7 +926,7 @@
       1,
       1,
       2586,
-      11,
+      27,
       14
     ],
     [
@@ -998,8 +1034,8 @@
       0,
       0,
       1362,
-      1,
-      1
+      4,
+      3
     ],
     [
       "DE-BB Zossen P4",
@@ -1045,7 +1081,7 @@
       0,
       0,
       0,
-      361,
+      670,
       0,
       0
     ],
@@ -1244,6 +1280,20 @@
       "BY",
       0,
       535
+    ],
+    [
+      "DE-BY Kirchroth HP0",
+      "HP0",
+      "BY",
+      165,
+      380
+    ],
+    [
+      "DE-BY Kirchroth P4",
+      "BASE UPSELL",
+      "BY",
+      179,
+      325
     ],
     [
       "DE-NI Appel P1",
@@ -1568,27 +1618,6 @@
       0
     ],
     [
-      "DE-BB Amt Scharmützelsee P3",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      689
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P4",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      364
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P5",
-      "Base Sales / Up Sales",
-      "BB",
-      0,
-      147
-    ],
-    [
       "DE-BB Spreenhagen P2",
       "BASE UPSELL",
       "BB",
@@ -1727,6 +1756,34 @@
       "BY",
       0,
       2144
+    ],
+    [
+      "DE-BB MEV LK Teltow Fläming",
+      "MEV",
+      "BB",
+      0,
+      19234
+    ],
+    [
+      "DE-BB MEV LK Potsdam Mittelmark",
+      "MEV",
+      "BB",
+      0,
+      84927
+    ],
+    [
+      "DE-NI Auetal",
+      "Base Sales",
+      "NI",
+      0,
+      0
+    ],
+    [
+      "DE-BY Aiterhofen HP0 - SNB",
+      "HP0",
+      "BY",
+      439,
+      567
     ]
   ],
   "cemeteryRows": [
@@ -2804,15 +2861,48 @@
       14,
       12,
       1,
-      1,
+      3,
       3,
       11,
       14,
       23,
       28,
       12,
+      1,
+      30,
       0,
       0,
+      0,
+      0
+    ],
+    "EnCom Gmbh": [
+      4,
+      5,
+      1,
+      4,
+      1,
+      3,
+      2,
+      5,
+      7,
+      3,
+      6,
+      1,
+      8,
+      3,
+      9,
+      7,
+      10,
+      1,
+      0,
+      3,
+      4,
+      2,
+      2,
+      6,
+      1,
+      7,
+      11,
       0,
       0,
       0,
@@ -2845,40 +2935,7 @@
       9,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "EnCom GmbH": [
       4,
-      5,
-      1,
-      4,
-      1,
-      3,
-      2,
-      5,
-      7,
-      3,
-      6,
-      1,
-      8,
-      3,
-      9,
-      7,
-      11,
-      1,
-      2,
-      3,
-      4,
-      2,
-      2,
-      6,
-      1,
-      0,
-      0,
       0,
       0,
       0,
@@ -2911,40 +2968,7 @@
       4,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "Open Infra CS": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
+      2,
       0,
       0,
       0,
@@ -2966,41 +2990,8 @@
       0,
       0,
       0,
+      2,
       3,
-      3,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "Filiago": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       0,
       0,
       0,
@@ -3043,7 +3034,73 @@
       0,
       0,
       0,
+      2,
       0,
+      0,
+      0,
+      0
+    ],
+    "DE-Open Infra CS": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      4,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "_total": [
+      21,
+      45,
+      24,
+      11,
+      8,
+      26,
+      19,
+      20,
+      34,
+      28,
+      14,
+      1,
+      31,
+      22,
+      28,
+      29,
+      37,
+      3,
+      3,
+      13,
+      29,
+      25,
+      45,
+      47,
+      13,
+      8,
+      50,
       0,
       0,
       0,
@@ -3052,22 +3109,22 @@
   },
   "kpiPreviousDay": {
     "Base Sales / Up Sales": {
-      "april": 86,
-      "may": 345,
-      "june": 440,
-      "july": 219
+      "april": 98,
+      "may": 351,
+      "june": 459,
+      "july": 292
     },
     "After Market / HP0 Sales": {
-      "april": 12,
+      "april": 13,
       "may": 30,
       "june": 108,
-      "july": 154
+      "july": 196
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 78
+      "july": 88
     }
   },
   "funnelPrioList": [
@@ -3084,9 +3141,6 @@
     "DE-Schöneiche P1-3",
     "DE-BB Diensdorf-Radlow",
     "DE-BB Rietz-Neuendorf P2",
-    "DE-BB Amt Scharmützelsee P3",
-    "DE-BB Amt Scharmützelsee P4",
-    "DE-BB Amt Scharmützelsee P5",
     "DE-BB Schwerin P1",
     "DE-BY Karlskron P1",
     "DE-BY Baar Ebenhausen P1",
@@ -3103,7 +3157,10 @@
     "DE-BY MEV Saal a.d. Donau",
     "DE-BY MEV Teugn",
     "DE-BY MEV Vilseck",
-    "DE-BY MEV Markt Eichendorf"
+    "DE-BY MEV Markt Eichendorf",
+    "DE-BB MEV LK Teltow Fläming",
+    "DE-BB MEV LK Potsdam Mittelmark",
+    "DE-NI Auetal"
   ],
   "funnelTargetReachedProjs": [
     "Kasel-Golzig Combined",
