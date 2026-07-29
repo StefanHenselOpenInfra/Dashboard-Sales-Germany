@@ -8,8 +8,8 @@
       "apr": 6,
       "may": 84,
       "juneActual": 262,
-      "julyActual": 364,
-      "ytd": 716,
+      "julyActual": 383,
+      "ytd": 735,
       "cancelledYtd": 58,
       "d2d": 19.2,
       "manpower": 11
@@ -22,8 +22,8 @@
       "apr": 62,
       "may": 228,
       "juneActual": 124,
-      "julyActual": 84,
-      "ytd": 674,
+      "julyActual": 91,
+      "ytd": 681,
       "cancelledYtd": 66,
       "d2d": 4.4,
       "manpower": 4
@@ -36,8 +36,8 @@
       "apr": 121,
       "may": 117,
       "juneActual": 257,
-      "julyActual": 116,
-      "ytd": 804,
+      "julyActual": 117,
+      "ytd": 805,
       "cancelledYtd": 26,
       "d2d": 6.1,
       "manpower": 4
@@ -50,8 +50,8 @@
       "apr": 41,
       "may": 62,
       "juneActual": 39,
-      "julyActual": 49,
-      "ytd": 258,
+      "julyActual": 52,
+      "ytd": 261,
       "cancelledYtd": 8,
       "d2d": 2.6,
       "manpower": 4
@@ -92,8 +92,8 @@
       "apr": 0,
       "may": 0,
       "juneActual": 0,
-      "julyActual": 0,
-      "ytd": 16,
+      "julyActual": 1,
+      "ytd": 17,
       "cancelledYtd": 0,
       "d2d": 0.0,
       "manpower": 0
@@ -106,8 +106,8 @@
       "apr": 0,
       "may": 0,
       "juneActual": 0,
-      "julyActual": 3,
-      "ytd": 3,
+      "julyActual": 4,
+      "ytd": 4,
       "cancelledYtd": 0,
       "d2d": 0.2,
       "manpower": 0
@@ -118,30 +118,30 @@
       "april": 86,
       "may": 345,
       "june": 440,
-      "july": 300
+      "july": 332
     },
     "After Market / HP0 Sales": {
       "april": 12,
       "may": 30,
       "june": 107,
-      "july": 215
+      "july": 243
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 90
+      "july": 91
     }
   },
   "settings": {
-    "salesReportTotal2026": 2591,
+    "salesReportTotal2026": 2623,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 19,
-    "q3WorkingDaysLeft": 47,
-    "julyWorkingDaysDone": 19,
-    "julyWorkingDaysLeft": 4,
+    "q3WorkingDaysDone": 20,
+    "q3WorkingDaysLeft": 46,
+    "julyWorkingDaysDone": 20,
+    "julyWorkingDaysLeft": 3,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -150,16 +150,16 @@
     "may": 500,
     "jun": 707,
     "jun_actual": 707,
-    "jul": 634,
+    "jul": 666,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "28.7.2026",
-    "cancelled": 162,
-    "netSales": 2429,
-    "previousJul": 576
+    "lastUpdateDate": "29.7.2026",
+    "cancelled": 165,
+    "netSales": 2458,
+    "previousJul": 634
   },
-  "netSales": 2373,
-  "cancelled": 161,
+  "netSales": 2458,
+  "cancelled": 165,
   "projectRows": [
     [
       "DE-BB Birkenwerder P2",
@@ -303,7 +303,7 @@
       5,
       199,
       30,
-      2
+      3
     ],
     [
       "DE-BB Storkow P1-4",
@@ -375,7 +375,7 @@
       216,
       839,
       4,
-      77
+      78
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -558,6 +558,18 @@
       2
     ],
     [
+      "DE-BY Parkstetten P1",
+      "Base Sales",
+      "EnCom GmbH",
+      2,
+      0,
+      0,
+      0,
+      396,
+      99,
+      0
+    ],
+    [
       "DE-BB Birkenwerder P1",
       "Build Sales",
       "Team Tatjana",
@@ -615,7 +627,7 @@
       0,
       349,
       23,
-      10
+      13
     ],
     [
       "DE-BB Stadt Fürstenwalde P4",
@@ -686,8 +698,8 @@
       0,
       0,
       2108,
-      20,
-      3
+      21,
+      4
     ],
     [
       "DE-BB Heidesee P7",
@@ -710,8 +722,8 @@
       14,
       9,
       1946,
-      105,
-      76
+      111,
+      82
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -723,7 +735,7 @@
       39,
       143,
       0,
-      16
+      18
     ],
     [
       "DE-BB Woltersdorf P5-1",
@@ -746,8 +758,8 @@
       1,
       41,
       1709,
-      96,
-      51
+      98,
+      53
     ],
     [
       "DE-BB Zossen HP0",
@@ -807,7 +819,7 @@
       35,
       923,
       0,
-      52
+      56
     ],
     [
       "Hohen Neuendorf B1",
@@ -831,7 +843,7 @@
       5,
       936,
       136,
-      27
+      28
     ],
     [
       "DE-BB Stadt Fürstenwalde P1-P3 HP0",
@@ -842,8 +854,8 @@
       0,
       46,
       1230,
-      88,
-      43
+      90,
+      45
     ],
     [
       "DE-BB Teupitz P3",
@@ -890,8 +902,8 @@
       1,
       1,
       2400,
-      5,
-      1
+      9,
+      5
     ],
     [
       "DE-BB Seddiner See P2",
@@ -903,7 +915,7 @@
       0,
       752,
       36,
-      42
+      44
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -914,8 +926,8 @@
       0,
       1,
       2746,
-      6,
-      0
+      7,
+      1
     ],
     [
       "DE-BB Zeuthen-Wildau HP0",
@@ -956,11 +968,11 @@
     [
       "DE-BB Gosen Neu-Zittau P3",
       "Base Sales",
-      "Aurora Sales GmbH",
+      "Rating Peak GmbH",
       0,
       0,
       0,
-      0,
+      7,
       185,
       52,
       5
@@ -1034,8 +1046,8 @@
       0,
       0,
       1362,
-      4,
-      3
+      5,
+      4
     ],
     [
       "DE-BB Zossen P4",
@@ -2786,7 +2798,7 @@
     "DE-BY Kirchroth P4": "https://bob.openinfra.com/sales-projects/4063",
     "DE-BY Kirchroth P5": "https://bob.openinfra.com/sales-projects/4082",
     "DE-BY Leiblfing P1": "https://bob.openinfra.com/sales-projects/4131",
-    "DE-BY Parkstetten P1": "https://bob.openinfra.com/delivery-projects/3009",
+    "DE-BY Parkstetten P1": "https://bob.openinfra.com/sales-projects/2667",
     "DE-BY Steinach": "https://bob.openinfra.com/delivery-projects/3769",
     "DE-BY Straubing P1": "https://bob.openinfra.com/sales-projects/2611",
     "DE-NI Handeloh P1": "https://bob.openinfra.com/delivery-projects/2048",
@@ -2870,7 +2882,7 @@
       12,
       1,
       30,
-      0,
+      19,
       0,
       0,
       0
@@ -2903,7 +2915,7 @@
       1,
       7,
       11,
-      0,
+      1,
       0,
       0,
       0
@@ -2936,7 +2948,7 @@
       0,
       0,
       4,
-      0,
+      7,
       0,
       0,
       0
@@ -2969,7 +2981,7 @@
       0,
       0,
       2,
-      0,
+      3,
       0,
       0,
       0
@@ -3035,7 +3047,40 @@
       0,
       0,
       2,
+      1,
       0,
+      0,
+      0
+    ],
+    "Filiago": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
       0,
       0,
       0
@@ -3101,7 +3146,7 @@
       13,
       8,
       50,
-      0,
+      32,
       0,
       0,
       0
@@ -3112,19 +3157,19 @@
       "april": 98,
       "may": 351,
       "june": 459,
-      "july": 292
+      "july": 300
     },
     "After Market / HP0 Sales": {
       "april": 13,
       "may": 30,
       "june": 108,
-      "july": 196
+      "july": 215
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 88
+      "july": 90
     }
   },
   "funnelPrioList": [
@@ -3160,7 +3205,8 @@
     "DE-BY MEV Markt Eichendorf",
     "DE-BB MEV LK Teltow Fläming",
     "DE-BB MEV LK Potsdam Mittelmark",
-    "DE-NI Auetal"
+    "DE-NI Auetal",
+    "DE-NI Rosengarten HP0"
   ],
   "funnelTargetReachedProjs": [
     "Kasel-Golzig Combined",
