@@ -8,8 +8,8 @@
       "apr": 6,
       "may": 84,
       "juneActual": 262,
-      "julyActual": 383,
-      "ytd": 735,
+      "julyActual": 403,
+      "ytd": 755,
       "cancelledYtd": 58,
       "d2d": 19.2,
       "manpower": 11
@@ -22,8 +22,8 @@
       "apr": 62,
       "may": 228,
       "juneActual": 124,
-      "julyActual": 91,
-      "ytd": 681,
+      "julyActual": 97,
+      "ytd": 687,
       "cancelledYtd": 66,
       "d2d": 4.4,
       "manpower": 4
@@ -36,8 +36,8 @@
       "apr": 121,
       "may": 117,
       "juneActual": 257,
-      "julyActual": 117,
-      "ytd": 805,
+      "julyActual": 119,
+      "ytd": 807,
       "cancelledYtd": 26,
       "d2d": 6.1,
       "manpower": 4
@@ -50,8 +50,8 @@
       "apr": 41,
       "may": 62,
       "juneActual": 39,
-      "julyActual": 52,
-      "ytd": 261,
+      "julyActual": 55,
+      "ytd": 264,
       "cancelledYtd": 8,
       "d2d": 2.6,
       "manpower": 4
@@ -106,8 +106,8 @@
       "apr": 0,
       "may": 0,
       "juneActual": 0,
-      "julyActual": 4,
-      "ytd": 4,
+      "julyActual": 5,
+      "ytd": 5,
       "cancelledYtd": 0,
       "d2d": 0.2,
       "manpower": 0
@@ -118,30 +118,30 @@
       "april": 86,
       "may": 345,
       "june": 440,
-      "july": 332
+      "july": 345
     },
     "After Market / HP0 Sales": {
       "april": 12,
       "may": 30,
       "june": 107,
-      "july": 243
+      "july": 258
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 91
+      "july": 95
     }
   },
   "settings": {
-    "salesReportTotal2026": 2623,
+    "salesReportTotal2026": 2655,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 20,
-    "q3WorkingDaysLeft": 46,
-    "julyWorkingDaysDone": 20,
-    "julyWorkingDaysLeft": 3,
+    "q3WorkingDaysDone": 21,
+    "q3WorkingDaysLeft": 45,
+    "julyWorkingDaysDone": 21,
+    "julyWorkingDaysLeft": 2,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -150,13 +150,13 @@
     "may": 500,
     "jun": 707,
     "jun_actual": 707,
-    "jul": 666,
+    "jul": 698,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "29.7.2026",
-    "cancelled": 165,
-    "netSales": 2458,
-    "previousJul": 634
+    "lastUpdateDate": "30.7.2026",
+    "cancelled": 166,
+    "netSales": 2489,
+    "previousJul": 666
   },
   "netSales": 2458,
   "cancelled": 165,
@@ -375,7 +375,7 @@
       216,
       839,
       4,
-      78
+      80
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -639,7 +639,7 @@
       17,
       609,
       166,
-      22
+      25
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -698,8 +698,8 @@
       0,
       0,
       2108,
-      21,
-      4
+      22,
+      5
     ],
     [
       "DE-BB Heidesee P7",
@@ -722,8 +722,8 @@
       14,
       9,
       1946,
-      111,
-      82
+      116,
+      87
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -758,8 +758,8 @@
       1,
       41,
       1709,
-      98,
-      53
+      100,
+      55
     ],
     [
       "DE-BB Zossen HP0",
@@ -795,7 +795,7 @@
       1,
       241,
       3,
-      10
+      11
     ],
     [
       "DE-BB Zossen P6",
@@ -807,7 +807,7 @@
       40,
       731,
       0,
-      46
+      48
     ],
     [
       "DE-BB Zossen P7",
@@ -819,7 +819,7 @@
       35,
       923,
       0,
-      56
+      60
     ],
     [
       "Hohen Neuendorf B1",
@@ -843,7 +843,7 @@
       5,
       936,
       136,
-      28
+      29
     ],
     [
       "DE-BB Stadt Fürstenwalde P1-P3 HP0",
@@ -854,8 +854,8 @@
       0,
       46,
       1230,
-      90,
-      45
+      93,
+      48
     ],
     [
       "DE-BB Teupitz P3",
@@ -902,8 +902,8 @@
       1,
       1,
       2400,
-      9,
-      5
+      11,
+      7
     ],
     [
       "DE-BB Seddiner See P2",
@@ -915,7 +915,7 @@
       0,
       752,
       36,
-      44
+      48
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -938,8 +938,8 @@
       1,
       1,
       2586,
-      27,
-      14
+      28,
+      15
     ],
     [
       "DE-BB Grünheide P3",
@@ -1046,8 +1046,8 @@
       0,
       0,
       1362,
-      5,
-      4
+      6,
+      5
     ],
     [
       "DE-BB Zossen P4",
@@ -1672,11 +1672,74 @@
       1113
     ],
     [
-      "DE-BY Baar Ebenhausen P1",
-      "BASE UPSELL",
+      "DE-BY MEV Baar Ebenhausen",
+      "MEV",
       "BY",
       0,
       1797
+    ],
+    [
+      "DE-BY MEV Essing",
+      "MEV",
+      "BY",
+      0,
+      422
+    ],
+    [
+      "DE-BY MEV Ihrlerstein",
+      "MEV",
+      "BY",
+      0,
+      1665
+    ],
+    [
+      "DE-BY MEV Pilsting",
+      "MEV",
+      "BY",
+      0,
+      1982
+    ],
+    [
+      "DE-BY MEV Schwandorf",
+      "MEV",
+      "BY",
+      0,
+      3489
+    ],
+    [
+      "DE-BY MEV VG Mainburg",
+      "MEV",
+      "BY",
+      0,
+      1997
+    ],
+    [
+      "DE-BY MEV Train",
+      "MEV",
+      "BY",
+      0,
+      580
+    ],
+    [
+      "DE-BY MEV Neuhaus a.Inn",
+      "MEV",
+      "BY",
+      0,
+      916
+    ],
+    [
+      "DE-BY MEV Steinach",
+      "MEV",
+      "BY",
+      0,
+      1026
+    ],
+    [
+      "DE-BY MEV Straubing",
+      "MEV",
+      "BY",
+      0,
+      2587
     ],
     [
       "DE-NI Rinteln P1",
@@ -1959,13 +2022,6 @@
       "Abandon",
       0,
       0
-    ],
-    [
-      "DE-BY Steinach",
-      "BY",
-      "Abandon",
-      0,
-      951
     ],
     [
       "DE-BB Schönwald P5",
@@ -2883,7 +2939,7 @@
       1,
       30,
       19,
-      0,
+      20,
       0,
       0
     ],
@@ -2916,7 +2972,7 @@
       7,
       11,
       1,
-      0,
+      2,
       0,
       0
     ],
@@ -2949,7 +3005,7 @@
       0,
       4,
       7,
-      0,
+      6,
       0,
       0
     ],
@@ -2982,7 +3038,7 @@
       0,
       2,
       3,
-      0,
+      3,
       0,
       0
     ],
@@ -3048,7 +3104,7 @@
       0,
       2,
       1,
-      0,
+      1,
       0,
       0
     ],
@@ -3147,29 +3203,29 @@
       8,
       50,
       32,
-      0,
+      32,
       0,
       0
     ]
   },
   "kpiPreviousDay": {
     "Base Sales / Up Sales": {
-      "april": 98,
-      "may": 351,
-      "june": 459,
-      "july": 300
+      "april": 86,
+      "may": 345,
+      "june": 440,
+      "july": 332
     },
     "After Market / HP0 Sales": {
-      "april": 13,
+      "april": 12,
       "may": 30,
-      "june": 108,
-      "july": 215
+      "june": 107,
+      "july": 243
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 90
+      "july": 91
     }
   },
   "funnelPrioList": [
@@ -3188,7 +3244,7 @@
     "DE-BB Rietz-Neuendorf P2",
     "DE-BB Schwerin P1",
     "DE-BY Karlskron P1",
-    "DE-BY Baar Ebenhausen P1",
+    "DE-BY MEV Baar Ebenhausen",
     "DE-BB Gosen-Neu Zittau P1 HP0",
     "DE-NI Rinteln P1",
     "DE-BY MEV Ansbach",
@@ -3205,6 +3261,15 @@
     "DE-BY MEV Markt Eichendorf",
     "DE-BB MEV LK Teltow Fläming",
     "DE-BB MEV LK Potsdam Mittelmark",
+    "DE-BY MEV Essing",
+    "DE-BY MEV Ihrlerstein",
+    "DE-BY MEV Pilsting",
+    "DE-BY MEV Schwandorf",
+    "DE-BY MEV VG Mainburg",
+    "DE-BY MEV Train",
+    "DE-BY MEV Neuhaus a.Inn",
+    "DE-BY MEV Steinach",
+    "DE-BY MEV Straubing",
     "DE-NI Auetal",
     "DE-NI Rosengarten HP0"
   ],
@@ -3311,70 +3376,7 @@
     "DE-BB Heidesee HP0": 1,
     "DE-BB Spreenhagen P3 & Furstenwalde P6": 1
   },
-  "coaRowsRaw": [
-    [
-      "DE-BB Diensdorf-Radlow",
-      "BB",
-      "EnCom GmbH",
-      ""
-    ],
-    [
-      "DE-BB Grünheide P7",
-      "BB",
-      "Rating Peak GmbH",
-      ""
-    ],
-    [
-      "DE-BY Kirchroth P1-1",
-      "BY",
-      "EnCom GmbH",
-      ""
-    ],
-    [
-      "DE-BB Amt Scharmützelsee P4",
-      "BB",
-      "EnCom GmbH",
-      "",
-      "Base Sales / Up Sales",
-      364,
-      0
-    ],
-    [
-      "DE-BB Falkensee HP0",
-      "BB",
-      "Stonemedia GmbH",
-      "",
-      "HP0"
-    ],
-    [
-      "DE-BB Bestensee HP0",
-      "BB",
-      "Aurora Sales GmbH",
-      "",
-      "HP0"
-    ],
-    [
-      "DE-BB Groß Köris HP0",
-      "BB",
-      "United Promotion GmbH",
-      "",
-      "HP0"
-    ],
-    [
-      "DE-BB Stadt Velten P1 HP0",
-      "BB",
-      "Aurora Sales GmbH",
-      "",
-      "HP0"
-    ],
-    [
-      "DE-BB Rangsdorf HP0",
-      "BB",
-      "Aurora Sales GmbH",
-      "",
-      "HP0"
-    ]
-  ],
+  "coaRowsRaw": [],
   "_agencyJulDelta": {
     "United Promotion GmbH": 10,
     "Team Tatjana": 7,
