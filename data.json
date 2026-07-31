@@ -8,11 +8,12 @@
       "apr": 6,
       "may": 84,
       "juneActual": 262,
-      "julyActual": 403,
-      "ytd": 755,
-      "cancelledYtd": 58,
-      "d2d": 19.2,
-      "manpower": 11
+      "julyActual": 409,
+      "ytd": 761,
+      "cancelledYtd": 64,
+      "d2d": 17.8,
+      "manpower": 11,
+      "july": 387
     },
     {
       "name": "Stonemedia GmbH",
@@ -22,11 +23,12 @@
       "apr": 62,
       "may": 228,
       "juneActual": 124,
-      "julyActual": 97,
-      "ytd": 687,
-      "cancelledYtd": 66,
-      "d2d": 4.4,
-      "manpower": 4
+      "julyActual": 106,
+      "ytd": 686,
+      "cancelledYtd": 67,
+      "d2d": 4.6,
+      "manpower": 4,
+      "july": 115
     },
     {
       "name": "EnCom GmbH",
@@ -36,11 +38,12 @@
       "apr": 121,
       "may": 117,
       "juneActual": 257,
-      "julyActual": 119,
-      "ytd": 807,
-      "cancelledYtd": 26,
-      "d2d": 6.1,
-      "manpower": 4
+      "julyActual": 127,
+      "ytd": 777,
+      "cancelledYtd": 27,
+      "d2d": 5.5,
+      "manpower": 4,
+      "july": 132
     },
     {
       "name": "Team Tatjana",
@@ -50,11 +53,12 @@
       "apr": 41,
       "may": 62,
       "juneActual": 39,
-      "julyActual": 55,
-      "ytd": 264,
-      "cancelledYtd": 8,
+      "julyActual": 60,
+      "ytd": 269,
+      "cancelledYtd": 9,
       "d2d": 2.6,
-      "manpower": 4
+      "manpower": 4,
+      "july": 63
     },
     {
       "name": "Open Infra CS",
@@ -64,11 +68,12 @@
       "apr": 5,
       "may": 5,
       "juneActual": 12,
-      "julyActual": 12,
-      "ytd": 61,
-      "cancelledYtd": 0,
+      "julyActual": 13,
+      "ytd": 62,
+      "cancelledYtd": 2,
       "d2d": 0.6,
-      "manpower": 1
+      "manpower": 1,
+      "july": 1
     },
     {
       "name": "Rating Peak GmbH",
@@ -82,7 +87,8 @@
       "ytd": 14,
       "cancelledYtd": 1,
       "d2d": 0.3,
-      "manpower": 0
+      "manpower": 0,
+      "july": 0
     },
     {
       "name": "Filiago",
@@ -93,10 +99,11 @@
       "may": 0,
       "juneActual": 0,
       "julyActual": 1,
-      "ytd": 17,
+      "ytd": 18,
       "cancelledYtd": 0,
       "d2d": 0.0,
-      "manpower": 0
+      "manpower": 0,
+      "july": 0
     },
     {
       "name": "Aurora Sales GmbH",
@@ -106,11 +113,12 @@
       "apr": 0,
       "may": 0,
       "juneActual": 0,
-      "julyActual": 5,
-      "ytd": 5,
+      "julyActual": 7,
+      "ytd": 7,
       "cancelledYtd": 0,
-      "d2d": 0.2,
-      "manpower": 0
+      "d2d": 0.3,
+      "manpower": 0,
+      "july": 8
     }
   ],
   "kpiActuals": {
@@ -118,30 +126,30 @@
       "april": 86,
       "may": 345,
       "june": 440,
-      "july": 345
+      "july": 436
     },
     "After Market / HP0 Sales": {
       "april": 12,
       "may": 30,
       "june": 107,
-      "july": 258
+      "july": 256
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 95
+      "july": 34
     }
   },
   "settings": {
-    "salesReportTotal2026": 2655,
+    "salesReportTotal2026": 2686,
     "q2WorkingDaysDone": 65,
     "q2WorkingDaysLeft": 0,
     "q3WorkingDays": 66,
-    "q3WorkingDaysDone": 21,
-    "q3WorkingDaysLeft": 45,
-    "julyWorkingDaysDone": 21,
-    "julyWorkingDaysLeft": 2,
+    "q3WorkingDaysDone": 23,
+    "q3WorkingDaysLeft": 43,
+    "julyWorkingDaysDone": 23,
+    "julyWorkingDaysLeft": 0,
     "juneForecast": 709,
     "jan": 59,
     "feb": 155,
@@ -150,13 +158,13 @@
     "may": 500,
     "jun": 707,
     "jun_actual": 707,
-    "jul": 698,
+    "jul": 729,
     "aug": 0,
     "sep": 0,
-    "lastUpdateDate": "30.7.2026",
-    "cancelled": 166,
-    "netSales": 2489,
-    "previousJul": 666
+    "lastUpdateDate": "31.7.2026",
+    "cancelled": 171,
+    "netSales": 2515,
+    "previousJul": 698
   },
   "netSales": 2458,
   "cancelled": 165,
@@ -168,7 +176,7 @@
       0,
       0,
       0,
-      31,
+      0,
       235,
       56,
       0
@@ -180,7 +188,7 @@
       0,
       20,
       25,
-      18,
+      0,
       579,
       189,
       0
@@ -192,7 +200,7 @@
       0,
       0,
       21,
-      4,
+      0,
       235,
       15,
       0
@@ -204,7 +212,7 @@
       0,
       0,
       59,
-      12,
+      0,
       243,
       6,
       0
@@ -228,7 +236,7 @@
       0,
       0,
       11,
-      1,
+      0,
       166,
       0,
       0
@@ -240,7 +248,7 @@
       0,
       0,
       13,
-      3,
+      1,
       107,
       46,
       1
@@ -252,7 +260,7 @@
       0,
       0,
       24,
-      9,
+      3,
       335,
       79,
       4
@@ -264,7 +272,7 @@
       0,
       0,
       0,
-      6,
+      1,
       332,
       83,
       1
@@ -276,9 +284,9 @@
       0,
       0,
       44,
-      2,
-      478,
-      55,
+      15,
+      481,
+      115,
       14
     ],
     [
@@ -288,7 +296,7 @@
       0,
       0,
       3,
-      1,
+      0,
       87,
       15,
       0
@@ -300,7 +308,7 @@
       0,
       0,
       10,
-      5,
+      3,
       199,
       30,
       3
@@ -312,7 +320,7 @@
       0,
       0,
       0,
-      2,
+      1,
       35,
       7,
       1
@@ -324,10 +332,10 @@
       0,
       0,
       0,
-      19,
+      4,
       184,
       0,
-      3
+      4
     ],
     [
       "Kasel-Golzig Combined",
@@ -336,10 +344,10 @@
       16,
       16,
       5,
-      10,
+      14,
       1094,
       422,
-      13
+      14
     ],
     [
       "Märkisch Buchholz Combined",
@@ -348,7 +356,7 @@
       45,
       7,
       2,
-      1,
+      0,
       1475,
       377,
       0
@@ -372,10 +380,10 @@
       0,
       0,
       80,
-      216,
+      85,
       839,
       4,
-      80
+      83
     ],
     [
       "DE-BB Amt Scharmützelsee P1",
@@ -432,9 +440,9 @@
       0,
       0,
       0,
-      0,
+      11,
       519,
-      133,
+      143,
       11
     ],
     [
@@ -456,7 +464,7 @@
       31,
       11,
       0,
-      0,
+      1,
       213,
       86,
       1
@@ -468,7 +476,7 @@
       0,
       21,
       9,
-      2,
+      0,
       344,
       66,
       0
@@ -480,10 +488,10 @@
       0,
       0,
       2,
-      7,
-      842,
-      28,
-      19
+      23,
+      1505,
+      690,
+      20
     ],
     [
       "DE-BY Kirchroth P3",
@@ -492,7 +500,7 @@
       5,
       7,
       6,
-      4,
+      0,
       246,
       103,
       0
@@ -504,7 +512,7 @@
       14,
       3,
       6,
-      4,
+      0,
       325,
       152,
       0
@@ -516,7 +524,7 @@
       0,
       0,
       0,
-      0,
+      4,
       249,
       16,
       0
@@ -540,10 +548,10 @@
       0,
       0,
       7,
-      14,
+      6,
       473,
       118,
-      6
+      7
     ],
     [
       "DE-BY Straubing P1",
@@ -576,7 +584,7 @@
       22,
       20,
       6,
-      2,
+      0,
       1097,
       396,
       0
@@ -588,7 +596,7 @@
       0,
       0,
       12,
-      2,
+      0,
       112,
       1,
       0
@@ -600,10 +608,10 @@
       0,
       0,
       2,
-      1,
+      10,
       373,
       37,
-      7
+      9
     ],
     [
       "DE-BB Schöneiche P8",
@@ -612,7 +620,7 @@
       0,
       0,
       8,
-      8,
+      0,
       372,
       40,
       0
@@ -625,9 +633,9 @@
       10,
       5,
       0,
-      349,
-      23,
-      13
+      350,
+      64,
+      14
     ],
     [
       "DE-BB Stadt Fürstenwalde P4",
@@ -636,10 +644,10 @@
       5,
       11,
       28,
-      17,
+      31,
       609,
       166,
-      25
+      27
     ],
     [
       "DE-BB Beetzsee P1 HP0",
@@ -660,7 +668,7 @@
       0,
       0,
       28,
-      6,
+      0,
       573,
       159,
       0
@@ -672,7 +680,7 @@
       0,
       0,
       0,
-      0,
+      1,
       767,
       1,
       1
@@ -684,7 +692,7 @@
       0,
       0,
       0,
-      0,
+      8,
       216,
       78,
       8
@@ -696,9 +704,9 @@
       11,
       1,
       0,
-      0,
+      4,
       2108,
-      22,
+      21,
       5
     ],
     [
@@ -708,7 +716,7 @@
       0,
       0,
       0,
-      10,
+      0,
       121,
       8,
       0
@@ -720,10 +728,10 @@
       0,
       5,
       14,
-      9,
-      1946,
-      116,
-      87
+      85,
+      2040,
+      204,
+      88
     ],
     [
       "DE-BB Schulzendorf P3",
@@ -732,7 +740,7 @@
       0,
       0,
       18,
-      39,
+      17,
       143,
       0,
       18
@@ -756,10 +764,10 @@
       0,
       2,
       1,
-      41,
-      1709,
-      100,
-      55
+      35,
+      1742,
+      95,
+      56
     ],
     [
       "DE-BB Zossen HP0",
@@ -768,7 +776,7 @@
       0,
       0,
       2,
-      0,
+      1,
       107,
       3,
       1
@@ -780,7 +788,7 @@
       0,
       0,
       0,
-      0,
+      2,
       199,
       70,
       2
@@ -792,10 +800,10 @@
       0,
       0,
       1,
-      1,
+      13,
       241,
-      3,
-      11
+      17,
+      12
     ],
     [
       "DE-BB Zossen P6",
@@ -804,7 +812,7 @@
       0,
       0,
       5,
-      40,
+      46,
       731,
       0,
       48
@@ -816,10 +824,10 @@
       0,
       0,
       0,
-      35,
+      63,
       923,
-      0,
-      60
+      95,
+      64
     ],
     [
       "Hohen Neuendorf B1",
@@ -828,7 +836,7 @@
       0,
       0,
       0,
-      28,
+      5,
       987,
       186,
       5
@@ -840,9 +848,9 @@
       0,
       0,
       0,
-      5,
+      29,
       936,
-      136,
+      170,
       29
     ],
     [
@@ -852,10 +860,10 @@
       0,
       0,
       0,
-      46,
+      56,
       1230,
-      93,
-      48
+      90,
+      51
     ],
     [
       "DE-BB Teupitz P3",
@@ -876,7 +884,7 @@
       21,
       0,
       1,
-      0,
+      2,
       295,
       49,
       2
@@ -900,10 +908,10 @@
       1,
       0,
       1,
-      1,
+      13,
       2400,
-      11,
-      7
+      9,
+      9
     ],
     [
       "DE-BB Seddiner See P2",
@@ -912,10 +920,10 @@
       0,
       0,
       0,
-      0,
-      752,
-      36,
-      48
+      58,
+      757,
+      86,
+      53
     ],
     [
       "DE-BB Königs Wusterhausen HP0 2",
@@ -936,9 +944,9 @@
       6,
       3,
       1,
-      1,
-      2586,
-      28,
+      17,
+      2925,
+      353,
       15
     ],
     [
@@ -972,7 +980,7 @@
       0,
       0,
       0,
-      7,
+      0,
       185,
       52,
       5
@@ -1020,7 +1028,7 @@
       9,
       5,
       5,
-      12,
+      11,
       0,
       0,
       11
@@ -1044,10 +1052,10 @@
       0,
       0,
       0,
-      0,
+      8,
       1362,
-      6,
-      5
+      5,
+      7
     ],
     [
       "DE-BB Zossen P4",
@@ -1056,7 +1064,7 @@
       0,
       1,
       0,
-      8,
+      1,
       591,
       238,
       3
@@ -1672,74 +1680,11 @@
       1113
     ],
     [
-      "DE-BY MEV Baar Ebenhausen",
-      "MEV",
+      "DE-BY Baar Ebenhausen P1",
+      "BASE UPSELL",
       "BY",
       0,
       1797
-    ],
-    [
-      "DE-BY MEV Essing",
-      "MEV",
-      "BY",
-      0,
-      422
-    ],
-    [
-      "DE-BY MEV Ihrlerstein",
-      "MEV",
-      "BY",
-      0,
-      1665
-    ],
-    [
-      "DE-BY MEV Pilsting",
-      "MEV",
-      "BY",
-      0,
-      1982
-    ],
-    [
-      "DE-BY MEV Schwandorf",
-      "MEV",
-      "BY",
-      0,
-      3489
-    ],
-    [
-      "DE-BY MEV VG Mainburg",
-      "MEV",
-      "BY",
-      0,
-      1997
-    ],
-    [
-      "DE-BY MEV Train",
-      "MEV",
-      "BY",
-      0,
-      580
-    ],
-    [
-      "DE-BY MEV Neuhaus a.Inn",
-      "MEV",
-      "BY",
-      0,
-      916
-    ],
-    [
-      "DE-BY MEV Steinach",
-      "MEV",
-      "BY",
-      0,
-      1026
-    ],
-    [
-      "DE-BY MEV Straubing",
-      "MEV",
-      "BY",
-      0,
-      2587
     ],
     [
       "DE-NI Rinteln P1",
@@ -2024,6 +1969,13 @@
       0
     ],
     [
+      "DE-BY Steinach",
+      "BY",
+      "Abandon",
+      0,
+      951
+    ],
+    [
       "DE-BB Schönwald P5",
       "BB",
       "Abandon",
@@ -2099,6 +2051,34 @@
       "T COM",
       0,
       615
+    ],
+    [
+      "Offenberg",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "Metten",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "Rotthalmünster",
+      "BY",
+      "Abandon",
+      0,
+      0
+    ],
+    [
+      "Straßkirchen",
+      "BY",
+      "Abandon",
+      0,
+      0
     ]
   ],
   "potentialRows": [
@@ -2139,18 +2119,6 @@
       ""
     ],
     [
-      "31737",
-      "Rinteln",
-      "NI",
-      "Rinteln-Nord (Stadtgebiet Nord)",
-      "positiv",
-      "Anja Friedrich",
-      "Bürgermeisterin",
-      "05751/403-102",
-      "a.friedrich@rinteln.de",
-      ""
-    ],
-    [
       "37127",
       "Gemeinde Stuhr",
       "NI",
@@ -2172,30 +2140,6 @@
       "Samtgemeinde",
       "05952 / 206-0",
       "info@samtgemeinde-soegel.de",
-      ""
-    ],
-    [
-      "14547",
-      "Fichtenwalde",
-      "BB",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    [
-      "14778",
-      "Amt Beetzsee REST",
-      "BB",
-      "",
-      "new area",
-      "Amtsdirektor Guido Müller",
-      "",
-      "03381 7999-0",
-      "info@amt-beetzsee.de",
       ""
     ],
     [
@@ -2331,30 +2275,6 @@
       ""
     ],
     [
-      "85107",
-      "Baar-Ebenhausen",
-      "BY",
-      "",
-      "positiv",
-      "Ernst Schartel",
-      "",
-      "08453 3205-0",
-      "ernst.schartel@baar-ebenhausen.de",
-      "Termin am 18.5.2026 / Folgetermin 28.7.2026"
-    ],
-    [
-      "85123",
-      "Karlskron",
-      "BY",
-      "",
-      "positiv",
-      "Herr Kumpf",
-      "Bürgermeister",
-      "017670086369",
-      "kumpf@karlskron.de",
-      "Terminvorschlag machen"
-    ],
-    [
       "85276",
       "Pfaffenhofen a. d. Ilm",
       "BY",
@@ -2365,66 +2285,6 @@
       "08441 78 145",
       "harald.deuschl@stadt-pfaffenhofen.de",
       "am 9.6.2026 Plan zur Prüfung erhalten"
-    ],
-    [
-      "92421",
-      "Schwandorf",
-      "BY",
-      "Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen",
-      "positiv",
-      "Frau Hetzenecker",
-      "Vorzimmer BM",
-      "09431 45-1 21",
-      "hetzenecker.martina@schwandorf.de",
-      "Termin 3.6.2026"
-    ],
-    [
-      "92421",
-      "Schwandorf",
-      "BY",
-      "Fronberg Büchelkühn Loisnitz Oberhof Naabeck Göggelbach Kronstetten Neukirchen",
-      "positiv",
-      "Markus Viehauser",
-      "Ansprechpartner",
-      "09431 - 45 - 289",
-      "viehauser.markus@schwandorf.de",
-      ""
-    ],
-    [
-      "93055",
-      "Keilberg",
-      "BY",
-      "",
-      "new area",
-      "",
-      "Gemeinde",
-      "0941 507-0",
-      "stadt_regensburg@regensburg.de",
-      ""
-    ],
-    [
-      "93077",
-      "Bad Abbach",
-      "BY",
-      "",
-      "",
-      "Herr Huber",
-      "Breitbandbeauftragter",
-      "09441 179411",
-      "info@bad-abbach.de",
-      "MEV abfordern über Portal https://projekttraeger-breitband.de/"
-    ],
-    [
-      "93077",
-      "Lengfeld",
-      "BY",
-      "",
-      "",
-      "Georg Brunner",
-      "Oberverwaltungsrat",
-      "09405 9590-70",
-      "Georg.Brunner@bad-abbach.de",
-      ""
     ],
     [
       "93133",
@@ -2463,78 +2323,6 @@
       ""
     ],
     [
-      "93342",
-      "VG Saal a.d.Donau",
-      "BY",
-      "Teugn",
-      "positiv",
-      "Harald Reichl",
-      "",
-      "09441 - 681 25",
-      "harald.reichl@saal-donau.de",
-      "Termin am 15.6.2026 um 13 Uhr"
-    ],
-    [
-      "94127",
-      "Neuburg am Inn",
-      "BY",
-      "",
-      "new area",
-      "",
-      "",
-      "08502 9008-0",
-      "info@neuburg-am-inn.de",
-      ""
-    ],
-    [
-      "94315",
-      "Straubing",
-      "BY",
-      "Kagers",
-      "positiv",
-      "Alexander Schießl",
-      "",
-      "09421 944 61165",
-      "alexander.schiessl@straubing.de",
-      "Termin am 10.10.2026"
-    ],
-    [
-      "94315",
-      "Straubing",
-      "BY",
-      "Tiergarten",
-      "positiv",
-      "Alexander Schießl",
-      "",
-      "09421 944 61165",
-      "alexander.schiessl@straubing.de",
-      "Termin am 10.10.2026"
-    ],
-    [
-      "94315",
-      "Straubing",
-      "BY",
-      "Unteröbling",
-      "positiv",
-      "Alexander Schießl",
-      "",
-      "09421 944 61165",
-      "alexander.schiessl@straubing.de",
-      "Termin am 10.10.2026"
-    ],
-    [
-      "94315",
-      "Straubing",
-      "BY",
-      "",
-      "positiv",
-      "Alexander Schießl",
-      "",
-      "09421 944 61165",
-      "alexander.schiessl@straubing.de",
-      "Termin am 10.10.2026"
-    ],
-    [
       "94333",
       "Geiselhöring",
       "BY",
@@ -2544,30 +2332,6 @@
       "",
       "09423/9400-300",
       "",
-      ""
-    ],
-    [
-      "94350",
-      "Falkenfels",
-      "BY",
-      "",
-      "T COM",
-      "Ludwig",
-      "BM",
-      "0160 4942595",
-      "webmaster@saulburg.de",
-      ""
-    ],
-    [
-      "94377",
-      "Steinach",
-      "BY",
-      "",
-      "kein Interesse",
-      "Frau Hammerschick",
-      "BM",
-      "09428 942033",
-      "gemeinde@steinach.bayern.de",
       ""
     ],
     [
@@ -2595,90 +2359,6 @@
       ""
     ],
     [
-      "94377",
-      "Steinach",
-      "BY",
-      "Münster",
-      "kein Interesse",
-      "Frau Hammerschick",
-      "BM",
-      "09428 942033",
-      "gemeinde@steinach.bayern.de",
-      ""
-    ],
-    [
-      "94428",
-      "Markt Eichendorf",
-      "BY",
-      "",
-      "positiv",
-      "Frau Sabine Forstner",
-      "Bauamtsleitung",
-      "0160 4619956",
-      "Sabine.forstner@markt-eichendorf.de",
-      "Termin online 8.6.2026 um 9 Uhr"
-    ],
-    [
-      "94431",
-      "Markt Pilsting",
-      "BY",
-      "Pilsting / Großköllnbach",
-      "positiv",
-      "Katrin Schinharl",
-      "Rathaus",
-      "09953 9301-0",
-      "katrin.schinharl@pilsting.de",
-      "Terminabstimmung läuft per Mail"
-    ],
-    [
-      "94522",
-      "Markt Wallersdorf",
-      "BY",
-      "Wallersdorf",
-      "Prüfung",
-      "Rainer Spielberger",
-      "Bauamt",
-      "09933 9510-18",
-      "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
-    ],
-    [
-      "94523",
-      "Markt Wallersdorf",
-      "BY",
-      "Haidenkofen",
-      "Prüfung",
-      "Rainer Spielberger",
-      "Bauamt",
-      "09933 9510-18",
-      "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
-    ],
-    [
-      "94524",
-      "Markt Wallersdorf",
-      "BY",
-      "Haidlfing",
-      "Prüfung",
-      "Rainer Spielberger",
-      "Bauamt",
-      "09933 9510-18",
-      "rainer.spielberger@markt-wallersdorf.de",
-      "Entscheidung am 2.6.2026"
-    ],
-    [
-      "94526",
-      "Metten",
-      "BY",
-      "",
-      "",
-      "",
-      "Rathaus",
-      "0991 99805-0",
-      "rathaus@markt-metten.de",
-      ""
-    ],
-    [
       "94532",
       "Außernzell",
       "BY",
@@ -2688,18 +2368,6 @@
       "",
       "09903 93030",
       "poststelle@schoellnach.de",
-      ""
-    ],
-    [
-      "94560",
-      "Offenberg",
-      "BY",
-      "",
-      "",
-      "",
-      "Rathaus",
-      "0991 99808-0",
-      "gemeinde@offenberg.bayern.de",
       ""
     ],
     [
@@ -2715,16 +2383,16 @@
       ""
     ],
     [
-      "21255",
-      "Wistedt",
-      "NI",
+      "92268",
+      "Ammerthal",
+      "BY",
       "",
-      "positiv",
-      "Sven Bauer",
-      "Bürgermeister",
-      "04182 3199",
-      "buergermeister@wistedt.de",
-      "Termin am 8.6.2026 um 15 Uhr"
+      "",
+      "",
+      "",
+      "",
+      "",
+      "MEV abgegeben"
     ],
     [
       "22391",
@@ -2736,6 +2404,18 @@
       "Geschäftsstelle WBZ",
       "+49 40 428 81 - 3345",
       "geschaeftsstelle-wbz@wandsbek.hamburg.de",
+      ""
+    ],
+    [
+      "27243",
+      "Samtgemeinde Harpstedt",
+      "NI",
+      "",
+      "",
+      "Yves Nagel",
+      "Samtgemeindebürgermeister",
+      "04244 8228",
+      "nagel@harpstedt.de",
       ""
     ]
   ],
@@ -2912,36 +2592,36 @@
   "julyDailyData": {
     "United Promotion GmbH": [
       17,
-      30,
-      11,
+      27,
+      9,
       6,
       5,
-      16,
-      17,
       14,
+      13,
+      12,
       23,
-      16,
-      6,
+      11,
+      5,
       0,
       23,
       11,
-      15,
+      8,
       14,
       12,
       1,
+      1,
       3,
-      3,
-      11,
-      14,
-      23,
+      10,
+      12,
+      22,
       28,
       12,
       1,
-      30,
+      28,
+      18,
       19,
-      20,
-      0,
-      0
+      10,
+      12
     ],
     "EnCom Gmbh": [
       4,
@@ -2958,7 +2638,7 @@
       1,
       8,
       3,
-      9,
+      8,
       7,
       10,
       1,
@@ -2973,13 +2653,13 @@
       11,
       1,
       2,
-      0,
-      0
+      4,
+      10
     ],
     "Stonemedia GmbH": [
       0,
       9,
-      12,
+      11,
       0,
       0,
       3,
@@ -2993,11 +2673,11 @@
       0,
       0,
       2,
-      10,
+      9,
       0,
       0,
       3,
-      2,
+      1,
       5,
       14,
       9,
@@ -3006,8 +2686,8 @@
       4,
       7,
       6,
-      0,
-      0
+      8,
+      13
     ],
     "Team Tatjana": [
       0,
@@ -3019,7 +2699,7 @@
       0,
       0,
       0,
-      3,
+      2,
       2,
       0,
       0,
@@ -3032,15 +2712,15 @@
       3,
       8,
       3,
-      5,
       4,
+      3,
       0,
       0,
       2,
       3,
       3,
-      0,
-      0
+      5,
+      6
     ],
     "Rating Peak GmbH": [
       0,
@@ -3058,8 +2738,8 @@
       0,
       0,
       0,
-      2,
-      3,
+      0,
+      0,
       0,
       0,
       0,
@@ -3105,8 +2785,8 @@
       2,
       1,
       1,
-      0,
-      0
+      2,
+      1
     ],
     "Filiago": [
       0,
@@ -3136,35 +2816,35 @@
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
     ],
     "DE-Open Infra CS": [
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      2,
       1,
       0,
       0,
       0,
-      1,
-      4,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -3176,36 +2856,36 @@
     ],
     "_total": [
       21,
-      45,
-      24,
+      42,
+      21,
       11,
       8,
-      26,
-      19,
-      20,
+      24,
+      15,
+      18,
       34,
-      28,
-      14,
+      22,
+      13,
       1,
       31,
       22,
-      28,
+      20,
       29,
-      37,
+      36,
       3,
-      3,
+      1,
       13,
-      29,
-      25,
-      45,
-      47,
+      27,
+      23,
+      43,
+      46,
       13,
       8,
-      50,
-      32,
-      32,
-      0,
-      0
+      48,
+      31,
+      31,
+      29,
+      42
     ]
   },
   "kpiPreviousDay": {
@@ -3213,19 +2893,19 @@
       "april": 86,
       "may": 345,
       "june": 440,
-      "july": 332
+      "july": 362
     },
     "After Market / HP0 Sales": {
       "april": 12,
       "may": 30,
       "june": 107,
-      "july": 243
+      "july": 268
     },
     "Build Sales": {
       "april": 133,
       "may": 119,
       "june": 141,
-      "july": 91
+      "july": 99
     }
   },
   "funnelPrioList": [
@@ -3244,7 +2924,7 @@
     "DE-BB Rietz-Neuendorf P2",
     "DE-BB Schwerin P1",
     "DE-BY Karlskron P1",
-    "DE-BY MEV Baar Ebenhausen",
+    "DE-BY Baar Ebenhausen P1",
     "DE-BB Gosen-Neu Zittau P1 HP0",
     "DE-NI Rinteln P1",
     "DE-BY MEV Ansbach",
@@ -3261,15 +2941,6 @@
     "DE-BY MEV Markt Eichendorf",
     "DE-BB MEV LK Teltow Fläming",
     "DE-BB MEV LK Potsdam Mittelmark",
-    "DE-BY MEV Essing",
-    "DE-BY MEV Ihrlerstein",
-    "DE-BY MEV Pilsting",
-    "DE-BY MEV Schwandorf",
-    "DE-BY MEV VG Mainburg",
-    "DE-BY MEV Train",
-    "DE-BY MEV Neuhaus a.Inn",
-    "DE-BY MEV Steinach",
-    "DE-BY MEV Straubing",
     "DE-NI Auetal",
     "DE-NI Rosengarten HP0"
   ],
@@ -3358,25 +3029,260 @@
     "DE-BB Groß Köris HP0": 4,
     "DE-BB Bestensee HP0": 4
   },
-  "projectJulDelta": {
-    "DE-BB Schulzendorf HP0": 19,
-    "DE-BB Zossen P7": 8,
-    "DE-BB Seddiner See P2": 6,
-    "DE-BB Amt Scharmützelsee P0": 5,
-    "DE-BB Stadt Fürstenwalde P1-P3 HP0": 4,
-    "DE-BB Zossen P6": 4,
-    "Kasel-Golzig Combined": 3,
-    "DE-BB Königs Wusterhausen HP0 3": 2,
-    "DE-BB Stadt Fürstenwalde P4": 2,
-    "DE-BB Zeuthen-Wildau HP0": 1,
-    "DE-BB Schöneiche HP0": 1,
-    "DE-BB Zossen P4-2": 1,
-    "DE-BB Woltersdorf HP0": 1,
-    "Hohen Neuendorf B2": 1,
-    "DE-BB Heidesee HP0": 1,
-    "DE-BB Spreenhagen P3 & Furstenwalde P6": 1
-  },
-  "coaRowsRaw": [],
+  "projectJulDelta": [
+    [
+      "DE-BB Amt Scharmützelsee P0",
+      85
+    ],
+    [
+      "DE-BB Beetzsee P1 HP0",
+      2
+    ],
+    [
+      "DE-BB Bestensee HP0",
+      8
+    ],
+    [
+      "DE-BB Birkenwerder P2-2",
+      10
+    ],
+    [
+      "DE-BB Eichwalde HP0",
+      1
+    ],
+    [
+      "DE-BB Falkensee HP0",
+      13
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P1",
+      11
+    ],
+    [
+      "DE-BB Frankfurt (Oder) Combined P3",
+      1
+    ],
+    [
+      "DE-BB Fürstenwalde P7",
+      8
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P3",
+      5
+    ],
+    [
+      "DE-BB Gosen-Neu Zittau P4",
+      1
+    ],
+    [
+      "DE-BB Heidesee HP0",
+      4
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 2",
+      1
+    ],
+    [
+      "DE-BB Königs Wusterhausen HP0 3",
+      23
+    ],
+    [
+      "DE-BB Schulzendorf HP0",
+      85
+    ],
+    [
+      "DE-BB Schulzendorf P3",
+      17
+    ],
+    [
+      "DE-BB Schöneiche HPO",
+      9
+    ],
+    [
+      "DE-BB Seddiner See P2",
+      58
+    ],
+    [
+      "DE-BB Spreenhagen P3 & Furstenwalde P6 combined",
+      13
+    ],
+    [
+      "DE-BB Stadt Fürstenwalde P1-P3 HP0",
+      56
+    ],
+    [
+      "DE-BB Stadt Fürstenwalde P4",
+      31
+    ],
+    [
+      "DE-BB Storkow P1-4",
+      1
+    ],
+    [
+      "DE-BB Storkow P2",
+      1
+    ],
+    [
+      "DE-BB Storkow P3",
+      3
+    ],
+    [
+      "DE-BB Storkow P4",
+      1
+    ],
+    [
+      "DE-BB Storkow P5",
+      15
+    ],
+    [
+      "DE-BB Storkow P7",
+      3
+    ],
+    [
+      "DE-BB Storkow P8",
+      4
+    ],
+    [
+      "DE-BB Teupitz P4",
+      2
+    ],
+    [
+      "DE-BB Woltersdorf HP0",
+      35
+    ],
+    [
+      "DE-BB Zeuthen-Wildau HP0",
+      17
+    ],
+    [
+      "DE-BB Zossen HP0",
+      1
+    ],
+    [
+      "DE-BB Zossen P3",
+      2
+    ],
+    [
+      "DE-BB Zossen P4",
+      1
+    ],
+    [
+      "DE-BB Zossen P4-2",
+      13
+    ],
+    [
+      "DE-BB Zossen P6",
+      46
+    ],
+    [
+      "DE-BB Zossen P7",
+      63
+    ],
+    [
+      "DE-BY Kirchroth P1-1",
+      4
+    ],
+    [
+      "DE-BY Leiblfing P1",
+      6
+    ],
+    [
+      "DE-BY Straubing P1",
+      2
+    ],
+    [
+      "DE-CS",
+      11
+    ],
+    [
+      "DE-NI Rosengarten HP0",
+      1
+    ],
+    [
+      "DE-NI Wistedt P1",
+      2
+    ],
+    [
+      "Hohen Neuendorf B1",
+      5
+    ],
+    [
+      "Hohen Neuendorf B2",
+      29
+    ],
+    [
+      "Kasel-Golzig Combined",
+      14
+    ],
+    [
+      "Luckau Combined",
+      2
+    ]
+  ],
+  "coaRowsRaw": [
+    [
+      "DE-BB Diensdorf-Radlow",
+      "BB",
+      "EnCom GmbH",
+      ""
+    ],
+    [
+      "DE-BB Grünheide P7",
+      "BB",
+      "Rating Peak GmbH",
+      ""
+    ],
+    [
+      "DE-BY Kirchroth P1-1",
+      "BY",
+      "EnCom GmbH",
+      ""
+    ],
+    [
+      "DE-BB Amt Scharmützelsee P4",
+      "BB",
+      "EnCom GmbH",
+      "",
+      "Base Sales / Up Sales",
+      364,
+      0
+    ],
+    [
+      "DE-BB Falkensee HP0",
+      "BB",
+      "Stonemedia GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Bestensee HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Groß Köris HP0",
+      "BB",
+      "United Promotion GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Stadt Velten P1 HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
+    ],
+    [
+      "DE-BB Rangsdorf HP0",
+      "BB",
+      "Aurora Sales GmbH",
+      "",
+      "HP0"
+    ]
+  ],
   "_agencyJulDelta": {
     "United Promotion GmbH": 10,
     "Team Tatjana": 7,
