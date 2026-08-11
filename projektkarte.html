@@ -117,6 +117,12 @@ body { font-family: -apple-system, Arial, sans-serif; }
     <button id="btn-dnscov" class="btn btn-all on" onclick="toggleDnsCov(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#0077b6;color:white;border-color:#0077b6;">✓ Ein</button>
   </div>
   <div id="dnscov-status" style="font-size:10px;color:#94a3b8;margin-top:2px;">201 PLZ · 206 geprüft</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#e20074;text-transform:uppercase;letter-spacing:0.1em;">Telekom Glasfaser</span>
+    <button id="btn-telekom" class="btn btn-all on" onclick="toggleTelekom(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#e20074;color:white;border-color:#e20074;">✓ Ein</button>
+  </div>
+  <div style="font-size:10px;color:#94a3b8;margin-top:2px;">FTTH-Netz (BB · BY · NI)</div>
 </div>
 
 <div id="stats">
@@ -1064,6 +1070,30 @@ function toggleDnsCov(btn) {
 }
 
 renderDnsCov();
+
+// ── Telekom Glasfaser Coverage (WMS-Tiles) ───────────────
+var telekomFiberLayer = L.tileLayer.wms('https://t-map.telekom.de/tmap2/geoserver/public/tmap/public/wms', {
+  layers: 'public:coverage_fixedline_fiber',
+  format: 'image/png',
+  transparent: true,
+  version: '1.1.1',
+  opacity: 0.55,
+  attribution: '© Telekom'
+}).addTo(map);
+telekomFiberLayer.bringToBack && telekomFiberLayer.bringToBack();
+
+function toggleTelekom(btn) {
+  if (map.hasLayer(telekomFiberLayer)) {
+    map.removeLayer(telekomFiberLayer);
+    btn.textContent = 'Aus'; btn.style.background = 'white';
+    btn.style.color = '#475569'; btn.style.borderColor = '#e2e8f0';
+  } else {
+    map.addLayer(telekomFiberLayer);
+    telekomFiberLayer.bringToBack && telekomFiberLayer.bringToBack();
+    btn.textContent = '✓ Ein'; btn.style.background = '#e20074';
+    btn.style.color = 'white'; btn.style.borderColor = '#e20074';
+  }
+}
 
 // ── Landkreis-Grenzen ──────────────────────────────────
 var kreisLayer = null;
