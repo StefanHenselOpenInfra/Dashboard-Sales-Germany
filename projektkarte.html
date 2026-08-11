@@ -99,6 +99,24 @@ body { font-family: -apple-system, Arial, sans-serif; }
   <div class="leg"><div class="dot" style="background:#16a34a"></div>Fertig gebaut</div>
   <div class="leg"><div class="dot" style="background:#0891b2"></div>In Betrieb (Driftsättning)</div>
   <div class="leg"><div class="dot" style="background:#d97706"></div>Im Bau (Grävning)</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;">Landkreise</span>
+    <button id="btn-kreise" class="btn btn-all on" onclick="toggleKreise(this)" style="font-size:10px;padding:2px 8px;min-width:44px;">✓ Ein</button>
+  </div>
+  <div id="kreise-status" style="font-size:10px;color:#94a3b8;margin-top:2px;">Wird geladen…</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#0077b6;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Ausbau</span>
+    <button id="btn-dnsnet" class="btn btn-all on" onclick="toggleDnsNet(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#0077b6;color:white;border-color:#0077b6;">✓ Ein</button>
+  </div>
+  <div style="font-size:10px;color:#94a3b8;margin-top:2px;">43 Ausbaugebiete (BB/BE/SA)</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#0077b6;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Verfügbar</span>
+    <button id="btn-dnscov" class="btn btn-all on" onclick="toggleDnsCov(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#0077b6;color:white;border-color:#0077b6;">✓ Ein</button>
+  </div>
+  <div id="dnscov-status" style="font-size:10px;color:#94a3b8;margin-top:2px;">201 PLZ · 206 geprüft</div>
 </div>
 
 <div id="stats">
@@ -399,7 +417,7 @@ const D = [
 ]},
 
 {n:"LK Potsdam-Mittelmark (MEV)",lat:52.1667,lng:12.8333,r:"BB",p:[
-  {n:"MEV LK Potsdam-Mittelmark",s:"funnel",t:"MEV",a:"",hp:37913,hc:0},
+  {n:"MEV LK Potsdam-Mittelmark",s:"funnel",t:"MEV",a:"",hp:20518,hc:0},
 ]},
 
 // ========== NIEDERSACHSEN ==========
@@ -885,6 +903,211 @@ redraw();
 
 // Add scale
 L.control.scale({imperial: false}).addTo(map);
+
+// ── DNS:NET Ausbaugebiete ──────────────────────────────
+const DNS_NET = [
+  // Berlin
+  {n:"Altglienicke (BE)",         lat:52.4019, lng:13.5361, region:"BE"},
+  {n:"Französisch Buchholz (BE)", lat:52.6239, lng:13.4408, region:"BE"},
+  // Brandenburg
+  {n:"Ahrensfelde",          lat:52.5844, lng:13.5908, region:"BB"},
+  {n:"Altlandsberg",         lat:52.5631, lng:13.7306, region:"BB"},
+  {n:"Am Mellensee",         lat:52.1583, lng:13.3583, region:"BB"},
+  {n:"Amt Schenkenländchen", lat:52.0167, lng:13.9000, region:"BB"},
+  {n:"Beelitz",              lat:52.2333, lng:12.9667, region:"BB"},
+  {n:"Bernau",               lat:52.6803, lng:13.5853, region:"BB"},
+  {n:"Biesenthal",           lat:52.7617, lng:13.6353, region:"BB"},
+  {n:"Blankenfelde-Mahlow",  lat:52.3472, lng:13.4097, region:"BB"},
+  {n:"Brieselang",           lat:52.5856, lng:12.9803, region:"BB"},
+  {n:"Dallgow-Döberitz",     lat:52.5394, lng:12.9997, region:"BB"},
+  {n:"Eichwalde",            lat:52.3736, lng:13.6194, region:"BB"},
+  {n:"Falkensee",            lat:52.5597, lng:13.0928, region:"BB"},
+  {n:"Fredersdorf-Vogelsdorf",lat:52.5217,lng:13.7728, region:"BB"},
+  {n:"Fürstenwalde/Spree",   lat:52.3601, lng:14.0604, region:"BB"},
+  {n:"Glienicke/Nordbahn",   lat:52.6419, lng:13.3136, region:"BB"},
+  {n:"Kloster Lehnin",       lat:52.3267, lng:12.7367, region:"BB"},
+  {n:"Königs Wusterhausen",  lat:52.2972, lng:13.6361, region:"BB"},
+  {n:"Löwenberger Land",     lat:52.8833, lng:13.2167, region:"BB"},
+  {n:"Ludwigsfelde",         lat:52.3017, lng:13.2553, region:"BB"},
+  {n:"Michendorf",           lat:52.3000, lng:13.0167, region:"BB"},
+  {n:"Mittenwalde",          lat:52.2686, lng:13.5417, region:"BB"},
+  {n:"Mühlenbecker Land",    lat:52.6519, lng:13.3494, region:"BB"},
+  {n:"Neuenhagen",           lat:52.5369, lng:13.7200, region:"BB"},
+  {n:"Nuthetal",             lat:52.3286, lng:13.0603, region:"BB"},
+  {n:"Panketal",             lat:52.6392, lng:13.5117, region:"BB"},
+  {n:"Petershagen-Eggersdorf",lat:52.5333,lng:13.7781, region:"BB"},
+  {n:"Potsdam",              lat:52.3906, lng:13.0645, region:"BB"},
+  {n:"Rangsdorf",            lat:52.2875, lng:13.4178, region:"BB"},
+  {n:"Rehfelde",             lat:52.5333, lng:13.8333, region:"BB"},
+  {n:"Rüdersdorf",           lat:52.4683, lng:13.7797, region:"BB"},
+  {n:"Schorfheide",          lat:52.9083, lng:13.7667, region:"BB"},
+  {n:"Schulzendorf",         lat:52.3453, lng:13.5861, region:"BB"},
+  {n:"Schwielowsee",         lat:52.3492, lng:12.9072, region:"BB"},
+  {n:"Schönwalde-Glien",     lat:52.5667, lng:12.9167, region:"BB"},
+  {n:"Spreenhagen",          lat:52.3528, lng:13.8194, region:"BB"},
+  {n:"Stahnsdorf",           lat:52.3644, lng:13.2178, region:"BB"},
+  {n:"Storkow",              lat:52.2628, lng:13.9361, region:"BB"},
+  {n:"Trebbin",              lat:52.2211, lng:13.2039, region:"BB"},
+  {n:"Wandlitz",             lat:52.7500, lng:13.4500, region:"BB"},
+  {n:"Werneuchen",           lat:52.6344, lng:13.7358, region:"BB"},
+  {n:"Wildau",               lat:52.3153, lng:13.6208, region:"BB"},
+  {n:"Wustermark",           lat:52.5400, lng:12.9597, region:"BB"},
+  {n:"Zeuthen",              lat:52.3614, lng:13.6269, region:"BB"},
+  // Sachsen-Anhalt
+  {n:"Börde (SA)",           lat:52.1167, lng:11.2833, region:"SA"},
+  {n:"Altmark (SA)",         lat:52.5833, lng:11.5667, region:"SA"},
+];
+
+var dnsNetMarkers = [];
+var dnsNetVisible = true;
+
+function renderDnsNet() {
+  dnsNetMarkers.forEach(m => map.removeLayer(m));
+  dnsNetMarkers = [];
+  if (!dnsNetVisible) return;
+  DNS_NET.forEach(loc => {
+    var icon = L.divIcon({
+      className: '',
+      html: `<div style="width:16px;height:16px;border-radius:50%;background:rgba(0,119,182,0.18);border:2.5px dashed #0077b6;box-sizing:border-box;"></div>`,
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+    var m = L.marker([loc.lat, loc.lng], {icon: icon})
+      .bindPopup(`<div style="min-width:180px;"><div style="font-weight:900;font-size:13px;color:#0077b6;margin-bottom:4px;">🌐 DNS:NET Ausbaugebiet</div><div style="font-size:12px;font-weight:700;">${loc.n}</div><div style="font-size:11px;color:#64748b;margin-top:3px;">Glasfaserausbau (FTTH)<br>Region: ${loc.region}</div><div style="margin-top:6px;"><a href="https://www.dns-net.de/glasfaser/ausbau" target="_blank" style="color:#0077b6;font-size:11px;">dns-net.de/glasfaser/ausbau ↗</a></div></div>`, {maxWidth:240})
+      .addTo(map);
+    dnsNetMarkers.push(m);
+  });
+}
+
+function toggleDnsNet(btn) {
+  dnsNetVisible = !dnsNetVisible;
+  if (dnsNetVisible) {
+    btn.textContent = '✓ Ein';
+    btn.style.background = '#0077b6';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#0077b6';
+  } else {
+    btn.textContent = 'Aus';
+    btn.style.background = 'white';
+    btn.style.color = '#475569';
+    btn.style.borderColor = '#e2e8f0';
+  }
+  renderDnsNet();
+}
+
+renderDnsNet();
+
+// ── DNS:NET Glasfaser-Verfügbarkeit (PLZ-Ebene) ────────
+// [zip, lat, lng, streets, city]  – gescannt via order.dnsnet.io/api/v2/address
+const DNS_COVERAGE = [
+["10119",52.526424,13.410013,37,"Berlin"],["10115",52.532616,13.377704,66,"Berlin"],["10117",52.520367,13.377898,142,"Berlin"],["10179",52.505966,13.422844,59,"Berlin"],["10178",52.523689,13.415357,78,"Berlin"],["10243",52.512291,13.447838,64,"Berlin"],["10249",52.525833,13.45491,43,"Berlin"],["10245",52.494759,13.470635,62,"Berlin"],["10247",52.521152,13.457454,51,"Berlin"],["10318",52.512997,13.612295,1,"Berlin"],["10317",52.496742,13.481856,35,"Berlin"],["10365",52.509701,13.48747,31,"Berlin"],["10369",52.524983,13.465266,3,"Berlin"],["10367",52.521187,13.477632,35,"Berlin"],["10409",52.539474,13.446957,12,"Berlin"],["10405",52.52953,13.413018,28,"Berlin"],["10407",52.529709,13.436496,30,"Berlin"],["10439",52.554611,13.407784,46,"Berlin"],["10435",52.537888,13.402412,23,"Berlin"],["10437",52.544098,13.426243,36,"Berlin"],["10551",52.52755,13.33847,30,"Berlin"],["10555",52.519272,13.335313,32,"Berlin"],["10553",52.528202,13.321384,15,"Berlin"],
+["10559",52.524673,13.347247,19,"Berlin"],["10557",52.524322,13.368092,90,"Berlin"],["10589",52.52129,13.311595,40,"Berlin"],["10585",52.513699,13.30892,30,"Berlin"],["10587",52.519508,13.30883,41,"Berlin"],["10623",52.506325,13.333538,24,"Berlin"],["10627",52.511269,13.305636,16,"Berlin"],["10625",52.511452,13.317447,14,"Berlin"],["10629",52.50367,13.31384,19,"Berlin"],["10715",52.487358,13.334886,10,"Berlin"],["10717",52.495041,13.33166,21,"Berlin"],["10711",52.499577,13.302987,7,"Berlin"],["10709",52.497536,13.303858,18,"Berlin"],["10713",52.488617,13.313747,22,"Berlin"],["10719",52.498108,13.331075,18,"Berlin"],["10707",52.500538,13.319078,28,"Berlin"],["10779",52.493397,13.341805,23,"Berlin"],["10777",52.499206,13.34035,29,"Berlin"],["10781",52.49091,13.351379,23,"Berlin"],["10785",52.508659,13.375317,60,"Berlin"],["10789",52.502895,13.342646,20,"Berlin"],["10787",52.501739,13.352244,27,"Berlin"],
+["10783",52.495457,13.365575,22,"Berlin"],["10827",52.48904,13.363039,13,"Berlin"],["10823",52.488689,13.351292,14,"Berlin"],["10829",52.492081,13.370279,13,"Berlin"],["10825",52.487793,13.344091,13,"Berlin"],["10967",52.487968,13.41266,22,"Berlin"],["10961",52.495415,13.398276,28,"Berlin"],["10969",52.508171,13.3997,40,"Berlin"],["10965",52.487343,13.373755,34,"Berlin"],["10963",52.504757,13.384125,33,"Berlin"],["10999",52.493794,13.432239,9,"Berlin"],["10997",52.506504,13.427901,28,"Berlin"],["12043",52.486809,13.426619,2,"Berlin"],["12045",52.485703,13.441544,14,"Berlin"],["12047",52.49342,13.42413,18,"Berlin"],["12059",52.487335,13.443891,8,"Berlin"],["12101",52.472973,13.378215,2,"Berlin"],["12277",52.432671,13.37372,1,"Berlin"],["12307",52.383358,13.405572,38,"Berlin"],["12305",52.413013,13.399527,3,"Berlin"],["12345",52.520008,13.404954,2,"Berlin"],["12353",52.425228,13.474871,4,"Berlin"],["12357",52.520008,13.404954,1,"Berlin"],
+["12355",52.403927,13.512292,61,"Berlin"],["12439",52.456322,13.514667,3,"Berlin"],["12459",52.462254,13.530559,3,"Berlin"],["12435",52.496887,13.451442,32,"Berlin"],["12527",52.381161,13.61988,19,"Berlin"],["12529",52.388088,13.499579,39,"Schoenefeld"],["12524",52.407131,13.540485,186,"Berlin"],["12555",52.464134,13.568888,2,"Berlin"],["12559",52.418873,13.533816,2,"Berlin"],["12587",52.50573,13.43949,1,"Berlin"],["12589",52.430767,13.718423,8,"Berlin"],["12621",52.504959,13.581779,21,"Berlin"],["12623",52.489407,13.618835,68,"Berlin"],["12681",52.554733,13.538242,1,"Berlin"],["12683",52.532856,13.559733,2,"Berlin"],["13086",52.55957,13.437396,12,"Berlin"],["13129",52.596466,13.461071,8,"Berlin"],["13125",52.617966,13.488728,5,"Berlin"],["13127",52.595825,13.426557,154,"Berlin"],["13156",52.584011,13.41639,2,"Berlin"],["13158",52.591621,13.377575,1,"Berlin"],["13159",52.628441,13.38758,15,"Berlin"],["13187",52.559013,13.403605,12,"Berlin"],["13189",52.555233,13.424254,27,"Berlin"],
+["13349",52.55743,13.35788,25,"Berlin"],["13347",52.544151,13.36906,45,"Berlin"],["13355",52.54002,13.39176,39,"Berlin"],["13353",52.538486,13.368231,41,"Berlin"],["13351",52.559479,13.33313,27,"Berlin"],["13357",52.555462,13.374762,47,"Berlin"],["13359",52.556213,13.393699,30,"Berlin"],["13405",52.554661,13.30746,2,"Berlin"],
+["13409",52.561619,13.37292,12,"Berlin"],["13407",52.563202,13.36245,11,"Berlin"],["13469",52.622082,13.338221,2,"Berlin"],["13467",52.614609,13.297022,80,"Berlin"],["13465",52.632141,13.271645,55,"Berlin"],["13505",52.576511,13.22539,1,"Berlin"],["13503",52.611439,13.2463,10,"Berlin"],["13581",52.520008,13.404954,1,"Berlin"],["13597",52.527779,13.228284,3,"Berlin"],["13587",52.566277,13.222261,1,"Berlin"],["13593",52.5126,13.17375,1,"Berlin"],["13591",52.538155,13.140584,49,"Berlin"],["13629",52.5504,13.275817,78,"Berlin"],["13627",52.539989,13.297132,80,"Berlin"],["14053",52.519985,13.244616,3,"Berlin"],["14057",52.5061,13.295075,30,"Berlin"],["14052",52.508224,13.267069,37,"Berlin"],["14050",52.51133,13.274263,64,"Berlin"],["14059",52.518406,13.285694,34,"Berlin"],["14055",52.49213,13.263365,49,"Berlin"],["14089",52.465759,13.127214,1,"Berlin"],["14199",52.485169,13.29705,4,"Berlin"],["14193",52.48719,13.263481,20,"Berlin"],
+["14469",52.407826,12.989967,86,"Potsdam"],["14476",52.406937,12.969948,35,"Potsdam"],["14550",52.400314,12.784932,45,"Gross Kreutz"],["14547",52.278168,12.912154,68,"Beelitz"],["14542",52.40004,12.82447,7,"Werder"],["14548",52.350998,13.012463,89,"Schwielowsee"],["14558",52.33205,13.112607,67,"Nuthetal"],["14532",52.389587,13.200523,220,"Stahnsdorf"],["14612",52.569656,13.075167,460,"Falkensee"],["14642",52.547626,12.939839,1,"Wustermark"],["14624",52.552597,13.043552,147,"Dallgow-Doeberitz"],["14621",52.613243,13.137652,265,"Schoenwalde-Glien"],["14641",52.513008,12.97491,279,"Wustermark"],["14662",52.734844,12.579127,13,"Friesack"],["14669",52.483608,12.82553,38,"Ketzin"],["14656",52.601639,12.987845,173,"Brieselang"],["14728",52.720318,12.41326,20,"Gollenberg"],
+["14715",52.676281,12.21978,72,"Schollene"],["14789",52.362331,12.389443,26,"Wusterwitz"],["14772",52.468227,12.503465,1,"Brandenburg"],["14798",52.48254,12.454408,8,"Beetzsee"],["14793",52.281647,12.330018,42,"Ziesar"],["14778",52.511875,12.716068,60,"Paewesin"],["14774",52.409763,12.427016,19,"Brandenburg"],["14797",52.323788,12.563185,61,"Kloster Lehnin"],["14776",52.418755,12.644932,32,"Brandenburg"],["14913",51.996475,13.075631,1,"Jueterbog"],["14947",52.119732,13.245086,3,"Nuthe-Urstromtal"],["14943",52.16639,13.240861,22,"Wiesenhagen"],["14979",52.347496,13.359978,28,"Grossbeeren"],["14959",52.208626,13.154386,262,"Trebbin"],["14974",52.302139,13.202386,203,"Ludwigsfelde"],
+["15345",52.605881,13.75246,489,"Altlandsberg"],["15366",52.486443,13.629357,430,"Hoppegarten"],["15378",52.482384,13.862315,113,"Ruedersdorf"],["15370",52.542713,13.752754,622,"Fredersdorf-Vogelsdorf"],["15518",52.340946,14.054382,5,"Rauen"],["15517",52.333424,14.066214,121,"Fuerstenwalde"],["15528",52.343323,13.862785,9,"Spreenhagen"],["15526",52.327919,14.073327,1,"Bad Saarow"],["15562",52.464863,13.808739,125,"Ruedersdorf"],["15566",52.491669,13.714463,2,"Schoeneiche"],
+["15713",52.323853,13.656708,129,"Koenigs Wusterhausen"],["15712",52.321407,13.720856,188,"Koenigs Wusterhausen"],["15711",52.299053,13.661558,64,"Koenigs Wusterhausen"],["15745",52.333549,13.633276,51,"Wildau"],["15757",52.08741,13.71541,55,"Halbe"],["15746",52.161339,13.689858,28,"Schenkenlaendchen"],["15738",52.338173,13.598566,152,"Zeuthen"],["15749",52.30339,13.553837,38,"Mittenwalde"],["15732",52.354595,13.579382,174,"Schulzendorf"],["15806",52.21447,13.278605,12,"Christinendorf"],["15834",52.298527,13.460926,1,"Rangsdorf"],["15838",52.158341,13.405185,175,"Am Mellensee"],["15831",52.371563,13.395985,239,"Blankenfelde-Mahlow"],["15827",52.330536,13.413206,186,"Blankenfelde-Mahlow"],["15859",52.264652,13.942284,252,"Storkow"],["16230",52.750599,13.685283,2,"Sydower Fliess"],["16256",52.642662,13.746158,1,"Werneuchen"],["16244",52.840851,13.688815,127,"Schorfheide"],
+["16321",52.635754,13.604048,400,"Bernau bei Berlin"],["16352",52.479313,13.344091,1,"Wandlitz"],["16359",52.762081,13.65723,196,"Biesenthal"],["16341",52.65488,13.523244,263,"Panketal"],["16356",52.626907,13.729001,383,"Werneuchen"],["16348",52.783604,13.490356,479,"Wandlitz"],["16515",52.732113,13.392394,85,"Muehlenbecker Land"],["16556",52.706402,13.277,75,"Hohen Neuendorf"],["16567",52.688209,13.36858,186,"Muehlenbeck"],["16562",52.664993,13.314562,87,"Hohen Neuendorf"],["16552",52.628334,13.365313,144,"Schildow"],["16547",52.691914,13.294001,121,"Birkenwerder"],["16548",52.637634,13.317264,185,"Glienicke / Nordbahn"],
+["16540",52.667851,13.281105,285,"Hohen Neuendorf"],["16727",52.744255,13.078398,210,"Oberkraemer"],["16766",52.802448,13.039566,2,"Kremmen"],["16775",52.812477,13.231024,37,"Loewenberger Land"],["16845",52.777042,12.368555,20,"Grossderschau"]
+];
+
+var dnsCovMarkers = [];
+var dnsCovVisible = true;
+
+function renderDnsCov() {
+  dnsCovMarkers.forEach(m => map.removeLayer(m));
+  dnsCovMarkers = [];
+  if (!dnsCovVisible) return;
+  DNS_COVERAGE.forEach(function(d) {
+    var zip = d[0], lat = d[1], lng = d[2], streets = d[3], city = d[4];
+    var radius = Math.max(300, Math.min(2500, 200 + Math.log10(streets + 1) * 650));
+    var c = L.circle([lat, lng], {
+      radius: radius,
+      color: '#0077b6',
+      weight: 1,
+      opacity: 0.5,
+      fillColor: '#0077b6',
+      fillOpacity: 0.08,
+      interactive: true
+    });
+    c.bindPopup(
+      '<div style="font-size:12px;min-width:160px;">' +
+      '<b style="color:#0077b6;">📡 DNS:NET Glasfaser</b><br>' +
+      '<b>PLZ ' + zip + '</b> – ' + city + '<br>' +
+      '<span style="color:#64748b;">' + streets + ' Straßen verfügbar</span>' +
+      '</div>'
+    , {maxWidth: 200});
+    c.addTo(map);
+    dnsCovMarkers.push(c);
+  });
+  // bring to back so it doesn't cover other markers
+  dnsCovMarkers.forEach(m => m.bringToBack && m.bringToBack());
+}
+
+function toggleDnsCov(btn) {
+  dnsCovVisible = !dnsCovVisible;
+  if (dnsCovVisible) {
+    btn.textContent = '✓ Ein';
+    btn.style.background = '#0077b6';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#0077b6';
+  } else {
+    btn.textContent = 'Aus';
+    btn.style.background = 'white';
+    btn.style.color = '#475569';
+    btn.style.borderColor = '#e2e8f0';
+  }
+  renderDnsCov();
+}
+
+renderDnsCov();
+
+// ── Landkreis-Grenzen ──────────────────────────────────
+var kreisLayer = null;
+
+function toggleKreise(btn) {
+  if (!kreisLayer) return;
+  if (map.hasLayer(kreisLayer)) {
+    map.removeLayer(kreisLayer);
+    btn.textContent = 'Aus';
+    btn.classList.remove('on');
+  } else {
+    map.addLayer(kreisLayer);
+    kreisLayer.bringToBack();
+    btn.textContent = '✓ Ein';
+    btn.classList.add('on');
+  }
+}
+
+fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/4_kreise/4_niedrig.geo.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(data => {
+    kreisLayer = L.geoJSON(data, {
+      style: {
+        color: '#64748b',
+        weight: 0.9,
+        opacity: 0.55,
+        fillOpacity: 0
+      },
+      onEachFeature: function(feature, layer) {
+        var name = feature.properties && (feature.properties.GEN || feature.properties.NAME_3 || '');
+        if (name) layer.bindTooltip(name, {sticky: true, opacity: 0.85, className: 'lk-tip'});
+      }
+    }).addTo(map);
+    kreisLayer.bringToBack();
+    var el = document.getElementById('kreise-status');
+    if (el) el.textContent = data.features.length + ' Landkreise geladen';
+  })
+  .catch(e => {
+    var el = document.getElementById('kreise-status');
+    if (el) el.textContent = '⚠ Nicht geladen (offline?)';
+    var btn = document.getElementById('btn-kreise');
+    if (btn) { btn.textContent = 'n/a'; btn.disabled = true; }
+    console.warn('Kreise GeoJSON Fehler:', e);
+  });
 </script>
 </body>
 </html>
