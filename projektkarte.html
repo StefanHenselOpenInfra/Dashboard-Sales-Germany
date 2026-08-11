@@ -11,6 +11,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, Arial, sans-serif; }
 #map { height: 100vh; width: 100vw; }
+.leaflet-tooltip-small { font-size: 10px; padding: 2px 6px; white-space: nowrap; }
 
 #panel {
   position: fixed; top: 12px; left: 12px; z-index: 1000;
@@ -24,11 +25,11 @@ body { font-family: -apple-system, Arial, sans-serif; }
 .fl { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
 .bg { display: flex; flex-wrap: wrap; gap: 4px; }
 .btn {
-  padding: 3px 9px; border: 2px solid #e2e8f0; border-radius: 20px;
-  font-size: 11px; font-weight: 700; cursor: pointer; background: white; color: #475569;
+  padding: 3px 9px; border: 2px solid #94a3b8; border-radius: 20px;
+  font-size: 11px; font-weight: 700; cursor: pointer; background: #f1f5f9; color: #64748b;
   transition: all 0.15s;
 }
-.btn:hover { border-color: #cbd5e1; }
+.btn:hover { border-color: #64748b; }
 .btn.on { color: white !important; border-color: transparent !important; }
 .btn-all.on  { background: #334155; }
 .btn-bb.on   { background: #1d4ed8; }
@@ -42,6 +43,18 @@ body { font-family: -apple-system, Arial, sans-serif; }
 .leg { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #334155; }
 .dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(0,0,0,0.15); }
 
+#search-box {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 1100; font-family: sans-serif;
+}
+#search-input:focus { border-color: #0077b6 !important; box-shadow: 0 2px 12px rgba(0,119,182,0.18) !important; }
+#search-results li {
+  padding: 8px 12px; cursor: pointer; font-size: 13px; color: #1e293b;
+  border-bottom: 1px solid #f1f5f9; line-height: 1.4;
+}
+#search-results li:last-child { border-bottom: none; }
+#search-results li:hover, #search-results li.active { background: #f0f9ff; color: #0077b6; }
+#search-results li small { display: block; font-size: 11px; color: #94a3b8; font-weight: 400; }
 #stats {
   position: fixed; bottom: 12px; left: 12px; z-index: 1000;
   background: rgba(255,255,255,0.97); border-radius: 12px; padding: 10px 14px;
@@ -107,48 +120,83 @@ body { font-family: -apple-system, Arial, sans-serif; }
   <div id="kreise-status" style="font-size:10px;color:#94a3b8;margin-top:2px;">Wird geladen…</div>
   <div class="divider"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
-    <span style="font-size:10px;font-weight:800;color:#0077b6;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Ausbau</span>
-    <button id="btn-dnsnet" class="btn btn-all on" onclick="toggleDnsNet(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#0077b6;color:white;border-color:#0077b6;">✓ Ein</button>
+    <span style="font-size:10px;font-weight:800;color:#ea580c;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Ausbau</span>
+    <button id="btn-dnsnet" class="btn btn-all on" onclick="toggleDnsNet(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#ea580c;color:white;border-color:#ea580c;">✓ Ein</button>
   </div>
   <div style="font-size:10px;color:#94a3b8;margin-top:2px;">43 Ausbaugebiete (BB/BE/SA)</div>
   <div class="divider"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
-    <span style="font-size:10px;font-weight:800;color:#0077b6;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Verfügbar</span>
-    <button id="btn-dnscov" class="btn btn-all on" onclick="toggleDnsCov(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#0077b6;color:white;border-color:#0077b6;">✓ Ein</button>
+    <span style="font-size:10px;font-weight:800;color:#ea580c;text-transform:uppercase;letter-spacing:0.1em;">DNS:NET Verfügbar</span>
+    <button id="btn-dnscov" class="btn btn-all on" onclick="toggleDnsCov(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#ea580c;color:white;border-color:#ea580c;">✓ Ein</button>
   </div>
   <div id="dnscov-status" style="font-size:10px;color:#94a3b8;margin-top:2px;">201 PLZ · 206 geprüft</div>
   <div class="divider"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
-    <span style="font-size:10px;font-weight:800;color:#e20074;text-transform:uppercase;letter-spacing:0.1em;">Telekom Glasfaser</span>
+    <span style="font-size:10px;font-weight:800;color:#e20074;text-transform:uppercase;letter-spacing:0.1em;">TCOM Verfügbarkeit</span>
     <button id="btn-telekom" class="btn btn-all on" onclick="toggleTelekom(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#e20074;color:white;border-color:#e20074;">✓ Ein</button>
   </div>
-  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:4px;">Festnetz-Coverage (BB · BY · NI)</div>
-  <div style="font-size:9px;font-weight:700;color:#610332;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Glasfaser</div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">Festnetz-Coverage (BB · BY · NI)</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#059669;text-transform:uppercase;letter-spacing:0.1em;">BOB Adressen</span>
+    <button id="btn-bob" class="btn btn-all" onclick="toggleBobAddr(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#f1f5f9;color:#64748b;border-color:#94a3b8;">Aus</button>
+  </div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">38 Projekte als Flächen-Layer</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.1em;">Projekte</span>
+    <button id="btn-proj" class="btn btn-all on" onclick="toggleProj(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#1d4ed8;color:white;border-color:#1d4ed8;">✓ Ein</button>
+  </div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">Alle Projekt-Marker</div>
+  <div class="divider"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+    <span style="font-size:10px;font-weight:800;color:#7c3aed;text-transform:uppercase;letter-spacing:0.1em;">MEV Projekte</span>
+    <button id="btn-mev" class="btn btn-all on" onclick="toggleMEV(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#7c3aed;color:white;border-color:#7c3aed;">✓ Ein</button>
+  </div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">MEV Potentiale</div>
+  <div style="font-size:10px;font-weight:800;color:#610332;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;">Glasfaser</div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #3d0020;background:repeating-linear-gradient(45deg,#610332 0px,#610332 1.5px,#c46090 1.5px,#c46090 3px),repeating-linear-gradient(-45deg,#610332 0px,#610332 1.5px,#c46090 1.5px,#c46090 3px);background-size:5px 5px;background-color:#c46090;"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #3d0020;background:repeating-linear-gradient(45deg,#610332 0px,#610332 2px,#c46090 2px,#c46090 4.5px),repeating-linear-gradient(-45deg,#610332 0px,#610332 2px,#c46090 2px,#c46090 4.5px);background-size:7px 7px;background-color:#c46090;"></div>
     bis zu 2.000 Mbit/s
   </div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #7a1050;background:repeating-linear-gradient(45deg,#8b1545 0px,#8b1545 1.5px,#d890b8 1.5px,#d890b8 3px),repeating-linear-gradient(-45deg,#8b1545 0px,#8b1545 1.5px,#d890b8 1.5px,#d890b8 3px);background-size:5px 5px;background-color:#d890b8;"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #7a1050;background:repeating-linear-gradient(45deg,#8b1545 0px,#8b1545 2px,#d890b8 2px,#d890b8 4.5px),repeating-linear-gradient(-45deg,#8b1545 0px,#8b1545 2px,#d890b8 2px,#d890b8 4.5px);background-size:7px 7px;background-color:#d890b8;"></div>
     bis zu 1.000 Mbit/s
   </div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #3060a0;background:radial-gradient(circle,#4a80d0 1.5px,transparent 1.5px);background-size:4px 4px;background-color:#b8d4f8;"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #3060a0;background:radial-gradient(circle,#4a80d0 2px,transparent 2px);background-size:6px 6px;background-color:#b8d4f8;"></div>
     Ausbau geplant
   </div>
-  <div style="font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin:4px 0 2px;">DSL</div>
+  <div style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;margin:6px 0 3px;">DSL</div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #a00353;background:linear-gradient(90deg,#a00353 50%,#e880b8 50%);"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #a00353;background:linear-gradient(90deg,#a00353 50%,#e880b8 50%);"></div>
     VDSL 250 Mbit/s
   </div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #c05080;background:linear-gradient(90deg,#c05080 50%,#f0b8d8 50%);"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #c05080;background:linear-gradient(90deg,#c05080 50%,#f0b8d8 50%);"></div>
     VDSL 100 Mbit/s
   </div>
   <div class="leg">
-    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #c0a0b0;background:linear-gradient(90deg,#d8b0c8 50%,#f4dcea 50%);"></div>
+    <div style="width:13px;height:13px;flex-shrink:0;border-radius:50%;border:1px solid #c0a0b0;background:linear-gradient(90deg,#d8b0c8 50%,#f4dcea 50%);"></div>
     DSL 16 Mbit/s
   </div>
+</div>
+
+<div id="search-box">
+  <div style="position:relative;display:flex;align-items:center;gap:6px;">
+    <span style="position:absolute;left:10px;color:#94a3b8;font-size:14px;pointer-events:none;">🔍</span>
+    <input id="search-input" type="text" placeholder="Ort oder PLZ suchen…"
+      autocomplete="off" spellcheck="false"
+      style="width:280px;padding:8px 10px 8px 32px;border:1.5px solid #e2e8f0;border-radius:8px;
+             font-size:13px;font-family:sans-serif;outline:none;background:white;
+             box-shadow:0 2px 8px rgba(0,0,0,0.10);color:#1e293b;"/>
+    <button id="search-clear" onclick="clearSearch()" title="Löschen"
+      style="display:none;position:absolute;right:8px;background:none;border:none;cursor:pointer;
+             color:#94a3b8;font-size:16px;padding:0;line-height:1;">✕</button>
+  </div>
+  <ul id="search-results" style="display:none;list-style:none;margin:4px 0 0;padding:0;
+    background:white;border:1.5px solid #e2e8f0;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.12);max-height:220px;overflow-y:auto;min-width:280px;"></ul>
 </div>
 
 <div id="stats">
@@ -772,6 +820,9 @@ let fRegion = 'all';
 let fStatus = 'all';
 let markers = [];
 let clusters = null;
+let mevClusters = null;
+var projVisible = true;
+var mevVisible = true;
 
 function domStatus(s) {
   if(s==='active') return 'Aktiv';
@@ -861,12 +912,26 @@ function isVisible(loc) {
 
 function redraw() {
   if(clusters) map.removeLayer(clusters);
+  if(mevClusters) map.removeLayer(mevClusters);
+
   clusters = L.markerClusterGroup({
     maxClusterRadius: 40,
     iconCreateFunction: function(cluster) {
       const count = cluster.getChildCount();
       return L.divIcon({
         html: `<div style="background:#334155;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);">${count}</div>`,
+        className: '',
+        iconSize: L.point(32, 32)
+      });
+    }
+  });
+
+  mevClusters = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    iconCreateFunction: function(cluster) {
+      const count = cluster.getChildCount();
+      return L.divIcon({
+        html: `<div style="background:#7c3aed;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;border:3px solid white;box-shadow:0 2px 8px rgba(124,58,237,0.4);">${count}</div>`,
         className: '',
         iconSize: L.point(32, 32)
       });
@@ -883,24 +948,45 @@ function redraw() {
     if(hasStat('funnel')) cFunnel++;
     if(hasStat('cemetery')) cCem++;
 
-    const color = getColor(loc);
-    const r = getRadius(loc);
-    const statuses = [...new Set(loc.p.map(p=>p.s))];
-    const hasMulti = statuses.length > 1;
+    const isMEV = loc.p.some(p=>p.t==='MEV');
 
-    const marker = L.circleMarker([loc.lat, loc.lng], {
-      radius: r,
-      fillColor: color,
-      color: hasMulti ? '#252121' : color,
-      weight: hasMulti ? 2.5 : 1.5,
-      opacity: 1,
-      fillOpacity: 0.82
-    }).bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
-
-    clusters.addLayer(marker);
+    if(isMEV) {
+      if(!mevVisible) return;
+      const color = '#a855f7';
+      const r = getRadius(loc);
+      const marker = L.circleMarker([loc.lat, loc.lng], {
+        radius: r,
+        fillColor: color,
+        color: color,
+        weight: 1.5,
+        opacity: 1,
+        fillOpacity: 0.82
+      }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+        .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+      mevClusters.addLayer(marker);
+    } else {
+      if(!projVisible) return;
+      // Hide center dot for projects covered by BOB address layer
+      if(bobAddrVisible && BOB_COVERED.has(loc.n)) return;
+      const color = getColor(loc);
+      const r = getRadius(loc);
+      const statuses = [...new Set(loc.p.map(p=>p.s))];
+      const hasMulti = statuses.length > 1;
+      const marker = L.circleMarker([loc.lat, loc.lng], {
+        radius: r,
+        fillColor: color,
+        color: hasMulti ? '#252121' : color,
+        weight: hasMulti ? 2.5 : 1.5,
+        opacity: 1,
+        fillOpacity: 0.82
+      }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+        .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+      clusters.addLayer(marker);
+    }
   });
 
-  map.addLayer(clusters);
+  if(projVisible) map.addLayer(clusters);
+  if(mevVisible) map.addLayer(mevClusters);
 
   document.getElementById('sn-run').textContent = cActive;
   document.getElementById('sn-fun').textContent = cFunnel;
@@ -1000,12 +1086,12 @@ function renderDnsNet() {
   DNS_NET.forEach(loc => {
     var icon = L.divIcon({
       className: '',
-      html: `<div style="width:16px;height:16px;border-radius:50%;background:rgba(0,119,182,0.18);border:2.5px dashed #0077b6;box-sizing:border-box;"></div>`,
+      html: `<div style="width:16px;height:16px;border-radius:50%;background:rgba(234,88,12,0.18);border:2.5px dashed #ea580c;box-sizing:border-box;"></div>`,
       iconSize: [16, 16],
       iconAnchor: [8, 8]
     });
     var m = L.marker([loc.lat, loc.lng], {icon: icon})
-      .bindPopup(`<div style="min-width:180px;"><div style="font-weight:900;font-size:13px;color:#0077b6;margin-bottom:4px;">🌐 DNS:NET Ausbaugebiet</div><div style="font-size:12px;font-weight:700;">${loc.n}</div><div style="font-size:11px;color:#64748b;margin-top:3px;">Glasfaserausbau (FTTH)<br>Region: ${loc.region}</div><div style="margin-top:6px;"><a href="https://www.dns-net.de/glasfaser/ausbau" target="_blank" style="color:#0077b6;font-size:11px;">dns-net.de/glasfaser/ausbau ↗</a></div></div>`, {maxWidth:240})
+      .bindPopup(`<div style="min-width:180px;"><div style="font-weight:900;font-size:13px;color:#ea580c;margin-bottom:4px;">🌐 DNS:NET Ausbaugebiet</div><div style="font-size:12px;font-weight:700;">${loc.n}</div><div style="font-size:11px;color:#64748b;margin-top:3px;">Glasfaserausbau (FTTH)<br>Region: ${loc.region}</div><div style="margin-top:6px;"><a href="https://www.dns-net.de/glasfaser/ausbau" target="_blank" style="color:#ea580c;font-size:11px;">dns-net.de/glasfaser/ausbau ↗</a></div></div>`, {maxWidth:240})
       .addTo(map);
     dnsNetMarkers.push(m);
   });
@@ -1014,15 +1100,11 @@ function renderDnsNet() {
 function toggleDnsNet(btn) {
   dnsNetVisible = !dnsNetVisible;
   if (dnsNetVisible) {
-    btn.textContent = '✓ Ein';
-    btn.style.background = '#0077b6';
-    btn.style.color = 'white';
-    btn.style.borderColor = '#0077b6';
+    btn.textContent = '✓ Ein'; btn.classList.add('on');
+    btn.style.background = '#ea580c'; btn.style.color = 'white'; btn.style.borderColor = '#ea580c';
   } else {
-    btn.textContent = 'Aus';
-    btn.style.background = 'white';
-    btn.style.color = '#475569';
-    btn.style.borderColor = '#e2e8f0';
+    btn.textContent = 'Aus'; btn.classList.remove('on');
+    btn.style.background = '#f1f5f9'; btn.style.color = '#64748b'; btn.style.borderColor = '#94a3b8';
   }
   renderDnsNet();
 }
@@ -1058,16 +1140,16 @@ function renderDnsCov() {
     var radius = Math.max(300, Math.min(2500, 200 + Math.log10(streets + 1) * 650));
     var c = L.circle([lat, lng], {
       radius: radius,
-      color: '#0077b6',
-      weight: 1,
-      opacity: 0.5,
-      fillColor: '#0077b6',
-      fillOpacity: 0.08,
+      color: '#ea580c',
+      weight: 2,
+      opacity: 0.85,
+      fillColor: '#ea580c',
+      fillOpacity: 0.18,
       interactive: true
     });
     c.bindPopup(
       '<div style="font-size:12px;min-width:160px;">' +
-      '<b style="color:#0077b6;">📡 DNS:NET Glasfaser</b><br>' +
+      '<b style="color:#ea580c;">📡 DNS:NET Glasfaser</b><br>' +
       '<b>PLZ ' + zip + '</b> – ' + city + '<br>' +
       '<span style="color:#64748b;">' + streets + ' Straßen verfügbar</span>' +
       '</div>'
@@ -1082,20 +1164,102 @@ function renderDnsCov() {
 function toggleDnsCov(btn) {
   dnsCovVisible = !dnsCovVisible;
   if (dnsCovVisible) {
-    btn.textContent = '✓ Ein';
-    btn.style.background = '#0077b6';
-    btn.style.color = 'white';
-    btn.style.borderColor = '#0077b6';
+    btn.textContent = '✓ Ein'; btn.classList.add('on');
+    btn.style.background = '#ea580c'; btn.style.color = 'white'; btn.style.borderColor = '#ea580c';
   } else {
-    btn.textContent = 'Aus';
-    btn.style.background = 'white';
-    btn.style.color = '#475569';
-    btn.style.borderColor = '#e2e8f0';
+    btn.textContent = 'Aus'; btn.classList.remove('on');
+    btn.style.background = '#f1f5f9'; btn.style.color = '#64748b'; btn.style.borderColor = '#94a3b8';
   }
   renderDnsCov();
 }
 
 renderDnsCov();
+
+// ── Ortssuche (Nominatim) ──────────────────────────────
+(function() {
+  var inp = document.getElementById('search-input');
+  var list = document.getElementById('search-results');
+  var clr = document.getElementById('search-clear');
+  var _t = null, _marker = null, _activeIdx = -1, _results = [];
+
+  function showClear(v) { clr.style.display = v ? 'block' : 'none'; }
+
+  function clearSearch() {
+    inp.value = ''; list.style.display = 'none'; showClear(false);
+    if (_marker) { map.removeLayer(_marker); _marker = null; }
+  }
+  window.clearSearch = clearSearch;
+
+  function flyTo(r) {
+    var lat = parseFloat(r.lat), lng = parseFloat(r.lon);
+    var bb = r.boundingbox;
+    if (bb) {
+      map.fitBounds([[+bb[0],+bb[2]],[+bb[1],+bb[3]]], {maxZoom: 14, animate: true, duration: 0.8});
+    } else {
+      map.flyTo([lat, lng], 13, {animate: true, duration: 0.8});
+    }
+    if (_marker) map.removeLayer(_marker);
+    _marker = L.circleMarker([lat, lng], {
+      radius: 8, color: '#ea580c', weight: 2, fillColor: '#ea580c', fillOpacity: 0.25
+    }).addTo(map).bindPopup('<b>' + r.display_name.split(',')[0] + '</b>').openPopup();
+    list.style.display = 'none';
+    inp.value = r.display_name.split(',').slice(0,2).join(', ');
+  }
+
+  function renderList(results) {
+    _results = results; _activeIdx = -1;
+    list.innerHTML = '';
+    if (!results.length) {
+      list.innerHTML = '<li style="color:#94a3b8;cursor:default;">Keine Ergebnisse</li>';
+      list.style.display = 'block'; return;
+    }
+    results.forEach(function(r, i) {
+      var li = document.createElement('li');
+      var parts = r.display_name.split(',');
+      li.innerHTML = '<b>' + parts[0].trim() + '</b><small>' + parts.slice(1,3).join(',').trim() + '</small>';
+      li.addEventListener('mousedown', function(e) { e.preventDefault(); flyTo(r); });
+      list.appendChild(li);
+    });
+    list.style.display = 'block';
+  }
+
+  inp.addEventListener('input', function() {
+    var q = inp.value.trim();
+    showClear(q.length > 0);
+    clearTimeout(_t);
+    if (q.length < 2) { list.style.display = 'none'; return; }
+    _t = setTimeout(function() {
+      fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(q) +
+        '&format=json&limit=6&countrycodes=de&addressdetails=0',
+        {headers:{'Accept-Language':'de'}})
+      .then(function(r){return r.json();})
+      .then(renderList)
+      .catch(function(){list.style.display='none';});
+    }, 300);
+  });
+
+  inp.addEventListener('keydown', function(e) {
+    var items = list.querySelectorAll('li');
+    if (e.key === 'ArrowDown') {
+      _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+      items.forEach(function(el,i){el.classList.toggle('active', i===_activeIdx);});
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+      _activeIdx = Math.max(_activeIdx - 1, 0);
+      items.forEach(function(el,i){el.classList.toggle('active', i===_activeIdx);});
+      e.preventDefault();
+    } else if (e.key === 'Enter') {
+      if (_activeIdx >= 0 && _results[_activeIdx]) flyTo(_results[_activeIdx]);
+      else if (_results.length > 0) flyTo(_results[0]);
+    } else if (e.key === 'Escape') {
+      list.style.display = 'none'; inp.blur();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#search-box')) list.style.display = 'none';
+  });
+})();
 
 // ── Telekom Glasfaser Coverage (WMS-Tiles) ───────────────
 // Eigener Pane zwischen Basis-Tiles (200) und Overlay-Pane (400)
@@ -1119,14 +1283,113 @@ var telekomFiberLayer = L.tileLayer.wms('https://t-map.telekom.de/tmap2/geoserve
 function toggleTelekom(btn) {
   if (map.hasLayer(telekomFiberLayer)) {
     map.removeLayer(telekomFiberLayer);
-    btn.textContent = 'Aus'; btn.style.background = 'white';
-    btn.style.color = '#475569'; btn.style.borderColor = '#e2e8f0';
+    btn.textContent = 'Aus'; btn.classList.remove('on');
+    btn.style.background = '#f1f5f9'; btn.style.color = '#64748b'; btn.style.borderColor = '#94a3b8';
   } else {
     map.addLayer(telekomFiberLayer);
-    btn.textContent = '✓ Ein'; btn.style.background = '#e20074';
-    btn.style.color = 'white'; btn.style.borderColor = '#e20074';
+    btn.textContent = '✓ Ein'; btn.classList.add('on');
+    btn.style.background = '#e20074'; btn.style.color = 'white'; btn.style.borderColor = '#e20074';
   }
 }
+
+// ── Telekom Hover Tooltip (WMS GetFeatureInfo) ───────────
+(function() {
+  var tip = document.createElement('div');
+  tip.style.cssText = 'position:fixed;background:white;border:1.5px solid #e20074;border-radius:8px;' +
+    'padding:7px 12px;font-size:11px;font-family:sans-serif;pointer-events:none;display:none;' +
+    'z-index:9999;box-shadow:0 3px 12px rgba(226,0,116,0.18);min-width:165px;line-height:1.6;';
+  document.body.appendChild(tip);
+
+  var _timer = null, _lastE = null;
+
+  function llToM(lat, lng) {
+    return [lng * 20037508.34 / 180,
+      Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180) * 20037508.34 / 180];
+  }
+
+  // Feature IDs: "coverage_fixedline_{fiber|dsl}_{speed}_vector.123"
+  function parseId(id) {
+    var m = id.match(/coverage_fixedline_(fiber|dsl)_(\w+?)(?:_vector)?(?:\.\d+)?$/);
+    if (!m) return null;
+    var speed = parseInt(m[2]);
+    return {type: m[1], speed: isNaN(speed) ? m[2] : speed};
+  }
+
+  function buildLabel(features) {
+    var fiber = [], dsl = [];
+    (features || []).forEach(function(f) {
+      var p = parseId(f.id || '');
+      if (!p) return;
+      if (p.type === 'fiber') fiber.push(p.speed);
+      else dsl.push(p.speed);
+    });
+
+    var lines = [];
+    if (fiber.length) {
+      var nums = fiber.filter(function(s){return typeof s==='number';});
+      if (nums.length) {
+        lines.push('<span style="color:#610332;font-size:13px;">▪</span> <b>Glasfaser</b> bis <b>' +
+          Math.max.apply(null,nums).toLocaleString('de') + ' Mbit/s</b>');
+      } else {
+        lines.push('<span style="color:#4a80d0;font-size:13px;">▪</span> <b>Glasfaser-Ausbau</b> geplant');
+      }
+    }
+    if (dsl.length) {
+      var dnums = dsl.filter(function(s){return typeof s==='number';});
+      var max = dnums.length ? Math.max.apply(null, dnums) : 0;
+      var tag = max >= 50 ? 'VDSL' : 'DSL';
+      lines.push('<span style="color:#e30376;font-size:13px;">▪</span> ' + tag + ' bis <b>' + max + ' Mbit/s</b>');
+    }
+    return lines;
+  }
+
+  async function query(e) {
+    if (!map.hasLayer(telekomFiberLayer)) return;
+    var sz = map.getSize();
+    var b = map.getBounds();
+    var swM = llToM(b.getSouth(), b.getWest());
+    var neM = llToM(b.getNorth(), b.getEast());
+    var bbox = swM[0]+','+swM[1]+','+neM[0]+','+neM[1];
+    var pt = map.latLngToContainerPoint(e.latlng);
+    var mx = _lastE.originalEvent.clientX, my = _lastE.originalEvent.clientY;
+
+    var url = 'https://t-map.telekom.de/tmap2/geoserver/public/tmap/public/wms?' +
+      'service=WMS&version=1.1.1&request=GetFeatureInfo' +
+      '&layers=public:coverage_fixedline_dsl,public:coverage_fixedline_fiber' +
+      '&query_layers=public:coverage_fixedline_dsl,public:coverage_fixedline_fiber' +
+      '&info_format=application/json&feature_count=10' +
+      '&x='+Math.round(pt.x)+'&y='+Math.round(pt.y) +
+      '&width='+sz.x+'&height='+sz.y +
+      '&srs=EPSG:3857&bbox='+bbox;
+
+    try {
+      var r = await fetch(url, {credentials:'omit'});
+      var j = await r.json();
+      var lines = buildLabel(j.features);
+      if (lines.length) {
+        tip.innerHTML = '<div style="font-size:10px;font-weight:800;color:#e20074;margin-bottom:4px;letter-spacing:0.05em;">📡 TELEKOM FESTNETZ</div>' + lines.join('<br>');
+      } else {
+        tip.innerHTML = '<div style="color:#94a3b8;font-size:11px;">Kein Telekom Festnetz</div>';
+      }
+      tip.style.left = (mx + 14) + 'px';
+      tip.style.top = (my - 10) + 'px';
+      tip.style.display = 'block';
+    } catch(err) {
+      tip.style.display = 'none'; // CORS from file:// – silent fail
+    }
+  }
+
+  map.on('mousemove', function(e) {
+    if (!map.hasLayer(telekomFiberLayer)) { tip.style.display='none'; return; }
+    _lastE = e;
+    var mx = e.originalEvent.clientX, my = e.originalEvent.clientY;
+    tip.style.left = (mx+14)+'px'; tip.style.top = (my-10)+'px';
+    clearTimeout(_timer);
+    _timer = setTimeout(function(){ query(e); }, 350);
+  });
+
+  map.on('mouseout', function() { clearTimeout(_timer); tip.style.display='none'; });
+})();
 
 // ── Landkreis-Grenzen ──────────────────────────────────
 var kreisLayer = null;
@@ -1137,11 +1400,13 @@ function toggleKreise(btn) {
     map.removeLayer(kreisLayer);
     btn.textContent = 'Aus';
     btn.classList.remove('on');
+    btn.style.background = '#f1f5f9'; btn.style.color = '#64748b'; btn.style.borderColor = '#94a3b8';
   } else {
     map.addLayer(kreisLayer);
     kreisLayer.bringToBack();
     btn.textContent = '✓ Ein';
     btn.classList.add('on');
+    btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = '';
   }
 }
 
@@ -1171,6 +1436,161 @@ fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/4_kre
     if (btn) { btn.textContent = 'n/a'; btn.disabled = true; }
     console.warn('Kreise GeoJSON Fehler:', e);
   });
+
+// ── BOB Adressen (Signerade Verträge) ─────────────────────
+var BOB_PROJ=["Amt Scharmützelsee", "Beetzsee", "Bestensee", "Birkenwerder", "Blankenfelde-Mahlow", "Eichwalde", "Falkensee", "Frankfurt (Oder)", "Fürstenwalde/Spree", "Gosen-Neu Zittau", "Grünheide", "Heidesee", "Hennigsdorf", "Hohen Neuendorf", "Kasel-Golzig", "Kirchroth (BY)", "Königs Wusterhausen", "Leiblfing (BY)", "Luckau", "Löwenberger Land", "Märkisch Buchholz", "Neu Wulmstorf (NI)", "Parkstetten (BY)", "Rosengarten (NI)", "Schulzendorf", "Schöneiche bei Berlin", "Seddiner See", "Spreenhagen", "Storkow", "Straubing (BY)", "Teupitz", "Welle (NI)", "Wistedt (NI)", "Woltersdorf", "Zeuthen-Wildau", "Zossen", "Rinteln (NI)", "Auetal (NI)"];
+var BOB_POLYGONS=[
+[0,0,[[52.21128,14.00772],[52.20333,14.01685],[52.2235,14.04296],[52.2443,14.05846],[52.24686,14.06774],[52.25818,14.07143],[52.26737,14.06021],[52.27878,14.05532],[52.29033,14.05769],[52.29114,14.04727],[52.28345,14.04098],[52.27657,14.04339],[52.2823,14.04919],[52.27627,14.04891],[52.27118,14.04084],[52.252,14.05134],[52.23727,14.02931],[52.22063,14.02042],[52.21128,14.00772]]],
+[1,0,[[52.46857,12.50836],[52.45287,12.51744],[52.44751,12.56006],[52.45219,12.56568],[52.47754,12.56516],[52.48227,12.59702],[52.50977,12.56229],[52.49898,12.54318],[52.46857,12.50836]]],
+[2,0,[[52.25259,13.5872],[52.22464,13.59529],[52.21923,13.60715],[52.20583,13.61498],[52.19674,13.62835],[52.20105,13.63384],[52.19463,13.64394],[52.20253,13.649],[52.19679,13.6724],[52.20652,13.67859],[52.21013,13.67418],[52.22031,13.71089],[52.22484,13.69285],[52.22779,13.69501],[52.24156,13.68627],[52.24439,13.67547],[52.25896,13.67118],[52.25365,13.65328],[52.2579,13.65127],[52.25624,13.63579],[52.26027,13.63904],[52.25994,13.61301],[52.25781,13.60609],[52.25066,13.60674],[52.24784,13.6121],[52.24894,13.60602],[52.25674,13.60453],[52.25259,13.5872]]],
+[3,0,[[52.68307,13.24416],[52.6876,13.3079],[52.70046,13.30913],[52.69765,13.36524],[52.71217,13.36646],[52.71289,13.35514],[52.71664,13.35558],[52.71399,13.34792],[52.72649,13.31527],[52.7082,13.29983],[52.71116,13.28216],[52.70695,13.28553],[52.70339,13.28274],[52.70534,13.26794],[52.69797,13.25925],[52.7019,13.25112],[52.68646,13.24768],[52.68618,13.26072],[52.68307,13.24416]]],
+[4,0,[[52.31759,13.34353],[52.30947,13.34436],[52.29077,13.36745],[52.28729,13.39329],[52.2946,13.39247],[52.29586,13.40262],[52.30726,13.41662],[52.29951,13.45135],[52.31139,13.4624],[52.31917,13.48338],[52.33633,13.49903],[52.34221,13.45535],[52.35275,13.44197],[52.36327,13.44191],[52.36556,13.41835],[52.37614,13.42081],[52.37786,13.38843],[52.36463,13.37129],[52.35484,13.38321],[52.33692,13.37963],[52.33101,13.3566],[52.3257,13.34981],[52.3163,13.3502],[52.31759,13.34353]]],
+[5,0,[[52.37346,13.60522],[52.36458,13.61351],[52.36853,13.64707],[52.37081,13.6421],[52.37751,13.64268],[52.37625,13.63322],[52.38136,13.62851],[52.37346,13.60522]]],
+[6,0,[[52.56776,13.00058],[52.56322,13.01098],[52.55585,13.0129],[52.55427,13.02623],[52.55828,13.02932],[52.55047,13.05109],[52.55306,13.06202],[52.54379,13.12496],[52.55601,13.1305],[52.55293,13.14585],[52.57746,13.1536],[52.58336,13.14961],[52.57961,13.13247],[52.5873,13.12896],[52.59261,13.09933],[52.60252,13.08671],[52.60028,13.08276],[52.60461,13.08425],[52.60378,13.06384],[52.61275,13.01054],[52.60455,13.03804],[52.59535,13.04937],[52.58772,13.02852],[52.58198,13.03423],[52.57536,13.0362],[52.57095,13.03165],[52.56773,13.03481],[52.56713,13.02443],[52.57289,13.01688],[52.56805,13.01331],[52.56776,13.00058]]],
+[7,0,[[52.26875,14.39483],[52.26633,14.40586],[52.27012,14.40687],[52.27095,14.45097],[52.27612,14.46719],[52.27122,14.47804],[52.26113,14.47619],[52.25287,14.49201],[52.25477,14.50736],[52.26286,14.50178],[52.25605,14.53492],[52.26314,14.53331],[52.26128,14.5494],[52.26269,14.55359],[52.26512,14.54886],[52.27056,14.55292],[52.27692,14.58202],[52.28703,14.57598],[52.27112,14.58752],[52.27044,14.60136],[52.28905,14.57529],[52.29522,14.5745],[52.30635,14.58483],[52.32262,14.57493],[52.32781,14.56144],[52.33939,14.56261],[52.35199,14.55253],[52.37567,14.55147],[52.395,14.53438],[52.39094,14.51134],[52.39821,14.45421],[52.3942,14.43098],[52.37385,14.42385],[52.35387,14.40782],[52.3429,14.43629],[52.30798,14.39801],[52.29871,14.3958],[52.29409,14.40395],[52.26875,14.39483]]],
+[8,0,[[52.39605,13.93775],[52.39079,13.95973],[52.38558,13.94796],[52.3796,13.96013],[52.37478,13.99715],[52.37131,13.99842],[52.36809,13.99135],[52.35043,13.98964],[52.35124,14.00038],[52.34093,14.00248],[52.3477,14.008],[52.35688,14.0305],[52.34749,14.04548],[52.34886,14.05031],[52.32923,14.06334],[52.32267,14.08418],[52.33936,14.10786],[52.33644,14.11],[52.34711,14.11697],[52.34894,14.1462],[52.35542,14.13808],[52.35967,14.14951],[52.3726,14.1471],[52.3788,14.09503],[52.38589,14.10528],[52.39536,14.09897],[52.39806,14.09102],[52.41103,14.09073],[52.41436,14.07839],[52.4265,14.07969],[52.42669,14.06113],[52.41822,14.05059],[52.41536,14.05217],[52.41195,14.01643],[52.40097,14.01462],[52.39453,14.02422],[52.38686,14.02179],[52.38437,14.01408],[52.38573,13.99469],[52.40179,13.95373],[52.39605,13.93775]]],
+[9,0,[[52.38399,13.68613],[52.3815,13.69884],[52.37744,13.69721],[52.38889,13.70696],[52.3865,13.72783],[52.37126,13.74097],[52.36496,13.72746],[52.35056,13.75709],[52.36742,13.76357],[52.37844,13.7755],[52.37506,13.77329],[52.37021,13.79193],[52.38274,13.78821],[52.39165,13.76458],[52.39133,13.74495],[52.40435,13.74607],[52.40734,13.73903],[52.40008,13.73131],[52.39969,13.71587],[52.38399,13.68613]]],
+[10,0,[[52.38317,13.78275],[52.35618,13.83774],[52.39998,13.9128],[52.38725,13.95314],[52.39605,13.93775],[52.40164,13.95463],[52.38334,14.00805],[52.39453,14.02422],[52.41168,14.01846],[52.4288,13.98549],[52.46432,13.98417],[52.47875,13.94411],[52.47408,13.8992],[52.45218,13.87101],[52.45796,13.85227],[52.43744,13.82469],[52.43947,13.79951],[52.38317,13.78275]]],
+[11,0,[[52.26555,13.6694],[52.22484,13.69285],[52.22166,13.71105],[52.21013,13.67418],[52.19497,13.67107],[52.186,13.68602],[52.18444,13.70105],[52.20113,13.71374],[52.18118,13.77762],[52.18944,13.76916],[52.20234,13.77717],[52.18044,13.77921],[52.19257,13.77685],[52.18152,13.8302],[52.2014,13.85648],[52.21332,13.83974],[52.22508,13.8537],[52.24378,13.81777],[52.24534,13.83232],[52.26334,13.8371],[52.26361,13.85987],[52.26982,13.84931],[52.27528,13.86311],[52.29007,13.85381],[52.28816,13.82152],[52.31406,13.83976],[52.31862,13.74056],[52.30831,13.75495],[52.28141,13.73852],[52.26555,13.6694]]],
+[12,0,[[52.60385,13.15284],[52.60065,13.1533],[52.6038,13.16595],[52.59701,13.1679],[52.59019,13.19173],[52.58748,13.2174],[52.59237,13.21886],[52.60655,13.20162],[52.62832,13.22054],[52.62811,13.24119],[52.65506,13.24367],[52.66634,13.23964],[52.67581,13.22925],[52.66851,13.23161],[52.66241,13.22739],[52.66798,13.21918],[52.65808,13.20355],[52.66096,13.1819],[52.64107,13.1702],[52.6295,13.17266],[52.60385,13.15284]]],
+[13,0,[[52.70525,13.20417],[52.69565,13.25021],[52.67581,13.22925],[52.62729,13.24607],[52.64112,13.28383],[52.66074,13.28277],[52.67131,13.3484],[52.69796,13.36055],[52.70046,13.30913],[52.6876,13.3079],[52.68169,13.24456],[52.68618,13.26072],[52.68646,13.24768],[52.7019,13.25112],[52.7082,13.29983],[52.72649,13.31527],[52.74147,13.27066],[52.71182,13.24189],[52.70525,13.20417]]],
+[14,0,[[51.92566,13.61899],[51.90842,13.62081],[51.90177,13.63286],[51.91008,13.63606],[51.91606,13.66907],[51.91478,13.68224],[51.91007,13.68485],[51.91494,13.70837],[51.92413,13.70664],[51.91794,13.71361],[51.9115,13.71218],[51.91368,13.73858],[51.90979,13.74804],[51.92231,13.75326],[51.92504,13.76084],[51.94995,13.7653],[51.95269,13.75888],[51.94631,13.74022],[51.9459,13.70696],[51.96509,13.69874],[51.95142,13.67524],[51.93852,13.67155],[51.93562,13.64488],[51.92526,13.63227],[51.92566,13.61899]]],
+[15,1,[[48.97361,12.4377],[48.96666,12.44902],[48.96545,12.46421],[48.95482,12.46567],[48.95145,12.47059],[48.95887,12.49004],[48.94707,12.50264],[48.94445,12.51984],[48.94065,12.52048],[48.9307,12.50725],[48.91107,12.51959],[48.91326,12.53056],[48.92439,12.53765],[48.91743,12.55591],[48.93127,12.56898],[48.93724,12.5696],[48.93943,12.56104],[48.95247,12.55724],[48.96362,12.56009],[48.9654,12.56524],[48.96721,12.56036],[48.97721,12.56213],[48.98279,12.56789],[48.98336,12.53903],[48.98864,12.53334],[48.98978,12.52099],[48.98503,12.50031],[48.99037,12.49966],[48.99155,12.49345],[48.9889,12.48466],[48.98072,12.48937],[48.97498,12.48344],[48.98291,12.45265],[48.98194,12.44306],[48.97361,12.4377]]],
+[16,0,[[52.30251,13.56837],[52.28412,13.57807],[52.28972,13.5995],[52.27973,13.60703],[52.28177,13.61722],[52.26466,13.60738],[52.25994,13.61301],[52.25533,13.66376],[52.25896,13.67118],[52.26659,13.66946],[52.26646,13.69848],[52.28248,13.71632],[52.28168,13.73881],[52.29404,13.73968],[52.30831,13.75495],[52.3107,13.73938],[52.32007,13.74421],[52.3243,13.73488],[52.33084,13.74523],[52.33401,13.73967],[52.35056,13.75709],[52.36496,13.72746],[52.37126,13.74097],[52.38531,13.72967],[52.38889,13.70696],[52.36721,13.6922],[52.36666,13.67151],[52.35162,13.65709],[52.3426,13.65115],[52.33635,13.65315],[52.33064,13.64239],[52.32349,13.6413],[52.31981,13.64627],[52.3074,13.64385],[52.30848,13.6122],[52.31949,13.57861],[52.30688,13.57561],[52.30251,13.56837]]],
+[17,1,[[48.7668,12.43172],[48.74568,12.45035],[48.75752,12.45212],[48.76529,12.49471],[48.75125,12.53511],[48.73922,12.52538],[48.73174,12.53873],[48.71551,12.53264],[48.73073,12.55695],[48.72378,12.59612],[48.76552,12.611],[48.80937,12.5427],[48.80261,12.50563],[48.8207,12.49146],[48.82175,12.45625],[48.79542,12.4438],[48.78513,12.4574],[48.7668,12.43172]]],
+[18,0,[[51.85121,13.57604],[51.83915,13.59856],[51.8519,13.66053],[51.82665,13.68543],[51.83955,13.71359],[51.80974,13.73416],[51.79868,13.76399],[51.77927,13.7642],[51.76345,13.71929],[51.75953,13.77579],[51.73498,13.78233],[51.73502,13.84394],[51.75227,13.85577],[51.75786,13.83055],[51.78471,13.80543],[51.78947,13.83779],[51.81821,13.82985],[51.8213,13.84247],[51.82883,13.83289],[51.83878,13.8545],[51.85746,13.82732],[51.87871,13.86375],[51.90087,13.86611],[51.90497,13.836],[51.92827,13.81967],[51.90259,13.76667],[51.9115,13.71218],[51.92413,13.70664],[51.91494,13.70837],[51.91043,13.68841],[51.9005,13.58555],[51.8634,13.60432],[51.85121,13.57604]]],
+[19,0,[[52.90608,13.01807],[52.85467,13.03903],[52.89728,13.08436],[52.87331,13.11119],[52.80152,13.08797],[52.8184,13.12485],[52.8009,13.20582],[52.89502,13.34697],[52.94573,13.37516],[52.91423,13.2432],[52.92059,13.22277],[52.95335,13.24144],[52.95556,13.05692],[52.91732,13.04641],[52.90608,13.01807]]],
+[20,0,[[52.09854,13.73638],[52.08374,13.79798],[52.06253,13.78503],[52.07277,13.84515],[52.14172,13.7634],[52.09854,13.73638]]],
+[21,2,[[53.42256,9.72636],[53.36438,9.8159],[53.39366,9.82416],[53.40279,9.80441],[53.42962,9.86183],[53.50514,9.76973],[53.49111,9.73781],[53.48018,9.77142],[53.44051,9.7832],[53.42256,9.72636]]],
+[22,1,[[48.9181,12.55841],[48.90426,12.66482],[48.94262,12.5882],[48.9181,12.55841]]],
+[23,2,[[53.40279,9.80441],[53.37605,9.81778],[53.37933,9.87345],[53.34033,9.91165],[53.34239,9.95816],[53.37958,9.94916],[53.38403,9.92149],[53.41311,9.94353],[53.41595,9.9067],[53.43636,9.92293],[53.45672,9.9043],[53.41815,9.8331],[53.40624,9.84332],[53.40279,9.80441]]],
+[24,0,[[52.35049,13.56126],[52.33824,13.59726],[52.36458,13.61351],[52.3797,13.59483],[52.35049,13.56126]]],
+[25,0,[[52.47429,13.66724],[52.45499,13.70023],[52.46665,13.74389],[52.50078,13.713],[52.47429,13.66724]]],
+[26,0,[[52.28823,12.95082],[52.25757,12.99751],[52.26676,13.06533],[52.30291,13.00632],[52.28823,12.95082]]],
+[27,0,[[52.3243,13.73488],[52.31406,13.83976],[52.28816,13.82152],[52.30798,13.91968],[52.27645,13.9349],[52.29612,13.98768],[52.33244,14.00659],[52.37478,13.99715],[52.40005,13.91347],[52.35618,13.83774],[52.37844,13.7755],[52.3243,13.73488]]],
+[28,0,[[52.24378,13.81777],[52.22508,13.8537],[52.18521,13.83463],[52.18414,13.89401],[52.16482,13.85044],[52.14728,13.87568],[52.12158,13.845],[52.1378,13.93914],[52.11579,13.9999],[52.15033,14.0661],[52.18012,14.03362],[52.18138,13.93417],[52.22075,13.99654],[52.30798,13.91968],[52.29007,13.85381],[52.26361,13.85987],[52.24378,13.81777]]],
+[29,1,[[48.87103,12.48022],[48.84451,12.56793],[48.87237,12.66362],[48.90413,12.66491],[48.89646,12.61119],[48.92439,12.53765],[48.87848,12.52349],[48.87103,12.48022]]],
+[30,0,[[52.09728,13.54067],[52.07297,13.6231],[52.1262,13.66163],[52.15074,13.60996],[52.165,13.63147],[52.15948,13.59567],[52.14168,13.54975],[52.09728,13.54067]]],
+[31,2,[[53.2557,9.75092],[53.23705,9.77033],[53.22151,9.75767],[53.23115,9.79315],[53.19014,9.80749],[53.20279,9.83284],[53.24534,9.82259],[53.26069,9.79071],[53.2729,9.80356],[53.2557,9.75092]]],
+[32,2,[[53.25639,9.60263],[53.24141,9.61137],[53.26395,9.70807],[53.28684,9.65919],[53.25639,9.60263]]],
+[33,0,[[52.45675,13.72058],[52.43237,13.76799],[52.44392,13.80198],[52.44421,13.76497],[52.46609,13.77449],[52.45675,13.72058]]],
+[34,0,[[52.347,13.56072],[52.31072,13.60252],[52.3297,13.59523],[52.33635,13.65315],[52.36853,13.64707],[52.33824,13.59726],[52.347,13.56072]]],
+[34,0,[[52.32068,13.58977],[52.31949,13.64629],[52.34162,13.63451],[52.32068,13.58977]]],
+[35,0,[[52.22546,13.29178],[52.19598,13.44038],[52.17867,13.44733],[52.16016,13.41657],[52.13516,13.46169],[52.11036,13.45275],[52.09236,13.50103],[52.09728,13.54067],[52.19319,13.5458],[52.19637,13.58222],[52.24204,13.54573],[52.23217,13.47206],[52.28183,13.4],[52.25105,13.308],[52.22546,13.29178]]],
+[36,2,[[52.19465,8.98578],[52.17151,9.022],[52.13251,9.01779],[52.1497,9.06747],[52.12898,9.1535],[52.09425,9.13443],[52.1193,9.18478],[52.14574,9.16171],[52.14318,9.19404],[52.18465,9.15728],[52.20375,9.2478],[52.22594,9.0417],[52.1832,9.04566],[52.19465,8.98578]]],
+[37,2,[[52.22899,9.12915],[52.20582,9.23264],[52.21673,9.31744],[52.24328,9.33054],[52.27977,9.28666],[52.22899,9.12915]]]
+];
+
+var BOB_COVERED = new Set(BOB_PROJ);
+
+var bobAddrVisible = false;
+var bobAddrLayer = null;
+
+// BOB hover tooltip — z-index 10000 beats the Telekom tip (9999)
+var bobTip = document.createElement('div');
+bobTip.style.cssText = 'position:fixed;background:white;border:1.5px solid #059669;border-radius:7px;' +
+  'padding:5px 11px;font-size:11px;font-weight:700;font-family:sans-serif;pointer-events:none;display:none;' +
+  'z-index:10000;box-shadow:0 3px 10px rgba(5,150,105,0.22);color:#065f46;white-space:nowrap;';
+document.body.appendChild(bobTip);
+
+function _bobTipShow(name, e) {
+  bobTip.textContent = '📍 ' + name;
+  bobTip.style.display = 'block';
+  _bobTipMove(e);
+}
+function _bobTipMove(e) {
+  var oe = e.originalEvent || e;
+  bobTip.style.left = (oe.clientX + 14) + 'px';
+  bobTip.style.top  = (oe.clientY - 32) + 'px';
+}
+function _bobTipHide() { bobTip.style.display = 'none'; }
+
+function _addBobTip(layer, name) {
+  layer.on('mouseover', function(e){ _bobTipShow(name, e); });
+  layer.on('mousemove', function(e){ _bobTipMove(e); });
+  layer.on('mouseout',  function(){ _bobTipHide(); });
+}
+
+function renderBobAddr() {
+  if (bobAddrLayer) { map.removeLayer(bobAddrLayer); bobAddrLayer = null; }
+  _bobTipHide();
+  if (bobAddrVisible) {
+    bobAddrLayer = L.layerGroup();
+    var colors = ['#059669','#059669','#059669'];
+    BOB_POLYGONS.forEach(function(p) {
+      var idx=p[0], region=p[1], coords=p[2];
+      var color = colors[region];
+      var name = BOB_PROJ[idx];
+      if (coords.length >= 3) {
+        var poly = L.polygon(coords, {
+          color: color, weight: 1.5, opacity: 0.9,
+          fillColor: color, fillOpacity: 0.25
+        });
+        _addBobTip(poly, name);
+        poly.addTo(bobAddrLayer);
+      } else if (coords.length === 2) {
+        var line = L.polyline(coords, {color:color, weight:2, opacity:0.8});
+        _addBobTip(line, name);
+        line.addTo(bobAddrLayer);
+      } else {
+        var cm = L.circleMarker(coords[0], {radius:5, color:color, fillColor:color, fillOpacity:0.7, weight:1});
+        _addBobTip(cm, name);
+        cm.addTo(bobAddrLayer);
+      }
+    });
+    map.addLayer(bobAddrLayer);
+  }
+  redraw();
+}
+
+function toggleProj(btn) {
+  projVisible = !projVisible;
+  if(projVisible) {
+    btn.textContent = '✓ Ein';
+    btn.style.background = '#1d4ed8';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#1d4ed8';
+  } else {
+    btn.textContent = 'Aus';
+    btn.style.background = '#f1f5f9';
+    btn.style.color = '#64748b';
+    btn.style.borderColor = '#94a3b8';
+  }
+  redraw();
+}
+
+function toggleMEV(btn) {
+  mevVisible = !mevVisible;
+  if(mevVisible) {
+    btn.textContent = '✓ Ein';
+    btn.style.background = '#7c3aed';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#7c3aed';
+  } else {
+    btn.textContent = 'Aus';
+    btn.style.background = '#f1f5f9';
+    btn.style.color = '#64748b';
+    btn.style.borderColor = '#94a3b8';
+  }
+  redraw();
+}
+
+function toggleBobAddr(btn) {
+  bobAddrVisible = !bobAddrVisible;
+  if (bobAddrVisible) {
+    btn.textContent = '✓ Ein';
+    btn.style.background = '#059669';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#059669';
+  } else {
+    btn.textContent = 'Aus';
+    btn.style.background = '#f1f5f9';
+    btn.style.color = '#64748b';
+    btn.style.borderColor = '#94a3b8';
+  }
+  renderBobAddr();
+}
+
 </script>
 </body>
 </html>
