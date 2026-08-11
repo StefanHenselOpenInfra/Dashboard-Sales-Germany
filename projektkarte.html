@@ -122,7 +122,33 @@ body { font-family: -apple-system, Arial, sans-serif; }
     <span style="font-size:10px;font-weight:800;color:#e20074;text-transform:uppercase;letter-spacing:0.1em;">Telekom Glasfaser</span>
     <button id="btn-telekom" class="btn btn-all on" onclick="toggleTelekom(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#e20074;color:white;border-color:#e20074;">✓ Ein</button>
   </div>
-  <div style="font-size:10px;color:#94a3b8;margin-top:2px;">FTTH-Netz (BB · BY · NI)</div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:4px;">Festnetz-Coverage (BB · BY · NI)</div>
+  <div style="font-size:9px;font-weight:700;color:#610332;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;">Glasfaser</div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #3d0020;background:repeating-linear-gradient(45deg,#610332 0px,#610332 1.5px,#c46090 1.5px,#c46090 3px),repeating-linear-gradient(-45deg,#610332 0px,#610332 1.5px,#c46090 1.5px,#c46090 3px);background-size:5px 5px;background-color:#c46090;"></div>
+    bis zu 2.000 Mbit/s
+  </div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #7a1050;background:repeating-linear-gradient(45deg,#8b1545 0px,#8b1545 1.5px,#d890b8 1.5px,#d890b8 3px),repeating-linear-gradient(-45deg,#8b1545 0px,#8b1545 1.5px,#d890b8 1.5px,#d890b8 3px);background-size:5px 5px;background-color:#d890b8;"></div>
+    bis zu 1.000 Mbit/s
+  </div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #3060a0;background:radial-gradient(circle,#4a80d0 1.5px,transparent 1.5px);background-size:4px 4px;background-color:#b8d4f8;"></div>
+    Ausbau geplant
+  </div>
+  <div style="font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin:4px 0 2px;">DSL</div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #a00353;background:linear-gradient(90deg,#a00353 50%,#e880b8 50%);"></div>
+    VDSL 250 Mbit/s
+  </div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #c05080;background:linear-gradient(90deg,#c05080 50%,#f0b8d8 50%);"></div>
+    VDSL 100 Mbit/s
+  </div>
+  <div class="leg">
+    <div style="width:14px;height:14px;flex-shrink:0;border-radius:50%;border:1px solid #c0a0b0;background:linear-gradient(90deg,#d8b0c8 50%,#f4dcea 50%);"></div>
+    DSL 16 Mbit/s
+  </div>
 </div>
 
 <div id="stats">
@@ -1072,15 +1098,23 @@ function toggleDnsCov(btn) {
 renderDnsCov();
 
 // ── Telekom Glasfaser Coverage (WMS-Tiles) ───────────────
+// Eigener Pane zwischen Basis-Tiles (200) und Overlay-Pane (400)
+map.createPane('telekomPane');
+map.getPane('telekomPane').style.zIndex = 250;
+map.getPane('telekomPane').style.pointerEvents = 'none';
+
 var telekomFiberLayer = L.tileLayer.wms('https://t-map.telekom.de/tmap2/geoserver/public/tmap/public/wms', {
-  layers: 'public:coverage_fixedline_fiber',
+  layers: 'public:coverage_fixedline_dsl,public:coverage_fixedline_fiber',
+  styles: '',
   format: 'image/png',
   transparent: true,
   version: '1.1.1',
-  opacity: 0.55,
+  opacity: 0.6,
+  cql_filter: '',
+  env: '',
+  pane: 'telekomPane',
   attribution: '© Telekom'
 }).addTo(map);
-telekomFiberLayer.bringToBack && telekomFiberLayer.bringToBack();
 
 function toggleTelekom(btn) {
   if (map.hasLayer(telekomFiberLayer)) {
@@ -1089,7 +1123,6 @@ function toggleTelekom(btn) {
     btn.style.color = '#475569'; btn.style.borderColor = '#e2e8f0';
   } else {
     map.addLayer(telekomFiberLayer);
-    telekomFiberLayer.bringToBack && telekomFiberLayer.bringToBack();
     btn.textContent = '✓ Ein'; btn.style.background = '#e20074';
     btn.style.color = 'white'; btn.style.borderColor = '#e20074';
   }
