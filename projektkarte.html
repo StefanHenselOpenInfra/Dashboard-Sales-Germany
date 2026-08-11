@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Open Infra – Projektkarte Deutschland</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, Arial, sans-serif; }
+#map { height: 100vh; width: 100vw; }
+
+#panel {
+  position: fixed; top: 12px; left: 12px; z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  border-radius: 14px; padding: 14px 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  min-width: 210px; max-width: 240px;
+}
+#panel h2 { font-size: 14px; font-weight: 900; color: #C86750; margin-bottom: 12px; letter-spacing: 0.04em; }
+.fg { margin-bottom: 10px; }
+.fl { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+.bg { display: flex; flex-wrap: wrap; gap: 4px; }
+.btn {
+  padding: 3px 9px; border: 2px solid #e2e8f0; border-radius: 20px;
+  font-size: 11px; font-weight: 700; cursor: pointer; background: white; color: #475569;
+  transition: all 0.15s;
+}
+.btn:hover { border-color: #cbd5e1; }
+.btn.on { color: white !important; border-color: transparent !important; }
+.btn-all.on  { background: #334155; }
+.btn-bb.on   { background: #1d4ed8; }
+.btn-by.on   { background: #15803d; }
+.btn-ni.on   { background: #9333ea; }
+.btn-run.on  { background: #1d4ed8; }
+.btn-fun.on  { background: #ea580c; }
+.btn-cem.on  { background: #6b7280; }
+
+.divider { border-top: 1px solid #e2e8f0; margin: 10px 0; }
+.leg { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #334155; }
+.dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(0,0,0,0.15); }
+
+#stats {
+  position: fixed; bottom: 12px; left: 12px; z-index: 1000;
+  background: rgba(255,255,255,0.97); border-radius: 12px; padding: 10px 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; gap: 14px;
+}
+.st { text-align: center; }
+.st-n { font-size: 18px; font-weight: 900; color: #252121; line-height: 1; }
+.st-l { font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+
+/* Popup */
+.pop-title { font-weight: 900; font-size: 14px; color: #252121; margin-bottom: 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 6px; }
+.pop-row { padding: 3px 0; font-size: 12px; display: flex; align-items: baseline; gap: 5px; }
+.pop-row:not(:last-child) { border-bottom: 1px solid #f8fafc; }
+.bx { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap; }
+.bx-run { background: #dbeafe; color: #1e40af; }
+.bx-fun { background: #fed7aa; color: #c2410c; }
+.bx-cem { background: #e5e7eb; color: #4b5563; }
+.bx-hp0 { background: #fef9c3; color: #92400e; }
+.bx-mev { background: #ede9fe; color: #5b21b6; }
+.pop-hp { font-size: 11px; color: #64748b; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="panel">
+  <h2>🏗 Open Infra Projekte</h2>
+  <div class="fg">
+    <div class="fl">Region</div>
+    <div class="bg">
+      <button class="btn btn-all on"  onclick="setR('all',this)">Alle</button>
+      <button class="btn btn-bb"      onclick="setR('BB',this)">Brandenburg</button>
+      <button class="btn btn-by"      onclick="setR('BY',this)">Bayern</button>
+      <button class="btn btn-ni"      onclick="setR('NI',this)">Niedersachsen</button>
+    </div>
+  </div>
+  <div class="fg">
+    <div class="fl">Status</div>
+    <div class="bg">
+      <button class="btn btn-all on" onclick="setS('all',this)">Alle</button>
+      <button class="btn btn-run"    onclick="setS('active',this)">Aktiv</button>
+      <button class="btn btn-fun"    onclick="setS('funnel',this)">Funnel</button>
+      <button class="btn btn-cem"    onclick="setS('cemetery',this)">Abgeschl.</button>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="leg"><div class="dot" style="background:#1d4ed8"></div>Aktive Projekte</div>
+  <div class="leg"><div class="dot" style="background:#ea580c"></div>Funnel / Pipeline</div>
+  <div class="leg"><div class="dot" style="background:#6b7280"></div>Abgeschlossen</div>
+  <div class="leg"><div class="dot" style="background:#f59e0b;border-color:#d97706"></div>HP0 Projekte</div>
+  <div class="leg"><div class="dot" style="background:#a855f7"></div>MEV Projekte</div>
+  <div class="leg"><div class="dot" style="background:#252121;border-radius:2px;"></div>Mehrere Status</div>
+  <div class="divider"></div>
+  <div style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">BOB Lieferstatus</div>
+  <div class="leg"><div class="dot" style="background:#16a34a"></div>Fertig gebaut</div>
+  <div class="leg"><div class="dot" style="background:#0891b2"></div>In Betrieb (Driftsättning)</div>
+  <div class="leg"><div class="dot" style="background:#d97706"></div>Im Bau (Grävning)</div>
+</div>
+
+<div id="stats">
+  <div class="st"><div class="st-n" id="sn-run">–</div><div class="st-l">🔵 Aktiv</div></div>
+  <div class="st"><div class="st-n" id="sn-fun">–</div><div class="st-l">🟠 Funnel</div></div>
+  <div class="st"><div class="st-n" id="sn-cem">–</div><div class="st-l">⚫ Abgesch.</div></div>
+  <div class="st"><div class="st-n" id="sn-tot">–</div><div class="st-l">Standorte</div></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script>
+// ============================================================
+// PROJECT DATA — grouped by municipality (Gemeindeebene)
+// s: "active" = laufende Projekte, "funnel" = Pipeline, "cemetery" = abgeschlossen/aufgegeben
+// t: type, a: agency, hp: Adressen, hc: Signeringar
+// ============================================================
+const D = [
+
+// ========== BRANDENBURG ==========
+{n:"Birkenwerder",lat:52.7047,lng:13.2841,r:"BB",d:{addr:2851,hc:981,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":4,"Vilande":1}},p:[
+  {n:"P1",s:"active",t:"Build Sales",a:"Team Tatjana",hp:1097,hc:396},
+  {n:"P1-2",s:"active",t:"BASE UPSELL",a:"Team Tatjana",hp:76,hc:0},
+  {n:"P2",s:"active",t:"Build Sales",a:"Stonemedia GmbH",hp:235,hc:61},
+  {n:"P2-2",s:"active",t:"BASE UPSELL",a:"Team Tatjana",hp:374,hc:38},
+  {n:"P3",s:"active",t:"Build Sales",a:"Stonemedia GmbH",hp:579,hc:188},
+  {n:"P3-2",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:235,hc:15},
+  {n:"P4",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:243,hc:6},
+]},
+
+{n:"Hohen Neuendorf",lat:52.6733,lng:13.2783,r:"BB",d:{addr:2308,hc:424,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":7,"Vilande":1}},p:[
+  {n:"B1",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:987,hc:186},
+  {n:"B2",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:936,hc:136},
+  {n:"Bergfeld",s:"funnel",t:"BASE UPSELL",a:"Team Tatjana",hp:1183,hc:0},
+]},
+
+{n:"Hennigsdorf",lat:52.6378,lng:13.2039,r:"BB",p:[
+  {n:"P3",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:633,hc:232},
+]},
+
+{n:"Velten",lat:52.6839,lng:13.1803,r:"BB",d:{addr:1902,hc:531,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":1}},p:[
+  {n:"P1 HP0",s:"active",t:"HP0",a:"Aurora Sales GmbH",hp:987,hc:0},
+  {n:"P2",s:"cemetery",t:"Build Sales",a:"",hp:224,hc:58},
+  {n:"P3",s:"cemetery",t:"Build Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"Löwenberger Land",lat:52.8833,lng:13.2167,r:"BB",d:{addr:1083,hc:232,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":6}},p:[
+  {n:"- Grieben P5",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:166,hc:0},
+  {n:"P3",s:"funnel",t:"BASE UPSELL",a:"",hp:427,hc:79},
+  {n:"P1",s:"funnel",t:"Build Sales",a:"",hp:0,hc:0},
+  {n:"P1-2",s:"cemetery",t:"STOPP",a:"",hp:210,hc:25},
+]},
+
+{n:"Schönwald (BB)",lat:53.0667,lng:13.5833,r:"BB",p:[
+  {n:"P1 HP0",s:"funnel",t:"HP0",a:"",hp:162,hc:0},
+  {n:"P5",s:"cemetery",t:"",a:"",hp:137,hc:78},
+]},
+
+{n:"Schwerin (BB, Fläming)",lat:51.9500,lng:13.0000,r:"BB",d:{addr:756,hc:322,primary:"Driftsättning",color:"#0891b2",statuses:{"Grovprojektering pågår":1,"Driftsättning":1,"Ej påbörjat":6}},p:[
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:0,hc:0},
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:145,hc:29},
+]},
+
+{n:"Falkensee",lat:52.5597,lng:13.0928,r:"BB",d:{addr:14,hc:14,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"Stonemedia GmbH",hp:2401,hc:24},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:2406,hc:0},
+]},
+
+{n:"Seddiner See",lat:52.2717,lng:12.9828,r:"BB",d:{addr:767,hc:118,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":1}},p:[
+  {n:"P2",s:"active",t:"Base Sales / Up Sales",a:"Stonemedia GmbH",hp:762,hc:31},
+  {n:"B2",s:"funnel",t:"BASE UPSELL",a:"",hp:695,hc:36},
+]},
+
+{n:"Brandenburg a.d. Havel",lat:52.4125,lng:12.5408,r:"BB",d:{addr:896,hc:800,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":6,"Beredning pågår":1,"Ej påbörjat":2,"Grävning":1}},p:[
+  {n:"HP0 FC",s:"cemetery",t:"HP0",a:"",hp:1363,hc:274},
+]},
+
+{n:"Beetzsee",lat:52.3883,lng:12.5072,r:"BB",d:{addr:2615,hc:282,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1,"Grovkalkyl klar":1,"Ej påbörjat":5}},p:[
+  {n:"P1 HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:261,hc:12},
+  {n:"P3",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:0,hc:0},
+  {n:"P4",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:714,hc:0},
+  {n:"P2",s:"funnel",t:"",a:"",hp:0,hc:0},
+  {n:"P4",s:"funnel",t:"",a:"",hp:0,hc:0},
+  {n:"P5",s:"funnel",t:"",a:"",hp:0,hc:0},
+]},
+
+{n:"Hoppegarten",lat:52.5028,lng:13.7689,r:"BB",d:{addr:2003,hc:435,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":3,"Grävning":1}},p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:264,hc:56},
+  {n:"P2",s:"funnel",t:"BASE UPSELL",a:"",hp:0,hc:80},
+]},
+
+{n:"Grünheide",lat:52.4242,lng:13.8375,r:"BB",d:{addr:2138,hc:652,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":4,"Vilande":1}},p:[
+  {n:"P2 HP0",s:"active",t:"HP0",a:"Team Tatjana",hp:502,hc:0},
+  {n:"P3",s:"active",t:"BASE UPSELL",a:"Team Tatjana",hp:680,hc:89},
+  {n:"P1",s:"active",t:"BASE UPSELL",a:"Team Tatjana",hp:1029,hc:232},
+  {n:"P5",s:"active",t:"BASE UPSELL",a:"Team Tatjana",hp:101,hc:41},
+  {n:"P4",s:"funnel",t:"BASE UPSELL",a:"",hp:0,hc:0},
+  {n:"P6",s:"funnel",t:"BASE UPSELL",a:"",hp:0,hc:0},
+  {n:"P7",s:"funnel",t:"Base Sales",a:"",hp:140,hc:0},
+]},
+
+{n:"Erkner",lat:52.4228,lng:13.7506,r:"BB",d:{addr:229,hc:105,primary:"Avslutat",color:"#16a34a",statuses:{"Avslutat":1}},p:[
+  {n:"P3 HP0",s:"funnel",t:"HP0",a:"",hp:124,hc:0},
+]},
+
+{n:"Woltersdorf",lat:52.4242,lng:13.7472,r:"BB",d:{addr:1825,hc:723,primary:"Avslutat",color:"#16a34a",statuses:{"Driftsättning":2,"Ej påbörjat":2,"Avslutat":1}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:1709,hc:67},
+  {n:"P5-1",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:402,hc:126},
+]},
+
+{n:"Schöneiche bei Berlin",lat:52.4650,lng:13.7194,r:"BB",d:{addr:1320,hc:532,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":3}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"Team Tatjana",hp:2549,hc:40},
+  {n:"P8",s:"active",t:"Base Sales",a:"Team Tatjana",hp:372,hc:40},
+  {n:"P11",s:"funnel",t:"BASE UPSELL",a:"",hp:186,hc:0},
+  {n:"P1-3",s:"funnel",t:"Base Sales",a:"",hp:153,hc:0},
+]},
+
+{n:"Spreenhagen",lat:52.3528,lng:13.8194,r:"BB",d:{addr:572,hc:52,primary:"Grovkalkyl klar",color:"#64748b",statuses:{"Grovkalkyl klar":2,"Ej påbörjat":1}},p:[
+  {n:"P3 & Fürstenwalde P6",s:"active",t:"Base Sales",a:"Team Tatjana",hp:350,hc:23},
+  {n:"P2",s:"funnel",t:"BASE UPSELL",a:"",hp:63,hc:4},
+  {n:"P4",s:"funnel",t:"BASE UPSELL",a:"",hp:259,hc:0},
+]},
+
+{n:"Fürstenwalde/Spree",lat:52.3601,lng:14.0604,r:"BB",d:{addr:3704,hc:1555,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":4,"Ej påbörjat":3,"Vilande":1,"Grovkalkyl klar":2}},p:[
+  {n:"P1-P3 HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:1230,hc:98},
+  {n:"P4",s:"active",t:"Build Sales",a:"Team Tatjana",hp:612,hc:165},
+  {n:"P7",s:"active",t:"Base Sales / Up Sales",a:"United Promotion GmbH",hp:217,hc:78},
+  {n:"P6",s:"cemetery",t:"",a:"",hp:90,hc:0},
+  {n:"P1-1",s:"cemetery",t:"T COM",a:"",hp:126,hc:7},
+]},
+
+{n:"Frankfurt (Oder)",lat:52.3439,lng:14.5506,r:"BB",d:{addr:1380,hc:516,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":4,"Grovkalkyl klar":1}},p:[
+  {n:"Combined P1",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:519,hc:135},
+  {n:"Combined P2",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:459,hc:142},
+  {n:"Combined P3",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:213,hc:86},
+  {n:"Combined P4",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:344,hc:66},
+]},
+
+{n:"Blankenfelde-Mahlow",lat:52.3472,lng:13.4097,r:"BB",d:{addr:3374,hc:192,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":6}},p:[
+  {n:"P1",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:573,hc:158},
+]},
+
+{n:"Schulzendorf",lat:52.3453,lng:13.5861,r:"BB",d:{addr:450,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:1948,hc:148},
+  {n:"P3",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:148,hc:0},
+]},
+
+{n:"Eichwalde",lat:52.3736,lng:13.6194,r:"BB",d:{addr:3,hc:3,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:770,hc:20},
+]},
+
+{n:"Zeuthen-Wildau",lat:52.3300,lng:13.6300,r:"BB",d:{addr:1100,hc:423,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":2}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:2588,hc:27},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:2609,hc:0},
+]},
+
+{n:"Königs Wusterhausen",lat:52.2972,lng:13.6361,r:"BB",d:{addr:3012,hc:1190,primary:"Avslutat",color:"#16a34a",statuses:{"Driftsättning":3,"Ej påbörjat":6,"Avslutat":1}},p:[
+  {n:"HP0 1",s:"active",t:"HP0",a:"Aurora Sales GmbH",hp:1102,hc:0},
+  {n:"HP0 2",s:"active",t:"HP0",a:"United Promotion GmbH",hp:2746,hc:12},
+  {n:"HP0 3",s:"active",t:"HP0",a:"EnCom GmbH",hp:843,hc:38},
+  {n:"HP0 2",s:"funnel",t:"HP0",a:"",hp:2759,hc:0},
+  {n:"HP0 3",s:"funnel",t:"HP0",a:"",hp:2759,hc:0},
+]},
+
+{n:"Schönefeld",lat:52.3800,lng:13.5167,r:"BB",d:{addr:1439,hc:187,primary:"Grovkalkyl klar",color:"#64748b",statuses:{"Grovkalkyl klar":1,"Ej påbörjat":1}},p:[
+  {n:"P1",s:"cemetery",t:"Abandon",a:"",hp:0,hc:0},
+]},
+
+{n:"Gosen-Neu Zittau",lat:52.3794,lng:13.7542,r:"BB",d:{addr:0,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"P1 HP0",s:"active",t:"HP0",a:"Aurora Sales GmbH",hp:229,hc:2},
+  {n:"P2",s:"active",t:"Base Sales / Up Sales",a:"Aurora Sales GmbH",hp:109,hc:12},
+  {n:"P3",s:"active",t:"Base Sales",a:"Rating Peak GmbH",hp:186,hc:47},
+  {n:"P4",s:"active",t:"BASE UPSELL",a:"United Promotion GmbH",hp:265,hc:76},
+]},
+
+{n:"Rangsdorf",lat:52.2875,lng:13.4178,r:"BB",d:{addr:1038,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"Aurora Sales GmbH",hp:670,hc:0},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:670,hc:0},
+]},
+
+{n:"Zossen",lat:52.2167,lng:13.4500,r:"BB",d:{addr:2200,hc:854,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":4}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:107,hc:3},
+  {n:"P3",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:199,hc:69},
+  {n:"P4",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:591,hc:238},
+  {n:"P4-2",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:241,hc:3},
+  {n:"P6",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:734,hc:0},
+  {n:"P7",s:"active",t:"Base Sales / Up Sales",a:"United Promotion GmbH",hp:923,hc:8},
+  {n:"P7-1",s:"funnel",t:"",a:"",hp:0,hc:0},
+]},
+
+{n:"Mittenwalde",lat:52.2686,lng:13.5417,r:"BB",p:[
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:172,hc:0},
+]},
+
+{n:"Bestensee",lat:52.2153,lng:13.6556,r:"BB",d:{addr:3137,hc:1208,primary:"Avslutat",color:"#16a34a",statuses:{"Ej påbörjat":1,"Avslutat":6,"Vilande":1,"Driftsättning":4}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"Aurora Sales GmbH",hp:1364,hc:20},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:0,hc:0},
+]},
+
+{n:"Heidesee",lat:52.2528,lng:13.7222,r:"BB",d:{addr:767,hc:118,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":1}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:2108,hc:5},
+  {n:"P7",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:121,hc:8},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:2712,hc:604},
+  {n:"B5-2",s:"funnel",t:"Build Sales",a:"",hp:101,hc:38},
+  {n:"P5-1",s:"funnel",t:"BASE UPSELL",a:"",hp:70,hc:20},
+]},
+
+{n:"Groß Köris",lat:52.2028,lng:13.6972,r:"BB",d:{addr:490,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:490,hc:0},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:490,hc:0},
+  {n:"P3",s:"cemetery",t:"STOPP",a:"",hp:0,hc:0},
+]},
+
+{n:"Halbe",lat:52.1086,lng:13.6917,r:"BB",p:[
+  {n:"& Löpten P1 HP0",s:"funnel",t:"HP0",a:"",hp:396,hc:0},
+]},
+
+{n:"Teupitz",lat:52.1297,lng:13.6939,r:"BB",d:{addr:1032,hc:333,primary:"Grävning",color:"#d97706",statuses:{"Grävning":2,"Ej påbörjat":2}},p:[
+  {n:"P3",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:261,hc:64},
+  {n:"P4",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:295,hc:49},
+]},
+
+{n:"Amt Scharmützelsee",lat:52.1800,lng:14.0833,r:"BB",d:{addr:2768,hc:787,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":6}},p:[
+  {n:"P0",s:"active",t:"Base Sales",a:"EnCom GmbH",hp:849,hc:16},
+  {n:"P1",s:"active",t:"Base Sales",a:"EnCom GmbH",hp:904,hc:298},
+  {n:"P3",s:"active",t:"Base Sales / Up Sales",a:"EnCom GmbH",hp:504,hc:0},
+  {n:"P4",s:"active",t:"Base Sales / Up Sales",a:"EnCom GmbH",hp:320,hc:0},
+  {n:"P5",s:"active",t:"Base Sales / Up Sales",a:"EnCom GmbH",hp:130,hc:0},
+  {n:"P2",s:"funnel",t:"Base Sales / Up Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"Diensdorf-Radlow",lat:52.1583,lng:14.0500,r:"BB",d:{addr:320,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"(Funnel)",s:"funnel",t:"Base Sales",a:"",hp:318,hc:0},
+]},
+
+{n:"Storkow",lat:52.2628,lng:13.9361,r:"BB",d:{addr:2050,hc:593,primary:"Avslutat",color:"#16a34a",statuses:{"Avslutat":1,"Ej påbörjat":7,"Vilande":1}},p:[
+  {n:"P1-4",s:"active",t:"Base Sales / Up Sales",a:"Stonemedia GmbH",hp:35,hc:8},
+  {n:"P2",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:107,hc:45},
+  {n:"P3",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:335,hc:78},
+  {n:"P4",s:"active",t:"Base Sales / Up Sales",a:"Stonemedia GmbH",hp:332,hc:82},
+  {n:"P5",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:481,hc:55},
+  {n:"P6",s:"active",t:"BASE UPSELL",a:"Stonemedia GmbH",hp:87,hc:15},
+  {n:"P7",s:"active",t:"Base Sales / Up Sales",a:"Stonemedia GmbH",hp:199,hc:30},
+  {n:"P8",s:"active",t:"Base Sales / Up Sales",a:"Stonemedia GmbH",hp:184,hc:0},
+]},
+
+{n:"Rietz-Neuendorf",lat:52.0972,lng:14.0083,r:"BB",p:[
+  {n:"P2",s:"funnel",t:"Base Sales",a:"",hp:318,hc:68},
+  {n:"P3",s:"cemetery",t:"",a:"",hp:0,hc:0},
+]},
+
+{n:"Märkisch Buchholz",lat:52.0333,lng:13.8833,r:"BB",p:[
+  {n:"Combined",s:"active",t:"Base Sales",a:"Stonemedia GmbH",hp:1475,hc:374},
+]},
+
+{n:"Kasel-Golzig",lat:51.9300,lng:13.5800,r:"BB",p:[
+  {n:"Combined",s:"active",t:"Build Sales",a:"Stonemedia GmbH",hp:1094,hc:422},
+]},
+
+{n:"Luckau",lat:51.8517,lng:13.7136,r:"BB",p:[
+  {n:"Combined",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:1174,hc:348},
+]},
+
+{n:"Golssen",lat:51.8889,lng:13.5944,r:"BB",p:[
+  {n:"Combined (Luckau)",s:"active",t:"Build Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"Baruth/Mark",lat:52.0583,lng:13.5167,r:"BB",d:{addr:689,hc:128,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":3}},p:[
+  {n:"P1",s:"cemetery",t:"Abandon",a:"",hp:281,hc:68},
+  {n:"P2",s:"cemetery",t:"Abandon",a:"",hp:164,hc:20},
+  {n:"P3",s:"cemetery",t:"Abandon",a:"",hp:244,hc:44},
+]},
+
+{n:"Neuzelle",lat:52.0761,lng:14.6500,r:"BB",p:[
+  {n:"Combined P1",s:"cemetery",t:"T COM",a:"",hp:615,hc:0},
+  {n:"Combined P2",s:"funnel",t:"Build Sales",a:"",hp:181,hc:89},
+  {n:"Combined P3",s:"funnel",t:"Build Sales",a:"",hp:122,hc:51},
+  {n:"Combined P4",s:"funnel",t:"Build Sales",a:"",hp:427,hc:166},
+  {n:"P5",s:"cemetery",t:"STOPP",a:"",hp:0,hc:0},
+  {n:"P6",s:"cemetery",t:"STOPP",a:"",hp:0,hc:0},
+]},
+
+{n:"Rietzneuendorf-Staakow",lat:52.0056,lng:14.0561,r:"BB",p:[
+  {n:"P1",s:"cemetery",t:"Abandon",a:"",hp:194,hc:0},
+]},
+
+{n:"Diehlo",lat:51.8833,lng:13.7667,r:"BB",d:{addr:180,hc:1,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":1}},p:[
+  {n:"P1",s:"active",t:"Base Sales / Up Sales",a:"United Promotion GmbH",hp:158,hc:1},
+  {n:"P1",s:"funnel",t:"Base Sales",a:"",hp:297,hc:1},
+]},
+
+{n:"LK Dahme-Spreewald (Potential)",lat:52.0500,lng:13.7000,r:"BB",p:[
+  {n:"Golsen, Prierow, Mahlsdorf",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"LK Teltow-Fläming (MEV)",lat:51.9833,lng:13.2167,r:"BB",p:[
+  {n:"MEV LK Teltow-Fläming",s:"funnel",t:"MEV",a:"",hp:30928,hc:0},
+]},
+
+{n:"LK Potsdam-Mittelmark (MEV)",lat:52.1667,lng:12.8333,r:"BB",p:[
+  {n:"MEV LK Potsdam-Mittelmark",s:"funnel",t:"MEV",a:"",hp:37913,hc:0},
+]},
+
+// ========== NIEDERSACHSEN ==========
+{n:"Rosengarten (NI)",lat:53.4167,lng:9.9333,r:"NI",d:{addr:883,hc:649,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Grovkalkyl klar":1}},p:[
+  {n:"HP0",s:"active",t:"HP0",a:"Open Infra CS",hp:0,hc:1},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:554,hc:0},
+]},
+
+{n:"Welle (NI)",lat:53.3833,lng:9.8333,r:"NI",d:{addr:608,hc:401,primary:"Avslutat",color:"#16a34a",statuses:{"Avslutat":1,"Driftsättning":1,"Ej påbörjat":1}},p:[
+  {n:"P2",s:"funnel",t:"Build Sales",a:"",hp:213,hc:107},
+  {n:"& Otter HP0",s:"funnel",t:"HP0",a:"",hp:432,hc:0},
+  {n:"P3",s:"cemetery",t:"Abandon",a:"",hp:32,hc:28},
+]},
+
+{n:"Appel (NI)",lat:53.3333,lng:9.9500,r:"NI",d:{addr:343,hc:24,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:343,hc:24},
+]},
+
+{n:"Drestedt & Wenzendorf (NI)",lat:53.4000,lng:9.8000,r:"NI",d:{addr:441,hc:276,primary:"Avslutat",color:"#16a34a",statuses:{"Driftsättning":1,"Ej påbörjat":2,"Avslutat":1,"Vilande":3}},p:[
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:521,hc:0},
+]},
+
+{n:"Handeloh (NI)",lat:53.1667,lng:9.9167,r:"NI",d:{addr:548,hc:139,primary:"Beredning pågår",color:"#2563eb",statuses:{"Beredning pågår":1,"Ej påbörjat":3}},p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:199,hc:68},
+]},
+
+{n:"Heidenau (NI)",lat:53.4750,lng:9.8917,r:"NI",d:{addr:253,hc:123,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1}},p:[
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:631,hc:0},
+  {n:"B4",s:"funnel",t:"Build Sales",a:"",hp:16,hc:12},
+]},
+
+{n:"Kakenstorf (NI)",lat:53.2833,lng:9.9667,r:"NI",d:{addr:128,hc:56,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1}},p:[
+  {n:"P3",s:"funnel",t:"Build Sales",a:"",hp:128,hc:56},
+]},
+
+{n:"Königsmoor (NI)",lat:53.2000,lng:9.9667,r:"NI",d:{addr:369,hc:186,primary:"Beredning pågår",color:"#2563eb",statuses:{"Beredning pågår":1}},p:[
+  {n:"P1",s:"funnel",t:"Build Sales",a:"",hp:369,hc:186},
+]},
+
+{n:"Neu Wulmstorf (NI)",lat:53.4683,lng:9.7994,r:"NI",d:{addr:1005,hc:278,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1,"Ej påbörjat":1}},p:[
+  {n:"P1",s:"funnel",t:"Build Sales",a:"",hp:65,hc:0},
+  {n:"P2-P4",s:"funnel",t:"BASE UPSELL",a:"",hp:774,hc:155},
+]},
+
+{n:"Salzhausen (NI)",lat:53.1967,lng:10.1361,r:"NI",d:{addr:1192,hc:466,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":2}},p:[
+  {n:"Eyendorf P7",s:"funnel",t:"Base Sales",a:"",hp:387,hc:0},
+  {n:"Lübberstedt P8",s:"funnel",t:"Base Sales",a:"",hp:105,hc:0},
+  {n:"Vierhöfen P2-1",s:"funnel",t:"BASE UPSELL",a:"",hp:93,hc:17},
+]},
+
+{n:"Wistedt (NI)",lat:53.4667,lng:9.7667,r:"NI",p:[
+  {n:"B1",s:"funnel",t:"Build Sales",a:"",hp:571,hc:306},
+]},
+
+{n:"Rinteln (NI)",lat:52.1872,lng:9.0789,r:"NI",p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:1652,hc:0},
+]},
+
+{n:"Auetal (NI)",lat:52.2083,lng:9.1500,r:"NI",p:[
+  {n:"P1",s:"funnel",t:"Base Sales",a:"",hp:2163,hc:0},
+]},
+
+{n:"Ottermoor (NI)",lat:53.2500,lng:9.9000,r:"NI",d:{addr:78,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"P1",s:"funnel",t:"Base Sales",a:"",hp:72,hc:0},
+]},
+
+{n:"Bückeburg (NI, Potential)",lat:52.2617,lng:9.0528,r:"NI",p:[
+  {n:"(Potential – Terminabstimmung)",s:"funnel",t:"",a:"",hp:0,hc:0},
+]},
+
+// ========== BAYERN ==========
+{n:"Kirchroth (BY)",lat:48.8897,lng:12.7122,r:"BY",d:{addr:1357,hc:589,primary:"Driftsättning",color:"#0891b2",statuses:{"Ej påbörjat":6,"Driftsättning":2,"Avropad":1,"Intern beslutskalkyl godkänd":1}},p:[
+  {n:"P3",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:246,hc:105},
+  {n:"P4",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:325,hc:152},
+  {n:"P1-1",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:249,hc:16},
+  {n:"P5",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:154,hc:48},
+  {n:"HP0",s:"funnel",t:"HP0",a:"",hp:380,hc:165},
+  {n:"HP0 SNB",s:"funnel",t:"HP0",a:"",hp:535,hc:0},
+]},
+
+{n:"Leiblfing (BY)",lat:48.7753,lng:12.6183,r:"BY",d:{addr:915,hc:185,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Ej påbörjat":3,"Grovprojektering pågår":1}},p:[
+  {n:"P1",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:475,hc:83},
+]},
+
+{n:"Straubing (BY)",lat:48.8814,lng:12.5713,r:"BY",p:[
+  {n:"P1",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:307,hc:104},
+]},
+
+{n:"Parkstetten (BY)",lat:48.9494,lng:12.6853,r:"BY",d:{addr:988,hc:138,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"P1",s:"active",t:"Base Sales",a:"EnCom GmbH",hp:396,hc:99},
+]},
+
+{n:"Aiterhofen (BY)",lat:48.8153,lng:12.7403,r:"BY",d:{addr:827,hc:521,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":1}},p:[
+  {n:"HP0 SNB",s:"funnel",t:"HP0",a:"",hp:567,hc:439},
+  {n:"HP0",s:"cemetery",t:"Abandon",a:"",hp:128,hc:0},
+]},
+
+{n:"Steinach (BY)",lat:48.9667,lng:12.5333,r:"BY",d:{addr:951,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"(Abgebrochen)",s:"cemetery",t:"Abandon",a:"",hp:951,hc:0},
+]},
+
+{n:"Falkenfels (BY)",lat:48.9833,lng:12.7333,r:"BY",p:[
+  {n:"(T COM)",s:"cemetery",t:"T COM",a:"",hp:0,hc:0},
+  {n:"(Funnel)",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"Saulburg (BY)",lat:48.8867,lng:12.8333,r:"BY",p:[
+  {n:"(Abgebrochen)",s:"cemetery",t:"Abandon",a:"",hp:0,hc:0},
+]},
+
+{n:"Metten (BY)",lat:48.8567,lng:12.9167,r:"BY",d:{addr:2376,hc:252,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"P1",s:"cemetery",t:"Abandon",a:"",hp:2376,hc:252},
+]},
+
+{n:"Geiselhöring (BY)",lat:48.8278,lng:12.4000,r:"BY",p:[
+  {n:"(T COM)",s:"cemetery",t:"T COM",a:"",hp:0,hc:0},
+]},
+
+{n:"Wallersdorf (BY)",lat:48.7583,lng:12.7333,r:"BY",d:{addr:1150,hc:175,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":3}},p:[
+  {n:"P1",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
+  {n:"P2",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
+  {n:"P3",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
+]},
+
+{n:"Markt Eichendorf (BY)",lat:48.6469,lng:12.7864,r:"BY",p:[
+  {n:"MEV",s:"funnel",t:"MEV",a:"",hp:2144,hc:0},
+]},
+
+{n:"Karlskron (BY)",lat:48.6367,lng:11.3508,r:"BY",p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:1113,hc:0},
+]},
+
+{n:"Baar-Ebenhausen (BY)",lat:48.6583,lng:11.3167,r:"BY",p:[
+  {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:1797,hc:0},
+]},
+
+{n:"Furth (BY, LK Landshut)",lat:48.4639,lng:12.1928,r:"BY",p:[
+  {n:"S1-S4 (kein Interesse)",s:"cemetery",t:"Abandon",a:"",hp:0,hc:0},
+]},
+
+{n:"Obersußbach (BY)",lat:48.5261,lng:12.0817,r:"BY",p:[
+  {n:"S1-S3 (kein Interesse)",s:"cemetery",t:"Abandon",a:"",hp:0,hc:0},
+]},
+
+{n:"Weihmichl (BY)",lat:48.4917,lng:12.1278,r:"BY",p:[
+  {n:"S1-S4 (kein Interesse)",s:"cemetery",t:"Abandon",a:"",hp:0,hc:0},
+]},
+
+// MEV Bayern
+{n:"Ansbach (MEV)",lat:49.3017,lng:10.5714,r:"BY",p:[
+  {n:"MEV Ansbach",s:"funnel",t:"MEV",a:"",hp:2136,hc:0},
+]},
+
+{n:"Greding (MEV)",lat:49.0500,lng:11.3500,r:"BY",p:[
+  {n:"MEV Greding",s:"funnel",t:"MEV",a:"",hp:333,hc:0},
+]},
+
+{n:"Kirchdorf (MEV)",lat:48.1333,lng:12.3167,r:"BY",p:[
+  {n:"MEV Kirchdorf",s:"funnel",t:"MEV",a:"",hp:325,hc:0},
+]},
+
+{n:"Markt Allersberg (MEV)",lat:49.2561,lng:11.2394,r:"BY",p:[
+  {n:"MEV Markt Allersberg",s:"funnel",t:"MEV",a:"",hp:637,hc:0},
+]},
+
+{n:"Bad Abbach (MEV)",lat:48.9333,lng:12.0667,r:"BY",p:[
+  {n:"MEV Markt Bad Abbach",s:"funnel",t:"MEV",a:"",hp:2338,hc:0},
+]},
+
+{n:"Siegenburg (MEV)",lat:48.7583,lng:11.7167,r:"BY",p:[
+  {n:"MEV Markt Siegenburg",s:"funnel",t:"MEV",a:"",hp:1322,hc:0},
+]},
+
+{n:"Neumarkt i.d.OPf. (MEV)",lat:49.2803,lng:11.4608,r:"BY",p:[
+  {n:"MEV Neumarkt i.d.Of.",s:"funnel",t:"MEV",a:"",hp:6355,hc:0},
+]},
+
+{n:"Regensburg (MEV)",lat:49.0134,lng:12.1016,r:"BY",p:[
+  {n:"MEV Regensburg",s:"funnel",t:"MEV",a:"",hp:936,hc:0},
+]},
+
+{n:"Saal a.d. Donau (MEV)",lat:48.9083,lng:11.9500,r:"BY",p:[
+  {n:"MEV Saal a.d. Donau",s:"funnel",t:"MEV",a:"",hp:843,hc:0},
+]},
+
+{n:"Teugn (MEV)",lat:48.8744,lng:11.9578,r:"BY",p:[
+  {n:"MEV Teugn",s:"funnel",t:"MEV",a:"",hp:638,hc:0},
+]},
+
+{n:"Vilseck (MEV)",lat:49.6231,lng:11.7794,r:"BY",p:[
+  {n:"MEV Vilseck",s:"funnel",t:"MEV",a:"",hp:1577,hc:0},
+]},
+
+{n:"Ammerthal (MEV, Potential)",lat:49.4333,lng:11.7333,r:"BY",p:[
+  {n:"MEV (abgegeben)",s:"funnel",t:"MEV",a:"",hp:0,hc:0},
+]},
+
+
+// ========== NEUE STANDORTE (BOB Lieferung) ==========
+
+{n:"Berkenbrück (BB)",lat:52.375,lng:14.033,r:"BB",d:{addr:375,hc:48,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Grovprojektering pågår":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:375,hc:48},
+]},
+{n:"Bersteland (BB)",lat:52.058,lng:13.825,r:"BB",d:{addr:181,hc:29,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:181,hc:29},
+]},
+{n:"Brieskow-Finkenheerd",lat:52.292,lng:14.625,r:"BB",d:{addr:1197,hc:42,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Grovprojektering pågår":1,"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1197,hc:42},
+]},
+{n:"Guben",lat:51.95,lng:14.721,r:"BB",d:{addr:3035,hc:406,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Grovprojektering pågår":3,"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:3035,hc:406},
+]},
+{n:"Lauchhammer",lat:51.497,lng:13.774,r:"BB",d:{addr:480,hc:203,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1,"Beredning pågår":1}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:480,hc:203},
+]},
+{n:"Lebus",lat:52.433,lng:14.517,r:"BB",d:{addr:1215,hc:224,primary:"Grovkalkyl klar",color:"#64748b",statuses:{"Grovkalkyl klar":2,"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1215,hc:224},
+]},
+{n:"Liebenwalde",lat:52.883,lng:13.407,r:"BB",d:{addr:490,hc:2,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:490,hc:2},
+]},
+{n:"Märkische Heide",lat:51.967,lng:13.717,r:"BB",d:{addr:3070,hc:652,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":8,"Grävning":1}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:3070,hc:652},
+]},
+{n:"Michendorf",lat:52.3,lng:13.017,r:"BB",d:{addr:350,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:350,hc:0},
+]},
+{n:"Mühlenbeck",lat:52.687,lng:13.352,r:"BB",d:{addr:2310,hc:1247,primary:"Avslutat",color:"#16a34a",statuses:{"Avslutat":2,"Driftsättning":2,"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"cemetery",t:"Build",a:"",hp:2310,hc:1247},
+]},
+{n:"Müncheberg",lat:52.513,lng:14.128,r:"BB",d:{addr:1175,hc:83,primary:"Grovkalkyl klar",color:"#64748b",statuses:{"Grovkalkyl klar":2,"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1175,hc:83},
+]},
+{n:"Neuenhagen bei Berlin",lat:52.537,lng:13.72,r:"BB",d:{addr:1230,hc:462,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:1230,hc:462},
+]},
+{n:"Oranienburg",lat:52.755,lng:13.236,r:"BB",d:{addr:1925,hc:580,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:1925,hc:580},
+]},
+{n:"Petershagen bei Berlin",lat:52.533,lng:13.778,r:"BB",d:{addr:1265,hc:394,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":2,"Grävning":1}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:1265,hc:394},
+]},
+{n:"Siehdichum",lat:52.308,lng:14.55,r:"BB",d:{addr:1040,hc:52,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":3}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1040,hc:52},
+]},
+{n:"Spreehagen",lat:52.425,lng:14.125,r:"BB",d:{addr:458,hc:4,primary:"Grovkalkyl klar",color:"#64748b",statuses:{"Grovkalkyl klar":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:458,hc:4},
+]},
+{n:"Wandlitz / Schönerlinde",lat:52.75,lng:13.45,r:"BB",d:{addr:198,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:198,hc:0},
+]},
+{n:"Deggendorf (BY)",lat:48.84,lng:12.96,r:"BY",d:{addr:310,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:310,hc:0},
+]},
+{n:"Hainsfarth (BY)",lat:48.96,lng:10.712,r:"BY",d:{addr:739,hc:0,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:739,hc:0},
+]},
+{n:"Hofkirchen (BY)",lat:48.678,lng:13.122,r:"BY",d:{addr:1072,hc:361,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1072,hc:361},
+]},
+{n:"Irlbach (BY)",lat:48.823,lng:12.785,r:"BY",d:{addr:482,hc:154,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:482,hc:154},
+]},
+{n:"Mengkofen (BY)",lat:48.723,lng:12.422,r:"BY",d:{addr:2261,hc:1078,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":4}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:2261,hc:1078},
+]},
+{n:"Niederviehbach (BY)",lat:48.567,lng:12.4,r:"BY",d:{addr:1242,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1242,hc:0},
+]},
+{n:"Oberschneiding (BY)",lat:48.827,lng:12.538,r:"BY",d:{addr:1252,hc:503,primary:"Beredning pågår",color:"#2563eb",statuses:{"Vilande":1,"Beredning pågår":3}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:1252,hc:503},
+]},
+{n:"Oettingen (BY)",lat:48.95,lng:10.598,r:"BY",d:{addr:1951,hc:0,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1951,hc:0},
+]},
+{n:"Offenberg (BY)",lat:48.783,lng:13.0,r:"BY",d:{addr:390,hc:38,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:390,hc:38},
+]},
+{n:"Salching (BY)",lat:48.793,lng:12.648,r:"BY",d:{addr:597,hc:98,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:597,hc:98},
+]},
+{n:"Stephansposching (BY)",lat:48.833,lng:13.083,r:"BY",d:{addr:1341,hc:60,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1341,hc:60},
+]},
+{n:"Barmke (NI)",lat:52.2,lng:10.917,r:"NI",d:{addr:222,hc:61,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:222,hc:61},
+]},
+{n:"Dohren (NI)",lat:53.3,lng:9.633,r:"NI",d:{addr:449,hc:261,primary:"Grävning",color:"#d97706",statuses:{"Grävning":2,"Ej påbörjat":1,"Vilande":3}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:449,hc:261},
+]},
+{n:"Moisburg (NI)",lat:53.367,lng:9.967,r:"NI",d:{addr:638,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
+  {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:638,hc:0},
+]},
+{n:"Otter (NI)",lat:53.433,lng:9.783,r:"NI",d:{addr:883,hc:649,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Grovkalkyl klar":1}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:883,hc:649},
+]},
+{n:"Wenzendorf (NI)",lat:53.383,lng:9.817,r:"NI",d:{addr:508,hc:326,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1}},p:[
+  {n:"Lieferung",s:"active",t:"Build",a:"",hp:508,hc:326},
+]},
+]; // END DATA
+
+// ============================================================
+// MAP INIT
+// ============================================================
+const map = L.map('map', {
+  center: [52.2, 12.8],
+  zoom: 7,
+  zoomControl: true
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd', maxZoom: 19
+}).addTo(map);
+
+// ============================================================
+// FILTER STATE
+// ============================================================
+let fRegion = 'all';
+let fStatus = 'all';
+let markers = [];
+let clusters = null;
+
+function domStatus(s) {
+  if(s==='active') return 'Aktiv';
+  if(s==='funnel') return 'Funnel';
+  if(s==='cemetery') return 'Abgeschlossen';
+  return s;
+}
+
+function getColor(loc) {
+  const statuses = [...new Set(loc.p.map(p=>p.s))];
+  const isMEV = loc.p.some(p=>p.t==='MEV');
+  const isHP0 = loc.p.every(p=>p.t==='HP0' || p.hp===0);
+  if(isMEV) return '#a855f7';
+  // If only BOB delivery data (no real sales projects), color by delivery
+  if(loc.p.length===1 && loc.p[0].t==='Build' && loc.d) return loc.d.color;
+  if(statuses.includes('active')) return '#1d4ed8';
+  if(statuses.includes('funnel')) {
+    if(isHP0 && loc.p.some(p=>p.t==='HP0')) return '#f59e0b';
+    return '#ea580c';
+  }
+  return '#6b7280';
+}
+
+function getRadius(loc) {
+  const totalHP = loc.p.reduce((s,p)=>s+(p.hp||0),0);
+  if(totalHP===0) return 7;
+  return Math.min(26, Math.max(7, Math.sqrt(totalHP/20)));
+}
+
+function makePopup(loc) {
+  const totalHP = loc.p.reduce((s,p)=>s+(p.hp||0),0);
+  const totalHC = loc.p.reduce((s,p)=>s+(p.hc||0),0);
+  const pct = totalHP>0?((totalHC/totalHP)*100).toFixed(0)+'%':'—';
+
+  let html = `<div class="pop-title">📍 ${loc.n}</div>`;
+
+  // Group by status
+  const groups = {active:[], funnel:[], cemetery:[]};
+  loc.p.forEach(p => { if(groups[p.s]) groups[p.s].push(p); });
+
+  const renderGroup = (label, cls, items) => {
+    if(!items.length) return '';
+    let h = '';
+    items.forEach(p => {
+      const isMEV = p.t==='MEV';
+      const isHP0 = p.t==='HP0';
+      const typeBadge = isMEV ? `<span class="bx bx-mev">MEV</span>` :
+                        isHP0 ? `<span class="bx bx-hp0">HP0</span>` : '';
+      const hpInfo = p.hp>0 ? `<span class="pop-hp">${p.hp.toLocaleString('de-DE')} HP` + (p.hc>0?` · ${p.hc} HC`:'') + '</span>' : '';
+      const agencyInfo = p.a ? `<span class="pop-hp">· ${p.a}</span>` : '';
+      h += `<div class="pop-row"><span class="bx ${cls}">${label}</span>${typeBadge}<b>${p.n}</b>${hpInfo}${agencyInfo}</div>`;
+    });
+    return h;
+  };
+
+  html += renderGroup('Aktiv','bx-run', groups.active);
+  html += renderGroup('Funnel','bx-fun', groups.funnel);
+  html += renderGroup('Abgeschl.','bx-cem', groups.cemetery);
+
+  if(totalHP>0) {
+    html += `<div style="margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;font-size:11px;color:#475569;">
+      <b>Gesamt:</b> ${totalHP.toLocaleString('de-DE')} Adressen · ${totalHC} Signings · ${pct} Uptake
+    </div>`;
+  }
+
+
+  // BOB Delivery info
+  if(loc.d && loc.d.addr > 0) {
+    const statStr = Object.entries(loc.d.statuses||{}).map(([s,n])=>`${s}: ${n}`).join(' · ');
+    html += `<div style="margin-top:6px;padding:5px 7px;background:#f0fdf4;border-radius:6px;border-left:3px solid ${loc.d.color};">
+      <div style="font-size:10px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:0.08em;">🏗 BOB Lieferstatus</div>
+      <div style="font-size:11px;color:#15803d;margin-top:2px;"><b>${loc.d.primary}</b> · ${loc.d.addr.toLocaleString('de-DE')} Adressen · ${loc.d.hc} HC</div>
+      <div style="font-size:10px;color:#6b7280;margin-top:2px;">${statStr}</div>
+    </div>`;
+  }
+  return html;
+}
+
+function isVisible(loc) {
+  if(fRegion !== 'all' && loc.r !== fRegion) return false;
+  if(fStatus !== 'all') {
+    const hasStatus = loc.p.some(p=>p.s===fStatus);
+    if(!hasStatus) return false;
+  }
+  return true;
+}
+
+function redraw() {
+  if(clusters) map.removeLayer(clusters);
+  clusters = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    iconCreateFunction: function(cluster) {
+      const count = cluster.getChildCount();
+      return L.divIcon({
+        html: `<div style="background:#334155;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);">${count}</div>`,
+        className: '',
+        iconSize: L.point(32, 32)
+      });
+    }
+  });
+
+  let cActive=0, cFunnel=0, cCem=0, cTot=0;
+
+  D.forEach(loc => {
+    if(!isVisible(loc)) return;
+    cTot++;
+    const hasStat = s => loc.p.some(p=>p.s===s);
+    if(hasStat('active')) cActive++;
+    if(hasStat('funnel')) cFunnel++;
+    if(hasStat('cemetery')) cCem++;
+
+    const color = getColor(loc);
+    const r = getRadius(loc);
+    const statuses = [...new Set(loc.p.map(p=>p.s))];
+    const hasMulti = statuses.length > 1;
+
+    const marker = L.circleMarker([loc.lat, loc.lng], {
+      radius: r,
+      fillColor: color,
+      color: hasMulti ? '#252121' : color,
+      weight: hasMulti ? 2.5 : 1.5,
+      opacity: 1,
+      fillOpacity: 0.82
+    }).bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+
+    clusters.addLayer(marker);
+  });
+
+  map.addLayer(clusters);
+
+  document.getElementById('sn-run').textContent = cActive;
+  document.getElementById('sn-fun').textContent = cFunnel;
+  document.getElementById('sn-cem').textContent = cCem;
+  document.getElementById('sn-tot').textContent = cTot;
+}
+
+function setR(val, btn) {
+  fRegion = val;
+  document.querySelectorAll('.btn-all, .btn-bb, .btn-by, .btn-ni').forEach(b => {
+    if(b.classList.contains('btn-run') || b.classList.contains('btn-fun') || b.classList.contains('btn-cem')) return;
+    b.classList.remove('on');
+  });
+  btn.classList.add('on');
+  redraw();
+}
+
+function setS(val, btn) {
+  fStatus = val;
+  document.querySelectorAll('.btn-run, .btn-fun, .btn-cem').forEach(b => b.classList.remove('on'));
+  // also handle the "all" button in status group
+  document.querySelectorAll('#panel .bg').forEach(bg => {
+    const btns = bg.querySelectorAll('.btn');
+    const hasRunFunCem = [...btns].some(b=>b.classList.contains('btn-run'));
+    if(hasRunFunCem) btns.forEach(b=>b.classList.remove('on'));
+  });
+  btn.classList.add('on');
+  redraw();
+}
+
+redraw();
+
+// Add scale
+L.control.scale({imperial: false}).addTo(map);
+</script>
+</body>
+</html>

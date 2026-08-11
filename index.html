@@ -130,6 +130,7 @@ tr.no-sales-2mo { background: #fff8f8 !important; }
   <button class="btn btn-dark" onclick="scrollToSection('sec-coa')">CoA's missing</button>
   <button class="btn btn-brown" onclick="scrollToSection('sec-projects')">Running Projects</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-funnel')">Projects Funnel</button>
+  <button class="btn btn-dark" onclick="scrollToSection('sec-projektkarte')">🗺️ Projektkarte</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-potential')">New Potential</button>
   <button class="btn btn-dark" onclick="scrollToSection('sec-contacts')">Contacts Fiber</button>
   <button class="btn btn-gold" onclick="openImport()" style="margin-left:auto;">📥 Import Excel</button>
@@ -1095,9 +1096,10 @@ function render(){
   html+='<td style="text-align:center;color:#7c3aed;font-weight:900;">'+totJulyAct+'</td>';
   var vTotJulyTarget=visiblePartners.reduce(function(s,p){return s+(p.juneActual||0);},0);
   var vTotAug=visiblePartners.reduce(function(s,p){return s+(p.august||0);},0);
-  html+='<td style="text-align:center;color:#1d4ed8;font-weight:900;">'+vTotAug+'</td>';
+  var vTotAugAll=visiblePartners.length===partners.length?(S.aug||vTotAug):vTotAug;
+  html+='<td style="text-align:center;color:#1d4ed8;font-weight:900;">'+vTotAugAll+'</td>';
   html+='<td style="text-align:center;background:rgba(254,243,199,0.5);"><span style="font-weight:700;color:#92400e;">'+vTotJulyTarget+'</span></td>';
-  var vTotJulyFcst=vTotAug>0?Math.round(vTotAug/augWDdone*21):Math.round(totJulyAct/23*21);
+  var vTotJulyFcst=vTotAugAll>0?Math.round(vTotAugAll/augWDdone*21):Math.round(totJulyAct/23*21);
   html+='<td style="text-align:center;">'+(vTotJulyFcst>0?'<span style="display:inline-block;padding:2px 6px;font-weight:900;color:#5b21b6;border:2px solid #7c3aed;border-radius:9999px;">'+vTotJulyFcst+'</span>':'<span style="color:#94a3b8;font-weight:700;">—</span>')+'</td>';
   html+='<td style="text-align:center;">'+vTotYtd+'</td>';
   html+='<td style="text-align:center;">'+vTotFcst+'</td>';
@@ -1616,6 +1618,20 @@ function render(){
     }
   });
   html+='</tbody></table></div></div></div></section>';
+
+  // ── PROJEKTKARTE ──
+  html+='<section id="sec-projektkarte" style="scroll-margin-top:70px;"><div class="container">';
+  html+='<div class="card" style="border:2px solid #3b82f6;background:#f0f9ff;padding:0;overflow:hidden;">';
+  html+='<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #bfdbfe;cursor:pointer;" onclick="window.open(\'projektkarte.html\',\'_blank\')">';
+  html+='<div style="display:flex;align-items:center;gap:12px;">';
+  html+='<span style="font-size:24px;">🗺️</span>';
+  html+='<div><h2 style="margin:0;color:#1e40af;font-size:18px;">Open Infra Projektkarte</h2>';
+  html+='<p style="color:#3b82f6;margin:3px 0 0;font-size:12px;font-weight:600;">BB · BY · NI — Alle Standorte, Lieferstatus &amp; Vertriebsprojekte</p></div></div>';
+  html+='<div style="display:flex;align-items:center;gap:8px;color:#2563eb;font-size:13px;font-weight:700;">↗ In neuem Fenster öffnen</div></div>';
+  html+='<div style="position:relative;height:380px;overflow:hidden;cursor:pointer;" onclick="window.open(\'projektkarte.html\',\'_blank\')">';
+  html+='<iframe src="projektkarte.html" style="width:100%;height:520px;border:none;pointer-events:none;margin-top:-60px;" loading="lazy"></iframe>';
+  html+='<div style="position:absolute;inset:0;background:transparent;" title="Karte in neuem Fenster öffnen"></div>';
+  html+='<div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,rgba(240,249,255,0.8));pointer-events:none;"></div></div></div></section>';
 
   // ── CEMETERY ──
   var cemFiltered=cemeteryRows.filter(function(r){
