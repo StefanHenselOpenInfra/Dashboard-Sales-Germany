@@ -1108,11 +1108,11 @@ function render(){
     html+='</div>';
     html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
     html+='<div class="mini-kpi-strip4" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.8rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+targetReached+'%</span><b>Q2 Final</b></div>';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.8rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Needed+'</span><b>Q3 Adj. Target</b></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><b>'+q3Monthly+'</b><br>Avg/Month Q3';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+targetReached+'%</span><b>Q2 Final</b></div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Needed+'</span><b>Q3 Adj. Target</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Monthly+'</span>Avg/Month Q3';
     html+='<div style="margin-top:4px;font-size:10px;color:rgba(255,255,255,.5);">Target adjusted</div></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><b>'+S.q3WorkingDaysLeft+'</b><br>Q3 Days</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+S.q3WorkingDaysLeft+'</span>Q3 Days</div>';
     html+='</div>';
     // ── Q3 Brutto ──
     var totalQ3=(S.jul||0)+(S.aug||0)+(S.sep||0);
