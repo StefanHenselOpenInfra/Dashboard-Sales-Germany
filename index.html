@@ -93,6 +93,13 @@ img,svg{max-width:100%;height:auto;}
   .grid3,.grid4,.grid5{gap:10px;}
   .hero-promo-row{flex-direction:column;}
   .hero-promo-img{width:100% !important;height:auto !important;}
+  .proj-kpi-strip{grid-template-columns:repeat(3,1fr) !important;}
+  .proj-kpi-strip>div>div:last-child{font-size:1.3rem !important;}
+  .mini-kpi-strip>div>div:last-child{font-size:1.4rem !important;}
+  .mini-kpi-strip4{grid-template-columns:repeat(2,1fr) !important;}
+}
+@media(max-width:420px){
+  .proj-kpi-strip{grid-template-columns:repeat(2,1fr) !important;}
 }
 table{width:100%;border-collapse:collapse;}
 th,td{padding:10px 12px;text-align:left;}
@@ -887,12 +894,12 @@ function render(){
       '<div style="margin-bottom:12px;">'+pb(k.q3pct,100,k.q3pct>=100?'pb-success':'pb-purple',k.q3pct>=100?'pb-bg-success':'pb-bg-purple')+'</div>'+
       '<div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:1rem;padding:12px;font-size:13px;">'+
         '<div style="font-weight:700;color:#5b21b6;margin-bottom:6px;">Q3 Delta</div>'+
-        '<div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:900;">'+
-          '<span style="background:#fff;border:2px solid '+(k.q2delta>0?'#dc2626':'#059669')+';border-radius:8px;padding:3px 10px;color:'+(k.q2delta>0?'#dc2626':'#059669')+';">'+k.q2delta+'</span>'+
+        '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px;font-weight:900;">'+
+          '<span style="background:#fff;border:2px solid '+(k.q2delta>0?'#dc2626':'#059669')+';border-radius:8px;padding:3px 10px;color:'+(k.q2delta>0?'#dc2626':'#059669')+';white-space:nowrap;flex-shrink:0;">'+k.q2delta+'</span>'+
           '<span style="color:#7c3aed;font-size:18px;">+</span>'+
-          '<span style="background:#fff;border:2px solid #7c3aed;border-radius:8px;padding:3px 10px;color:#5b21b6;">'+k.target+'</span>'+
+          '<span style="background:#fff;border:2px solid #7c3aed;border-radius:8px;padding:3px 10px;color:#5b21b6;white-space:nowrap;flex-shrink:0;">'+k.target+'</span>'+
           '<span style="color:#7c3aed;font-size:18px;">=</span>'+
-          '<span style="background:'+(k.q3needed<=0?'#059669':'#5b21b6')+';color:#fff;border-radius:8px;padding:3px 10px;font-size:15px;">'+(k.q3needed<=0?(Math.abs(k.q3needed)+' ahead'):k.q3needed)+'</span>'+
+          '<span style="background:'+(k.q3needed<=0?'#059669':'#5b21b6')+';color:#fff;border-radius:8px;padding:3px 10px;font-size:15px;white-space:nowrap;flex-shrink:0;">'+(k.q3needed<=0?(Math.abs(k.q3needed)+' ahead'):k.q3needed)+'</span>'+
         '</div>'+
         '<div style="margin-top:6px;font-size:11px;color:#7c3aed;font-weight:600;">'+(k.q2delta>0?'Q2 shortfall':'Q2 surplus')+' &nbsp;+&nbsp; Q3 base target &nbsp;=&nbsp; Q3 adjusted</div>'+
       '</div>'+
@@ -924,12 +931,12 @@ function render(){
       '<div style="margin-bottom:12px;">'+pb(k.q4pct,100,k.q4pct>=100?'pb-success':'pb-orange',k.q4pct>=100?'pb-bg-success':'pb-bg-orange')+'</div>'+
       '<div style="background:#ffedd5;border:1px solid #fdba74;border-radius:1rem;padding:12px;font-size:13px;">'+
         '<div style="font-weight:700;color:#9a3412;margin-bottom:6px;">Q4 Delta</div>'+
-        '<div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:900;">'+
-          '<span style="background:#fff;border:2px solid '+(k.h2remaining>0?'#dc2626':'#059669')+';border-radius:8px;padding:3px 10px;color:'+(k.h2remaining>0?'#dc2626':'#059669')+';">'+k.h2remaining+'</span>'+
+        '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px;font-weight:900;">'+
+          '<span style="background:#fff;border:2px solid '+(k.h2remaining>0?'#dc2626':'#059669')+';border-radius:8px;padding:3px 10px;color:'+(k.h2remaining>0?'#dc2626':'#059669')+';white-space:nowrap;flex-shrink:0;">'+k.h2remaining+'</span>'+
           '<span style="color:#ea580c;font-size:18px;">+</span>'+
-          '<span style="background:#fff;border:2px solid #ea580c;border-radius:8px;padding:3px 10px;color:#9a3412;">'+k.target+'</span>'+
+          '<span style="background:#fff;border:2px solid #ea580c;border-radius:8px;padding:3px 10px;color:#9a3412;white-space:nowrap;flex-shrink:0;">'+k.target+'</span>'+
           '<span style="color:#ea580c;font-size:18px;">=</span>'+
-          '<span style="background:'+(k.q4needed<=0?'#059669':'#9a3412')+';color:#fff;border-radius:8px;padding:3px 10px;font-size:15px;">'+(k.q4needed<=0?(Math.abs(k.q4needed)+' ahead'):k.q4needed)+'</span>'+
+          '<span style="background:'+(k.q4needed<=0?'#059669':'#9a3412')+';color:#fff;border-radius:8px;padding:3px 10px;font-size:15px;white-space:nowrap;flex-shrink:0;">'+(k.q4needed<=0?(Math.abs(k.q4needed)+' ahead'):k.q4needed)+'</span>'+
         '</div>'+
         '<div style="margin-top:6px;font-size:11px;color:#ea580c;font-weight:600;">'+(k.h2remaining>0?'Q2+Q3 shortfall':'Q2+Q3 surplus')+' &nbsp;+&nbsp; Q4 base target &nbsp;=&nbsp; Q4 adjusted</div>'+
       '</div>'+
@@ -1100,12 +1107,12 @@ function render(){
     html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+totalTarget+'</span>';
     html+='</div>';
     html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+targetReached+'%;height:100%;border-radius:9999px;"></div></div></div>';
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+targetReached+'%</span><b>Q2 Final</b></div>';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+q3Needed+'</span><b>Q3 Adj. Target</b></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Monthly+'</b><br>Avg/Month Q3';
+    html+='<div class="mini-kpi-strip4" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.8rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+targetReached+'%</span><b>Q2 Final</b></div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.8rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Needed+'</span><b>Q3 Adj. Target</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><b>'+q3Monthly+'</b><br>Avg/Month Q3';
     html+='<div style="margin-top:4px;font-size:10px;color:rgba(255,255,255,.5);">Target adjusted</div></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+S.q3WorkingDaysLeft+'</b><br>Q3 Days</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><b>'+S.q3WorkingDaysLeft+'</b><br>Q3 Days</div>';
     html+='</div>';
     // ── Q3 Brutto ──
     var totalQ3=(S.jul||0)+(S.aug||0)+(S.sep||0);
@@ -1429,11 +1436,11 @@ function render(){
   var _pJul=projs.reduce(function(s,r){return s+(r[9]||0);},0);
   var _pAugSum=projs.reduce(function(s,r){return s+(projectAugDelta[r[0]]||0);},0);
   var _pTotal=_pFiltered?projs.reduce(function(s,r){return s+(r[3]||0)+(r[4]||0)+(r[5]||0)+(r[6]||0)+(r[9]||0);},0)+_pAugSum:S.salesReportTotal2026;
-  html+='<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;">';
+  html+='<div class="proj-kpi-strip" style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;">';
   [['Sales Total 2026',_pTotal],['May',_pMay],['June',_pJun],['July',_pJul],['August',_pAugSum],['Projects',projs.length]].forEach(function(item){
-    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;min-width:0;">';
     html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
-    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+item[1]+'</div></div>';
   });
   html+='</div>';
 
@@ -1482,7 +1489,9 @@ function render(){
     var tcomBadge=r[0]==='DE-BB Neuzelle Combined P1'?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">TCOM Area</span>':'';
     var tcomCompBadge=(r[0]==='DE-BB Rangsdorf HP0')?'<span style="margin-left:8px;background:#dc2626;color:#fff;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;">TCOM competition</span>':'';
     var closeStampBadge=closeStampProjs.indexOf(r[0])>=0?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 8px;font-size:10px;font-weight:900;vertical-align:middle;white-space:nowrap;"><b>15-9-2026 close !!</b></span>':'';
-    html+='<td style="padding:3px 8px;white-space:nowrap;font-size:12px;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;" title="In BoB öffnen">'+esc(r[0])+'</a>':esc(r[0]))+gestopptBadge+underConstructionBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+targetReachedBadge+coaMissingBadge+coaWaitingBadge+polyModifyBadge+tcomBadge+tcomCompBadge+closeStampBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:700;vertical-align:middle;white-space:nowrap;">off track</span>':'')+'</td>';
+    var _rowBadges=gestopptBadge+underConstructionBadge+stoppItBadge+commissionBadge+checkAddressBadge+startBadge+targetReachedBadge+coaMissingBadge+coaWaitingBadge+polyModifyBadge+tcomBadge+tcomCompBadge+closeStampBadge+(allZero?'<span style="margin-left:8px;background:#fff;color:#dc2626;border:2px solid #dc2626;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:700;vertical-align:middle;white-space:nowrap;">off track</span>':'');
+    _rowBadges=_rowBadges.split('<span').join(' <span'); // ensure a real space before every badge so it can wrap onto its own line on narrow screens instead of overflowing the cell
+    html+='<td style="padding:3px 8px;font-size:12px;max-width:220px;">'+(bobUrl?'<a href="'+bobUrl+'" target="_blank" style="color:#363E36;text-decoration:none;border-bottom:1px dotted #C86750;white-space:nowrap;" title="In BoB öffnen">'+esc(r[0])+'</a>':'<span style="white-space:nowrap;">'+esc(r[0])+'</span>')+_rowBadges+'</td>';
     html+='<td style="padding:3px 8px;text-align:center;color:#475569;font-size:12px;">'+(hp>0?hp:'—')+'</td>';
     html+='<td style="padding:3px 8px;text-align:center;font-size:12px;">'+hc+'</td>';
     html+='<td style="padding:3px 8px;text-align:center;color:'+uptakeColor+';font-size:12px;">'+uptakePct+'</td>';
@@ -1615,11 +1624,11 @@ function render(){
   html+='<button class="btn btn-dark" onclick="funnelSortDir=funnelSortDir===\'asc\'?\'desc\':\'asc\';render();">'+(funnelSortDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
 
-  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">';
+  html+='<div class="mini-kpi-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">';
   [['Projects',funnel.length],['Total HP',totalHP.toLocaleString('de-DE')],['Total Sold',totalSold.toLocaleString('de-DE')]].forEach(function(item){
-    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;">';
+    html+='<div style="background:#fff;border-radius:1rem;padding:12px;border:1px solid #E4A489;min-width:0;">';
     html+='<div style="font-size:11px;font-weight:700;color:#C86750;text-transform:uppercase;">'+item[0]+'</div>';
-    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;">'+item[1]+'</div></div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+item[1]+'</div></div>';
   });
   html+='</div>';
 
@@ -1927,11 +1936,11 @@ function render(){
   html+='</select>';
   html+='<button class="btn btn-dark" onclick="cemeteryDir=cemeteryDir===\'asc\'?\'desc\':\'asc\';render();">'+(cemeteryDir==='asc'?'↑':'↓')+'</button>';
   html+='</div></div>';
-  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">';
+  html+='<div class="mini-kpi-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">';
   [['Projekte',cemFiltered.length],['Total Sold',cemTotalSold],['Total HP',cemTotalHP.toLocaleString('de-DE')]].forEach(function(item){
-    html+='<div style="background:#f9fafb;border-radius:1rem;padding:12px;border:1px solid #e5e7eb;">';
+    html+='<div style="background:#f9fafb;border-radius:1rem;padding:12px;border:1px solid #e5e7eb;min-width:0;">';
     html+='<div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;">'+item[0]+'</div>';
-    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;color:#111827;">'+item[1]+'</div></div>';
+    html+='<div style="font-size:1.8rem;font-weight:900;margin-top:4px;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+item[1]+'</div></div>';
   });
   html+='</div>';
   html+='<div style="overflow-y:auto;max-height:600px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
