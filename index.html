@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
-<title>Open Infra Germany Dashboard Q2 2026</title>
+<title>Open Infra Germany Dashboard 2026</title>
 <!-- PWA -->
 <link rel="manifest" href="manifest.json"/>
 <link rel="icon" href="favicon-96.png"/>
@@ -74,6 +74,11 @@ section{padding:40px 0;}
    content's intrinsic (unwrapped) width, which forces text like the hero heading to
    push the whole page wider than the viewport on phones. */
 .grid2>*,.grid3>*,.grid4>*,.grid5>*,.kpi-grid>*,.hero-grid>*{min-width:0;}
+/* Same fix, applied globally: dozens of cards throughout the dashboard build ad-hoc
+   grids via inline style="display:grid;..." instead of the .grid2-5 classes above.
+   Without min-width:0 on their children, any card with slightly long content (a label,
+   a badge, a percentage) can force that whole row wider than the phone screen. */
+div[style*="display:grid"]>*{min-width:0;}
 html,body{overflow-x:hidden;max-width:100%;}
 img,svg{max-width:100%;height:auto;}
 @media(max-width:600px){
@@ -87,7 +92,7 @@ img,svg{max-width:100%;height:auto;}
   .kpi-grid,.hero-grid{gap:14px;}
   .grid3,.grid4,.grid5{gap:10px;}
   .hero-promo-row{flex-direction:column;}
-  .hero-promo-img{width:100% !important;height:auto !important;max-height:220px;}
+  .hero-promo-img{width:100% !important;height:auto !important;}
 }
 table{width:100%;border-collapse:collapse;}
 th,td{padding:10px 12px;text-align:left;}
@@ -960,7 +965,7 @@ function render(){
   html+='<img src="https://openinfra.com/se/wp-content/themes/openinfra/assets/img/logo.svg" alt="Open Infra" style="height:32px;" onerror="this.style.display=\'none\'">';
   html+='<span style="font-size:1.2rem;font-weight:900;color:#252121;">Open Infra</span></div><br>';
   html+='<span class="badge" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:16px;">Q2 / Q3 Sales Performance · 2026</span>';
-  html+='<h1>Open Infra Germany Dashboard Q2 2026</h1>';
+  html+='<h1>Open Infra Germany Dashboard 2026</h1>';
   html+='<p style="margin-top:16px;color:#cbd5e1;max-width:540px;">Current sales, target achievement, forecast, and required working-day pace for Brandenburg, Hamburg, and Regensburg.</p>';
   html+='<div style="margin-top:24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">';
   html+='<div style="position:relative;flex:0 1 360px;min-width:180px;" class="hero-search-wrap">';
@@ -1433,7 +1438,7 @@ function render(){
   html+='</div>';
 
   html+='<div style="overflow-y:auto;max-height:1100px;border-radius:1rem;border:1px solid #e5e7eb;background:#fff;">';
-  html+='<table style="table-layout:fixed;">';
+  html+='<table style="table-layout:fixed;min-width:1000px;">';
   html+='<colgroup><col style="width:17%"><col style="width:5%"><col style="width:5%"><col style="width:6%"><col style="width:5%"><col style="width:6%"><col style="width:5%"><col style="width:8%"><col style="width:8%"><col style="width:5%"><col style="width:5%"><col style="width:5%"><col style="width:5%"><col style="width:5%"><col style="width:5%"></colgroup>';
   html+='<thead style="background:#FBF5ED;position:sticky;top:0;"><tr>';
   [['Project','left'],['HP','center'],['HC','center'],['Uptake','center'],['Target','center'],['Delta Target','center'],['Delta Sales','center'],['Type','left'],['Sales Agency','left'],['March','center'],['April','center'],['May','center'],['June','center'],['July','center'],['August','center']].forEach(function(col){
@@ -2015,8 +2020,8 @@ function render(){
   // ── FOOTER ──
   html+='<div style="background:#4d3428;color:#fff;padding:32px 0;margin-top:20px;">';
   html+='<div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
-  html+='<div>📈 Make daily sales pace visible</div>';
-  html+='<div>📅 Calculate Q2 progress automatically</div>';
+  html+='<div>📈 Stefan Hensel +49 151 28469739</div>';
+  html+='<div>📅 Calculate KPI´s automatically</div>';
   html+='<div>✅ Manage teams and targets transparently</div>';
   html+='</div></div>';
   var _focused=document.activeElement;
