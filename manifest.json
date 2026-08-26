@@ -1,0 +1,15 @@
+{
+  "name": "Open Infra Germany Sales Dashboard 2026",
+  "short_name": "Sales 2026",
+  "description": "Germany Sales Dashboard – Q2/Q3/Q4 2026 KPIs, Running Projects, Funnel & Reports",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5e3d8",
+  "theme_color": "#363E36",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
