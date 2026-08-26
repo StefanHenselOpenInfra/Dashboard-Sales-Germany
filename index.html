@@ -97,9 +97,11 @@ img,svg{max-width:100%;height:auto;}
   .proj-kpi-strip>div>div:last-child{font-size:1.3rem !important;}
   .mini-kpi-strip>div>div:last-child{font-size:1.4rem !important;}
   .mini-kpi-strip4{grid-template-columns:repeat(2,1fr) !important;}
+  .q3-stat-row5{grid-template-columns:repeat(3,1fr) !important;}
 }
 @media(max-width:420px){
   .proj-kpi-strip{grid-template-columns:repeat(2,1fr) !important;}
+  .q3-stat-row5{grid-template-columns:repeat(2,1fr) !important;}
 }
 table{width:100%;border-collapse:collapse;}
 th,td{padding:10px 12px;text-align:left;}
@@ -1141,23 +1143,23 @@ function render(){
     html+='<span style="font-size:11px;color:rgba(255,255,255,.4);font-weight:500;">Q2 delta &nbsp;+&nbsp; Q3 base &nbsp;=&nbsp; Q3 adjusted</span>';
     html+='</div>';
     html+='<p style="font-size:13px;color:#cbd5e1;margin-top:0;">Q3 Gross (Jul+Aug+Sep) / Target</p>';
-    html+='<div style="display:flex;align-items:flex-end;gap:12px;margin-top:8px;">';
-    html+='<span style="font-size:3.5rem;font-weight:900;">'+totalQ3+'</span>';
-    html+='<span style="color:#94a3b8;padding-bottom:8px;">/ '+q3Target+'</span>';
-    html+='<span style="display:flex;flex-direction:column;padding-bottom:6px;margin-left:8px;">';
+    html+='<div class="q3-total-row" style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;margin-top:8px;">';
+    html+='<span style="font-size:3.5rem;font-weight:900;white-space:nowrap;">'+totalQ3+'</span>';
+    html+='<span style="color:#94a3b8;padding-bottom:8px;white-space:nowrap;">/ '+q3Target+'</span>';
+    html+='<span style="display:flex;flex-direction:column;padding-bottom:6px;margin-left:8px;white-space:nowrap;">';
     html+='<span style="font-size:10px;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Q3 Fcst</span>';
     html+='<span style="font-size:1.6rem;font-weight:900;color:#f2d1b3;">~'+(q3Forecast||0)+'</span>';
     html+='</span>';
     html+='</div>';
     var _prevQ3=settings.prevQ3Total!=null?settings.prevQ3Total:(settings.previousJul||0);var _q3Delta=totalQ3-_prevQ3;if(_q3Delta>0){var _dColor=_q3Delta>0?'#4ade80':'#f87171';var _dBg=_q3Delta>0?'rgba(74,222,128,.12)':'rgba(248,113,113,.12)';var _dBorder=_q3Delta>0?'rgba(74,222,128,.4)':'rgba(248,113,113,.4)';var _dArrow=_q3Delta>0?'▲':'▼';html+='<div style="margin-bottom:10px;display:flex;align-items:center;gap:10px;">';html+='<span style="background:'+_dBg+';border:1px solid '+_dBorder+';border-radius:9999px;padding:4px 14px;font-size:13px;font-weight:800;color:'+_dColor+';letter-spacing:.02em;">';html+=(_q3Delta>0?'+':'')+_q3Delta+' '+_dArrow+'  vs. last SR';html+='</span>';html+='</div>';}html+='<div style="margin-top:16px;"><div class="pb pb-bg-danger"><div class="pb pb-danger" style="width:'+q3Reached+'%;height:100%;border-radius:9999px;"></div></div></div>';
     var q3Delta=q3Needed-totalQ3;
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Reached+'%</b><br>Achievement</div>';
-    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;"><span style="font-size:1.8rem;font-weight:900;display:block;">'+(q3Done>0?q3ForecastPct+'%':'—')+'</span><b>Forecast</b></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3TimePct+'%</b><br>Q3 Time';
+    html+='<div class="q3-stat-row5" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:10px;margin-top:16px;font-size:12px;">';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Reached+'%</span>Achievement</div>';
+    html+='<div style="background:linear-gradient(135deg,#C86750,#C86750);border:2px solid #f2d1b3;border-radius:1rem;padding:12px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+(q3Done>0?q3ForecastPct+'%':'—')+'</span><b>Forecast</b></div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3TimePct+'%</span>Q3 Time';
     html+='<div style="margin-top:6px;"><div class="pb pb-time-bg" style="height:6px;"><div style="width:'+q3TimePct+'%;height:100%;border-radius:9999px;background:#C86750;"></div></div></div></div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b>'+q3Left+'</b><br>Days left</div>';
-    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;"><b style="color:'+(q3Delta>0?'#fca5a5':'#86efac')+';">'+q3Delta+'</b><br>Δ to Target</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+q3Left+'</span>Days left</div>';
+    html+='<div style="background:rgba(255,255,255,.1);border-radius:1rem;padding:10px;min-width:0;"><span style="font-size:1.3rem;font-weight:900;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:'+(q3Delta>0?'#fca5a5':'#86efac')+';">'+q3Delta+'</span>Δ to Target</div>';
     html+='</div>';
   }
   html+='</div></div></div></div></div>';
@@ -1183,8 +1185,8 @@ function render(){
 
   // Agency table
   html+='<div class="card">';
-  html+='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
-  html+='<h2 style="font-size:2rem;">👥 Agency Overview</h2>';
+  html+='<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">';
+  html+='<h2>👥 Agency Overview</h2>';
   html+='<div style="display:flex;gap:8px;">';
   html+='<select onchange="agencySortKey=this.value;render();" style="width:auto;">';
   ['August','July','June','May','April','March','February','January','YTD','Forecast 2026','Partner'].forEach(function(k){
