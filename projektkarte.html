@@ -38,6 +38,7 @@ body { font-family: -apple-system, Arial, sans-serif; }
 .btn-run.on  { background: #1d4ed8; }
 .btn-fun.on  { background: #ea580c; }
 .btn-cem.on  { background: #6b7280; }
+.btn-sto.on  { background: #dc2626; }
 
 .divider { border-top: 1px solid #e2e8f0; margin: 10px 0; }
 .leg { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #334155; }
@@ -74,6 +75,7 @@ body { font-family: -apple-system, Arial, sans-serif; }
 .bx-cem { background: #e5e7eb; color: #4b5563; }
 .bx-hp0 { background: #fef9c3; color: #92400e; }
 .bx-mev { background: #ede9fe; color: #5b21b6; }
+.bx-sto { background: #fee2e2; color: #b91c1c; }
 .pop-hp { font-size: 11px; color: #64748b; }
 </style>
 </head>
@@ -98,12 +100,14 @@ body { font-family: -apple-system, Arial, sans-serif; }
       <button class="btn btn-run"    onclick="setS('active',this)">Aktiv</button>
       <button class="btn btn-fun"    onclick="setS('funnel',this)">Funnel</button>
       <button class="btn btn-cem"    onclick="setS('cemetery',this)">Abgeschl.</button>
+      <button class="btn btn-sto"    onclick="setS('storno',this)">Storno</button>
     </div>
   </div>
   <div class="divider"></div>
   <div class="leg"><div class="dot" style="background:#1d4ed8"></div>Aktive Projekte</div>
   <div class="leg"><div class="dot" style="background:#ea580c"></div>Funnel / Pipeline</div>
   <div class="leg"><div class="dot" style="background:#6b7280"></div>Abgeschlossen</div>
+  <div class="leg"><div class="dot" style="background:#dc2626"></div>Storno</div>
   <div class="leg"><div class="dot" style="background:#f59e0b;border-color:#d97706"></div>HP0 Projekte</div>
   <div class="leg"><div class="dot" style="background:#a855f7"></div>MEV Projekte</div>
   <div class="leg"><div class="dot" style="background:#252121;border-radius:2px;"></div>Mehrere Status</div>
@@ -139,9 +143,9 @@ body { font-family: -apple-system, Arial, sans-serif; }
   <div class="divider"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
     <span style="font-size:10px;font-weight:800;color:#059669;text-transform:uppercase;letter-spacing:0.1em;">BOB Adressen</span>
-    <button id="btn-bob" class="btn btn-all" onclick="toggleBobAddr(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#f1f5f9;color:#64748b;border-color:#94a3b8;">Aus</button>
+    <button id="btn-bob" class="btn btn-all" onclick="toggleBobAddr(this)" style="font-size:10px;padding:2px 8px;min-width:44px;background:#059669;color:white;border-color:#059669;">✓ Ein</button>
   </div>
-  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">49 Projekte als Flächen-Layer</div>
+  <div style="font-size:9px;color:#94a3b8;margin-top:2px;margin-bottom:5px;">53 Projekte als Flächen-Layer</div>
   <div class="divider"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
     <span style="font-size:10px;font-weight:800;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.1em;">Projekte</span>
@@ -203,6 +207,7 @@ body { font-family: -apple-system, Arial, sans-serif; }
   <div class="st"><div class="st-n" id="sn-run">–</div><div class="st-l">🔵 Aktiv</div></div>
   <div class="st"><div class="st-n" id="sn-fun">–</div><div class="st-l">🟠 Funnel</div></div>
   <div class="st"><div class="st-n" id="sn-cem">–</div><div class="st-l">⚫ Abgesch.</div></div>
+  <div class="st"><div class="st-n" id="sn-sto">–</div><div class="st-l">🔴 Storno</div></div>
   <div class="st"><div class="st-n" id="sn-tot">–</div><div class="st-l">Standorte</div></div>
 </div>
 
@@ -274,13 +279,21 @@ const D = [
   {n:"HP0 FC",s:"cemetery",t:"HP0",a:"",hp:1363,hc:274},
 ]},
 
-{n:"Beetzsee",lat:52.3883,lng:12.5072,r:"BB",d:{addr:2615,hc:282,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1,"Grovkalkyl klar":1,"Ej påbörjat":5}},p:[
+{n:"Beetzsee",lat:52.3883,lng:12.5072,r:"BB",polyColor:"#16a34a",polyLabel:"Beetzsee P1 HP0",poly:[[52.45739,12.55069],[52.46044,12.53219],[52.47786,12.52569],[52.47804,12.52811],[52.47805,12.52963],[52.47766,12.53857],[52.47676,12.54159],[52.47318,12.54403],[52.45863,12.55165]],d:{addr:2615,hc:282,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":1,"Grovkalkyl klar":1,"Ej påbörjat":5}},p:[
   {n:"P1 HP0",s:"active",t:"HP0",a:"United Promotion GmbH",hp:261,hc:12},
   {n:"P3",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:0,hc:0},
   {n:"P4",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:714,hc:0},
   {n:"P2",s:"funnel",t:"",a:"",hp:0,hc:0},
   {n:"P4",s:"funnel",t:"",a:"",hp:0,hc:0},
   {n:"P5",s:"funnel",t:"",a:"",hp:0,hc:0},
+]},
+
+{n:"Beetzsee P3",lat:52.496,lng:12.499,r:"BB",polyColor:"#16a34a",poly:[[52.47492,12.47570],[52.47498,12.47533],[52.48360,12.46333],[52.49005,12.46117],[52.51800,12.53551],[52.51794,12.53604],[52.51662,12.53850],[52.50708,12.53554]],p:[
+  {n:"P3",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:506,hc:0},
+]},
+
+{n:"Beetzsee P4",lat:52.503,lng:12.638,r:"BB",polyColor:"#16a34a",poly:[[52.47815,12.57691],[52.47925,12.57061],[52.48145,12.56111],[52.48158,12.56094],[52.51620,12.64127],[52.51635,12.64164],[52.51651,12.64216],[52.52490,12.69010],[52.51526,12.70477],[52.51425,12.70399],[52.51385,12.70327],[52.51198,12.69927],[52.51124,12.69768],[52.50374,12.67865],[52.48016,12.58911]],p:[
+  {n:"P4",s:"active",t:"Base Sales",a:"United Promotion GmbH",hp:662,hc:0},
 ]},
 
 {n:"Hoppegarten",lat:52.5028,lng:13.7689,r:"BB",d:{addr:2003,hc:435,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":3,"Grävning":1}},p:[
@@ -428,8 +441,8 @@ const D = [
   {n:"P2",s:"funnel",t:"Base Sales / Up Sales",a:"",hp:0,hc:0},
 ]},
 
-{n:"Diensdorf-Radlow",lat:52.1583,lng:14.0500,r:"BB",d:{addr:320,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
-  {n:"(Funnel)",s:"funnel",t:"Base Sales",a:"",hp:318,hc:0},
+{n:"Diensdorf-Radlow-Rietz Neuendorf",lat:52.229,lng:14.089,r:"BB",polyColor:"#16a34a",poly:[[52.20304,14.08714],[52.21018,14.07562],[52.22994,14.05104],[52.23183,14.05049],[52.23291,14.05078],[52.23414,14.05122],[52.25599,14.07211],[52.21660,14.12744],[52.21339,14.12457]],p:[
+  {n:"(Funnel)",s:"funnel",t:"Base Sales",a:"Stonemedia GmbH",hp:622,hc:68},
 ]},
 
 {n:"Storkow",lat:52.2628,lng:13.9361,r:"BB",d:{addr:2050,hc:593,primary:"Avslutat",color:"#16a34a",statuses:{"Avslutat":1,"Ej påbörjat":7,"Vilande":1}},p:[
@@ -444,7 +457,6 @@ const D = [
 ]},
 
 {n:"Rietz-Neuendorf",lat:52.0972,lng:14.0083,r:"BB",p:[
-  {n:"P2",s:"funnel",t:"Base Sales",a:"",hp:318,hc:68},
   {n:"P3",s:"cemetery",t:"",a:"",hp:0,hc:0},
 ]},
 
@@ -456,7 +468,7 @@ const D = [
   {n:"Combined",s:"active",t:"Build Sales",a:"Stonemedia GmbH",hp:1094,hc:422},
 ]},
 
-{n:"Luckau",lat:51.8517,lng:13.7136,r:"BB",p:[
+{n:"Luckau",lat:51.8517,lng:13.7136,r:"BB",poly:[[51.751301,13.79975],[51.7515,13.797944],[51.820404,13.642038],[51.821035,13.641127],[51.85093,13.610498],[51.853328,13.608737],[51.854297,13.608137],[51.854799,13.607977],[51.893734,13.600894],[51.894366,13.603813],[51.894432,13.604161],[51.902829,13.709499],[51.903246,13.715068],[51.886001,13.78896],[51.885687,13.789805],[51.847368,13.8315],[51.810614,13.825741],[51.760158,13.81324],[51.759178,13.812135],[51.754982,13.806379]],p:[
   {n:"Combined",s:"active",t:"Build Sales",a:"United Promotion GmbH",hp:1174,hc:348},
 ]},
 
@@ -492,11 +504,11 @@ const D = [
   {n:"Golsen, Prierow, Mahlsdorf",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
 ]},
 
-{n:"LK Teltow-Fläming (MEV)",lat:51.9833,lng:13.2167,r:"BB",p:[
+{n:"LK Teltow-Fläming (MEV)",lat:51.9833,lng:13.2167,r:"BB",poly:[[51.9794,12.7699],[51.9655,12.8452],[51.9346,12.8869],[51.9265,12.9582],[51.9033,12.9998],[51.891,13.0413],[51.869,13.0702],[51.8831,13.1236],[51.8662,13.1624],[51.8785,13.2094],[51.85,13.2222],[51.8345,13.2351],[51.8199,13.2589],[51.8253,13.2826],[51.8197,13.2962],[51.8283,13.3106],[51.83,13.326],[51.8282,13.3436],[51.8289,13.3486],[51.8316,13.3528],[51.8313,13.3597],[51.8282,13.3676],[51.8248,13.3762],[51.8215,13.3837],[51.8181,13.3893],[51.8158,13.3955],[51.8184,13.4135],[51.7993,13.4747],[51.7925,13.5056],[51.8251,13.5368],[51.8442,13.5474],[51.8589,13.5474],[51.8941,13.581],[51.8953,13.5692],[51.903,13.5525],[51.9211,13.5514],[51.9258,13.4254],[51.9707,13.4144],[51.9729,13.4575],[51.9662,13.4868],[51.9762,13.5135],[51.9885,13.5352],[51.9987,13.5606],[52.0047,13.591],[52.0117,13.6467],[52.0563,13.6481],[52.077,13.6082],[52.0905,13.5687],[52.11,13.5456],[52.1364,13.549],[52.1769,13.5481],[52.2348,13.5509],[52.2366,13.4716],[52.2624,13.4929],[52.2963,13.4863],[52.3309,13.4954],[52.3509,13.4438],[52.3694,13.4185],[52.381,13.3882],[52.4009,13.3546],[52.4023,13.3184],[52.3779,13.2951],[52.3405,13.2524],[52.3267,13.1903],[52.3026,13.176],[52.3006,13.1428],[52.2897,13.1435],[52.2868,13.1532],[52.2778,13.1625],[52.2635,13.1401],[52.2571,13.1177],[52.2255,13.102],[52.1947,13.0785],[52.1528,12.9934],[52.1168,12.9765],[52.0859,12.9756],[52.0645,12.9616],[52.0306,12.9509],[52.0281,12.8943],[51.9897,12.8154]],p:[
   {n:"MEV LK Teltow-Fläming",s:"funnel",t:"MEV",a:"",hp:30928,hc:0},
 ]},
 
-{n:"LK Potsdam-Mittelmark (MEV)",lat:52.1667,lng:12.8333,r:"BB",p:[
+{n:"LK Potsdam-Mittelmark (MEV)",lat:52.1667,lng:12.8333,r:"BB",poly:[[52.21236,12.28061],[52.13902,12.30525],[52.13733,12.30594],[52.1335,12.3085],[52.01724,12.53231],[52.08376,12.87499],[52.3848,13.29707],[52.385,13.29728],[52.38758,13.29857],[52.39224,13.30077],[52.4034,13.30445],[52.40493,13.30483],[52.40534,13.30468],[52.40627,13.30392],[52.4071,13.30308],[52.4086,13.30153],[52.41394,13.2959],[52.41424,13.29554],[52.39344,12.71101],[52.39187,12.69186],[52.37675,12.63694],[52.34497,12.54849],[52.25216,12.30705],[52.25207,12.30684],[52.21771,12.28178],[52.21646,12.28135],[52.21236,12.28061]],p:[
   {n:"MEV LK Potsdam-Mittelmark",s:"funnel",t:"MEV",a:"",hp:20518,hc:0},
 ]},
 
@@ -545,7 +557,7 @@ const D = [
 {n:"Salzhausen (NI)",lat:53.1967,lng:10.1361,r:"NI",d:{addr:1192,hc:466,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":3,"Ej påbörjat":2}},p:[
   {n:"Eyendorf P7",s:"funnel",t:"Base Sales",a:"",hp:387,hc:0},
   {n:"Lübberstedt P8",s:"funnel",t:"Base Sales",a:"",hp:105,hc:0},
-  {n:"Vierhöfen P2-1",s:"funnel",t:"BASE UPSELL",a:"",hp:93,hc:17},
+  {n:"Vierhöfen Combined P2-1",s:"funnel",t:"BASE UPSELL",a:"",hp:93,hc:17},
 ]},
 
 {n:"Wistedt (NI)",lat:53.4667,lng:9.7667,r:"NI",p:[
@@ -569,7 +581,7 @@ const D = [
 ]},
 
 // ========== BAYERN ==========
-{n:"Kirchroth (BY)",lat:48.8897,lng:12.7122,r:"BY",d:{addr:1357,hc:589,primary:"Driftsättning",color:"#0891b2",statuses:{"Ej påbörjat":6,"Driftsättning":2,"Avropad":1,"Intern beslutskalkyl godkänd":1}},p:[
+{n:"Kirchroth (BY)",lat:48.9566,lng:12.5238,r:"BY",polyColor:"#16a34a",poly:[[48.97835,12.44935],[48.83906,12.60778],[48.96666,12.56024],[48.97884,12.53223],[48.98035,12.49548]],d:{addr:1357,hc:589,primary:"Driftsättning",color:"#0891b2",statuses:{"Ej påbörjat":6,"Driftsättning":2,"Avropad":1,"Intern beslutskalkyl godkänd":1}},p:[
   {n:"P3",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:246,hc:105},
   {n:"P4",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:325,hc:152},
   {n:"P1-1",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:249,hc:16},
@@ -578,19 +590,19 @@ const D = [
   {n:"HP0 SNB",s:"funnel",t:"HP0",a:"",hp:535,hc:0},
 ]},
 
-{n:"Leiblfing (BY)",lat:48.7753,lng:12.6183,r:"BY",d:{addr:915,hc:185,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Ej påbörjat":3,"Grovprojektering pågår":1}},p:[
+{n:"Leiblfing (BY)",lat:48.7751,lng:12.5187,r:"BY",polyColor:"#16a34a",poly:[[48.8097,12.46779],[48.8092,12.46814],[48.78546,12.48614],[48.76557,12.511],[48.74023,12.5504],[48.73672,12.55722],[48.74621,12.58858],[48.74654,12.58881],[48.75323,12.5897],[48.75631,12.58941],[48.75799,12.5892],[48.75833,12.58913],[48.75865,12.58894],[48.75912,12.58845],[48.81453,12.48773],[48.81302,12.47513],[48.8127,12.47411]],d:{addr:915,hc:185,primary:"Grovprojektering pågår",color:"#64748b",statuses:{"Ej påbörjat":3,"Grovprojektering pågår":1}},p:[
   {n:"P1",s:"active",t:"Build Sales",a:"EnCom GmbH",hp:475,hc:83},
 ]},
 
-{n:"Straubing (BY)",lat:48.8814,lng:12.5713,r:"BY",p:[
-  {n:"P1",s:"active",t:"BASE UPSELL",a:"EnCom GmbH",hp:307,hc:104},
+{n:"Straubing (BY)",lat:48.8988,lng:12.5664,r:"BY",polyColor:"#16a34a",poly:[[48.89014,12.55721],[48.88852,12.56016],[48.88854,12.56026],[48.88858,12.56042],[48.88872,12.56082],[48.89813,12.58412],[48.90034,12.58554],[48.9009,12.58542],[48.90126,12.58501],[48.91541,12.56759],[48.91578,12.56151],[48.91467,12.55995],[48.90895,12.55927],[48.90741,12.55909]],p:[
+  {n:"P1",s:"storno",t:"BASE UPSELL",a:"EnCom GmbH",hp:307,hc:104},
 ]},
 
-{n:"Parkstetten (BY)",lat:48.9494,lng:12.6853,r:"BY",d:{addr:988,hc:138,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+{n:"Parkstetten (BY)",lat:48.9195,lng:12.5988,r:"BY",polyColor:"#16a34a",poly:[[48.91868,12.57741],[48.9142,12.59594],[48.91408,12.5976],[48.91408,12.59794],[48.91498,12.60504],[48.91779,12.61727],[48.91805,12.61747],[48.91831,12.61749],[48.93345,12.59896],[48.93484,12.5912]],d:{addr:988,hc:138,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
   {n:"P1",s:"active",t:"Base Sales",a:"EnCom GmbH",hp:396,hc:99},
 ]},
 
-{n:"Aiterhofen (BY)",lat:48.8153,lng:12.7403,r:"BY",d:{addr:827,hc:521,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":1}},p:[
+{n:"Aiterhofen (BY)",lat:48.8442,lng:12.6204,r:"BY",polyColor:"#16a34a",poly:[[48.8328,12.60207],[48.83121,12.60225],[48.82902,12.63909],[48.83447,12.64672],[48.85743,12.62997],[48.85789,12.62876],[48.85754,12.62745],[48.85721,12.62653],[48.84794,12.61161],[48.83479,12.60266]],d:{addr:827,hc:521,primary:"Driftsättning",color:"#0891b2",statuses:{"Driftsättning":2,"Ej påbörjat":1}},p:[
   {n:"HP0 SNB",s:"funnel",t:"HP0",a:"",hp:567,hc:439},
   {n:"HP0",s:"cemetery",t:"Abandon",a:"",hp:128,hc:0},
 ]},
@@ -622,15 +634,19 @@ const D = [
   {n:"P3",s:"funnel",t:"Base Sales",a:"",hp:0,hc:0},
 ]},
 
-{n:"Markt Eichendorf (BY)",lat:48.6469,lng:12.7864,r:"BY",p:[
-  {n:"MEV",s:"funnel",t:"MEV",a:"",hp:2144,hc:0},
+{n:"Markt Eichendorf (BY)",lat:48.6469,lng:12.7864,r:"BY",poly:[[48.6116,12.745],[48.6147,12.7458],[48.6437,12.7623],[48.6682,12.7949],[48.6802,12.8262],[48.6789,12.8391],[48.6777,12.8446],[48.6572,12.9243],[48.6481,12.9469],[48.6151,12.9507],[48.6148,12.9504],[48.6119,12.9446],[48.6045,12.8981],[48.5979,12.8367],[48.5978,12.8353],[48.593,12.7762],[48.5931,12.7755]],greenHull:[[48.612349,12.752481],[48.611486,12.760052],[48.611946,12.944567],[48.614831,12.950422],[48.615065,12.950711],[48.633824,12.942734],[48.634322,12.94244],[48.653503,12.913257],[48.657094,12.901963],[48.643684,12.762259],[48.612349,12.752481]],p:[
+  {n:"MEV Markt Eichendorf",s:"direct",t:"MEV",a:"",hp:2144,hc:0},
+]},
+
+{n:"VG Mainburg (BY)",lat:48.6397,lng:11.7797,r:"BY",poly:[[48.7012,11.6582],[48.7136,11.6608],[48.7143,11.6619],[48.7218,11.8006],[48.7215,11.8036],[48.7214,11.8041],[48.7004,11.8779],[48.6949,11.8858],[48.6827,11.8937],[48.5898,11.9024],[48.5892,11.9016],[48.5869,11.893],[48.5824,11.8739],[48.5833,11.8679],[48.5976,11.8289],[48.6713,11.6927]],p:[
+  {n:"MEV VG Mainburg",s:"funnel",t:"MEV",a:"",hp:1997,hc:0},
 ]},
 
 {n:"Karlskron (BY)",lat:48.6367,lng:11.3508,r:"BY",p:[
   {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:1113,hc:0},
 ]},
 
-{n:"Baar-Ebenhausen (BY)",lat:48.6583,lng:11.3167,r:"BY",p:[
+{n:"Baar-Ebenhausen (BY)",lat:48.6583,lng:11.3167,r:"BY",polyColor:"#a855f7",poly:[[48.68254,11.45958],[48.67435,11.46133],[48.66802,11.46274],[48.66678,11.46316],[48.66394,11.46976],[48.66346,11.47504],[48.66412,11.47562],[48.66573,11.47672],[48.66665,11.47728],[48.6676,11.47772],[48.66806,11.47784],[48.6741,11.4777],[48.6973,11.47261],[48.69734,11.47234],[48.69723,11.47179],[48.69672,11.47022],[48.69289,11.46685]],r:"BY",p:[
   {n:"P1",s:"funnel",t:"BASE UPSELL",a:"",hp:1797,hc:0},
 ]},
 
@@ -647,53 +663,78 @@ const D = [
 ]},
 
 // MEV Bayern
-{n:"Ansbach (MEV)",lat:49.3017,lng:10.5714,r:"BY",p:[
+{n:"Ansbach (MEV)",lat:49.3017,lng:10.5714,r:"BY",poly:[[49.28192,10.46805],[49.28087,10.46825],[49.27064,10.47797],[49.26795,10.48063],[49.26755,10.4819],[49.26164,10.56641],[49.26045,10.61005],[49.26054,10.61037],[49.26102,10.61186],[49.26146,10.61282],[49.26984,10.62272],[49.31387,10.6395],[49.315,10.63953],[49.31583,10.63835],[49.31986,10.62499],[49.32194,10.49912],[49.32182,10.49789],[49.28192,10.46805]],p:[
   {n:"MEV Ansbach",s:"funnel",t:"MEV",a:"",hp:2136,hc:0},
 ]},
 
-{n:"Greding (MEV)",lat:49.0500,lng:11.3500,r:"BY",p:[
+{n:"Greding (MEV)",lat:49.0500,lng:11.3500,r:"BY",poly:[[49.03707,11.36381],[49.02966,11.3654],[49.02879,11.36573],[49.0286,11.36596],[49.02818,11.36958],[49.03657,11.40177],[49.05915,11.38999],[49.06021,11.38938],[49.06092,11.38897],[49.06116,11.3882],[49.06124,11.38793],[49.04054,11.36415],[49.03707,11.36381]],p:[
   {n:"MEV Greding",s:"funnel",t:"MEV",a:"",hp:333,hc:0},
 ]},
 
-{n:"Kirchdorf (MEV)",lat:48.1333,lng:12.3167,r:"BY",p:[
+{n:"Kirchdorf (MEV)",lat:48.1333,lng:12.3167,r:"BY",poly:[[48.76637,11.89573],[48.75536,11.91143],[48.75508,11.9149],[48.77038,11.90978],[48.77174,11.90879],[48.77464,11.90372],[48.77426,11.90271],[48.7717,11.89791],[48.76931,11.89645],[48.76637,11.89573]],p:[
   {n:"MEV Kirchdorf",s:"funnel",t:"MEV",a:"",hp:325,hc:0},
 ]},
 
-{n:"Markt Allersberg (MEV)",lat:49.2561,lng:11.2394,r:"BY",p:[
+{n:"Markt Allersberg (MEV)",lat:49.2561,lng:11.2394,r:"BY",poly:[[49.2242,11.20055],[49.22223,11.20367],[49.21592,11.25234],[49.21568,11.27336],[49.21583,11.28715],[49.21663,11.29211],[49.21758,11.2959],[49.21912,11.29523],[49.26899,11.25898],[49.26913,11.25841],[49.27441,11.23252],[49.26438,11.21473],[49.26295,11.21391],[49.2242,11.20055]],p:[
   {n:"MEV Markt Allersberg",s:"funnel",t:"MEV",a:"",hp:637,hc:0},
 ]},
 
-{n:"Bad Abbach (MEV)",lat:48.9333,lng:12.0667,r:"BY",p:[
+{n:"Bad Abbach (MEV)",lat:48.9333,lng:12.0667,r:"BY",poly:[[48.91395,11.99956],[48.91191,12.00078],[48.9114,12.00141],[48.91788,12.06127],[48.91935,12.06566],[48.93782,12.06997],[48.93801,12.06989],[48.94148,12.06001],[48.94519,12.0474],[48.95199,12.01167],[48.95216,12.01071],[48.95248,12.00871],[48.95226,12.00839],[48.92059,12.00003],[48.91395,11.99956]],p:[
   {n:"MEV Markt Bad Abbach",s:"funnel",t:"MEV",a:"",hp:2338,hc:0},
 ]},
 
-{n:"Siegenburg (MEV)",lat:48.7583,lng:11.7167,r:"BY",p:[
+{n:"Siegenburg (MEV)",lat:48.7583,lng:11.7167,r:"BY",poly:[[48.74559,11.83293],[48.7213,11.86459],[48.72108,11.86527],[48.72141,11.86658],[48.72184,11.86732],[48.72213,11.8674],[48.76545,11.87826],[48.76877,11.87754],[48.76305,11.83425],[48.76167,11.83327],[48.74559,11.83293]],p:[
   {n:"MEV Markt Siegenburg",s:"funnel",t:"MEV",a:"",hp:1322,hc:0},
 ]},
 
-{n:"Neumarkt i.d.OPf. (MEV)",lat:49.2803,lng:11.4608,r:"BY",p:[
+{n:"Neumarkt i.d.OPf. (MEV)",lat:49.2803,lng:11.4608,r:"BY",poly:[[49.2924,11.40655],[49.27336,11.42898],[49.25303,11.4588],[49.25304,11.46061],[49.25346,11.46257],[49.25404,11.46487],[49.26729,11.50736],[49.27574,11.53192],[49.27681,11.53106],[49.27725,11.53018],[49.27744,11.52968],[49.27755,11.52936],[49.29676,11.47326],[49.29732,11.47159],[49.29734,11.4715],[49.29766,11.46909],[49.29767,11.46895],[49.29786,11.46142],[49.29799,11.40982],[49.2924,11.40655]],p:[
   {n:"MEV Neumarkt i.d.Of.",s:"funnel",t:"MEV",a:"",hp:6355,hc:0},
 ]},
 
-{n:"Regensburg (MEV)",lat:49.0134,lng:12.1016,r:"BY",p:[
+{n:"Regensburg (MEV)",lat:49.0134,lng:12.1016,r:"BY",poly:[[48.98922,12.12603],[48.98891,12.12614],[48.98844,12.12632],[48.98791,12.12653],[48.98719,12.12705],[48.98785,12.13087],[48.98789,12.1311],[48.98794,12.13135],[48.9902,12.13813],[49.04055,12.16585],[49.04764,12.16184],[49.04824,12.16146],[49.0484,12.15816],[49.04604,12.15073],[48.98922,12.12603]],p:[
   {n:"MEV Regensburg",s:"funnel",t:"MEV",a:"",hp:936,hc:0},
 ]},
 
-{n:"Saal a.d. Donau (MEV)",lat:48.9083,lng:11.9500,r:"BY",p:[
+{n:"Train (MEV)",lat:48.731,lng:11.8212,r:"BY",mevStep:1,poly:[[48.72636,11.80574],[48.72533,11.80728],[48.71915,11.83639],[48.71968,11.83665],[48.72994,11.83595],[48.73015,11.83579],[48.73499,11.83084],[48.74157,11.82179],[48.74169,11.82099],[48.74095,11.81836],[48.73607,11.81022],[48.73119,11.80654],[48.72737,11.80586],[48.72636,11.80574]],p:[
+  {n:"MEV Train",s:"funnel",t:"MEV",a:"",hp:841,hc:0},
+]},
+
+{n:"Essing (MEV)",lat:48.9316,lng:11.7941,r:"BY",poly:[[48.94112,11.77655],[48.94008,11.77657],[48.93967,11.77692],[48.92748,11.79733],[48.92532,11.80121],[48.92529,11.80163],[48.92528,11.80252],[48.92538,11.80433],[48.92572,11.80616],[48.92578,11.80645],[48.9281,11.80659],[48.94086,11.78998],[48.94112,11.77655]],p:[
+  {n:"MEV Essing",s:"funnel",t:"MEV",a:"",hp:470,hc:0},
+]},
+
+{n:"Ihrlerstein (MEV)",lat:48.9464,lng:11.8552,r:"BY",poly:[[48.97403,11.83437],[48.94984,11.83634],[48.9496,11.83639],[48.94926,11.83663],[48.93097,11.85321],[48.92809,11.85826],[48.92637,11.86506],[48.92532,11.87593],[48.92532,11.87623],[48.92544,11.87846],[48.92555,11.87987],[48.94088,11.88053],[48.94121,11.88042],[48.97447,11.84283],[48.97461,11.83485],[48.97441,11.83454],[48.97403,11.83437]],p:[
+  {n:"MEV Ihrlerstein",s:"funnel",t:"MEV",a:"",hp:1794,hc:0},
+]},
+
+{n:"Neuhaus a.Inn (MEV)",lat:48.4692,lng:13.4116,r:"BY",poly:[[48.43596,13.37009],[48.41944,13.38072],[48.41289,13.41336],[48.43526,13.43725],[48.48762,13.44346],[48.48834,13.44347],[48.49206,13.43989],[48.49511,13.4203],[48.49516,13.41965],[48.49491,13.4143],[48.49458,13.41344],[48.49371,13.41234],[48.4828,13.40151],[48.47401,13.39469],[48.43596,13.37009]],p:[
+  {n:"MEV Neuhaus",s:"funnel",t:"MEV",a:"",hp:1188,hc:0},
+]},
+
+{n:"Pilsting (MEV)",lat:48.7065,lng:12.6311,r:"BY",poly:[[48.7059,12.5487],[48.70274,12.55083],[48.67518,12.62557],[48.67546,12.63787],[48.68078,12.66357],[48.68116,12.66432],[48.68165,12.66485],[48.71012,12.69285],[48.71388,12.69605],[48.7186,12.69731],[48.74396,12.66773],[48.74416,12.66651],[48.74408,12.66527],[48.71156,12.55688],[48.70878,12.55],[48.7059,12.5487]],p:[
+  {n:"MEV Pilsting",s:"funnel",t:"MEV",a:"",hp:2426,hc:0},
+]},
+
+{n:"Schwandorf (MEV)",lat:49.3139,lng:12.0885,r:"BY",poly:[[49.31346,12.03231],[49.28288,12.08434],[49.29006,12.09138],[49.31514,12.10945],[49.31526,12.10952],[49.31626,12.10941],[49.31733,12.10928],[49.32074,12.10853],[49.34703,12.09559],[49.35663,12.07098],[49.35699,12.06875],[49.33086,12.04154],[49.31871,12.03274],[49.31751,12.03261],[49.31346,12.03231]],p:[
+  {n:"MEV Schwandorf",s:"funnel",t:"MEV",a:"",hp:9334,hc:0},
+]},
+
+{n:"Steinach (MEV)",lat:48.953,lng:12.6019,r:"BY",poly:[[48.96081,12.56449],[48.958,12.56496],[48.94646,12.57168],[48.94341,12.58115],[48.93609,12.62045],[48.93386,12.64491],[48.94855,12.64381],[48.96699,12.63805],[48.97511,12.62497],[48.96081,12.56449]],p:[
+  {n:"MEV Steinach",s:"funnel",t:"MEV",a:"",hp:1310,hc:0},
+]},
+
+{n:"Saal a.d. Donau (MEV)",lat:48.9083,lng:11.9500,r:"BY",poly:[[48.8932,11.91544],[48.89144,11.91695],[48.89009,11.92895],[48.90087,11.93295],[48.90207,11.93215],[48.90228,11.93057],[48.90252,11.92865],[48.90259,11.92499],[48.90255,11.92264],[48.90184,11.9209],[48.90104,11.9197],[48.89366,11.91544],[48.8932,11.91544]],p:[
   {n:"MEV Saal a.d. Donau",s:"funnel",t:"MEV",a:"",hp:843,hc:0},
 ]},
 
-{n:"Teugn (MEV)",lat:48.8744,lng:11.9578,r:"BY",p:[
+{n:"Teugn (MEV)",lat:48.8744,lng:11.9578,r:"BY",poly:[[48.89314,12.00096],[48.89195,12.00118],[48.88966,12.01057],[48.88867,12.02502],[48.8888,12.02516],[48.88967,12.02537],[48.89025,12.02551],[48.89224,12.02352],[48.90215,12.00911],[48.90204,12.00876],[48.90182,12.00816],[48.90099,12.00739],[48.89314,12.00096]],p:[
   {n:"MEV Teugn",s:"funnel",t:"MEV",a:"",hp:638,hc:0},
 ]},
 
-{n:"Vilseck (MEV)",lat:49.6231,lng:11.7794,r:"BY",p:[
+{n:"Vilseck (MEV)",lat:49.6231,lng:11.7794,r:"BY",poly:[[49.62937,11.76444],[49.62425,11.76455],[49.62367,11.76469],[49.60555,11.78412],[49.60327,11.78777],[49.60081,11.80708],[49.60219,11.80919],[49.60237,11.80943],[49.60254,11.80963],[49.60312,11.81021],[49.6214,11.82433],[49.63467,11.82345],[49.63594,11.8162],[49.63598,11.81562],[49.63079,11.76541],[49.62937,11.76444]],p:[
   {n:"MEV Vilseck",s:"funnel",t:"MEV",a:"",hp:1577,hc:0},
 ]},
 
-{n:"Ammerthal (MEV, Potential)",lat:49.4333,lng:11.7333,r:"BY",p:[
-  {n:"MEV (abgegeben)",s:"funnel",t:"MEV",a:"",hp:0,hc:0},
-]},
 
 
 // ========== NEUE STANDORTE (BOB Lieferung) ==========
@@ -761,13 +802,13 @@ const D = [
 {n:"Irlbach (BY)",lat:48.823,lng:12.785,r:"BY",d:{addr:482,hc:154,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
   {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:482,hc:154},
 ]},
-{n:"Mengkofen (BY)",lat:48.723,lng:12.422,r:"BY",d:{addr:2261,hc:1078,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":4}},p:[
+{n:"Mengkofen (BY)",lat:48.7225,lng:12.4369,r:"BY",polyColor:"#16a34a",poly:[[48.69147,12.34036],[48.6791,12.39241],[48.67909,12.39251],[48.70731,12.50013],[48.79249,12.6419],[48.81092,12.56856],[48.76296,12.42501],[48.7588,12.41419],[48.72629,12.35491],[48.71346,12.34873]],d:{addr:2261,hc:1078,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":4}},p:[
   {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:2261,hc:1078},
 ]},
 {n:"Niederviehbach (BY)",lat:48.567,lng:12.4,r:"BY",d:{addr:1242,hc:0,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
   {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1242,hc:0},
 ]},
-{n:"Oberschneiding (BY)",lat:48.827,lng:12.538,r:"BY",d:{addr:1252,hc:503,primary:"Beredning pågår",color:"#2563eb",statuses:{"Vilande":1,"Beredning pågår":3}},p:[
+{n:"Oberschneiding (BY)",lat:48.7856,lng:12.6473,r:"BY",polyColor:"#16a34a",poly:[[48.73795,12.60072],[48.73652,12.61725],[48.74305,12.64326],[48.762,12.69467],[48.86069,12.90857],[48.81903,12.64169],[48.81806,12.63808],[48.79632,12.60342],[48.79482,12.60279]],d:{addr:1252,hc:503,primary:"Beredning pågår",color:"#2563eb",statuses:{"Vilande":1,"Beredning pågår":3}},p:[
   {n:"Lieferung",s:"active",t:"Build",a:"",hp:1252,hc:503},
 ]},
 {n:"Oettingen (BY)",lat:48.95,lng:10.598,r:"BY",d:{addr:1951,hc:0,primary:"Vilande",color:"#94a3b8",statuses:{"Vilande":2}},p:[
@@ -779,7 +820,7 @@ const D = [
 {n:"Salching (BY)",lat:48.793,lng:12.648,r:"BY",d:{addr:597,hc:98,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
   {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:597,hc:98},
 ]},
-{n:"Stephansposching (BY)",lat:48.833,lng:13.083,r:"BY",d:{addr:1341,hc:60,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
+{n:"Stephansposching (BY)",lat:48.8142,lng:12.8201,r:"BY",polyColor:"#16a34a",poly:[[48.82798,12.76475],[48.79076,12.76885],[48.78704,12.82401],[48.80832,12.8688],[48.82914,12.8828],[48.8311,12.77763]],d:{addr:1341,hc:60,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":2}},p:[
   {n:"Lieferung",s:"funnel",t:"Build",a:"",hp:1341,hc:60},
 ]},
 {n:"Barmke (NI)",lat:52.2,lng:10.917,r:"NI",d:{addr:222,hc:61,primary:"Ej påbörjat",color:"#94a3b8",statuses:{"Ej påbörjat":1}},p:[
@@ -808,9 +849,9 @@ const map = L.map('map', {
   zoomControl: true
 });
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  subdomains: 'abcd', maxZoom: 19
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  subdomains: 'abc', maxZoom: 19
 }).addTo(map);
 
 // ============================================================
@@ -821,6 +862,7 @@ let fStatus = 'all';
 let markers = [];
 let clusters = null;
 let mevClusters = null;
+let polyLayer = null;
 var projVisible = true;
 var mevVisible = true;
 
@@ -838,6 +880,7 @@ function getColor(loc) {
   if(isMEV) return '#a855f7';
   // If only BOB delivery data (no real sales projects), color by delivery
   if(loc.p.length===1 && loc.p[0].t==='Build' && loc.d) return loc.d.color;
+  if(statuses.includes('storno')) return '#dc2626';
   if(statuses.includes('active')) return '#1d4ed8';
   if(statuses.includes('funnel')) {
     if(isHP0 && loc.p.some(p=>p.t==='HP0')) return '#f59e0b';
@@ -860,7 +903,7 @@ function makePopup(loc) {
   let html = `<div class="pop-title">📍 ${loc.n}</div>`;
 
   // Group by status
-  const groups = {active:[], funnel:[], cemetery:[]};
+  const groups = {active:[], funnel:[], cemetery:[], storno:[]};
   loc.p.forEach(p => { if(groups[p.s]) groups[p.s].push(p); });
 
   const renderGroup = (label, cls, items) => {
@@ -881,6 +924,7 @@ function makePopup(loc) {
   html += renderGroup('Aktiv','bx-run', groups.active);
   html += renderGroup('Funnel','bx-fun', groups.funnel);
   html += renderGroup('Abgeschl.','bx-cem', groups.cemetery);
+  html += renderGroup('Storno','bx-sto', groups.storno);
 
   if(totalHP>0) {
     html += `<div style="margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;font-size:11px;color:#475569;">
@@ -888,6 +932,19 @@ function makePopup(loc) {
     </div>`;
   }
 
+
+  // MEV Prozess-Schritte
+  if(loc.mevStep) {
+    const mevSteps = ['Interessensb.','Förderantrag','Bewilligung','BOB Projekt','Vertrieb'];
+    const stepsHtml = mevSteps.map((s,i) => {
+      const done = (i+1) <= loc.mevStep;
+      return `<span style="display:inline-block;padding:2px 6px;margin:2px 2px 2px 0;border-radius:10px;font-size:9px;font-weight:700;background:${done?'#dcfce7':'#f1f5f9'};color:${done?'#15803d':'#94a3b8'};">${done?'✓ ':''} ${i+1}. ${s}</span>`;
+    }).join('');
+    html += `<div style="margin-top:6px;padding:5px 7px;background:#f0fdf4;border-radius:6px;border-left:3px solid #16a34a;">
+      <div style="font-size:10px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">📋 MEV Prozess</div>
+      <div>${stepsHtml}</div>
+    </div>`;
+  }
 
   // BOB Delivery info
   if(loc.d && loc.d.addr > 0) {
@@ -913,6 +970,8 @@ function isVisible(loc) {
 function redraw() {
   if(clusters) map.removeLayer(clusters);
   if(mevClusters) map.removeLayer(mevClusters);
+  if(polyLayer) map.removeLayer(polyLayer);
+  polyLayer = L.layerGroup();
 
   clusters = L.markerClusterGroup({
     maxClusterRadius: 40,
@@ -938,7 +997,7 @@ function redraw() {
     }
   });
 
-  let cActive=0, cFunnel=0, cCem=0, cTot=0;
+  let cActive=0, cFunnel=0, cCem=0, cStorno=0, cTot=0;
 
   D.forEach(loc => {
     if(!isVisible(loc)) return;
@@ -947,57 +1006,86 @@ function redraw() {
     if(hasStat('active')) cActive++;
     if(hasStat('funnel')) cFunnel++;
     if(hasStat('cemetery')) cCem++;
+    if(hasStat('storno')) cStorno++;
 
     const isMEV = loc.p.some(p=>p.t==='MEV');
 
     if(isMEV) {
       if(!mevVisible) return;
       const color = '#a855f7';
-      const r = getRadius(loc);
-      const marker = L.circleMarker([loc.lat, loc.lng], {
-        radius: r,
-        fillColor: color,
-        color: color,
-        weight: 1.5,
-        opacity: 1,
-        fillOpacity: 0.82
-      }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
-        .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
-      mevClusters.addLayer(marker);
+      if(loc.poly) {
+        const poly = L.polygon(loc.poly, {
+          color: color, weight: 1.5, opacity: 0.9,
+          fillColor: color, fillOpacity: 0.25
+        }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+          .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+        mevClusters.addLayer(poly);
+        if(loc.greenHull) {
+          const gp = L.polygon(loc.greenHull, {
+            color:'#16a34a', weight:2, opacity:0.9,
+            fillColor:'#16a34a', fillOpacity:0.18, dashArray:'6 4'
+          }).bindTooltip(loc.n+' – Potenzielle Adressen', {permanent:false, direction:'top', className:'leaflet-tooltip-small'});
+          mevClusters.addLayer(gp);
+        }
+      } else {
+        const r = getRadius(loc);
+        const marker = L.circleMarker([loc.lat, loc.lng], {
+          radius: r,
+          fillColor: color,
+          color: color,
+          weight: 1.5,
+          opacity: 1,
+          fillOpacity: 0.82
+        }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+          .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+        mevClusters.addLayer(marker);
+      }
     } else {
       if(!projVisible) return;
-      // Hide center dot for projects covered by BOB address layer
-      if(bobAddrVisible && BOB_COVERED.has(loc.n)) return;
       const color = getColor(loc);
       const r = getRadius(loc);
       const statuses = [...new Set(loc.p.map(p=>p.s))];
       const hasMulti = statuses.length > 1;
-      const marker = L.circleMarker([loc.lat, loc.lng], {
-        radius: r,
-        fillColor: color,
-        color: hasMulti ? '#252121' : color,
-        weight: hasMulti ? 2.5 : 1.5,
-        opacity: 1,
-        fillOpacity: 0.82
-      }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
-        .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
-      clusters.addLayer(marker);
+      if(loc.poly) {
+        // Always draw explicit polygons, even if location is BOB-covered
+        const pc = loc.polyColor || color;
+        const poly = L.polygon(loc.poly, {
+          color: pc, weight: 1.5, opacity: 0.9,
+          fillColor: pc, fillOpacity: 0.25
+        }).bindTooltip(loc.polyLabel || loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+          .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+        polyLayer.addLayer(poly);
+      } else {
+        // Hide center dot for projects covered by BOB address layer
+        if(bobAddrVisible && BOB_COVERED.has(loc.n)) return;
+        const marker = L.circleMarker([loc.lat, loc.lng], {
+          radius: r,
+          fillColor: color,
+          color: hasMulti ? '#252121' : color,
+          weight: hasMulti ? 2.5 : 1.5,
+          opacity: 1,
+          fillOpacity: 0.82
+        }).bindTooltip(loc.n, {permanent:false, direction:'top', className:'leaflet-tooltip-small'})
+          .bindPopup(makePopup(loc), {maxWidth: 380, minWidth: 260});
+        clusters.addLayer(marker);
+      }
     }
   });
 
-  if(projVisible) map.addLayer(clusters);
+  if(projVisible) { map.addLayer(clusters); map.addLayer(polyLayer); }
   if(mevVisible) map.addLayer(mevClusters);
 
   document.getElementById('sn-run').textContent = cActive;
   document.getElementById('sn-fun').textContent = cFunnel;
   document.getElementById('sn-cem').textContent = cCem;
+  document.getElementById('sn-sto').textContent = cStorno;
   document.getElementById('sn-tot').textContent = cTot;
 }
 
 function setR(val, btn) {
   fRegion = val;
   document.querySelectorAll('.btn-all, .btn-bb, .btn-by, .btn-ni').forEach(b => {
-    if(b.classList.contains('btn-run') || b.classList.contains('btn-fun') || b.classList.contains('btn-cem')) return;
+    if(b.classList.contains('btn-run') || b.classList.contains('btn-fun') || b.classList.contains('btn-cem') || b.classList.contains('btn-sto')) return;
     b.classList.remove('on');
   });
   btn.classList.add('on');
@@ -1006,11 +1094,11 @@ function setR(val, btn) {
 
 function setS(val, btn) {
   fStatus = val;
-  document.querySelectorAll('.btn-run, .btn-fun, .btn-cem').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.btn-run, .btn-fun, .btn-cem, .btn-sto').forEach(b => b.classList.remove('on'));
   // also handle the "all" button in status group
   document.querySelectorAll('#panel .bg').forEach(bg => {
     const btns = bg.querySelectorAll('.btn');
-    const hasRunFunCem = [...btns].some(b=>b.classList.contains('btn-run'));
+    const hasRunFunCem = [...btns].some(b=>b.classList.contains('btn-run') || b.classList.contains('btn-sto'));
     if(hasRunFunCem) btns.forEach(b=>b.classList.remove('on'));
   });
   btn.classList.add('on');
@@ -1129,13 +1217,17 @@ const DNS_COVERAGE = [
 ];
 
 var dnsCovMarkers = [];
+var dnsBbPolygons = [];
 var dnsCovVisible = true;
 
 function renderDnsCov() {
   dnsCovMarkers.forEach(m => map.removeLayer(m));
   dnsCovMarkers = [];
+  // BB polygons: always update visibility (must happen before early return)
+  dnsBbPolygons.forEach(p => { if (dnsCovVisible) p.addTo(map); else map.removeLayer(p); });
   if (!dnsCovVisible) return;
-  DNS_COVERAGE.forEach(function(d) {
+  // Berlin entries: render as circles
+  DNS_COVERAGE.filter(d => d[4] === 'Berlin' || d[4] === 'Schoenefeld').forEach(function(d) {
     var zip = d[0], lat = d[1], lng = d[2], streets = d[3], city = d[4];
     var radius = Math.max(300, Math.min(2500, 200 + Math.log10(streets + 1) * 650));
     var c = L.circle([lat, lng], {
@@ -1157,8 +1249,9 @@ function renderDnsCov() {
     c.addTo(map);
     dnsCovMarkers.push(c);
   });
-  // bring to back so it doesn't cover other markers
+  // bringToBack for all markers
   dnsCovMarkers.forEach(m => m.bringToBack && m.bringToBack());
+  dnsBbPolygons.forEach(p => p.bringToBack && p.bringToBack());
 }
 
 function toggleDnsCov(btn) {
@@ -1173,7 +1266,41 @@ function toggleDnsCov(btn) {
   renderDnsCov();
 }
 
+// ── DNS:NET Brandenburg PLZ-Polygone (statisch eingebettet) ────────
+var DNS_BB_POLY={"14469":[[[52.4088,12.9838],[52.427,12.9746],[52.4144,12.9365],[52.427,12.9746],[52.4144,12.9365],[52.4528,12.9518],[52.4387,13.1232],[52.397,13.0355],[52.4026,12.9807]]],"14476":[[[52.3985,12.9813],[52.4184,12.9895],[52.4128,12.9425],[52.4277,12.9502],[52.427,12.9746],[52.4144,12.9365],[52.3925,12.9352],[52.3862,12.9713],[52.4943,13.0982],[52.5016,13.1572],[52.4507,13.1093],[52.4353,13.056],[52.4633,12.8868],[52.5137,12.9962],[52.4595,13.0576],[52.4686,13.0958],[52.4943,13.0982]]],"14550":[[[52.4458,12.7041],[52.4382,12.6709],[52.4184,12.6872],[52.3811,12.6561],[52.3784,12.6782],[52.3794,12.6566],[52.3885,12.7405],[52.3661,12.7707],[52.3815,12.7604],[52.3791,12.8044],[52.3652,12.7962],[52.4135,12.8092],[52.4053,12.8504],[52.4543,12.8708],[52.4262,12.849],[52.4543,12.8708],[52.4737,12.8125],[52.4606,12.8602],[52.4585,12.745]],[[49.2461,-0.3097],[49.2234,-0.329],[49.224,-0.2804],[49.2461,-0.3097],[49.2269,-0.279]]],"14558":[[[52.3646,13.1045],[52.3543,13.0482],[52.3238,13.1027],[52.3362,13.0799],[52.3,13.09],[52.3211,13.1076],[52.2875,13.1135],[52.3,13.09],[52.2559,13.1136],[52.2837,13.0997],[52.2633,13.1405],[52.2551,13.1155],[52.2693,13.1548],[52.2638,13.1392],[52.2773,13.1628],[52.2956,13.1375],[52.2805,13.1588],[52.2979,13.171],[52.3006,13.1428],[52.318,13.1647],[52.3007,13.1757],[52.3288,13.1745],[52.3646,13.1045],[52.2547,13.1142]]],"14612":[[[52.5705,13.1524],[52.5438,13.125],[52.5559,13.0129],[52.5678,13.0006],[52.5954,13.0494],[52.5677,13.0348],[52.5678,13.0006],[52.6105,13.0111],[52.5982,13.0478],[52.6127,13.0105],[52.5801,13.136]]],"14624":[[[52.5438,13.125],[52.5567,13.0077],[52.5195,13.0135],[52.5132,12.9921],[52.4597,13.0568],[52.5092,13.1688],[52.5171,13.1174],[52.5197,13.1432],[52.5171,13.1174],[52.5435,13.1256],[52.5291,13.1192]]],"14641":[[[52.6984,12.841],[52.681,12.8357],[52.6966,12.6876],[52.641,12.633],[52.6883,12.6913],[52.641,12.633],[52.6185,12.6533],[52.6141,12.6221],[52.5953,12.6952],[52.6185,12.6533],[52.5953,12.6952],[52.5652,12.6507],[52.5876,12.6776],[52.55,12.6903],[52.5652,12.6507],[52.5453,12.7192],[52.5252,12.716],[52.4999,12.768],[52.5076,12.7471],[52.508,12.7825],[52.5154,12.7677],[52.5213,12.7975],[52.5617,12.8188],[52.5417,12.8922],[52.5268,12.9134],[52.5058,12.9047],[52.5025,12.9529],[52.5176,13.0083],[52.547,13.0119],[52.5195,13.0135],[52.5632,13.011],[52.5598,12.9265],[52.5937,12.9012],[52.6304,13.0131],[52.6593,12.9013],[52.6977,12.9956],[52.7192,12.9625],[52.701,12.9694],[52.7018,12.8548],[52.7192,12.9625]]],"14662":[[[52.7032,12.7406],[52.6931,12.6876],[52.7193,12.7292],[52.7058,12.741],[52.7514,12.7172],[52.7287,12.7092],[52.7695,12.6723],[52.7561,12.7207],[52.8004,12.65],[52.7733,12.6765],[52.7902,12.6098],[52.8016,12.6456],[52.7929,12.5336],[52.8106,12.548],[52.7902,12.6098],[52.7728,12.5511],[52.7929,12.5336],[52.753,12.525],[52.7631,12.5497],[52.7333,12.5193],[52.7357,12.5453],[52.7395,12.5137],[52.753,12.525],[52.707,12.5611],[52.7238,12.5262],[52.6949,12.5192],[52.7028,12.5574],[52.6634,12.5627],[52.6929,12.5237],[52.6246,12.6292],[52.6899,12.6918]]],"14669":[[[52.5078,12.7821],[52.4981,12.7343],[52.4585,12.745],[52.4812,12.7597],[52.498,12.7344],[52.4585,12.745],[52.4735,12.8176],[52.4501,12.8916],[52.5043,12.9471],[52.5058,12.9047],[52.5071,12.9453],[52.5126,12.9049],[52.5417,12.8922],[52.5617,12.819],[52.5078,12.7821],[52.5154,12.7677],[52.5213,12.7975],[52.5601,12.8066]]],"14715":[[[19.2283,-99.264],[19.2207,-99.2262],[19.2147,-99.2775],[19.2281,-99.2643],[19.1905,-99.2405],[19.2147,-99.2775],[19.2117,-99.2284],[19.1933,-99.2356],[19.2175,-99.223]]],"14728":[[[52.6929,12.5237],[52.6769,12.5001],[52.7154,12.4581],[52.7076,12.3722],[52.7505,12.2686],[52.7945,12.2843],[52.7524,12.4075],[52.7534,12.5246],[52.7238,12.5262],[52.7357,12.5453],[52.7395,12.5137],[52.753,12.525],[52.707,12.5611],[52.7238,12.5262]]],"14776":[[[52.3886,12.4612],[52.3701,12.4497],[52.3317,12.4745],[52.4235,12.5662],[52.3882,12.5116],[52.3886,12.4612],[52.4454,12.5728],[52.4235,12.5662],[52.459,12.6223],[52.4444,12.7048],[52.4382,12.6709],[52.4184,12.6872],[52.3914,12.6554],[52.393,12.6115],[52.3476,12.5939],[52.3537,12.5363],[52.3224,12.5053],[52.3505,12.5348],[52.3212,12.4641]]],"14778":[[[52.2625,12.5182],[52.2653,12.4626],[52.2448,12.4539],[52.2701,12.5228],[52.2374,12.6494],[52.2819,12.6112],[52.308,12.6496],[52.3215,12.6213],[52.2835,12.537],[52.3262,12.4829],[52.3075,12.3874],[52.3116,12.4188],[52.2952,12.3873],[52.2448,12.4539],[52.2723,12.4173],[52.4812,12.7597],[52.498,12.7344],[52.4538,12.7291],[52.4585,12.745],[52.4472,12.7201],[52.4553,12.6299],[52.4447,12.6893],[52.4494,12.5321],[52.4694,12.5091],[52.5274,12.5832],[52.5501,12.6903],[52.5422,12.7247],[52.5252,12.716],[52.5094,12.7496],[52.5252,12.716],[52.4981,12.7343],[52.5076,12.7471]]],"14789":[[[52.3632,12.3963],[52.3116,12.4188],[52.3469,12.4128],[52.3075,12.3874],[52.3116,12.4188],[52.3047,12.2732],[52.3446,12.3081],[52.3047,12.2732],[52.3639,12.2848],[52.3465,12.3069],[52.3783,12.3064],[52.3663,12.2841],[52.3934,12.2968],[52.3783,12.3064],[52.4089,12.2871],[52.4447,12.3077],[52.416,12.2746],[52.4514,12.305],[52.4163,12.3874],[52.4347,12.3896],[52.4428,12.3611],[52.389,12.3916]]],"14797":[[[52.2699,12.7811],[52.2384,12.7142],[52.2654,12.6959],[52.2699,12.7811],[52.3008,12.8222],[52.2779,12.7821],[52.3009,12.8222],[52.3758,12.8241],[52.393,12.6115],[52.3476,12.5939],[52.3537,12.5363],[52.3222,12.5002],[52.3473,12.523],[52.3033,12.5092],[52.3215,12.6213],[52.2835,12.537],[52.3022,12.5233],[52.3215,12.6213],[52.2903,12.7],[52.3061,12.6585],[52.2654,12.6959],[52.2903,12.7]]],"14798":[[[52.4866,12.5277],[52.4535,12.4443],[52.4247,12.4479],[52.4465,12.4225],[52.4161,12.4305],[52.4247,12.4479],[52.4492,12.4211],[52.4792,12.4499],[52.456,12.4298],[52.4781,12.4119],[52.4792,12.4499],[52.509,12.4158],[52.4781,12.4119],[52.554,12.4283],[52.5387,12.4063],[52.5273,12.4276],[52.5088,12.4145],[52.5511,12.4604],[52.554,12.4283],[52.5572,12.4784],[52.5274,12.5832],[52.5368,12.5315],[52.5274,12.5832],[52.4866,12.5277],[52.5098,12.5623]]],"14943":[[[52.0754,13.1356],[52.1097,13.0802],[52.134,13.107],[52.1131,13.1973],[52.0729,13.2134],[52.0664,13.1695],[52.0625,13.1889],[52.0268,13.1883],[52.0704,13.1509]]],"15345":[[[52.5199,14.0238],[52.4739,13.9566],[52.4681,13.887],[52.5,13.8611],[52.5296,13.8704],[52.5062,13.8783],[52.5448,13.9115],[52.5433,13.8788],[52.5583,14.0394],[52.5652,14.0031],[52.528,14.0313],[52.5417,14.0537],[52.5583,14.0394],[52.5199,14.0238],[52.5577,13.8309],[52.5849,13.8309],[52.5513,13.851],[52.5234,13.8132],[52.5477,13.7926],[52.5207,13.8024],[52.5483,13.7916],[52.5452,13.6706],[52.5823,13.6719],[52.6248,13.828],[52.6223,13.7764],[52.6476,13.8455],[52.6248,13.828],[52.6706,13.8495],[52.6658,13.8964],[52.7153,13.9811],[52.6894,14.0399],[52.6673,14.0299],[52.6751,14.1128],[52.6501,14.1297],[52.6751,14.1128],[52.6492,14.1047],[52.6501,14.1297],[52.6199,14.0182],[52.605,14.0228],[52.6032,13.8337],[52.6035,13.8922],[52.5849,13.8309],[52.6032,13.8337]]],"15366":[[[52.5616,13.6155],[52.5456,13.6106],[52.5691,13.6586],[52.5613,13.616],[52.5636,13.6775],[52.5452,13.6706],[52.5418,13.7329],[52.5239,13.7371],[52.5391,13.7428],[52.5008,13.713],[52.4665,13.6228],[52.5259,13.6585],[52.5456,13.6106]]],"15370":[[[52.4933,13.7468],[52.5153,13.8362],[52.5515,13.7455],[52.5474,13.7656],[52.5239,13.7371],[52.5418,13.7329],[52.5045,13.7097],[52.4865,13.7406],[52.4935,13.7116]]],"15517":[[[52.3489,14.1462],[52.3272,14.0919],[52.3489,14.1462],[52.3747,14.1396],[52.3597,14.1495],[52.3788,14.095],[52.4265,14.0797],[52.4119,14.0164],[52.3844,14.0141],[52.4018,13.951],[52.3849,13.9486],[52.3747,13.9973],[52.3409,14.0025],[52.3489,14.0503],[52.3569,14.0305],[52.3409,14.0025],[52.3292,14.0633],[52.3489,14.0503],[52.3233,14.0864]]],"15518":[[[52.3292,14.0633],[52.3551,14.0357],[52.3477,14.008],[52.291,13.9966],[52.303,14.0486],[52.2971,14.0195],[52.3292,14.0633],[52.2987,14.3958],[52.2892,14.3574],[52.3142,14.328],[52.2987,14.3958],[52.3151,14.4053],[52.3213,14.3685],[52.3159,14.0775],[52.3065,14.1095],[52.3317,14.1521],[52.3065,14.1095],[52.3177,14.1932],[52.3283,14.168],[52.2762,14.3033],[52.2989,14.2401],[52.3166,14.315],[52.2818,14.3273],[52.2789,14.3101],[52.3446,14.3202],[52.3611,14.3014],[52.3777,14.3299],[52.3611,14.3014],[52.3777,14.3299],[52.3828,14.314],[52.4028,14.3275],[52.409,14.2815],[52.4628,14.2754],[52.4988,14.1884],[52.4695,14.1777],[52.4499,14.0889],[52.4807,14.0739],[52.4466,14.0072],[52.4684,13.9775],[52.4288,13.9855],[52.4117,14.0185],[52.4265,14.0797],[52.4151,14.0329],[52.4265,14.0797],[52.3747,14.1396],[52.3788,14.095],[52.3981,14.0935],[52.3726,14.1471],[52.3489,14.1462],[52.3272,14.0919]]],"15711":[[[52.259,13.6712],[52.2599,13.613],[52.2541,13.6554],[52.2841,13.5781],[52.2818,13.6172],[52.3189,13.5786],[52.3025,13.5684],[52.2841,13.5781],[52.3107,13.6025],[52.3195,13.5786],[52.3035,13.6626],[52.2858,13.6398],[52.2666,13.6695]]],"15712":[[[52.3082,13.7541],[52.3186,13.7406],[52.2838,13.7407],[52.2665,13.6985],[52.2814,13.7385],[52.2653,13.6742],[52.2887,13.6437],[52.2659,13.6537],[52.2666,13.6695],[52.2952,13.6722],[52.2887,13.6437],[52.3035,13.6626],[52.3185,13.7433]]],"15713":[[[52.3035,13.6626],[52.3449,13.755],[52.3243,13.7349],[52.3891,13.7163],[52.3506,13.7571],[52.3777,13.6993],[52.3894,13.7158],[52.3516,13.6571],[52.3074,13.6438]]],"15732":[[[52.3505,13.5613],[52.3797,13.5948],[52.3505,13.5613],[52.3775,13.6427],[52.3395,13.6019],[52.3497,13.563]]],"15745":[[[52.3074,13.6438],[52.311,13.6044],[52.3326,13.6436],[52.3074,13.6438],[52.3416,13.6345],[52.3297,13.5952],[52.311,13.6044]]],"15749":[[[52.1867,13.6008],[52.1951,13.6242],[52.1867,13.6008],[52.2246,13.5953],[52.1993,13.6217],[52.2526,13.5872],[52.2246,13.5953],[52.2599,13.613],[52.2526,13.5872],[52.2818,13.6172],[52.2599,13.613],[52.2841,13.5781],[52.2818,13.6172],[52.3189,13.5786],[52.2841,13.5781],[52.3171,13.5281],[52.3189,13.5786],[52.331,13.4935],[52.2821,13.5068],[52.2984,13.4869],[52.2608,13.4899],[52.2671,13.5113],[52.2821,13.5068],[52.2567,13.4497],[52.2608,13.4899],[52.2567,13.4497],[52.2322,13.4721],[52.242,13.5457],[52.1964,13.5822],[52.2332,13.5544],[52.1932,13.5458],[52.1951,13.5711],[52.1932,13.5458],[52.1479,13.5432],[52.1849,13.5442],[52.1453,13.5867],[52.146,13.5544],[52.1453,13.5867],[52.1787,13.595],[52.1568,13.5883]]],"15827":[[[52.3438,13.4253],[52.3467,13.3929],[52.349,13.4231],[52.3099,13.3445],[52.3196,13.4107],[52.3099,13.3445],[52.2995,13.4513],[52.3327,13.451],[52.3183,13.4642],[52.338,13.4261],[52.3327,13.451]]],"15831":[[[52.3354,13.3782],[52.3525,13.4183],[52.3114,13.4624],[52.3363,13.499],[52.3779,13.3884],[52.3768,13.4122],[52.3685,13.3726],[52.3354,13.3782],[52.3073,13.4166],[52.3095,13.3444],[52.2871,13.387],[52.3073,13.4166]]],"15834":[[[52.3068,13.4181],[52.2995,13.4513],[52.3073,13.4166],[52.2829,13.3913],[52.2549,13.4478],[52.2671,13.5113],[52.2861,13.4833],[52.3221,13.4837],[52.3025,13.4542]]],"15859":[[[52.1279,13.9134],[52.136,13.9683],[52.1158,13.9999],[52.1545,14.0666],[52.1338,14.0492],[52.1754,14.051],[52.1787,13.9368],[52.1803,14.0323],[52.1963,13.9403],[52.1814,13.9342],[52.2208,13.9965],[52.2804,13.9439],[52.267,13.9694],[52.3116,13.8981],[52.2438,13.8178],[52.2251,13.8537],[52.2331,13.8277],[52.1918,13.8399],[52.2251,13.8537],[52.1852,13.8346],[52.1841,13.894],[52.1852,13.8346],[52.1841,13.894],[52.1182,13.8719],[52.1216,13.845],[52.1473,13.8757],[52.1648,13.8504],[52.1696,13.8897]]],"16230":[[[52.8646,13.7918],[52.8821,13.8547],[52.9041,13.7573],[52.8646,13.7918],[52.9058,13.7423],[52.9352,13.7877],[52.928,13.8417],[52.9396,13.7991],[52.928,13.8417],[52.9675,13.9815],[52.9327,13.9906],[52.9183,14.0268],[52.8545,13.9441],[52.8522,13.8477],[52.8496,13.8638],[52.8821,13.8547],[52.7023,13.7311],[52.695,13.6997],[52.7163,13.7592],[52.7335,13.7295],[52.7163,13.7592],[52.7437,13.7635],[52.7335,13.7295],[52.758,13.8548],[52.754,13.8314],[52.7877,13.8633],[52.7586,13.8617],[52.7964,13.8646],[52.8042,13.8027],[52.7857,13.8099],[52.7764,13.7876],[52.7895,13.6713],[52.7844,13.7063],[52.7545,13.6843],[52.7868,13.6643],[52.7122,13.6883],[52.6968,13.6648],[52.6949,13.6998],[52.6967,13.6649]],[[45.9408,0.1466],[45.9002,0.0922],[45.9154,0.1204],[45.8813,0.1014],[45.9002,0.0922],[45.8612,0.0777],[45.8813,0.1014],[45.8509,0.0952],[45.8602,0.0773],[45.844,0.0998],[45.8548,0.1302],[45.8454,0.1128],[45.8293,0.1743],[45.8503,0.1957],[45.819,0.339],[45.8344,0.3469],[45.8441,0.3113],[45.8678,0.3236],[45.8742,0.2073],[45.9539,0.2013],[45.9401,0.1538],[45.9539,0.2013]]],"16244":[[[52.975,13.5132],[52.9981,13.602],[52.9384,13.6553],[52.9053,13.6495],[52.9202,13.7241],[52.8866,13.7861],[52.8646,13.7918],[52.8711,13.7676],[52.866,13.7824],[52.8531,13.7651],[52.8636,13.7052],[52.8124,13.7041],[52.8604,13.7067],[52.8124,13.7041],[52.799,13.6259],[52.8543,13.6483],[52.8453,13.6223],[52.831,13.6507],[52.8788,13.6376],[52.8619,13.616],[52.8638,13.6369],[52.8857,13.6131],[52.8788,13.6376],[52.8555,13.5798],[52.8857,13.6131],[52.8555,13.5798],[52.8736,13.5318],[52.859,13.5459],[52.8853,13.4612],[52.9008,13.4891],[52.9185,13.4729],[52.9116,13.4091],[52.9343,13.4367],[52.9396,13.4013],[52.9639,13.4657]]],"16341":[[[52.6139,13.5004],[52.6059,13.5645],[52.6139,13.5004],[52.645,13.523],[52.6682,13.4745],[52.6792,13.4997],[52.6594,13.5589],[52.6101,13.5808],[52.6443,13.5664],[52.6101,13.5808],[52.6055,13.5657]]],"16348":[[[52.6485,13.4015],[52.6497,13.4521],[52.6374,13.4327],[52.683,13.5077],[52.7318,13.4671],[52.7451,13.4915],[52.7464,13.5182],[52.7168,13.5257],[52.7351,13.5848],[52.8167,13.5881],[52.8265,13.6472],[52.8178,13.5883],[52.8638,13.6369],[52.8443,13.6219],[52.8308,13.6507],[52.8788,13.6376],[52.8635,13.6144],[52.8638,13.6369],[52.8819,13.6298],[52.8555,13.5798],[52.8857,13.6131],[52.8555,13.5798],[52.8756,13.5204],[52.8595,13.4779],[52.8766,13.4741],[52.8735,13.5077],[52.8215,13.4984],[52.8399,13.4943],[52.8479,13.5231],[52.8593,13.4769],[52.8041,13.4352],[52.8129,13.497],[52.8043,13.4218],[52.779,13.4055],[52.7903,13.4306],[52.8042,13.4218],[52.7453,13.3967],[52.7345,13.4243],[52.745,13.409],[52.7097,13.4043],[52.7345,13.4243],[52.6973,13.4087],[52.6762,13.424],[52.6792,13.3923],[52.6973,13.4087],[52.6485,13.4015],[52.6699,13.4226]]],"16359":[[[52.7386,13.6857],[52.699,13.6667],[52.7122,13.6883],[52.699,13.6667],[52.7359,13.645],[52.7435,13.5833],[52.7455,13.6119],[52.7444,13.5833],[52.8167,13.5881],[52.8265,13.6472],[52.8203,13.5912],[52.8117,13.6582],[52.7993,13.6307],[52.8265,13.6472],[52.7985,13.6821],[52.8107,13.6577],[52.7545,13.6843],[52.7895,13.6713]]],"16515":[[[52.711,13.3664],[52.7098,13.4219],[52.7256,13.406],[52.7345,13.4243],[52.7453,13.3967],[52.7903,13.4306],[52.7955,13.3704],[52.846,13.3332],[52.8307,13.2581],[52.7636,13.1714],[52.7604,13.131],[52.7258,13.1389],[52.7151,13.1745],[52.7331,13.1802],[52.7258,13.1389],[52.7149,13.1755],[52.7453,13.1961],[52.7239,13.1821],[52.7121,13.2135],[52.7443,13.198],[52.7096,13.215],[52.7395,13.2764],[52.7174,13.3438]]],"16552":[[[52.6296,13.3769],[52.6475,13.3945],[52.6483,13.3565],[52.6237,13.344],[52.6253,13.3669]]],"16567":[[[52.711,13.3664],[52.6427,13.3094],[52.6463,13.4013],[52.6762,13.424],[52.6723,13.3977],[52.6974,13.4088],[52.7122,13.3667],[52.6974,13.4088]]],"16727":[[[52.6655,13.2144],[52.633,13.1734],[52.661,13.1819],[52.6069,13.1553],[52.633,13.1734],[52.6082,13.1478],[52.6314,13.1189],[52.6284,13.1564],[52.6089,13.1478],[52.6601,13.0955],[52.6345,13.1114],[52.6776,13.0957],[52.6601,13.0955],[52.6753,13.0664],[52.6793,13.0875],[52.6711,13.0139],[52.6696,13.0405],[52.6918,12.9917],[52.6766,13.0175],[52.7013,12.9841],[52.7124,13.0057],[52.7063,12.9867],[52.7624,13.1255],[52.7624,13.1055],[52.7364,13.1387],[52.7581,13.1367],[52.7258,13.1389],[52.7121,13.2135],[52.7061,13.1732],[52.6991,13.2477],[52.7057,13.2043],[52.6911,13.2487],[52.6758,13.2292]]],"16775":[[[52.8759,13.3139],[52.8084,13.2342],[52.8134,13.1368],[52.7975,13.1673],[52.8183,13.1252],[52.8015,13.088],[52.8183,13.1252],[52.8015,13.088],[52.8733,13.1112],[52.8973,13.0844],[52.8733,13.1112],[52.8547,13.039],[52.8973,13.0844],[52.8547,13.039],[52.9013,13.0184],[52.9556,13.0569],[52.9905,13.051],[52.9989,13.0066],[53.0241,13.0327],[53.0718,13.0261],[53.0728,12.9724],[53.102,12.9378],[53.1328,12.9636],[53.147,13.0281],[53.1645,12.9856],[53.1852,13.0261],[53.1671,12.9841],[53.1852,13.0261],[53.1579,13.0549],[53.1402,13.1751],[53.1712,13.1975],[53.1302,13.1962],[53.1128,13.2276],[53.1023,13.2027],[53.0638,13.2117],[53.0621,13.2793],[53.0322,13.2195],[53.0174,13.2458],[52.995,13.2099],[52.9534,13.2414],[52.9146,13.241],[52.9206,13.2228],[52.9534,13.2414],[52.9183,13.2617],[52.9142,13.2432],[52.933,13.3714],[52.9484,13.3679],[52.9444,13.3382],[52.9213,13.3348],[52.9316,13.2956],[52.9014,13.3482],[52.9318,13.3668]]],"16845":[[[52.9,12.3346],[52.8997,12.3836],[52.9227,12.3346],[52.9,12.3346],[52.9259,12.3198],[52.8953,12.2503],[52.9138,12.2886],[52.8907,12.1249],[52.8538,12.1239],[52.8779,12.1971],[52.859,12.234],[52.7919,12.2493],[52.7717,12.3953],[52.7522,12.4089],[52.7532,12.5466],[52.8106,12.548],[52.7902,12.6098],[52.8019,12.6699],[52.8711,12.7216],[52.9073,12.6209],[52.8889,12.6851],[52.9073,12.6209],[52.9152,12.637],[52.9759,12.5735],[52.942,12.6],[52.9718,12.5565],[52.9759,12.5735],[52.9594,12.5411],[52.9377,12.5603],[52.9467,12.5056],[52.9301,12.4922],[52.9135,12.4825],[52.9081,12.5244],[52.9135,12.4825],[52.8759,12.5018],[52.9076,12.5244],[52.8688,12.5017],[52.8761,12.4754],[52.8684,12.5016],[52.8649,12.44],[52.8761,12.4754],[52.9002,12.4266],[52.8671,12.4402],[52.9073,12.3942],[52.9002,12.4266],[52.9078,12.3882],[52.8615,12.2199]]]};
+
+function initDnsBbPolygons() {
+  var statusEl = document.getElementById('dnscov-status');
+  var bbEntries = DNS_COVERAGE.filter(function(d){ return d[4] !== 'Berlin' && d[4] !== 'Schoenefeld'; });
+  var plzMap = {};
+  bbEntries.forEach(function(d){ plzMap[d[0]] = d; });
+  var count = 0;
+  Object.keys(DNS_BB_POLY).forEach(function(plz) {
+    if (!plzMap[plz]) return;
+    var entry = plzMap[plz];
+    DNS_BB_POLY[plz].forEach(function(ring) {
+      if (ring.length < 3) return;
+      var poly = L.polygon(ring, {
+        color: '#ea580c', weight: 1.5, opacity: 0.9,
+        fillColor: '#ea580c', fillOpacity: 0.22, interactive: true
+      });
+      poly.bindPopup(
+        '<div style="font-size:12px;min-width:160px;">' +
+        '<b style="color:#ea580c;">📡 DNS:NET Glasfaser</b><br>' +
+        '<b>PLZ ' + plz + '</b> – ' + entry[4] + '<br>' +
+        '<span style="color:#64748b;">' + entry[3] + ' Straßen verfügbar</span>' +
+        '</div>', {maxWidth:200}
+      );
+      if (dnsCovVisible) { poly.addTo(map); poly.bringToBack(); }
+      dnsBbPolygons.push(poly);
+      count++;
+    });
+  });
+  if (statusEl) statusEl.textContent = count + ' BB-PLZ Polygone';
+}
+
 renderDnsCov();
+initDnsBbPolygons();
 
 // ── Ortssuche (Nominatim) ──────────────────────────────
 (function() {
@@ -1438,7 +1565,7 @@ fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/4_kre
   });
 
 // ── BOB Adressen (Signerade Verträge) ─────────────────────
-var BOB_PROJ=["Amt Scharmützelsee", "Beetzsee", "Bestensee", "Birkenwerder", "Blankenfelde-Mahlow", "Eichwalde", "Falkensee", "Frankfurt (Oder)", "Fürstenwalde/Spree", "Gosen-Neu Zittau", "Grünheide", "Heidesee", "Hennigsdorf", "Hohen Neuendorf", "Kasel-Golzig", "Kirchroth (BY)", "Königs Wusterhausen", "Leiblfing (BY)", "Luckau", "Löwenberger Land", "Märkisch Buchholz", "Neu Wulmstorf (NI)", "Parkstetten (BY)", "Rosengarten (NI)", "Schulzendorf", "Schöneiche bei Berlin", "Seddiner See", "Spreenhagen", "Storkow", "Straubing (BY)", "Teupitz", "Welle (NI)", "Wistedt (NI)", "Woltersdorf", "Zeuthen-Wildau", "Zossen", "Rinteln (NI)", "Auetal (NI)","Beetzsee P3","Beetzsee P4","Diehlo P1","Seddiner See P2","Fürstenwalde P7","Gosen-Neu Zittau P4","Löwenberger Land Grieben P5","Schulzendorf P3","Zossen P4-2","Zossen P6","Zossen P7"];
+var BOB_PROJ=["Amt Scharmützelsee", "Beetzsee", "Bestensee", "Birkenwerder", "Blankenfelde-Mahlow", "Eichwalde", "Falkensee", "Frankfurt (Oder)", "Fürstenwalde/Spree", "Gosen-Neu Zittau", "Grünheide", "Heidesee", "Hennigsdorf", "Hohen Neuendorf", "Kasel-Golzig", "Kirchroth (BY)", "Königs Wusterhausen", "Leiblfing (BY)", "Luckau", "Löwenberger Land", "Märkisch Buchholz", "Neu Wulmstorf (NI)", "Parkstetten (BY)", "Rosengarten (NI)", "Schulzendorf", "Schöneiche bei Berlin", "Seddiner See", "Spreenhagen", "Storkow", "Straubing (BY)", "Teupitz", "Welle (NI)", "Wistedt (NI)", "Woltersdorf", "Zeuthen-Wildau", "Zossen", "Rinteln (NI)", "Auetal (NI)","Beetzsee P3","Beetzsee P4","Diehlo P1","Seddiner See P2","Fürstenwalde P7","Gosen-Neu Zittau P4","Löwenberger Land Grieben P5","Schulzendorf P3","Zossen P4-2","Zossen P6","Zossen P7","Vierhöfen (NI)","Eyendorf (NI)","Stephansposching (BY)","Diensdorf-Radlow-Rietz Neuendorf","Groß Köris"];
 var BOB_POLYGONS=[
 [0,0,[[52.21128,14.00772],[52.20333,14.01685],[52.2235,14.04296],[52.2443,14.05846],[52.24686,14.06774],[52.25818,14.07143],[52.26737,14.06021],[52.27878,14.05532],[52.29033,14.05769],[52.29114,14.04727],[52.28345,14.04098],[52.27657,14.04339],[52.2823,14.04919],[52.27627,14.04891],[52.27118,14.04084],[52.252,14.05134],[52.23727,14.02931],[52.22063,14.02042],[52.21128,14.00772]]],
 [2,0,[[52.25259,13.5872],[52.22464,13.59529],[52.21923,13.60715],[52.20583,13.61498],[52.19674,13.62835],[52.20105,13.63384],[52.19463,13.64394],[52.20253,13.649],[52.19679,13.6724],[52.20652,13.67859],[52.21013,13.67418],[52.22031,13.71089],[52.22484,13.69285],[52.22779,13.69501],[52.24156,13.68627],[52.24439,13.67547],[52.25896,13.67118],[52.25365,13.65328],[52.2579,13.65127],[52.25624,13.63579],[52.26027,13.63904],[52.25994,13.61301],[52.25781,13.60609],[52.25066,13.60674],[52.24784,13.6121],[52.24894,13.60602],[52.25674,13.60453],[52.25259,13.5872]]],
@@ -1455,7 +1582,7 @@ var BOB_POLYGONS=[
 [13,0,[[52.70525,13.20417],[52.69565,13.25021],[52.67581,13.22925],[52.62729,13.24607],[52.64112,13.28383],[52.66074,13.28277],[52.67131,13.3484],[52.69796,13.36055],[52.70046,13.30913],[52.6876,13.3079],[52.68169,13.24456],[52.68618,13.26072],[52.68646,13.24768],[52.7019,13.25112],[52.7082,13.29983],[52.72649,13.31527],[52.74147,13.27066],[52.71182,13.24189],[52.70525,13.20417]]],
 [14,0,[[51.92566,13.61899],[51.90842,13.62081],[51.90177,13.63286],[51.91008,13.63606],[51.91606,13.66907],[51.91478,13.68224],[51.91007,13.68485],[51.91494,13.70837],[51.92413,13.70664],[51.91794,13.71361],[51.9115,13.71218],[51.91368,13.73858],[51.90979,13.74804],[51.92231,13.75326],[51.92504,13.76084],[51.94995,13.7653],[51.95269,13.75888],[51.94631,13.74022],[51.9459,13.70696],[51.96509,13.69874],[51.95142,13.67524],[51.93852,13.67155],[51.93562,13.64488],[51.92526,13.63227],[51.92566,13.61899]]],
 [15,1,[[48.97361,12.4377],[48.96666,12.44902],[48.96545,12.46421],[48.95482,12.46567],[48.95145,12.47059],[48.95887,12.49004],[48.94707,12.50264],[48.94445,12.51984],[48.94065,12.52048],[48.9307,12.50725],[48.91107,12.51959],[48.91326,12.53056],[48.92439,12.53765],[48.91743,12.55591],[48.93127,12.56898],[48.93724,12.5696],[48.93943,12.56104],[48.95247,12.55724],[48.96362,12.56009],[48.9654,12.56524],[48.96721,12.56036],[48.97721,12.56213],[48.98279,12.56789],[48.98336,12.53903],[48.98864,12.53334],[48.98978,12.52099],[48.98503,12.50031],[48.99037,12.49966],[48.99155,12.49345],[48.9889,12.48466],[48.98072,12.48937],[48.97498,12.48344],[48.98291,12.45265],[48.98194,12.44306],[48.97361,12.4377]]],
-[16,0,[[52.30251,13.56837],[52.28412,13.57807],[52.28972,13.5995],[52.27973,13.60703],[52.28177,13.61722],[52.26466,13.60738],[52.25994,13.61301],[52.25533,13.66376],[52.25896,13.67118],[52.26659,13.66946],[52.26646,13.69848],[52.28248,13.71632],[52.28168,13.73881],[52.29404,13.73968],[52.30831,13.75495],[52.3107,13.73938],[52.32007,13.74421],[52.3243,13.73488],[52.33084,13.74523],[52.33401,13.73967],[52.35056,13.75709],[52.36496,13.72746],[52.37126,13.74097],[52.38531,13.72967],[52.38889,13.70696],[52.36721,13.6922],[52.36666,13.67151],[52.35162,13.65709],[52.3426,13.65115],[52.33635,13.65315],[52.33064,13.64239],[52.32349,13.6413],[52.31981,13.64627],[52.3074,13.64385],[52.30848,13.6122],[52.31949,13.57861],[52.30688,13.57561],[52.30251,13.56837]]],
+[16,0,[[52.29377,13.57934],[52.26051,13.61381],[52.26034,13.61432],[52.25904,13.62005],[52.25474,13.64222],[52.25494,13.6536],[52.25742,13.66499],[52.31284,13.79092],[52.36939,13.71405],[52.36965,13.71357],[52.37164,13.70919],[52.37206,13.70662],[52.37162,13.69793],[52.35678,13.66632],[52.35651,13.66588],[52.33944,13.64011],[52.30137,13.58323],[52.29424,13.57948],[52.29377,13.57934]]],
 [17,1,[[48.7668,12.43172],[48.74568,12.45035],[48.75752,12.45212],[48.76529,12.49471],[48.75125,12.53511],[48.73922,12.52538],[48.73174,12.53873],[48.71551,12.53264],[48.73073,12.55695],[48.72378,12.59612],[48.76552,12.611],[48.80937,12.5427],[48.80261,12.50563],[48.8207,12.49146],[48.82175,12.45625],[48.79542,12.4438],[48.78513,12.4574],[48.7668,12.43172]]],
 [18,0,[[51.85121,13.57604],[51.83915,13.59856],[51.8519,13.66053],[51.82665,13.68543],[51.83955,13.71359],[51.80974,13.73416],[51.79868,13.76399],[51.77927,13.7642],[51.76345,13.71929],[51.75953,13.77579],[51.73498,13.78233],[51.73502,13.84394],[51.75227,13.85577],[51.75786,13.83055],[51.78471,13.80543],[51.78947,13.83779],[51.81821,13.82985],[51.8213,13.84247],[51.82883,13.83289],[51.83878,13.8545],[51.85746,13.82732],[51.87871,13.86375],[51.90087,13.86611],[51.90497,13.836],[51.92827,13.81967],[51.90259,13.76667],[51.9115,13.71218],[51.92413,13.70664],[51.91494,13.70837],[51.91043,13.68841],[51.9005,13.58555],[51.8634,13.60432],[51.85121,13.57604]]],
 [19,0,[[52.90608,13.01807],[52.85467,13.03903],[52.89728,13.08436],[52.87331,13.11119],[52.80152,13.08797],[52.8184,13.12485],[52.8009,13.20582],[52.89502,13.34697],[52.94573,13.37516],[52.91423,13.2432],[52.92059,13.22277],[52.95335,13.24144],[52.95556,13.05692],[52.91732,13.04641],[52.90608,13.01807]]],
@@ -1475,9 +1602,8 @@ var BOB_POLYGONS=[
 [34,0,[[52.347,13.56072],[52.31072,13.60252],[52.3297,13.59523],[52.33635,13.65315],[52.36853,13.64707],[52.33824,13.59726],[52.347,13.56072]]],
 [34,0,[[52.32068,13.58977],[52.31949,13.64629],[52.34162,13.63451],[52.32068,13.58977]]],
 [35,0,[[52.22546,13.29178],[52.19598,13.44038],[52.17867,13.44733],[52.16016,13.41657],[52.13516,13.46169],[52.11036,13.45275],[52.09236,13.50103],[52.09728,13.54067],[52.19319,13.5458],[52.19637,13.58222],[52.24204,13.54573],[52.23217,13.47206],[52.28183,13.4],[52.25105,13.308],[52.22546,13.29178]]],
-[36,2,[[52.19465,8.98578],[52.17151,9.022],[52.13251,9.01779],[52.1497,9.06747],[52.12898,9.1535],[52.09425,9.13443],[52.1193,9.18478],[52.14574,9.16171],[52.14318,9.19404],[52.18465,9.15728],[52.20375,9.2478],[52.22594,9.0417],[52.1832,9.04566],[52.19465,8.98578]]],
-[37,2,[[52.22899,9.12915],[52.20582,9.23264],[52.21673,9.31744],[52.24328,9.33054],[52.27977,9.28666],[52.22899,9.12915]]]
-,
+[36,2,[[52.15769,9.06743],[52.15337,9.06912],[52.14373,9.07896],[52.14612,9.08853],[52.15302,9.11376],[52.1663,9.15334],[52.17085,9.16184],[52.17157,9.16162],[52.1738,9.15574],[52.1749,9.14882],[52.17446,9.10016],[52.17403,9.09339],[52.17301,9.09119],[52.15976,9.06876],[52.15769,9.06743]]],
+[37,2,[[52.23148,9.13285],[52.22159,9.14386],[52.21907,9.17077],[52.21343,9.24444],[52.21395,9.25845],[52.22838,9.31067],[52.22848,9.31088],[52.25135,9.31717],[52.26793,9.31025],[52.27738,9.29663],[52.27441,9.27361],[52.24179,9.13516],[52.23148,9.13285]]],
 [38,0,[[52.49005,12.46117],[52.4836,12.46333],[52.47498,12.47533],[52.47492,12.4757],[52.50708,12.53554],[52.51662,12.5385],[52.51794,12.53604],[52.518,12.53551],[52.49005,12.46117]]],
 [39,0,[[52.48158,12.56094],[52.48145,12.56111],[52.47925,12.57061],[52.47815,12.57691],[52.48016,12.58911],[52.50374,12.67865],[52.51124,12.69768],[52.51198,12.69927],[52.51385,12.70327],[52.51425,12.70399],[52.51526,12.70477],[52.5249,12.6901],[52.51651,12.64216],[52.51635,12.64164],[52.5162,12.64127],[52.48158,12.56094]]],
 [40,0,[[52.1314,14.59021],[52.12631,14.59105],[52.12614,14.59134],[52.12633,14.59557],[52.12658,14.59584],[52.13302,14.59876],[52.1331,14.59807],[52.1332,14.59625],[52.13233,14.5905],[52.13218,14.59033],[52.13205,14.59029],[52.13156,14.59022],[52.1314,14.59021]]],
@@ -1488,12 +1614,17 @@ var BOB_POLYGONS=[
 [45,0,[[52.35113,13.58094],[52.34971,13.58191],[52.34887,13.58257],[52.34804,13.58355],[52.34749,13.58494],[52.34755,13.58547],[52.34764,13.58612],[52.34768,13.58636],[52.34976,13.58425],[52.34992,13.58405],[52.34999,13.58392],[52.35081,13.58224],[52.351,13.58178],[52.35113,13.58094]]],
 [46,0,[[52.22493,13.3918],[52.22157,13.42176],[52.2216,13.42201],[52.22315,13.42696],[52.22331,13.42742],[52.2242,13.42825],[52.22445,13.42846],[52.23803,13.43579],[52.24059,13.43382],[52.25316,13.41955],[52.22493,13.3918]]],
 [47,0,[[52.22471,13.31096],[52.21115,13.40099],[52.21297,13.40871],[52.24574,13.41994],[52.25978,13.37778],[52.25252,13.33656],[52.24871,13.33181],[52.23415,13.31454],[52.22471,13.31096]]],
-[48,0,[[52.15407,13.45116],[52.13308,13.46127],[52.13304,13.46156],[52.13289,13.46359],[52.13632,13.47825],[52.13658,13.47909],[52.13932,13.47875],[52.14785,13.47689],[52.15461,13.47443],[52.16612,13.46739],[52.17047,13.46427],[52.17123,13.46217],[52.16915,13.4562],[52.1589,13.45239],[52.15407,13.45116]]]
+[48,0,[[52.15407,13.45116],[52.13308,13.46127],[52.13304,13.46156],[52.13289,13.46359],[52.13632,13.47825],[52.13658,13.47909],[52.13932,13.47875],[52.14785,13.47689],[52.15461,13.47443],[52.16612,13.46739],[52.17047,13.46427],[52.17123,13.46217],[52.16915,13.4562],[52.1589,13.45239],[52.15407,13.45116]]],
+[49,2,[[53.25759,10.20872],[53.25908,10.22292],[53.2592,10.22352],[53.25944,10.2238],[53.26486,10.22682],[53.27806,10.21932],[53.27556,10.21065]]],
+[50,2,[[53.20265,10.1489],[53.1998,10.1491],[53.19783,10.14998],[53.19776,10.15095],[53.20042,10.16148],[53.20873,10.18693],[53.21079,10.16309],[53.20746,10.15537],[53.20512,10.15044]]],
+[51,1,[[48.8195,12.7501],[48.8057,12.7697],[48.7895,12.7633],[48.7811,12.7777],[48.7822,12.8314],[48.8012,12.8758],[48.8276,12.879],[48.8247,12.8994],[48.8358,12.9091],[48.8423,12.8585],[48.8277,12.8336],[48.8228,12.806],[48.8367,12.7691],[48.8195,12.7501]]],
+[52,0,[[52.204,14.0288],[52.1941,14.0473],[52.1803,14.0323],[52.1744,14.0529],[52.1631,14.0401],[52.1572,14.056],[52.159,14.0743],[52.1744,14.0866],[52.1878,14.0842],[52.2105,14.097],[52.2037,14.1483],[52.1882,14.1301],[52.1703,14.1236],[52.1647,14.1768],[52.1813,14.1871],[52.1801,14.2073],[52.1965,14.2057],[52.2049,14.2204],[52.203,14.2382],[52.2253,14.2483],[52.2335,14.2397],[52.2437,14.2508],[52.2292,14.2757],[52.2437,14.2737],[52.251,14.263],[52.2552,14.3348],[52.2693,14.3328],[52.2729,14.3432],[52.2812,14.319],[52.2762,14.3028],[52.2849,14.281],[52.2934,14.2823],[52.2977,14.2741],[52.2946,14.2585],[52.3024,14.2423],[52.2919,14.2429],[52.2901,14.2325],[52.2946,14.225],[52.304,14.2266],[52.3031,14.2123],[52.3218,14.1871],[52.3316,14.1511],[52.3191,14.1175],[52.3103,14.1207],[52.2959,14.1038],[52.286,14.1002],[52.2802,14.1175],[52.2585,14.0954],[52.2529,14.1036],[52.2425,14.0914],[52.2382,14.0954],[52.2333,14.0819],[52.2227,14.095],[52.2244,14.056],[52.204,14.0288]]],
+[53,0,[[52.181,13.7792],[52.1872,13.7714],[52.2023,13.7772],[52.1894,13.7692],[52.1812,13.7776],[52.1933,13.7128],[52.1979,13.7213],[52.2011,13.7146],[52.1844,13.7004],[52.1981,13.6674],[52.2025,13.649],[52.1946,13.6435],[52.201,13.6337],[52.1993,13.6217],[52.189,13.6182],[52.1861,13.5943],[52.1732,13.5937],[52.1717,13.6018],[52.1568,13.5883],[52.1653,13.6285],[52.156,13.6452],[52.1583,13.6651],[52.1503,13.6576],[52.143,13.6648],[52.1249,13.6613],[52.117,13.682],[52.1324,13.6766],[52.1325,13.685],[52.109,13.7093],[52.135,13.722],[52.1284,13.7573],[52.1588,13.7624],[52.181,13.7792]]]
 ];
 
 var BOB_COVERED = new Set(BOB_PROJ);
 
-var bobAddrVisible = false;
+var bobAddrVisible = true;
 var bobAddrLayer = null;
 
 // BOB hover tooltip — z-index 10000 beats the Telekom tip (9999)
