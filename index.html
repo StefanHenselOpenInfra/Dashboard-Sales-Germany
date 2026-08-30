@@ -2325,7 +2325,20 @@ loadData(render);
 
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('service-worker.js').catch(function(){/* file://, unsupported, or offline — ignore */});
+    navigator.serviceWorker.register('service-worker.js').then(function(reg){
+      // Ask the SW to check for an update every time the app is opened/foregrounded.
+      reg.update();
+      document.addEventListener('visibilitychange',function(){
+        if(document.visibilityState==='visible')reg.update();
+      });
+    }).catch(function(){/* file://, unsupported, or offline — ignore */});
+    // When a new SW takes control, the page's assets may be stale — reload once to pick it up.
+    var _swRefreshed=false;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(_swRefreshed)return;
+      _swRefreshed=true;
+      window.location.reload();
+    });
   });
 }
 
