@@ -687,7 +687,7 @@ function svgLineChart(data,refY,refLabel,maxY,color,refY2,refLabel2,refSteps,ext
     // Vertikaler Verbinder zwischen benachbarten Segmenten (Stufe)
     for(var _si=0;_si<refSteps.length-1;_si++){
       var s1=refSteps[_si],s2=refSteps[_si+1];
-      if(s2.x1===s1.x2+1&&s1.x2<n&&s2.x1<n){
+      if((s2.x1===s1.x2+1||s2.x1===s1.x2)&&s1.x2<n&&s2.x1<n){
         var cx=px(s1.x2);
         refLine+='<line x1="'+cx+'" y1="'+py(s1.y)+'" x2="'+cx+'" y2="'+py(s2.y)+'" stroke="'+(s1.color||'#ef4444')+'" stroke-width="2" stroke-dasharray="8,5"/>';
       }
@@ -1776,9 +1776,10 @@ function render(){
   html+='</div>';
   if(_ofExtra){html+='<p style="font-size:12px;color:#6d28d9;font-weight:700;margin:-6px 0 12px;">┅ incl. VZF-Pending (BOB-Liste 4107) als echte Sales ('+_ofSum+' Sales, Stand '+esc(oneflowOverview.asOf.split('-').reverse().join('.'))+'; Okt-Forecast'+(_fp?'':' und Nov/Dez')+' neu berechnet'+(_fp?'; Agentur-Zuordnung abgeleitet':'')+')</p>';}
   // Q3/Q4-Segmente entfallen in der "All"-Ansicht: die durchgehende Ziellinie unten ist die einzige Referenzlinie dort
-  var _salesSteps=_fp?undefined:(salesDevTypeFilter!=='All'?[{y:_typeQ3Target,x1:6,x2:8,color:'#ef4444',label:'Ø '+_typeQ3Target+' Q3'}].concat(_typeQ4Month>0?[{y:_typeQ4Month,x1:9,x2:11,color:'#ea580c',label:'Ø '+_typeQ4Month+' Q4 (Δ '+(_typeQ4Delta>0?'+':'')+_typeQ4Delta+')'}]:[]):undefined);
+  var _allSteps=[{y:467,x1:3,x2:6,color:'#ef4444',label:'Ø 467 Q2'},{y:983,x1:6,x2:9,color:'#ef4444',label:'Ø 983 Q3'},{y:750,x1:9,x2:11,color:'#ef4444',label:'Ø 750 Q4'}];
+  var _salesSteps=_fp?undefined:(salesDevTypeFilter!=='All'?[{y:_typeQ3Target,x1:6,x2:8,color:'#ef4444',label:'Ø '+_typeQ3Target+' Q3'}].concat(_typeQ4Month>0?[{y:_typeQ4Month,x1:9,x2:11,color:'#ea580c',label:'Ø '+_typeQ4Month+' Q4 (Δ '+(_typeQ4Delta>0?'+':'')+_typeQ4Delta+')'}]:[]):_allSteps);
   // durchgehende gestrichelte Ziellinie über den gesamten Jan–Dez-Chart bei 467 (Ø-Monatsziel), nur in der "All"-Ansicht
-  var _allTargetRefY=(!_fp&&salesDevTypeFilter==='All')?467:undefined;
+  var _allTargetRefY=undefined;
   var _allTargetRefLabel=_allTargetRefY!==undefined?('Target Ø '+_allTargetRefY+'/Month'):undefined;
   html+=svgLineChart(salesData,_allTargetRefY,_allTargetRefLabel,undefined,'#3182ce',undefined,undefined,_salesSteps,_ofExtra);
   html+='</div></div></section>';
@@ -1787,12 +1788,13 @@ function render(){
   html+='<section id="sec-daily" style="scroll-margin-top:70px;padding:20px 0;"><div class="container"><div style="max-width:1100px;margin:0 auto;">';
   html+='<div class="card" style="border:2px solid #E4A489;">';
   html+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">';
-  html+='<div><h2>Daily Sales Average 2026'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Avg daily sales Jan–'+(_repM2>=11?'Nov':'Oct')+' filtered':'Jan–Dec &middot; <span style="color:#ef4444;font-weight:700;">── Req. '+q4DailyNeeded+'/day (Oct–Dec avg, '+q4Target+' target)</span>')+'</p></div>';
+  var _dq2=+(1400/(S.q2WorkingDays||65)).toFixed(1),_dq3=+(2950/(S.q3WorkingDays||66)).toFixed(1),_dq4=+(2250/(S.q4WorkingDays||59)).toFixed(1);
+  html+='<div><h2>Daily Sales Average 2026'+esc(chartAgencyLabel)+'</h2><p style="color:#64748b;">'+(_fp?'Avg daily sales Jan–'+(_repM2>=11?'Nov':'Oct')+' filtered':'Jan–Dec &middot; <span style="color:#ef4444;font-weight:700;">── Target/day: Q2 1400 &rarr; '+_dq2+' &middot; Q3 2950 &rarr; '+_dq3+' &middot; Q4 2250 &rarr; '+_dq4+'</span>')+'</p></div>';
   if(selectedAgencies&&selectedAgencies.length===1&&agencyLogos[selectedAgencies[0]]){html+=agencyLogos[selectedAgencies[0]].replace('<svg ','<svg style="height:42px;width:auto;border-radius:6px;" ');}
   html+='<span class="badge tag-success">2026</span></div>';
   var _q3d=+(q3Monthly/22).toFixed(1),_q4d=+(q4Monthly/22).toFixed(1);
   // Nur Q3/Q4-Kennzeichnung ohne Zahl im Label — der Zahlenwert steht schon am Datenpunkt selbst und würde sonst mit ihm kollidieren (z.B. Nov/Dez)
-  var _dailySteps=_fp?undefined:[{y:_q3d,x1:6,x2:8,color:'#ef4444',label:'Q3'},{y:_q4d,x1:9,x2:11,color:'#ef4444',label:'Q4'}];
+  var _dailySteps=_fp?undefined:[{y:_dq2,x1:3,x2:6,color:'#ef4444',label:'Q2 '+_dq2},{y:_dq3,x1:6,x2:9,color:'#ef4444',label:'Q3 '+_dq3},{y:_dq4,x1:9,x2:11,color:'#ef4444',label:'Q4 '+_dq4}];
   html+=svgLineChart(dailyData,undefined,undefined,undefined,'#363E36',undefined,undefined,_dailySteps);
   html+='</div>';
 
@@ -1894,7 +1896,7 @@ function render(){
   })();
   // ── CANCELLATION QUOTA CARD ──────────────────────────────────────────────
   // Live gross total per partner (same monthly fields as Agency Overview), kept in sync instead of the stale static p.ytd field
-  var _pGross=function(p){return (p.jan||0)+(p.feb||0)+(p.mar||0)+(p.apr||0)+(p.may||0)+(p.juneActual||0)+(p.julyActual||0)+(p.august||0)+(p.september||0)+(p.october||0);};
+  var _pGross=function(p){return (p.jan||0)+(p.feb||0)+(p.mar||0)+(p.apr||0)+(p.may||0)+(p.juneActual||0)+(p.julyActual||0)+(p.august||0)+(p.september||0)+(p.october||0)+(p.november||0)+(p.december||0);};
   var cancelPartners=partners.filter(function(p){
     return (selectedAgencies===null||selectedAgencies.indexOf(p.name)>=0);
   }).sort(function(a,b){
